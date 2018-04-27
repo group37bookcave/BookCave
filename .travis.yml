@@ -1,2 +1,3 @@
 language: csharp
+solution: BookCave.sln
 slack: bookcaveworkspace:1e5hvsFyNQDjxQO2iAwpySQm
