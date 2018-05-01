@@ -1,4 +1,7 @@
 # BookCave
+
+[![Build Status](https://travis-ci.org/group37bookcave/BookCave.svg?branch=master)](https://travis-ci.org/group37bookcave/BookCave)
+
 Project RU2018
 
 Hópur 37: </br>
