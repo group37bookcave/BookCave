@@ -1,0 +1,41 @@
+@{
+    ViewData["Title"] = "WishList";
+}
+
+<h1>Wish List</h1>
+<hr>
+<p id=no-wish-list> No items in your Wish List </p>
+<hr>
+
+
+<div class="row">
+  <div class="col-xs-12 col-md-8">
+   	<div class="media">
+        <a href="#" class="pull-left">
+            <img src="http://placehold.it/180x200/456" class="media-object" alt="Sample Image">
+        </a>
+        <div class="media-body">
+          <h1 class="media-heading">Item Name</h1>
+           <ul>
+               <li>Author:</li>
+               <li>Format:</li>
+               <li>Length:</li>
+               <li>Release date:</li>
+               <li>Language:</li>
+           </ul>
+        </div>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+    </div>
+
+
+<div>
+    <input type="checkbox" value="price-drop" id="price-drop">
+    <label for="price-drop">Email notification when price drops</label>
+ 
+    <input type="checkbox" value="remove-purchased" id="remove-when-purchased">
+    <label for="remove-when-purchased">Remove purchased items</label>
+</div>
