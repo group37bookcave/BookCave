@@ -3,6 +3,16 @@
     padding-bottom: 20px;
 }
 
+
+@media only screen and (min-width: 600px){
+    .footer{
+    background-color: rgb(105,204, 202);
+    }
+    
+}
+a {
+    color: white;
+}
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
 .body-content {

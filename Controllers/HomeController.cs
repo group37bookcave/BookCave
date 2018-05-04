@@ -29,6 +29,13 @@ namespace BookCave.Controllers
             return View();
         }
 
+         public IActionResult WishList()
+        {
+            ViewData["WishList"] = "Your Wish List.";
+
+            return View();
+        }
+
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });

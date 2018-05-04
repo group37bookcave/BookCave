@@ -1,0 +1,10 @@
+C:\Users\birgittafeldis\Desktop\Vor 2018\Verklegt2\BookCave\BookCave\bin\Debug\netcoreapp2.0\BookCave.deps.json
+C:\Users\birgittafeldis\Desktop\Vor 2018\Verklegt2\BookCave\BookCave\bin\Debug\netcoreapp2.0\BookCave.runtimeconfig.json
+C:\Users\birgittafeldis\Desktop\Vor 2018\Verklegt2\BookCave\BookCave\bin\Debug\netcoreapp2.0\BookCave.runtimeconfig.dev.json
+C:\Users\birgittafeldis\Desktop\Vor 2018\Verklegt2\BookCave\BookCave\bin\Debug\netcoreapp2.0\BookCave.dll
+C:\Users\birgittafeldis\Desktop\Vor 2018\Verklegt2\BookCave\BookCave\bin\Debug\netcoreapp2.0\BookCave.pdb
+C:\Users\birgittafeldis\Desktop\Vor 2018\Verklegt2\BookCave\BookCave\obj\Debug\netcoreapp2.0\BookCave.csproj.CoreCompileInputs.cache
+C:\Users\birgittafeldis\Desktop\Vor 2018\Verklegt2\BookCave\BookCave\obj\Debug\netcoreapp2.0\BookCave.AssemblyInfoInputs.cache
+C:\Users\birgittafeldis\Desktop\Vor 2018\Verklegt2\BookCave\BookCave\obj\Debug\netcoreapp2.0\BookCave.AssemblyInfo.cs
+C:\Users\birgittafeldis\Desktop\Vor 2018\Verklegt2\BookCave\BookCave\obj\Debug\netcoreapp2.0\BookCave.dll
+C:\Users\birgittafeldis\Desktop\Vor 2018\Verklegt2\BookCave\BookCave\obj\Debug\netcoreapp2.0\BookCave.pdb
