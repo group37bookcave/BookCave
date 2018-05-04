@@ -12,8 +12,8 @@ using System;
 namespace BookCave.Migrations
 {
     [DbContext(typeof(StoreContext))]
-    [Migration("20180504041012_inheritance2")]
-    partial class inheritance2
+    [Migration("20180504125730_inheritance")]
+    partial class inheritance
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
