@@ -46,19 +46,6 @@ namespace BookCave.Data
             modelBuilder.Entity<User>().ToTable("Users");
             modelBuilder.Entity<Product>().ToTable("Products");
             modelBuilder.Entity<Book>().ToTable("Books");
-           /*
-            modelBuilder.Entity<User>()
-                .ToTable("Users")
-                .HasDiscriminator<int>("UserType")
-                .HasValue<Customer>(1)
-                .HasValue<Employee>(2);
-            modelBuilder.Entity<Product>()
-                .ToTable("Products")
-                .HasDiscriminator<int>("ProductType")
-                .HasValue<Book>(1)
-                .HasValue<SheetMusic>(2);
-           
-            */
             
             // Configure many to many between Customer and Address.
             modelBuilder.Entity<CustomerAddress>().HasKey(ca => new {ca.CustomerId, ca.AddressId});
