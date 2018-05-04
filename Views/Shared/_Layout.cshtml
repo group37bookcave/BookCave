@@ -19,20 +19,138 @@
 <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">BookCave</a>
+            <img src="~/images/BookCaveLogo.png" alt="Logo">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> <span class="glyphicon glyphicon-shopping-cart"></span> 7 - Items<span class="caret"></span></a>
+                <ul class="dropdown-menu dropdown-cart" role="menu">
+                    <li>
+                        <span class="item">
+                            <span class="item-left">
+                                <img src="http://lorempixel.com/50/50/" alt="" />
+                                <span class="item-info">
+                                    <span>Item name</span>
+                                    <span>23$</span>
+                                </span>
+                            </span>
+                            <span class="item-right">
+                                <button class="btn btn-xs btn-danger pull-right">x</button>
+                            </span>
+                        </span>
+                    </li>
+                    <li>
+                        <span class="item">
+                            <span class="item-left">
+                                <img src="http://lorempixel.com/50/50/" alt="" />
+                                <span class="item-info">
+                                    <span>Item name</span>
+                                    <span>23$</span>
+                                </span>
+                            </span>
+                            <span class="item-right">
+                                <button class="btn btn-xs btn-danger pull-right">x</button>
+                            </span>
+                        </span>
+                    </li>
+                    <li>
+                        <span class="item">
+                            <span class="item-left">
+                                <img src="http://lorempixel.com/50/50/" alt="" />
+                                <span class="item-info">
+                                    <span>Item name</span>
+                                    <span>23$</span>
+                                </span>
+                            </span>
+                            <span class="item-right">
+                                <button class="btn btn-xs btn-danger pull-right">x</button>
+                            </span>
+                        </span>
+                    </li>
+                    <li>
+                        <span class="item">
+                            <span class="item-left">
+                                <img src="http://lorempixel.com/50/50/" alt="" />
+                                <span class="item-info">
+                                    <span>Item name</span>
+                                    <span>23$</span>
+                                </span>
+                            </span>
+                            <span class="item-right">
+                                <button class="btn btn-xs btn-danger pull-right">x</button>
+                            </span>
+                        </span>
+                    </li>
+                    <li class="divider"></li>
+                    <li><a class="text-center" href="">View Cart</a></li>
+                </ul>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                  <li class="dropdown">
+                     <a href="http://www.jquery2dotnet.com" class="dropdown-toggle" data-toggle="dropdown">New User / Sign In <b class="caret"></b></a>
+                     <ul class="dropdown-menu" style="padding: 15px;min-width: 250px;">
+                        <li>
+                           <div class="row">
+                                <div class="col-md-12">
+                                 <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
+                                    <div class="form-group">
+                                       <label class="sr-only" for="exampleInputEmail2">Email address</label>
+                                       <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Email address" required>
+                                    </div>
+                                    <div class="form-group">
+                                       <label class="sr-only" for="exampleInputPassword2">Password</label>
+                                       <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <span><button type="submit" class="btn btn-success btn-block">New User</button></span>
+                                        <span><button type="submit" class="btn btn-success btn-block">Sign In</button></span>
+                                    </div>
+                                 </form>
+                              </div>
+                           </div>
+                        </li>
+                     </ul>
+                  </li>
+            </ul>
             </div>
+            <!------ Bootstrap (start) ---------->
+            <div class="container">
+            </div>
+            <div class="container">
+                <div class="row">
+                <!------    <img src="~/images/BookCaveLogo.png" alt="Logo"> ---------->
+                    <div class="col-xs-8 col-xs-offset-2">
+                        <div class="input-group">
+                            <div class="input-group-btn search-panel">
+                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                    <span id="search_concept">All</span> <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#author">Author</a></li>
+                                    <li><a href="#isbn">ISBN</a></li>
+                                    <li><a href="#title">Title</a></li>
+                                </ul>
+                            </div>
+                            <input type="hidden" name="search_param" value="all" id="search_param">         
+                            <input type="text" class="form-control" name="x" placeholder="Search by keyword, title, author or ISBN">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!------ Bootstrap (finish) ---------->
+            
+
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="About">Browse</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Best Sellers</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">New Releases</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Top Rated</a></li>
                 </ul>
             </div>
         </div>
