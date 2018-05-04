@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ContentModelStore">
     <e p="$PROJECT_DIR$" t="IncludeRecursive">
+      <e p=".travis.yml" t="Include" />
       <e p="appsettings.Development.json" t="Include" />
       <e p="appsettings.json" t="Include" />
       <e p="bin" t="ExcludeRecursive" />
@@ -10,9 +11,55 @@
       <e p="bundleconfig.json" t="Include" />
       <e p="Controllers" t="Include">
         <e p="HomeController.cs" t="Include" />
+        <e p="ProductController.cs" t="Include" />
+      </e>
+      <e p="Data" t="Include">
+        <e p="StoreContext.cs" t="Include" />
+      </e>
+      <e p="Migrations" t="Include">
+        <e p="20180504035727_inheritance.cs" t="Include" />
+        <e p="20180504035727_inheritance.Designer.cs" t="Include" />
+        <e p="20180504041012_inheritance2.cs" t="Include" />
+        <e p="20180504041012_inheritance2.Designer.cs" t="Include" />
+        <e p="StoreContextModelSnapshot.cs" t="Include" />
       </e>
       <e p="Models" t="Include">
-        <e p="ErrorViewModel.cs" t="Include" />
+        <e p="EntityModels" t="Include">
+          <e p="Address.cs" t="Include" />
+          <e p="Admin.cs" t="Include" />
+          <e p="AgeGroup.cs" t="Include" />
+          <e p="Author.cs" t="Include" />
+          <e p="Book.cs" t="Include" />
+          <e p="BookAgeGroup.cs" t="Include" />
+          <e p="BookAuthor.cs" t="Include" />
+          <e p="BookGenre.cs" t="Include" />
+          <e p="BookLanguage.cs" t="Include" />
+          <e p="BookNarrator.cs" t="Include" />
+          <e p="Country.cs" t="Include" />
+          <e p="CountryZipCode.cs" t="Include" />
+          <e p="Customer.cs" t="Include" />
+          <e p="CustomerAddress.cs" t="Include" />
+          <e p="CustomerOrder.cs" t="Include" />
+          <e p="Employee.cs" t="Include" />
+          <e p="Format.cs" t="Include" />
+          <e p="Genre.cs" t="Include" />
+          <e p="Isbn.cs" t="Include" />
+          <e p="ItemOrder.cs" t="Include" />
+          <e p="Language.cs" t="Include" />
+          <e p="Narrator.cs" t="Include" />
+          <e p="Order.cs" t="Include" />
+          <e p="Product.cs" t="Include" />
+          <e p="ProductType.cs" t="Include" />
+          <e p="PromoCode.cs" t="Include" />
+          <e p="Publisher.cs" t="Include" />
+          <e p="SheetMusic.cs" t="Include" />
+          <e p="User.cs" t="Include" />
+          <e p="ZipCode.cs" t="Include" />
+        </e>
+        <e p="InputModels" t="Include" />
+        <e p="ViewModels" t="Include">
+          <e p="ErrorViewModel.cs" t="Include" />
+        </e>
       </e>
       <e p="obj" t="ExcludeRecursive">
         <e p="Debug" t="Include">
@@ -24,6 +71,12 @@
       <e p="packages" t="ExcludeRecursive" />
       <e p="Program.cs" t="Include" />
       <e p="README.md" t="Include" />
+      <e p="Repositories" t="Include">
+        <e p="ProductRepository.cs" t="Include" />
+      </e>
+      <e p="Services" t="Include">
+        <e p="ProductService.cs" t="Include" />
+      </e>
       <e p="Startup.cs" t="Include" />
       <e p="Views" t="Include">
         <e p="_ViewImports.cshtml" t="Include" />
