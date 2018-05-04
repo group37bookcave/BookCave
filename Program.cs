@@ -58,10 +58,10 @@ namespace BookCave
 
             if (!db.Authors.Any())
             {
-                var hardcover = new Hardcover
+                var hardcover_hp5 = new Hardcover
                 {
                     Name = "Harry Potter and the Order of the Phoenix",
-                    Description = "Harry is a wizard who has a scar in hi forehead",
+                    Description = "Harry is a wizard who has a scar in his forehead",
                     Image = "https://media.bloomsbury.com/rep/f/9780747551003.jpg",
                     Publisher = new Publisher {Name = "Bloomsbury Publishing"},
                     Length = 768,
@@ -69,18 +69,43 @@ namespace BookCave
                     Price = 17.99,
                 };
                 
+                var paperback_hp5 = new Paperback
+                {
+                    Name = "Harry Potter and the Order of the Phoenix",
+                    Description = "Dark times have come to Hogwarts. After the Dementors’ attack on his cousin Dudley, Harry Potter knows that Voldemort will stop at nothing to find him. There are many who deny the Dark Lord’s return, but Harry is not alone: a secret Order gathers at Grimmauld Place to fight against the Dark forces. Harry must allow Professor Snape to teach him how to protect himself from Voldemort’s savage assaults on his mind. But they are growing stronger by the day and Harry is running out of time.",
+                    Image = "https://hpmedia.bloomsbury.com/rep/s/9781408855690_309036.jpeg",
+                    Publisher = {Name = "Bloomsbury Publishing"},
+                    Length = 816,
+                    ReleaseDate = new DateTime(2014, 09, 01),
+                    Price = 9.45,
+                };
+               
                 
                 var author = new Author {FirstName = "J.K", LastName = "Rowling"};
-                hardcover.BookAuthors = new List<BookAuthor>
+                hardcover_hp5.BookAuthors = new List<BookAuthor>
                 {
-                    new BookAuthor {Author = author, Book = hardcover}
+                    new BookAuthor {Author = author, Book = hardcover_hp5}
                 };
-                hardcover.BookGenres = new List<BookGenre>
+                
+                paperback_hp5.BookAuthors = new List<BookAuthor>
                 {
-                    new BookGenre {Book = hardcover, Genre = new Genre {Name = "Fantasy"}},
-                    new BookGenre {Book = hardcover, Genre = new Genre {Name = "Children"}}
+                    new BookAuthor {Author = author, Book = paperback_hp5}
                 };
-                db.Books.Add(hardcover);
+                
+                hardcover_hp5.BookGenres = new List<BookGenre>
+                {
+                    new BookGenre {Book = hardcover_hp5, Genre = new Genre {Name = "Fantasy"}},
+                    new BookGenre {Book = hardcover_hp5, Genre = new Genre {Name = "Children"}}
+                };
+                
+                paperback_hp5.BookGenres = new List<BookGenre>
+                {
+                    new BookGenre {Book = paperback_hp5, Genre = new Genre {Name = "Fantasy"}},
+                    new BookGenre {Book = paperback_hp5, Genre = new Genre {Name = "Children"}}
+                };
+                
+                db.Books.Add(hardcover_hp5);
+                db.Books.Add(paperback_hp5);
                 db.SaveChanges();
             }
         }
