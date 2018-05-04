@@ -8,3 +8,13 @@
 /Users/andreas/Documents/BookCave/obj/Debug/netcoreapp2.0/BookCave.AssemblyInfo.cs
 /Users/andreas/Documents/BookCave/obj/Debug/netcoreapp2.0/BookCave.dll
 /Users/andreas/Documents/BookCave/obj/Debug/netcoreapp2.0/BookCave.pdb
+/Users/dagnygunnarsdottir/Documents/BookCave/bin/Debug/netcoreapp2.0/BookCave.deps.json
+/Users/dagnygunnarsdottir/Documents/BookCave/bin/Debug/netcoreapp2.0/BookCave.runtimeconfig.json
+/Users/dagnygunnarsdottir/Documents/BookCave/bin/Debug/netcoreapp2.0/BookCave.runtimeconfig.dev.json
+/Users/dagnygunnarsdottir/Documents/BookCave/bin/Debug/netcoreapp2.0/BookCave.dll
+/Users/dagnygunnarsdottir/Documents/BookCave/bin/Debug/netcoreapp2.0/BookCave.pdb
+/Users/dagnygunnarsdottir/Documents/BookCave/obj/Debug/netcoreapp2.0/BookCave.csproj.CoreCompileInputs.cache
+/Users/dagnygunnarsdottir/Documents/BookCave/obj/Debug/netcoreapp2.0/BookCave.AssemblyInfoInputs.cache
+/Users/dagnygunnarsdottir/Documents/BookCave/obj/Debug/netcoreapp2.0/BookCave.AssemblyInfo.cs
+/Users/dagnygunnarsdottir/Documents/BookCave/obj/Debug/netcoreapp2.0/BookCave.dll
+/Users/dagnygunnarsdottir/Documents/BookCave/obj/Debug/netcoreapp2.0/BookCave.pdb

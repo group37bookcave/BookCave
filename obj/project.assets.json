@@ -12563,23 +12563,23 @@
     ]
   },
   "packageFolders": {
-    "/Users/andreas/.nuget/packages/": {},
+    "/Users/dagnygunnarsdottir/.nuget/packages/": {},
     "/usr/local/share/dotnet/sdk/NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/andreas/Documents/BookCave/BookCave.csproj",
+      "projectUniqueName": "/Users/dagnygunnarsdottir/Documents/BookCave/BookCave.csproj",
       "projectName": "BookCave",
-      "projectPath": "/Users/andreas/Documents/BookCave/BookCave.csproj",
-      "packagesPath": "/Users/andreas/.nuget/packages/",
-      "outputPath": "/Users/andreas/Documents/BookCave/obj/",
+      "projectPath": "/Users/dagnygunnarsdottir/Documents/BookCave/BookCave.csproj",
+      "packagesPath": "/Users/dagnygunnarsdottir/.nuget/packages/",
+      "outputPath": "/Users/dagnygunnarsdottir/Documents/BookCave/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "/Users/andreas/.nuget/NuGet/NuGet.Config"
+        "/Users/dagnygunnarsdottir/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.0"
