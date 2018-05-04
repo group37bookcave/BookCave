@@ -2757,6 +2757,20 @@
           "lib/netstandard1.0/Remotion.Linq.dll": {}
         }
       },
+      "ReturnTrue.AspNetCore.Identity.Anonymous/1.1.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore": "1.1.2",
+          "Microsoft.IdentityModel.Tokens": "5.1.4",
+          "Microsoft.NETCore.App": "1.1.2"
+        },
+        "compile": {
+          "lib/netcoreapp1.1/AnonymousId.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp1.1/AnonymousId.dll": {}
+        }
+      },
       "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
         "type": "package",
         "runtimeTargets": {
@@ -7578,6 +7592,16 @@
         "lib/portable-net45+win+wpa81+wp80/Remotion.Linq.xml",
         "remotion.linq.2.1.1.nupkg.sha512",
         "remotion.linq.nuspec"
+      ]
+    },
+    "ReturnTrue.AspNetCore.Identity.Anonymous/1.1.0": {
+      "sha512": "1b5AlXBbGfAwHMPCmd6nOBkC7CIzRRnOwFXvcm7vWKwrYD1Qj4NxIq0CWUHy40oZB7Qu/I414UXioTnvunXizQ==",
+      "type": "package",
+      "path": "returntrue.aspnetcore.identity.anonymous/1.1.0",
+      "files": [
+        "lib/netcoreapp1.1/AnonymousId.dll",
+        "returntrue.aspnetcore.identity.anonymous.1.1.0.nupkg.sha512",
+        "returntrue.aspnetcore.identity.anonymous.nuspec"
       ]
     },
     "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
@@ -12533,27 +12557,29 @@
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.0": [
       "Microsoft.AspNetCore.All >= 2.0.7",
-      "Microsoft.NETCore.App >= 2.0.0"
+      "Microsoft.EntityFrameworkCore.SqlServer >= 2.0.2",
+      "Microsoft.NETCore.App >= 2.0.0",
+      "ReturnTrue.AspNetCore.Identity.Anonymous >= 1.1.0"
     ]
   },
   "packageFolders": {
-    "/Users/andreas/.nuget/packages/": {},
+    "/Users/dagnygunnarsdottir/.nuget/packages/": {},
     "/usr/local/share/dotnet/sdk/NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/andreas/Documents/BookCave/BookCave.csproj",
+      "projectUniqueName": "/Users/dagnygunnarsdottir/Documents/BookCave/BookCave.csproj",
       "projectName": "BookCave",
-      "projectPath": "/Users/andreas/Documents/BookCave/BookCave.csproj",
-      "packagesPath": "/Users/andreas/.nuget/packages/",
-      "outputPath": "/Users/andreas/Documents/BookCave/obj/",
+      "projectPath": "/Users/dagnygunnarsdottir/Documents/BookCave/BookCave.csproj",
+      "packagesPath": "/Users/dagnygunnarsdottir/.nuget/packages/",
+      "outputPath": "/Users/dagnygunnarsdottir/Documents/BookCave/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "/Users/andreas/.config/NuGet/NuGet.Config"
+        "/Users/dagnygunnarsdottir/.config/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.0"
@@ -12579,11 +12605,19 @@
             "target": "Package",
             "version": "[2.0.7, )"
           },
+          "Microsoft.EntityFrameworkCore.SqlServer": {
+            "target": "Package",
+            "version": "[2.0.2, )"
+          },
           "Microsoft.NETCore.App": {
             "suppressParent": "All",
             "target": "Package",
             "version": "[2.0.0, )",
             "autoReferenced": true
+          },
+          "ReturnTrue.AspNetCore.Identity.Anonymous": {
+            "target": "Package",
+            "version": "[1.1.0, )"
           }
         },
         "imports": [

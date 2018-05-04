@@ -1,10 +1,10 @@
 ﻿{
   "version": "1.0.0",
   "restore": {
-    "projectUniqueName": "/Users/andreas/Documents/BookCave/BookCave.csproj",
+    "projectUniqueName": "/Users/dagnygunnarsdottir/Documents/BookCave/BookCave.csproj",
     "projectName": "BookCave",
-    "projectPath": "/Users/andreas/Documents/BookCave/BookCave.csproj",
-    "outputPath": "/Users/andreas/Documents/BookCave/obj/",
+    "projectPath": "/Users/dagnygunnarsdottir/Documents/BookCave/BookCave.csproj",
+    "outputPath": "/Users/dagnygunnarsdottir/Documents/BookCave/obj/",
     "projectStyle": "PackageReference",
     "fallbackFolders": [
       "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
@@ -30,11 +30,19 @@
           "target": "Package",
           "version": "[2.0.7, )"
         },
+        "Microsoft.EntityFrameworkCore.SqlServer": {
+          "target": "Package",
+          "version": "[2.0.2, )"
+        },
         "Microsoft.NETCore.App": {
           "suppressParent": "All",
           "target": "Package",
           "version": "[2.0.0, )",
           "autoReferenced": true
+        },
+        "ReturnTrue.AspNetCore.Identity.Anonymous": {
+          "target": "Package",
+          "version": "[1.1.0, )"
         }
       },
       "imports": [
