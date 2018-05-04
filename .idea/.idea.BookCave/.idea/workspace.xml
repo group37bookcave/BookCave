@@ -2,53 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="37197d37-ea2d-4b1a-a24f-cc35a027c83c" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/Controllers/ProductController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/EntityModels/Admin.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/EntityModels/BookAgeGroup.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/EntityModels/BookAuthor.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/EntityModels/BookGenre.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/EntityModels/BookLanguage.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/EntityModels/BookNarrator.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/EntityModels/CountryZipCode.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/EntityModels/CustomerAddress.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/EntityModels/CustomerOrder.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Repositories/ProductRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/ProductService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BookCave/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BookCave/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BookCave/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BookCave/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookCave.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/BookCave.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/DbInitializer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookCave.sln.DotSettings.user" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Data/StoreContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Data/StoreContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/EntityModels/Address.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/EntityModels/Address.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/EntityModels/AgeGroup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/EntityModels/AgeGroup.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/EntityModels/Author.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/EntityModels/Author.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/EntityModels/Book.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/EntityModels/Book.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/EntityModels/BookType.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/EntityModels/Country.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/EntityModels/Country.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/EntityModels/Customer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/EntityModels/Customer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/EntityModels/Employee.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/EntityModels/Employee.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/EntityModels/Genre.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/EntityModels/Genre.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/EntityModels/ItemOrder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/EntityModels/ItemOrder.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/EntityModels/Language.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/EntityModels/Language.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/EntityModels/Narrator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/EntityModels/Narrator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/EntityModels/Product.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/EntityModels/Product.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/EntityModels/ProductType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/EntityModels/ProductType.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/EntityModels/SheetMusic.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/EntityModels/SheetMusic.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/EntityModels/User.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/EntityModels/User.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/EntityModels/ZipCode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/EntityModels/ZipCode.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Startup.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/Shared/_Layout.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Shared/_Layout.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/appsettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp2.0/BookCave.deps.json" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/netcoreapp2.0/BookCave.deps.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp2.0/BookCave.dll" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/netcoreapp2.0/BookCave.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp2.0/BookCave.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/netcoreapp2.0/BookCave.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/BookCave.csproj.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/BookCave.csproj.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp2.0/BookCave.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/netcoreapp2.0/BookCave.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp2.0/BookCave.dll" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/netcoreapp2.0/BookCave.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp2.0/BookCave.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/netcoreapp2.0/BookCave.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/obj/project.packagespec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp2.0/BookCave.deps.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp2.0/BookCave.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp2.0/BookCave.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp2.0/BookCave.runtimeconfig.dev.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp2.0/BookCave.runtimeconfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/BookCave.csproj.EntityFrameworkCore.targets" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/BookCave.csproj.nuget.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/BookCave.csproj.nuget.g.props" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/BookCave.csproj.nuget.g.targets" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp2.0/BookCave.AssemblyInfo.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp2.0/BookCave.AssemblyInfoInputs.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp2.0/BookCave.csproj.CoreCompileInputs.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp2.0/BookCave.csproj.FileListAbsolute.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp2.0/BookCave.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp2.0/BookCave.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/project.assets.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/project.packagespec.json" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -62,17 +37,25 @@
       <file leaf-file-name="StoreContext.cs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Data/StoreContext.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="24" column="44" selection-start-line="24" selection-start-column="44" selection-end-line="24" selection-end-column="44" />
+            <state relative-caret-position="215">
+              <caret line="102" column="12" selection-start-line="102" selection-start-column="12" selection-end-line="102" selection-end-column="12" />
               <folding>
-                <marker date="1525406932429" expanded="false" signature="6:72" ph="..." />
-                <marker date="1525406932429" expanded="true" signature="97:7930" ph="{...}" />
-                <marker date="1525406932429" expanded="true" signature="141:7928" ph="{...}" />
-                <marker date="1525406932429" expanded="true" signature="2102:7493" ph="{...}" />
-                <marker date="1525406932429" expanded="true" signature="2304:2748" ph="/* modelBuilder.Entity&lt;User&gt;() ... */" />
-                <marker date="1525406932429" expanded="true" signature="4627:5192" ph="/* Configure many to many between Book and BookType. ... */" />
-                <marker date="1525406932429" expanded="true" signature="7581:7922" ph="{...}" />
+                <marker date="1525430293159" expanded="false" signature="6:72" ph="..." />
+                <marker date="1525430293159" expanded="true" signature="97:7339" ph="{...}" />
+                <marker date="1525430293159" expanded="true" signature="141:7337" ph="{...}" />
+                <marker date="1525430293159" expanded="true" signature="2102:6902" ph="{...}" />
+                <marker date="1525430293159" expanded="true" signature="2304:2748" ph="/* modelBuilder.Entity&lt;User&gt;() ... */" />
+                <marker date="1525430293159" expanded="true" signature="6990:7331" ph="{...}" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="330">
+              <caret line="22" column="7" lean-forward="true" selection-start-line="22" selection-start-column="7" selection-end-line="22" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -80,22 +63,22 @@
       <file leaf-file-name="Program.cs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Program.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4">
-              <caret line="17" column="9" lean-forward="true" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
+            <state relative-caret-position="382">
+              <caret line="39" column="36" lean-forward="true" selection-start-line="39" selection-start-column="36" selection-end-line="39" selection-end-column="36" />
               <folding>
-                <marker date="1525406932411" expanded="false" signature="6:305" ph="..." />
-                <marker date="1525406932411" expanded="true" signature="326:2724" ph="{...}" />
-                <marker date="1525406932411" expanded="true" signature="353:2722" ph="{...}" />
-                <marker date="1525406932411" expanded="true" signature="406:517" ph="{...}" />
-                <marker date="1525406932411" expanded="true" signature="731:2716" ph="{...}" />
-                <marker date="1525406932411" expanded="true" signature="817:1132" ph="{...}" />
-                <marker date="1525406932411" expanded="true" signature="886:1086" ph="{...}" />
-                <marker date="1525406932411" expanded="true" signature="1170:1466" ph="{...}" />
-                <marker date="1525406932411" expanded="true" signature="1241:1421" ph="{...}" />
-                <marker date="1525406932411" expanded="true" signature="1502:2706" ph="{...}" />
-                <marker date="1525406932411" expanded="true" signature="1579:2050" ph="{...}" />
-                <marker date="1525406932411" expanded="true" signature="2246:2336" ph="{...}" />
-                <marker date="1525406932411" expanded="true" signature="2413:2616" ph="{...}" />
+                <marker date="1525407278780" expanded="false" signature="6:305" ph="..." />
+                <marker date="1525407278780" expanded="true" signature="326:2792" ph="{...}" />
+                <marker date="1525407278780" expanded="true" signature="353:2790" ph="{...}" />
+                <marker date="1525407278780" expanded="true" signature="406:517" ph="{...}" />
+                <marker date="1525407278780" expanded="true" signature="731:2784" ph="{...}" />
+                <marker date="1525407278780" expanded="true" signature="817:1166" ph="{...}" />
+                <marker date="1525407278780" expanded="true" signature="886:1086" ph="{...}" />
+                <marker date="1525407278780" expanded="true" signature="1204:1534" ph="{...}" />
+                <marker date="1525407278780" expanded="true" signature="1275:1455" ph="{...}" />
+                <marker date="1525407278780" expanded="true" signature="1570:2774" ph="{...}" />
+                <marker date="1525407278780" expanded="true" signature="1647:2118" ph="{...}" />
+                <marker date="1525407278780" expanded="true" signature="2314:2404" ph="{...}" />
+                <marker date="1525407278780" expanded="true" signature="2481:2684" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -114,7 +97,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Employee.cs" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Employee.cs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Models/EntityModels/Employee.cs">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="60">
@@ -140,28 +123,25 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Genre.cs" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Models/EntityModels/Genre.cs">
+      <file leaf-file-name="appsettings.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/appsettings.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" column="1" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
-              <folding>
-                <marker date="1525395413242" expanded="true" signature="73:254" ph="{...}" />
-                <marker date="1525395413242" expanded="true" signature="98:252" ph="{...}" />
-              </folding>
+            <state>
+              <caret column="1" selection-start-column="1" selection-end-column="1" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BookGenre.cs" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Models/EntityModels/BookGenre.cs">
+      <file leaf-file-name="appsettings.Development.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/appsettings.Development.json">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name="BookCave.csproj" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/BookCave.csproj">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="22" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
-              <folding>
-                <marker date="1525381542618" expanded="true" signature="38:245" ph="{...}" />
-                <marker date="1525381542618" expanded="true" signature="67:243" ph="{...}" />
-              </folding>
+            <state relative-caret-position="255">
+              <caret line="17" column="10" lean-forward="true" selection-start-line="17" selection-start-column="10" selection-end-line="17" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -179,32 +159,6 @@
                 <marker date="1525404667752" expanded="true" signature="785:806" ph="{...}" />
                 <marker date="1525404667752" expanded="true" signature="841:896" ph="{...}" />
                 <marker date="1525404667752" expanded="true" signature="927:1061" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Narrator.cs" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Models/EntityModels/Narrator.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="33" selection-start-line="10" selection-start-column="33" selection-end-line="10" selection-end-column="33" />
-              <folding>
-                <marker date="1525404667788" expanded="true" signature="73:264" ph="{...}" />
-                <marker date="1525404667788" expanded="true" signature="101:262" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BookNarrator.cs" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Models/EntityModels/BookNarrator.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-              <folding>
-                <marker date="1525404667710" expanded="true" signature="38:260" ph="{...}" />
-                <marker date="1525404667710" expanded="true" signature="71:258" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -301,8 +255,9 @@
         <option value="$PROJECT_DIR$/Models/EntityModels/Book.cs" />
         <option value="$PROJECT_DIR$/Models/EntityModels/EmployeeType.cs" />
         <option value="$PROJECT_DIR$/Models/EntityModels/Employee.cs" />
-        <option value="$PROJECT_DIR$/Data/StoreContext.cs" />
         <option value="$PROJECT_DIR$/Program.cs" />
+        <option value="$PROJECT_DIR$/Data/StoreContext.cs" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -353,13 +308,6 @@
               <item name="BookCave (1 project)" type="977d5f41:SolutionExplorerNodeRider" />
               <item name="BookCave" type="977d5f41:SolutionExplorerNodeRider" />
               <item name="Models" type="977d5f41:SolutionExplorerNodeRider" />
-            </path>
-            <path>
-              <item name="" type="13324e5d:SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
-              <item name="BookCave (1 project)" type="977d5f41:SolutionExplorerNodeRider" />
-              <item name="BookCave" type="977d5f41:SolutionExplorerNodeRider" />
-              <item name="Models" type="977d5f41:SolutionExplorerNodeRider" />
-              <item name="EntityModels" type="977d5f41:SolutionExplorerNodeRider" />
             </path>
             <path>
               <item name="" type="13324e5d:SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
@@ -440,7 +388,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="30129000" />
+    <option name="totallyTimeSpent" value="32142000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -512,20 +460,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Controllers/HomeController.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="36" lean-forward="true" selection-start-line="12" selection-start-column="36" selection-end-line="12" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Models/ViewModels/ErrorViewModel.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="36" selection-start-line="2" selection-start-column="36" selection-end-line="2" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Views/Shared/Error.cshtml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -537,13 +471,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/appsettings.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="1" selection-start-column="1" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -881,13 +808,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/BookCave.csproj">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="10" lean-forward="true" selection-start-line="17" selection-start-column="10" selection-end-line="17" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Startup.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -936,17 +856,6 @@
             <marker date="1525401002332" expanded="false" signature="6:123" ph="..." />
             <marker date="1525401002332" expanded="true" signature="156:264" ph="{...}" />
             <marker date="1525401002332" expanded="true" signature="193:262" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Models/EntityModels/Product.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="41" selection-start-line="7" selection-start-column="41" selection-end-line="7" selection-end-column="41" />
-          <folding>
-            <marker date="1525403286532" expanded="true" signature="39:261" ph="{...}" />
-            <marker date="1525403286532" expanded="true" signature="75:259" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1025,55 +934,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Models/EntityModels/Format.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="1" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
-          <folding>
-            <marker date="1525357261930" expanded="true" signature="73:257" ph="{...}" />
-            <marker date="1525357261930" expanded="true" signature="99:255" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Data/StoreContext.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="24" column="44" selection-start-line="24" selection-start-column="44" selection-end-line="24" selection-end-column="44" />
-          <folding>
-            <marker date="1525406932429" expanded="false" signature="6:72" ph="..." />
-            <marker date="1525406932429" expanded="true" signature="97:7930" ph="{...}" />
-            <marker date="1525406932429" expanded="true" signature="141:7928" ph="{...}" />
-            <marker date="1525406932429" expanded="true" signature="2102:7493" ph="{...}" />
-            <marker date="1525406932429" expanded="true" signature="2304:2748" ph="/* modelBuilder.Entity&lt;User&gt;() ... */" />
-            <marker date="1525406932429" expanded="true" signature="4627:5192" ph="/* Configure many to many between Book and BookType. ... */" />
-            <marker date="1525406932429" expanded="true" signature="7581:7922" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Program.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4">
-          <caret line="17" column="9" lean-forward="true" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
-          <folding>
-            <marker date="1525406932411" expanded="false" signature="6:305" ph="..." />
-            <marker date="1525406932411" expanded="true" signature="326:2724" ph="{...}" />
-            <marker date="1525406932411" expanded="true" signature="353:2722" ph="{...}" />
-            <marker date="1525406932411" expanded="true" signature="406:517" ph="{...}" />
-            <marker date="1525406932411" expanded="true" signature="731:2716" ph="{...}" />
-            <marker date="1525406932411" expanded="true" signature="817:1132" ph="{...}" />
-            <marker date="1525406932411" expanded="true" signature="886:1086" ph="{...}" />
-            <marker date="1525406932411" expanded="true" signature="1170:1466" ph="{...}" />
-            <marker date="1525406932411" expanded="true" signature="1241:1421" ph="{...}" />
-            <marker date="1525406932411" expanded="true" signature="1502:2706" ph="{...}" />
-            <marker date="1525406932411" expanded="true" signature="1579:2050" ph="{...}" />
-            <marker date="1525406932411" expanded="true" signature="2246:2336" ph="{...}" />
-            <marker date="1525406932411" expanded="true" signature="2413:2616" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Models/EntityModels/Admin.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
@@ -1085,6 +945,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Models/EntityModels/Format.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="1" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
+          <folding>
+            <marker date="1525357261930" expanded="true" signature="73:257" ph="{...}" />
+            <marker date="1525357261930" expanded="true" signature="99:255" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/appsettings.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="1" selection-start-column="1" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/appsettings.Development.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BookCave.csproj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="10" lean-forward="true" selection-start-line="17" selection-start-column="10" selection-end-line="17" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Models/EntityModels/Employee.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -1093,6 +981,61 @@
             <marker date="1525406932352" expanded="true" signature="38:96" ph="{...}" />
             <marker date="1525406932352" expanded="true" signature="73:94" ph="{...}" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Models/EntityModels/Product.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="41" selection-start-line="7" selection-start-column="41" selection-end-line="7" selection-end-column="41" />
+          <folding>
+            <marker date="1525403286532" expanded="true" signature="39:261" ph="{...}" />
+            <marker date="1525403286532" expanded="true" signature="75:259" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Program.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="382">
+          <caret line="39" column="36" lean-forward="true" selection-start-line="39" selection-start-column="36" selection-end-line="39" selection-end-column="36" />
+          <folding>
+            <marker date="1525407278780" expanded="false" signature="6:305" ph="..." />
+            <marker date="1525407278780" expanded="true" signature="326:2792" ph="{...}" />
+            <marker date="1525407278780" expanded="true" signature="353:2790" ph="{...}" />
+            <marker date="1525407278780" expanded="true" signature="406:517" ph="{...}" />
+            <marker date="1525407278780" expanded="true" signature="731:2784" ph="{...}" />
+            <marker date="1525407278780" expanded="true" signature="817:1166" ph="{...}" />
+            <marker date="1525407278780" expanded="true" signature="886:1086" ph="{...}" />
+            <marker date="1525407278780" expanded="true" signature="1204:1534" ph="{...}" />
+            <marker date="1525407278780" expanded="true" signature="1275:1455" ph="{...}" />
+            <marker date="1525407278780" expanded="true" signature="1570:2774" ph="{...}" />
+            <marker date="1525407278780" expanded="true" signature="1647:2118" ph="{...}" />
+            <marker date="1525407278780" expanded="true" signature="2314:2404" ph="{...}" />
+            <marker date="1525407278780" expanded="true" signature="2481:2684" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Data/StoreContext.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="215">
+          <caret line="102" column="12" selection-start-line="102" selection-start-column="12" selection-end-line="102" selection-end-column="12" />
+          <folding>
+            <marker date="1525430293159" expanded="false" signature="6:72" ph="..." />
+            <marker date="1525430293159" expanded="true" signature="97:7339" ph="{...}" />
+            <marker date="1525430293159" expanded="true" signature="141:7337" ph="{...}" />
+            <marker date="1525430293159" expanded="true" signature="2102:6902" ph="{...}" />
+            <marker date="1525430293159" expanded="true" signature="2304:2748" ph="/* modelBuilder.Entity&lt;User&gt;() ... */" />
+            <marker date="1525430293159" expanded="true" signature="6990:7331" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="7" lean-forward="true" selection-start-line="22" selection-start-column="7" selection-end-line="22" selection-end-column="7" />
         </state>
       </provider>
     </entry>

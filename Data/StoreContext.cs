@@ -101,21 +101,6 @@ namespace BookCave.Data
                 .WithMany(b => b.BookAuthors)
                 .HasForeignKey(ba => ba.BookId);
             
-            /*
-            // Configure many to many between Book and BookType.
-            modelBuilder.Entity<BookBookType>().HasKey(bbt => new {bbt.BookId, bbt.BookTypeId});
-
-            modelBuilder.Entity<BookBookType>()
-                .HasOne(bbt => bbt.Book)
-                .WithMany(b => b.BookBookTypes)
-                .HasForeignKey(bbt => bbt.BookId);
-
-            modelBuilder.Entity<BookBookType>()
-                .HasOne(bbt => bbt.BookType)
-                .WithMany(b => b.BookBookTypes)
-                .HasForeignKey(bbt => bbt.BookTypeId);
-            */
-            
             // Configure many to many between Book and Genre.
             modelBuilder.Entity<BookGenre>().HasKey(bg => new {bg.BookId, bg.GenreId});
             
