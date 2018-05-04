@@ -46,19 +46,6 @@ namespace BookCave.Data
             modelBuilder.Entity<User>().ToTable("Users");
             modelBuilder.Entity<Product>().ToTable("Products");
             modelBuilder.Entity<Book>().ToTable("Books");
-           /*
-            modelBuilder.Entity<User>()
-                .ToTable("Users")
-                .HasDiscriminator<int>("UserType")
-                .HasValue<Customer>(1)
-                .HasValue<Employee>(2);
-            modelBuilder.Entity<Product>()
-                .ToTable("Products")
-                .HasDiscriminator<int>("ProductType")
-                .HasValue<Book>(1)
-                .HasValue<SheetMusic>(2);
-           
-            */
             
             // Configure many to many between Customer and Address.
             modelBuilder.Entity<CustomerAddress>().HasKey(ca => new {ca.CustomerId, ca.AddressId});
@@ -100,21 +87,6 @@ namespace BookCave.Data
                 .HasOne(ba => ba.Book)
                 .WithMany(b => b.BookAuthors)
                 .HasForeignKey(ba => ba.BookId);
-            
-            /*
-            // Configure many to many between Book and BookType.
-            modelBuilder.Entity<BookBookType>().HasKey(bbt => new {bbt.BookId, bbt.BookTypeId});
-
-            modelBuilder.Entity<BookBookType>()
-                .HasOne(bbt => bbt.Book)
-                .WithMany(b => b.BookBookTypes)
-                .HasForeignKey(bbt => bbt.BookId);
-
-            modelBuilder.Entity<BookBookType>()
-                .HasOne(bbt => bbt.BookType)
-                .WithMany(b => b.BookBookTypes)
-                .HasForeignKey(bbt => bbt.BookTypeId);
-            */
             
             // Configure many to many between Book and Genre.
             modelBuilder.Entity<BookGenre>().HasKey(bg => new {bg.BookId, bg.GenreId});
