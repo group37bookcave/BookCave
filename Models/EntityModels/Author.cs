@@ -6,8 +6,12 @@ namespace BookCave.Models.EntityModels
     {
         public int Id { get; set; }
 
-        public string Name { get; set; }
+        public string FirstName { get; set; }
 
-        public ICollection<Book> Books { get; set; }
+        public string LastName { get; set; }
+
+        public string FullName => FirstName + ", " + LastName;
+
+        public ICollection<BookAuthor> BookAuthors { get; set; }
     }
 }

@@ -10,6 +10,6 @@ namespace BookCave.Models.EntityModels
 
         public Country Country { get; set; }
 
-        public ICollection<Customer> Customers { get; set; }
+        public ICollection<CustomerAddress> CustomerAddresses { get; set; }
     }
 }

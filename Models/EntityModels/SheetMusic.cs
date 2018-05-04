@@ -2,8 +2,6 @@
 {
     public class SheetMusic : Product
     {
-        public int Id { get; set; }
-
         public Format Format { get; set; }
     }
 }

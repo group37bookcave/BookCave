@@ -4,10 +4,10 @@ namespace BookCave.Models.EntityModels
 {
     public class Language
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
 
         public string Name { get; set; }
 
-        public ICollection<Book> Books { get; set; }
+        public ICollection<BookLanguage> BookLanguages { get; set; }
     }
 }

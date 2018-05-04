@@ -3,15 +3,11 @@
 namespace BookCave.Models.EntityModels
 {
     public class Customer : User
-    {
-        public int Id { get; set; }
-
+    { 
         public string PhoneNumber { get; set; }
 
-        public ICollection<Address> Addresses { get; set; }
+        public ICollection<CustomerAddress> CustomerAddresses { get; set; }
 
         public ICollection<Order> Orders { get; set; }
-        
-        
     }
 }
