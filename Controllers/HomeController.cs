@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using BookCave.Models.ViewModels;
+using BookCave.Models;
 
 namespace BookCave.Controllers
 {
@@ -25,6 +25,13 @@ namespace BookCave.Controllers
         public IActionResult Contact()
         {
             ViewData["Message"] = "Your contact page.";
+
+            return View();
+        }
+
+         public IActionResult WishList()
+        {
+            ViewData["WishList"] = "Your Wish List.";
 
             return View();
         }
