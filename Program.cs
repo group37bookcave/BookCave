@@ -79,7 +79,7 @@ namespace BookCave
                     ReleaseDate = new DateTime(2014, 09, 01),
                     Price = 9.45,
                 };
-               
+               do
                 
                 var author = new Author {FirstName = "J.K", LastName = "Rowling"};
                 hardcover_hp5.BookAuthors = new List<BookAuthor>
