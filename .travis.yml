@@ -1,3 +1,4 @@
 language: csharp
+dotnet: 2.0.0
 solution: BookCave.sln
 slack: bookcaveworkspace:1e5hvsFyNQDjxQO2iAwpySQm
