@@ -1394,5 +1394,4 @@ if ( $.ajaxPrefilter ) {
 		return ajax.apply(this, arguments);
 	};
 }
-
 }));
