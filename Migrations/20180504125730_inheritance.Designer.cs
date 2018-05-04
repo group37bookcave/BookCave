@@ -12,7 +12,7 @@ using System;
 namespace BookCave.Migrations
 {
     [DbContext(typeof(StoreContext))]
-    [Migration("20180504035727_inheritance")]
+    [Migration("20180504125730_inheritance")]
     partial class inheritance
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -182,20 +182,6 @@ namespace BookCave.Migrations
                     b.HasIndex("NarratorId");
 
                     b.ToTable("EbookNarrators");
-                });
-
-            modelBuilder.Entity("BookCave.Models.EntityModels.EmployeeType", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<bool>("Admin");
-
-                    b.Property<string>("Name");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("EmployeeTypes");
                 });
 
             modelBuilder.Entity("BookCave.Models.EntityModels.Format", b =>
@@ -431,9 +417,6 @@ namespace BookCave.Migrations
                 {
                     b.HasBaseType("BookCave.Models.EntityModels.User");
 
-                    b.Property<int?>("EmployeeTypeId");
-
-                    b.HasIndex("EmployeeTypeId");
 
                     b.ToTable("Employee");
 
@@ -481,6 +464,16 @@ namespace BookCave.Migrations
                     b.ToTable("Paperback");
 
                     b.HasDiscriminator().HasValue("Paperback");
+                });
+
+            modelBuilder.Entity("BookCave.Models.EntityModels.Admin", b =>
+                {
+                    b.HasBaseType("BookCave.Models.EntityModels.Employee");
+
+
+                    b.ToTable("Admin");
+
+                    b.HasDiscriminator().HasValue("Admin");
                 });
 
             modelBuilder.Entity("BookCave.Models.EntityModels.Address", b =>
@@ -632,13 +625,6 @@ namespace BookCave.Migrations
                     b.HasOne("BookCave.Models.EntityModels.Format", "Format")
                         .WithMany("SheetMusics")
                         .HasForeignKey("FormatId");
-                });
-
-            modelBuilder.Entity("BookCave.Models.EntityModels.Employee", b =>
-                {
-                    b.HasOne("BookCave.Models.EntityModels.EmployeeType", "EmployeeType")
-                        .WithMany()
-                        .HasForeignKey("EmployeeTypeId");
                 });
 #pragma warning restore 612, 618
         }
