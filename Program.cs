@@ -105,6 +105,7 @@ namespace BookCave
                 };
                 
                 db.Books.Add(hardcover_hp5);
+                db.SaveChanges();
                 db.Books.Add(paperback_hp5);
                 db.SaveChanges();
             }
