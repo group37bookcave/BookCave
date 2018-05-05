@@ -9,6 +9,16 @@ namespace BookCave.Repositories
     
     {
         private StoreContext _db = new StoreContext();
-       
+
+        public Genre GetGenre(int id)
+        {
+            return (from g in _db.Genres where g.Id == id select g).FirstOrDefault();
+        }
+
+        public List<Genre> GetAllGenres()
+        {
+            return (from g in _db.Genres select g).ToList();
+        }
+        
     }
 }
