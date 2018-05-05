@@ -2,8 +2,9 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/css/site.css" />
     <title>@ViewData["Title"] - BookCave</title>
 
     <environment include="Development">
@@ -17,6 +18,7 @@
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
 </head>
+
 <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
@@ -34,14 +36,16 @@
                     <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                    <li><a asp-area="" asp-controller="WishList" asp-action="WishList">WishList</a></li>
+                    <li><a asp-area="" asp-controller="Product" asp-action="AllProducts">All Products</a></li>
                 </ul>
             </div>
         </div>
     </nav>
     <div class="container body-content">
         @RenderBody()
-        <hr />
-                
+        
+      <div id="myFooter" class="container">          
         <!--Footer-->
         <footer class="page-footer font-small stylish-color-dark pt-4 mt-4">
         <!--Footer Links-->
@@ -54,11 +58,7 @@
                         <p><a href="#!">About Us</a></p>
                         <p><a href="#!">Contact Us</a></p>
                         <p><a href="#!">Q&As</a></p>
-<<<<<<< HEAD
-                        <p><a href="#!">Help
-=======
-                         <p><a href="#!">Help</a>
->>>>>>> e24dcdf65724c7d7f585547cfce25b67fef767e8
+                        <p><a href="#!">Help</a></p>
                     </div>
                   
                 
@@ -99,12 +99,13 @@
             <div class="row py-3 d-flex align-items-center">
                   <!--Grid column-->
                   
+ <hr>
  <div class="container text-left text-md-left">
-     <hr>
+     
                       <div class="footer-copyright py-3 text-center list-unstyled list-inline">
                       <!--Copyright-->
                        <ul class="list-unstyled list-inline">
-                             
+                            
                          
                             <li>© The Book Cave </li>
                             <li><a href="#!">Privacy Policy</a></li>

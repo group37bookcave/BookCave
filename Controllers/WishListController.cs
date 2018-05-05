@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -8,12 +8,15 @@ using BookCave.Models.ViewModels;
 
 namespace BookCave.Controllers
 {
-    public class ProductController : Controller
+    public class WishListController : Controller
     {
-        public IActionResult AllProducts()
+        public IActionResult WishList()
         {
+            
+            ViewData["Message"] = "Your wish list.";
+
             return View();
         }
-
     }
+        
 }
