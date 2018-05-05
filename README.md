@@ -9,5 +9,7 @@ Andreas John Gustav Estensson </br>
 Birgitta Feldís Bjarkadóttir </br>
 Brynja Dagmar Jakobsdóttir </br>
 Dagný Ósk Gunnarsdóttir </br>
-Ívar Sveinn Loftsson
+Ívar Sveinn Loftsson </br
+
+Dagny - 04.05.18 - 12 tímar </br>
 
