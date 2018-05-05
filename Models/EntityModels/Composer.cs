@@ -2,7 +2,7 @@
 
 namespace BookCave.Models.EntityModels
 {
-    public class Narrator
+    public class Composer
     {
         public int Id { get; set; }
 
@@ -10,8 +10,8 @@ namespace BookCave.Models.EntityModels
 
         public string LastName { get; set; }
 
-        public string FullName => LastName + ", " + FirstName;
+        public string FullName => FirstName + ", " + LastName;
 
-        public ICollection<AudiobookNarrator> AudiobookNarrators { get; set; }
+        public ICollection<SheetMusicComposer> SheetMusicComposers { get; set; }
     }
 }

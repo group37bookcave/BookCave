@@ -104,9 +104,9 @@ namespace BookCave
                     new BookGenre {Book = paperback_hp5, Genre = new Genre {Name = "Children"}}
                 };
                 
-                db.Books.Add(hardcover_hp5);
+                db.Hardcovers.Add(hardcover_hp5);
                 db.SaveChanges();
-                db.Books.Add(paperback_hp5);
+                db.Paperbacks.Add(paperback_hp5);
                 db.SaveChanges();
             }
         }

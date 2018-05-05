@@ -1,10 +1,10 @@
 ﻿namespace BookCave.Models.EntityModels
 {
-    public class EbookNarrator
+    public class AudiobookNarrator
     {
-        public int EbookId { get; set; }
+        public int AudiobookId { get; set; }
 
-        public Ebook Book { get; set; }
+        public AudioBook Book { get; set; }
 
         public int NarratorId { get; set; }
 
