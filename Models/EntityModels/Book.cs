@@ -26,29 +26,4 @@ namespace BookCave.Models.EntityModels
         public ICollection<BookAgeGroup> BookAgeGroups { get; set; }
         
     }
-
-    public class Hardcover : Book
-    {
-        
-    }
-
-    public class Paperback : Book
-    {
-        
-    }
-
-    public class AudioBook : Book
-    {
-        public double? Size { get; set; }
-
-    }
-
-    public class Ebook : Book
-    {
-        public double? Size { get; set; }
-        
-        public ICollection<EbookNarrator> BookNarrators { get; set; }
-
-    }
-        
 }

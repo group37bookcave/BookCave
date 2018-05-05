@@ -12,9 +12,10 @@ using System;
 namespace BookCave.Migrations
 {
     [DbContext(typeof(StoreContext))]
-    partial class StoreContextModelSnapshot : ModelSnapshot
+    [Migration("20180505093207_separateComposerAndAuthor")]
+    partial class separateComposerAndAuthor
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -225,8 +226,6 @@ namespace BookCave.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Asin");
 
                     b.Property<string>("Isbn10");
 
