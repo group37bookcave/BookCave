@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using System;
 using System.Collections.Generic;
 
-namespace BookCave.Migrations
+namespace BookCave.Migrations.Store
 {
-    public partial class inheritance : Migration
+    public partial class authentication : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -37,6 +37,20 @@ namespace BookCave.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Composer",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    FirstName = table.Column<string>(nullable: true),
+                    LastName = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Composer", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Countries",
                 columns: table => new
                 {
@@ -51,16 +65,30 @@ namespace BookCave.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Formats",
+                name: "Customers",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(nullable: true)
+                    Id = table.Column<string>(nullable: false),
+                    AccessFailedCount = table.Column<int>(nullable: false),
+                    ConcurrencyStamp = table.Column<string>(nullable: true),
+                    Email = table.Column<string>(nullable: true),
+                    EmailConfirmed = table.Column<bool>(nullable: false),
+                    FirstName = table.Column<string>(nullable: true),
+                    LastName = table.Column<string>(nullable: true),
+                    LockoutEnabled = table.Column<bool>(nullable: false),
+                    LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
+                    NormalizedEmail = table.Column<string>(nullable: true),
+                    NormalizedUserName = table.Column<string>(nullable: true),
+                    PasswordHash = table.Column<string>(nullable: true),
+                    PhoneNumber = table.Column<string>(nullable: true),
+                    PhoneNumberConfirmed = table.Column<bool>(nullable: false),
+                    SecurityStamp = table.Column<string>(nullable: true),
+                    TwoFactorEnabled = table.Column<bool>(nullable: false),
+                    UserName = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Formats", x => x.Id);
+                    table.PrimaryKey("PK_Customers", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -82,6 +110,7 @@ namespace BookCave.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Asin = table.Column<string>(nullable: true),
                     Isbn10 = table.Column<string>(nullable: true),
                     Isbn13 = table.Column<string>(nullable: true)
                 },
@@ -109,7 +138,8 @@ namespace BookCave.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(nullable: true)
+                    FirstName = table.Column<string>(nullable: true),
+                    LastName = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -146,24 +176,6 @@ namespace BookCave.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Users",
-                columns: table => new
-                {
-                    PhoneNumber = table.Column<string>(nullable: true),
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Discriminator = table.Column<string>(nullable: false),
-                    Email = table.Column<string>(nullable: true),
-                    IsActive = table.Column<bool>(nullable: false),
-                    Name = table.Column<string>(nullable: true),
-                    Password = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Users", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "ZipCodes",
                 columns: table => new
                 {
@@ -177,11 +189,38 @@ namespace BookCave.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Orders",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    CustomerId = table.Column<string>(nullable: true),
+                    PromoCodeId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Orders", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Orders_Customers_CustomerId",
+                        column: x => x.CustomerId,
+                        principalTable: "Customers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Orders_PromoCodes_PromoCodeId",
+                        column: x => x.PromoCodeId,
+                        principalTable: "PromoCodes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Products",
                 columns: table => new
                 {
                     Size = table.Column<double>(nullable: true),
                     Description = table.Column<string>(nullable: true),
+                    IsbnId = table.Column<int>(nullable: true),
                     Length = table.Column<int>(nullable: true),
                     PublisherId = table.Column<int>(nullable: true),
                     ReleaseDate = table.Column<DateTime>(nullable: true),
@@ -191,48 +230,21 @@ namespace BookCave.Migrations
                     Discriminator = table.Column<string>(nullable: false),
                     Image = table.Column<string>(nullable: true),
                     Name = table.Column<string>(nullable: true),
-                    Price = table.Column<double>(nullable: false),
-                    FormatId = table.Column<int>(nullable: true)
+                    Price = table.Column<double>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Products", x => x.Id);
                     table.ForeignKey(
+                        name: "FK_Products_Isbns_IsbnId",
+                        column: x => x.IsbnId,
+                        principalTable: "Isbns",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
                         name: "FK_Products_Publishers_PublisherId",
                         column: x => x.PublisherId,
                         principalTable: "Publishers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Products_Formats_FormatId",
-                        column: x => x.FormatId,
-                        principalTable: "Formats",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Orders",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    CustomerId = table.Column<int>(nullable: true),
-                    PromoCodeId = table.Column<int>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Orders", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Orders_Users_CustomerId",
-                        column: x => x.CustomerId,
-                        principalTable: "Users",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Orders_PromoCodes_PromoCodeId",
-                        column: x => x.PromoCodeId,
-                        principalTable: "PromoCodes",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -283,6 +295,30 @@ namespace BookCave.Migrations
                         name: "FK_CountryZipCodes_ZipCodes_ZipCodeId",
                         column: x => x.ZipCodeId,
                         principalTable: "ZipCodes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AudioBookNarrators",
+                columns: table => new
+                {
+                    AudiobookId = table.Column<int>(nullable: false),
+                    NarratorId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AudioBookNarrators", x => new { x.AudiobookId, x.NarratorId });
+                    table.ForeignKey(
+                        name: "FK_AudioBookNarrators_Products_AudiobookId",
+                        column: x => x.AudiobookId,
+                        principalTable: "Products",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_AudioBookNarrators_Narrators_NarratorId",
+                        column: x => x.NarratorId,
+                        principalTable: "Narrators",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -384,54 +420,6 @@ namespace BookCave.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "EbookNarrators",
-                columns: table => new
-                {
-                    EbookId = table.Column<int>(nullable: false),
-                    NarratorId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_EbookNarrators", x => new { x.EbookId, x.NarratorId });
-                    table.ForeignKey(
-                        name: "FK_EbookNarrators_Products_EbookId",
-                        column: x => x.EbookId,
-                        principalTable: "Products",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_EbookNarrators_Narrators_NarratorId",
-                        column: x => x.NarratorId,
-                        principalTable: "Narrators",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "CustomerOrders",
-                columns: table => new
-                {
-                    CustomerId = table.Column<int>(nullable: false),
-                    OrderId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_CustomerOrders", x => new { x.CustomerId, x.OrderId });
-                    table.ForeignKey(
-                        name: "FK_CustomerOrders_Users_CustomerId",
-                        column: x => x.CustomerId,
-                        principalTable: "Users",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_CustomerOrders_Orders_OrderId",
-                        column: x => x.OrderId,
-                        principalTable: "Orders",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "ItemOrders",
                 columns: table => new
                 {
@@ -459,10 +447,34 @@ namespace BookCave.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "SheetMusicComposers",
+                columns: table => new
+                {
+                    SheetMusicId = table.Column<int>(nullable: false),
+                    ComposerId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SheetMusicComposers", x => new { x.SheetMusicId, x.ComposerId });
+                    table.ForeignKey(
+                        name: "FK_SheetMusicComposers_Composer_ComposerId",
+                        column: x => x.ComposerId,
+                        principalTable: "Composer",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_SheetMusicComposers_Products_SheetMusicId",
+                        column: x => x.SheetMusicId,
+                        principalTable: "Products",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "CustomerAddresses",
                 columns: table => new
                 {
-                    CustomerId = table.Column<int>(nullable: false),
+                    CustomerId = table.Column<string>(nullable: false),
                     AddressId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -475,9 +487,9 @@ namespace BookCave.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_CustomerAddresses_Users_CustomerId",
+                        name: "FK_CustomerAddresses_Customers_CustomerId",
                         column: x => x.CustomerId,
-                        principalTable: "Users",
+                        principalTable: "Customers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -491,6 +503,11 @@ namespace BookCave.Migrations
                 name: "IX_Addresses_ZipCodeId",
                 table: "Addresses",
                 column: "ZipCodeId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AudioBookNarrators_NarratorId",
+                table: "AudioBookNarrators",
+                column: "NarratorId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_BookAgeGroups_AgeGroupId",
@@ -523,16 +540,6 @@ namespace BookCave.Migrations
                 column: "AddressId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_CustomerOrders_OrderId",
-                table: "CustomerOrders",
-                column: "OrderId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_EbookNarrators_NarratorId",
-                table: "EbookNarrators",
-                column: "NarratorId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_ItemOrders_OrderId",
                 table: "ItemOrders",
                 column: "OrderId");
@@ -553,18 +560,26 @@ namespace BookCave.Migrations
                 column: "PromoCodeId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Products_IsbnId",
+                table: "Products",
+                column: "IsbnId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Products_PublisherId",
                 table: "Products",
                 column: "PublisherId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Products_FormatId",
-                table: "Products",
-                column: "FormatId");
+                name: "IX_SheetMusicComposers_ComposerId",
+                table: "SheetMusicComposers",
+                column: "ComposerId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "AudioBookNarrators");
+
             migrationBuilder.DropTable(
                 name: "BookAgeGroups");
 
@@ -584,16 +599,13 @@ namespace BookCave.Migrations
                 name: "CustomerAddresses");
 
             migrationBuilder.DropTable(
-                name: "CustomerOrders");
-
-            migrationBuilder.DropTable(
-                name: "EbookNarrators");
-
-            migrationBuilder.DropTable(
-                name: "Isbns");
-
-            migrationBuilder.DropTable(
                 name: "ItemOrders");
+
+            migrationBuilder.DropTable(
+                name: "SheetMusicComposers");
+
+            migrationBuilder.DropTable(
+                name: "Narrators");
 
             migrationBuilder.DropTable(
                 name: "AgeGroups");
@@ -611,10 +623,10 @@ namespace BookCave.Migrations
                 name: "Addresses");
 
             migrationBuilder.DropTable(
-                name: "Narrators");
+                name: "Orders");
 
             migrationBuilder.DropTable(
-                name: "Orders");
+                name: "Composer");
 
             migrationBuilder.DropTable(
                 name: "Products");
@@ -626,16 +638,16 @@ namespace BookCave.Migrations
                 name: "ZipCodes");
 
             migrationBuilder.DropTable(
-                name: "Users");
+                name: "Customers");
 
             migrationBuilder.DropTable(
                 name: "PromoCodes");
 
             migrationBuilder.DropTable(
-                name: "Publishers");
+                name: "Isbns");
 
             migrationBuilder.DropTable(
-                name: "Formats");
+                name: "Publishers");
         }
     }
 }

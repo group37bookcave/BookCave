@@ -2,12 +2,20 @@
 
 namespace BookCave.Models.EntityModels
 {
-    public class Customer : User
-    { 
-        public string PhoneNumber { get; set; }
+    public class Customer
+    {
+        public string Id { get; set; }
+        
+        public string FirstName { get; set; }
+
+        public string LastName { get; set; }
+        
+        public string Email { get; set; }
+
+        public string FullName => LastName + ", " + FirstName;
 
         public ICollection<CustomerAddress> CustomerAddresses { get; set; }
 
         public ICollection<Order> Orders { get; set; }
     }
-}
+}    
