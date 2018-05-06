@@ -1,7 +1,9 @@
-﻿namespace BookCave.Models.EntityModels
+﻿using System.Collections.Generic;
+
+namespace BookCave.Models.EntityModels
 {
-    public class SheetMusic : Product
+    public abstract class SheetMusic : Product
     {
-        public Format Format { get; set; }
+        public ICollection<SheetMusicComposer> SheetMusicComposers { get; set; }
     }
 }

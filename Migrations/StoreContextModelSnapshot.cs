@@ -51,6 +51,19 @@ namespace BookCave.Migrations
                     b.ToTable("AgeGroups");
                 });
 
+            modelBuilder.Entity("BookCave.Models.EntityModels.AudiobookNarrator", b =>
+                {
+                    b.Property<int>("AudiobookId");
+
+                    b.Property<int>("NarratorId");
+
+                    b.HasKey("AudiobookId", "NarratorId");
+
+                    b.HasIndex("NarratorId");
+
+                    b.ToTable("AudioBookNarrators");
+                });
+
             modelBuilder.Entity("BookCave.Models.EntityModels.Author", b =>
                 {
                     b.Property<int>("Id")
@@ -88,7 +101,7 @@ namespace BookCave.Migrations
 
                     b.HasIndex("AuthorId");
 
-                    b.ToTable("BookAuthors");
+                    b.ToTable("BookAuthor");
                 });
 
             modelBuilder.Entity("BookCave.Models.EntityModels.BookGenre", b =>
@@ -115,6 +128,20 @@ namespace BookCave.Migrations
                     b.HasIndex("LanguageId");
 
                     b.ToTable("BookLanguages");
+                });
+
+            modelBuilder.Entity("BookCave.Models.EntityModels.Composer", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("FirstName");
+
+                    b.Property<string>("LastName");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Composer");
                 });
 
             modelBuilder.Entity("BookCave.Models.EntityModels.Country", b =>
@@ -170,19 +197,6 @@ namespace BookCave.Migrations
                     b.ToTable("CustomerOrders");
                 });
 
-            modelBuilder.Entity("BookCave.Models.EntityModels.EbookNarrator", b =>
-                {
-                    b.Property<int>("EbookId");
-
-                    b.Property<int>("NarratorId");
-
-                    b.HasKey("EbookId", "NarratorId");
-
-                    b.HasIndex("NarratorId");
-
-                    b.ToTable("EbookNarrators");
-                });
-
             modelBuilder.Entity("BookCave.Models.EntityModels.Format", b =>
                 {
                     b.Property<int>("Id")
@@ -211,6 +225,8 @@ namespace BookCave.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Asin");
 
                     b.Property<string>("Isbn10");
 
@@ -258,7 +274,9 @@ namespace BookCave.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Name");
+                    b.Property<string>("FirstName");
+
+                    b.Property<string>("LastName");
 
                     b.HasKey("Id");
 
@@ -334,6 +352,19 @@ namespace BookCave.Migrations
                     b.ToTable("Publishers");
                 });
 
+            modelBuilder.Entity("BookCave.Models.EntityModels.SheetMusicComposer", b =>
+                {
+                    b.Property<int>("SheetMusicId");
+
+                    b.Property<int>("ComposerId");
+
+                    b.HasKey("SheetMusicId", "ComposerId");
+
+                    b.HasIndex("ComposerId");
+
+                    b.ToTable("SheetMusicComposer");
+                });
+
             modelBuilder.Entity("BookCave.Models.EntityModels.User", b =>
                 {
                     b.Property<int>("Id")
@@ -375,11 +406,15 @@ namespace BookCave.Migrations
 
                     b.Property<string>("Description");
 
+                    b.Property<int?>("IsbnId");
+
                     b.Property<int>("Length");
 
                     b.Property<int?>("PublisherId");
 
                     b.Property<DateTime>("ReleaseDate");
+
+                    b.HasIndex("IsbnId");
 
                     b.HasIndex("PublisherId");
 
@@ -396,7 +431,7 @@ namespace BookCave.Migrations
 
                     b.HasIndex("FormatId");
 
-                    b.ToTable("SheetMusic");
+                    b.ToTable("SheetMusics");
 
                     b.HasDiscriminator().HasValue("SheetMusic");
                 });
@@ -465,6 +500,26 @@ namespace BookCave.Migrations
                     b.HasDiscriminator().HasValue("Paperback");
                 });
 
+            modelBuilder.Entity("BookCave.Models.EntityModels.DigitalSheetMusic", b =>
+                {
+                    b.HasBaseType("BookCave.Models.EntityModels.SheetMusic");
+
+
+                    b.ToTable("DigitalSheetMusic");
+
+                    b.HasDiscriminator().HasValue("DigitalSheetMusic");
+                });
+
+            modelBuilder.Entity("BookCave.Models.EntityModels.PhysicalSheetMusic", b =>
+                {
+                    b.HasBaseType("BookCave.Models.EntityModels.SheetMusic");
+
+
+                    b.ToTable("PhysicalSheetMusic");
+
+                    b.HasDiscriminator().HasValue("PhysicalSheetMusic");
+                });
+
             modelBuilder.Entity("BookCave.Models.EntityModels.Admin", b =>
                 {
                     b.HasBaseType("BookCave.Models.EntityModels.Employee");
@@ -484,6 +539,19 @@ namespace BookCave.Migrations
                     b.HasOne("BookCave.Models.EntityModels.ZipCode", "ZipCode")
                         .WithMany()
                         .HasForeignKey("ZipCodeId");
+                });
+
+            modelBuilder.Entity("BookCave.Models.EntityModels.AudiobookNarrator", b =>
+                {
+                    b.HasOne("BookCave.Models.EntityModels.AudioBook", "Book")
+                        .WithMany("AudiobookNarrators")
+                        .HasForeignKey("AudiobookId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("BookCave.Models.EntityModels.Narrator", "Narrator")
+                        .WithMany("AudiobookNarrators")
+                        .HasForeignKey("NarratorId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("BookCave.Models.EntityModels.BookAgeGroup", b =>
@@ -577,19 +645,6 @@ namespace BookCave.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("BookCave.Models.EntityModels.EbookNarrator", b =>
-                {
-                    b.HasOne("BookCave.Models.EntityModels.Ebook", "Book")
-                        .WithMany("BookNarrators")
-                        .HasForeignKey("EbookId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("BookCave.Models.EntityModels.Narrator", "Narrator")
-                        .WithMany("BookNarrators")
-                        .HasForeignKey("NarratorId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
             modelBuilder.Entity("BookCave.Models.EntityModels.ItemOrder", b =>
                 {
                     b.HasOne("BookCave.Models.EntityModels.Order", "Order")
@@ -612,8 +667,25 @@ namespace BookCave.Migrations
                         .HasForeignKey("PromoCodeId");
                 });
 
+            modelBuilder.Entity("BookCave.Models.EntityModels.SheetMusicComposer", b =>
+                {
+                    b.HasOne("BookCave.Models.EntityModels.Composer", "Composer")
+                        .WithMany("SheetMusicComposers")
+                        .HasForeignKey("ComposerId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("BookCave.Models.EntityModels.SheetMusic", "SheetMusic")
+                        .WithMany("SheetMusicComposers")
+                        .HasForeignKey("SheetMusicId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
             modelBuilder.Entity("BookCave.Models.EntityModels.Book", b =>
                 {
+                    b.HasOne("BookCave.Models.EntityModels.Isbn", "Isbn")
+                        .WithMany()
+                        .HasForeignKey("IsbnId");
+
                     b.HasOne("BookCave.Models.EntityModels.Publisher", "Publisher")
                         .WithMany("Books")
                         .HasForeignKey("PublisherId");
@@ -621,7 +693,7 @@ namespace BookCave.Migrations
 
             modelBuilder.Entity("BookCave.Models.EntityModels.SheetMusic", b =>
                 {
-                    b.HasOne("BookCave.Models.EntityModels.Format", "Format")
+                    b.HasOne("BookCave.Models.EntityModels.Format")
                         .WithMany("SheetMusics")
                         .HasForeignKey("FormatId");
                 });
