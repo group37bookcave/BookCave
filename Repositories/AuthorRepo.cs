@@ -19,7 +19,5 @@ namespace BookCave.Repositories
         {
             return (from a in _db.Authors where a.Id == id select a).FirstOrDefault();
         }
-        
-        
     }
 }
