@@ -287,7 +287,7 @@ $.extend( $.validator, {
 			];
 
 			if ( event.which === 9 && this.elementValue( element ) === "" || $.inArray( event.keyCode, excludedKeys ) !== -1 ) {
-				return;
+				
 			} else if ( element.name in this.submitted || element === this.lastElement ) {
 				this.element( element );
 			}
@@ -1394,5 +1394,4 @@ if ( $.ajaxPrefilter ) {
 		return ajax.apply(this, arguments);
 	};
 }
-
 }));
