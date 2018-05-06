@@ -23,11 +23,26 @@ namespace BookCave.Controllers
             return View();
         }
 
+        public IActionResult BestSellers()
+        {
+            return View();
+        }
+
+        public IActionResult NewReleases()
+        {
+            return View();
+        }
+
+        public IActionResult TopRated()
+        {
+            return View();
+        }
+
         public IActionResult Contact()
         {
-            ViewData["Message"] = "Your contact page.";
-
-            return View();
+        ViewData["Message"] = "Your contact page.";
+        
+        return View();
         }
 
         public IActionResult Error()

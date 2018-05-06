@@ -91,6 +91,24 @@ table
     }
 }
 
+<<<<<<< HEAD
+/* BRYNJA DAGMAR JAKOBSD */
+ul {
+    list-style-type: none;
+}
+
+#browse-hidden {
+    display: none !important;
+}
+
+#best-sellers-hidden {
+    display: none !important;
+}
+
+#search-input-bar {
+    top: 65px;
+}
+=======
 
 
 =======
@@ -139,4 +157,5 @@ a {
         display: none;
     }
 }
+>>>>>>> develop
 >>>>>>> develop
