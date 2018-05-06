@@ -16,48 +16,9 @@ body {
     margin-top: 50px;   
 }
 
-#myFooter, a{
+footer a{
     color: white;
 }
-
-ul {
-    list-style: none;
-    padding-left: 0;
-}​
-
-
-table 
-{
-    border-collapse: collapse;
-    border-spacing:0;
-    width:100%;
-    border: 1px solid;
-}
-
-#wish-item{
-    margin: 50%;
-}
-
-#wish{
-    color:rgb(105,202,202);
-}
-
-.center-items{
-    padding-top: 50%;
-}
-
-#wish-options > button
-{
-    border: solid;
-    border-width: 0.5px;
-    border-color: gray;
-}
-
-.stars{
-    color: rgb(252, 202, 68);
-}
-
-
 
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
@@ -89,6 +50,52 @@ table
         display: none;
     }
 }
+
+/* Pages styles */
+
+ul {
+    list-style: none;
+    padding-left: 0;
+}​
+
+table 
+{
+    border-collapse: collapse;
+    border-spacing:0;
+    width:100%;
+    border: 1px solid;
+}
+
+.book-cave-color{
+    color:rgb(105,202,202);
+}
+
+.button-options > button
+{
+    margin-bottom: 10px;
+    width: 120px;
+   
+}
+
+#green-buttons > button
+{
+    color: white;
+    background-color: rgb(105,202,202);
+    margin-bottom: 10px;
+    width: 120px;
+}
+
+
+.stars{
+    color: rgb(252, 202, 68);
+}
+
+
+.all-products-header{
+    display: inline-block;
+}
+
+
 
 
 
