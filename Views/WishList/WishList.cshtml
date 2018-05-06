@@ -2,23 +2,19 @@
     ViewData["Title"] = "WishList";
 }
 
-
-<!--<p id=no-wish-list> No items in your Wish List </p>-->
 <div class="container">
     <div class="row">
         <div class="col-sm-12 col-md-10 col-md-offset-1">
-            <h1><span id="wish">Wish</span><span id="list">List</span></h1>
+            <span id="page-name"><h1><span class="book-cave-color">Wish</span><span id="list">List</span></h1></span>
             <hr>
-            <table class="table table-hover">
-                
-              
+            <table>             
                 <tbody>
-                    <tr class="wish-item">
+                    <tr class="list-item">
                         <td class="col-sm-8 col-md-6">
-                        <div class="media">
-                            <a class="pull-left" href="#"> <div class="col-sm-2 hidden-xs"><img src="http://placehold.it/180x200/456" class="media-object" alt="ItemImage" style="width: 180px; height: 200px;"></div> </a>
-                            <div class="media-body">
-                                <h4>Item name</h4>
+                            <div class="media">
+                                <a class="pull-left" href="#"> <div class="col-sm-2 hidden-xs"><img src="http://placehold.it/180x200/456" class="media-object" alt="ItemImage" style="width: 180px; height: 200px;"></div> </a>
+                                <div class="media-body">
+                                    <h4>Item name</h4>
                                     <ul>
                                         <li>Author:</li>
                                         <li>Format:</li>
@@ -32,98 +28,31 @@
                                     <span class="stars fa fa-star"></span>
                                     <span class="stars fa fa-star"></span>
                                     <span class="stars fa fa-star"></span>
+                                </div>
                             </div>
-                        </div></td>
-                      
+                        </td>
+                    
                         <td class="col-sm-1 col-md-1">
-                           <p><strong>Price: $0.00</strong></p>
+                            <p><strong>Price: $0.00</strong></p>
                         </td>
                         
                         <td class="col-sm-1 col-md-1">
-                          <div id="wish-options" class="btn-group-vertical">
-                                <button type="button" class="btn btn-secondary">Move to cart</button>
-                                <button type="button" class="btn btn-secondary">Remove</button>
-                          </div>	
-                        </td>
-                    </tr>
-                    <tr class="wish-item">
-                        <td class="col-sm-8 col-md-6">
-                        <div class="media">
-                            <a class="pull-left" href="#"> <div class="col-sm-2 hidden-xs"><img src="http://placehold.it/180x200/456" class="media-object" alt="ItemImage" style="width: 180px; height: 200px;"></div> </a>
-                            <div class="media-body">
-                                <h4>Item name</h4>
-                                    <ul>
-                                        <li>Author:</li>
-                                        <li>Format:</li>
-                                        <li>Length:</li>
-                                        <li>Release date:</li>
-                                        <li>Language:</li>  
-                                    </ul>
-                                   
-                                    <span class="stars fa fa-star"></span>
-                                    <span class="stars fa fa-star"></span>
-                                    <span class="stars fa fa-star"></span>
-                                    <span class="stars fa fa-star"></span>
-                                    <span class="stars fa fa-star"></span>
-                            </div>
-                        </div></td>
-                      
-                        <td class="col-sm-1 col-md-1">
-                           <p><strong>Price: $0.00</strong></p>
-                        </td>
-                        
-                        <td class="col-sm-1 col-md-1">
-                          <div id="wish-options" class="btn-group-vertical">
-                                <button type="button" class="btn btn-secondary">Move to cart</button>
-                                <button type="button" class="btn btn-secondary">Remove</button>
-                          </div>	
-                        </td>
-                    </tr>
-                    <tr class="wish-item">
-                        <td class="col-sm-8 col-md-6">
-                        <div class="media">
-                            <a class="pull-left" href="#"> <div class="col-sm-2 hidden-xs"><img src="http://placehold.it/180x200/456" class="media-object" alt="ItemImage" style="width: 180px; height: 200px;"></div> </a>
-                            <div class="media-body">
-                                <h4>Item name</h4>
-                                    <ul>
-                                        <li>Author:</li>
-                                        <li>Format:</li>
-                                        <li>Length:</li>
-                                        <li>Release date:</li>
-                                        <li>Language:</li>  
-                                    </ul>
-                                   
-                                    <span class="stars fa fa-star"></span>
-                                    <span class="stars fa fa-star"></span>
-                                    <span class="stars fa fa-star"></span>
-                                    <span class="stars fa fa-star"></span>
-                                    <span class="stars fa fa-star"></span>
-                            </div>
-                        </div></td>
-                      
-                        <td class="col-sm-1 col-md-1">
-                           <p><strong>Price: $0.00</strong></p>
-                        </td>
-                        
-                        <td class="col-sm-1 col-md-1">
-                          <div id="wish-options" class="btn-group-vertical">
-                                <button type="button" class="btn btn-secondary">Move to cart</button>
-                                <button type="button" class="btn btn-secondary">Remove</button>
-                          </div>	
+                            <div class="button-options">
+                                <button type="button" class="btn">Move to cart</button>
+                                <button type="button" class="btn">Remove</button>    
+                            </div>	
                         </td>
                     </tr>
                 </tbody>
             </table>
             <hr>
-
             <div>
                 <input type="checkbox" value="price-drop" id="price-drop">
-                <label for="price-drop">Email notification when price drops</label><br>
-            
+                <label for="price-drop">Email notification when price drops</label></br>
+
                 <input type="checkbox" value="remove-purchased" id="remove-when-purchased">
                 <label for="remove-when-purchased">Remove purchased items</label>
             </div>
-
         </div>
     </div>
 </div>

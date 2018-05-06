@@ -1,57 +1,251 @@
-<<<<<<< HEAD
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8"/>
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="~/css/site.css"/>
+    <link rel="stylesheet" href="~/css/site.css" />
     <title>@ViewData["Title"] - BookCave</title>
-
+    <link rel="stylesheet" href="~/css/site.css"/>
     <environment include="Development">
-        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css"/>
-        <link rel="stylesheet" href="~/css/site.css"/>
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute"/>
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" asp-append-version="true"/>
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true"/>
     </environment>
 </head>
 
 <body>
-<nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">BookCave</a>
+<nav class="navbar navbar-inverse navbar-fixed-top" style="background-color: white;">
+<div class="container">
+    <div class="row">
+        <div class="col-xs-3">
+            <img src="~/images/BookCaveLogo.png" alt="Logo">
         </div>
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li>
-                    <a asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+        <div class="col-xs-6">
+            <div id="search-input-bar" class="input-group">
+                <select name="filter-searchbar" class="form-control">
+                    <option value="all">All</option>
+                    <option value="author">Author</option>
+                    <option value="isbn">ISBN</option>
+                    <option value="title">Title</option>
+                </select>
+                <input type="hidden" name="search_param" value="all" id="search_param">
+                <input type="text" class="form-control" name="x" placeholder="Search term...">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button">
+                        <span class="glyphicon glyphicon-search"></span>
+                    </button>
+                </span>
+            </div>
+        </div>
+        <div class="col-xs-3">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="http://www.jquery2dotnet.com" class="dropdown-toggle" data-toggle="dropdown">New User / Sign In</a>
+                    <ul class="dropdown-menu" style="padding: 15px; min-width: 250px;">
+                        <li>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
+                                        <div class="form-group">
+                                            <label class="sr-only" for="exampleInputEmail2">Email address</label>
+                                            <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Email address" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="sr-only" for="exampleInputPassword2">Password</label>
+                                            <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <span>
+                                                <button type="submit" class="btn btn-success btn-block">New User</button>
+                                            </span>
+                                            <span>
+                                                <button type="submit" class="btn btn-success btn-block">Sign In</button>
+                                            </span>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
                 </li>
                 <li>
-                    <a asp-area="" asp-controller="Home" asp-action="About">About</a>
-                </li>
-                <li>
-                    <a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a>
-                </li>
-                <li>
-                    <a asp-area="" asp-controller="WishList" asp-action="WishList">WishList</a>
-                </li>
-                <li>
-                    <a asp-area="" asp-controller="Product" asp-action="AllProducts">All Products</a>
+                    <a href="#" role="button" aria-expanded="false">
+                        <span class="glyphicon glyphicon-shopping-cart"></span><span> 0 Items</span>
+                    </a>
                 </li>
             </ul>
         </div>
     </div>
+</div>
+<div class="navbar-collapse collapse">
+    <ul class="nav navbar-nav">
+        <li>
+            <a asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+        </li>
+        <li>
+            <a href="#">
+                <span>Browse </span><span class="fa fa-chevron-down"></span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <span>Best Sellers </span><span class="fa fa-chevron-down"></span>
+            </a>
+        </li>
+        <li>
+            <a asp-area="" asp-controller="Home" asp-action="Contact">New Releases</a>
+        </li>
+        <li>
+            <a asp-area="" asp-controller="Home" asp-action="Contact">Top Rated</a>
+        </li>
+    </ul>
+</div>
+<div id="browse-hidden" class="navbar-collapse collapse">
+    <div class="row">
+        <div class="col-sm-3">
+            <ul>
+                <li>
+                    <strong>Top Categories</strong>
+                </li>
+                <li>
+                    <a asp-area="" asp-controller="Home" asp-action="BestSellers">All Products</a>
+                </li>
+                <li>
+                    <a asp-area="" asp-controller="Home" asp-action="Contact">Audio Books</a>
+                </li>
+                <li>
+                    <a asp-area="" asp-controller="Home" asp-action="Contact">E - Books</a>
+                </li>
+                <li>
+                    <a asp-area="" asp-controller="Home" asp-action="Contact">Hardcover</a>
+                </li>
+                <li>
+                    <a asp-area="" asp-controller="Home" asp-action="Contact">Paperback</a>
+                </li>
+                <li>
+                    <a asp-area="" asp-controller="Home" asp-action="Contact">Sheet Music</a>
+                </li>
+                <li>
+                    <a asp-area="" asp-controller="Home" asp-action="Contact">Fiction</a>
+                </li>
+                <li>
+                    <a asp-area="" asp-controller="Home" asp-action="Contact">Non - Fiction</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-sm-2">
+            <ul>
+                <li>
+                    <strong>Other Categories</strong>
+                </li>
+                <li>
+                    <a asp-area="" asp-controller="Home" asp-action="BestSellers">Biography</a>
+                </li>
+                <li>
+                    <a asp-area="" asp-controller="Home" asp-action="Contact">Children's Books</a>
+                </li>
+                <li>
+                    <a asp-area="" asp-controller="Home" asp-action="Contact">Crafts & Hobbies</a>
+                </li>
+                <li>
+                    <a asp-area="" asp-controller="Home" asp-action="Contact">Crime & Thriller</a>
+                </li>
+                <li>
+                    <a asp-area="" asp-controller="Home" asp-action="Contact">Cook Books</a>
+                </li>
+                <li>
+                    <a asp-area="" asp-controller="Home" asp-action="Contact">Fantasy</a>
+                </li>
+                <li>
+                    <a asp-area="" asp-controller="Home" asp-action="Contact">Mind, Body & Spirit</a>
+                </li>
+                <li>
+                    <a asp-area="" asp-controller="Home" asp-action="Contact">Natural History</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-sm-3">
+            <ul>
+                <li></li>
+                <li>
+                    <a asp-area="" asp-controller="Home" asp-action="BestSellers">Personal Development</a>
+                </li>
+                <li>
+                    <a asp-area="" asp-controller="Home" asp-action="Contact">Poetry & Drama</a>
+                </li>
+                <li>
+                    <a asp-area="" asp-controller="Home" asp-action="Contact">Religion</a>
+                </li>
+                <li>
+                    <a asp-area="" asp-controller="Home" asp-action="Contact">Romance</a>
+                </li>
+                <li>
+                    <a asp-area="" asp-controller="Home" asp-action="Contact">Science & Geography</a>
+                </li>
+                <li>
+                    <a asp-area="" asp-controller="Home" asp-action="Contact">Science Fiction</a>
+                </li>
+                <li>
+                    <a asp-area="" asp-controller="Home" asp-action="Contact">Sport</a>
+                </li>
+                <li>
+                    <a asp-area="" asp-controller="Home" asp-action="Contact">Travel Guides</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-sm-2 ">
+            <ul>
+                <li>
+                    <strong>Top Authors</strong>
+                </li>
+                <li>
+                    <a asp-area="" asp-controller="Home" asp-action="BestSellers">J.K. Rowling</a>
+                </li>
+                <li>
+                    <a asp-area="" asp-controller="Home" asp-action="Contact">Roald Dahl</a>
+                </li>
+                <li>
+                    <a asp-area="" asp-controller="Home" asp-action="Contact">Stephen King</a>
+                </li>
+                <li>
+                    <a asp-area="" asp-controller="Home" asp-action="Contact">Dr. Seuss</a>
+                </li>
+                <li>
+                    <a asp-area="" asp-controller="Home" asp-action="Contact">James Patterson</a>
+                </li>
+                <li>
+                    <a asp-area="" asp-controller="Home" asp-action="Contact">Sarah J. Maas</a>
+                </li>
+                <li>
+                    <a asp-area="" asp-controller="Home" asp-action="Contact">Brandon Sanderson</a>
+                </li>
+                <li>
+                    <a asp-area="" asp-controller="Home" asp-action="Contact">See all</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div id="best-sellers-hidden" class="navbar-collapse collapse">
+    <ul>
+        <li>
+            <strong>Best Sellers</strong>
+        </li>
+        <li>
+            <a asp-area="" asp-controller="Home" asp-action="BestSellers">Our Best Sellers</a>
+        </li>
+        <li>
+            <a asp-area="" asp-controller="Home" asp-action="Contact">New York Times Best Sellers</a>
+        </li>
+    </ul>
+</div>
 </nav>
 <div class="container body-content">
     @RenderBody()
@@ -59,155 +253,137 @@
     <div id="myFooter" class="container">
         <!--Footer-->
         <footer class="page-footer font-small stylish-color-dark pt-4 mt-4">
-        <!--Footer Links-->
-        <div class="container text-left text-md-left">
-            <!-- Footer links -->
-            <div class="row text-left text-md-left mt-3 pb-3">
+            <!--Footer Links-->
+            <div class="container text-left text-md-left">
+                <!-- Footer links -->
+                <div class="row text-left text-md-left mt-3 pb-3">
 
-                <!--First column-->
-                <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
-                    <p>
-                        <a href="#!">About Us</a>
-                    </p>
-                    <p>
-                        <a href="#!">Contact Us</a>
-                    </p>
-                    <p>
-                        <a href="#!">Q&As</a>
-                    </p>
-                    <p>
-                        <a href="#!">Help</a>
-                    </p>
-                </div>
+                    <!--First column-->
+                    <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+                        <p>
+                            <a href="#!">About Us</a>
+                        </p>
+                        <p>
+                            <a href="#!">Contact Us</a>
+                        </p>
+                        <p>
+                            <a href="#!">Q&As</a>
+                        </p>
+                        <p>
+                            <a href="#!">Help</a>
+                        </p>
+                    </div>
 
 
-                <!--Second column-->
-                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
-                    <p>
-                        <a href="#!">Home</a>
-                    </p>
-                    <p>
-                        <a href="#!">Browse</a>
-                    </p>
-                    <p>
-                        <a href="#!">Best Sellers</a>
-                    </p>
-                    <p>
-                        <a href="#!">New Releases</a>
-                    </p>
-                </div>
+                    <!--Second column-->
+                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+                        <p>
+                            <a href="#!">Home</a>
+                        </p>
+                        <p>
+                            <a href="#!">Browse</a>
+                        </p>
+                        <p>
+                            <a href="#!">Best Sellers</a>
+                        </p>
+                        <p>
+                            <a href="#!">New Releases</a>
+                        </p>
+                    </div>
 
-                <!--Third column-->
-                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
-                    <p>
-                        <a href="#!">Top Rated</a>
-                    </p>
-                    <p>
-                        <a href="#!">Shipping</a>
-                    </p>
-                    <p>
-                        <a href="#!">Information</a>
-                    </p>
-                    <p>
-                        <a href="#!">Returns</a>
-                    </p>
-                </div>
+                    <!--Third column-->
+                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+                        <p>
+                            <a href="#!">Top Rated</a>
+                        </p>
+                        <p>
+                            <a href="#!">Shipping</a>
+                        </p>
+                        <p>
+                            <a href="#!">Information</a>
+                        </p>
+                        <p>
+                            <a href="#!">Returns</a>
+                        </p>
+                    </div>
 
-                <!--Fourth column-->
-                <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
-                    <p>
-                        <a href="#!">Account Details</a>
-                    </p>
-                    <p>
-                        <a href="#!">Order History</a>
-                    </p>
-                    <p>
-                        <a href="#!">Wish List</a>
-                    </p>
-                    <p>
-                        <a href="#!">Sign Out</a>
-                    </p>
-                </div>
+                    <!--Fourth column-->
+                    <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+                        <p>
+                            <a href="#!">Account Details</a>
+                        </p>
+                        <p>
+                            <a href="#!">Order History</a>
+                        </p>
+                        <p>
+                            <a href="#!">Wish List</a>
+                        </p>
+                        <p>
+                            <a href="#!">Sign Out</a>
+                        </p>
+                    </div>
 
-                <!--Fifth column-->
-                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
-                    <p>Contact Us</p>
-                    <p><i class="fa fa-home mr-3"></i> Menntavegur 1, 105 Reykjavik, Iceland</p>
-                    <p>
-                        <i class="fa fa-envelope mr-3"></i> <a href="mailto:bookcave@bookcave.com">bookcave@bookcave.com</a>
-                    </p>
-                    <p><i class="fa fa-phone mr-3"></i> + 354 866 1234</p>
-                </div>
+                    <!--Fifth column-->
+                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+                        <p>Contact Us</p>
+                        <p><i class="fa fa-home mr-3"></i> Menntavegur 1, 105 Reykjavik, Iceland</p>
+                        <p><i class="fa fa-envelope mr-3"></i> <a href="mailto:bookcave@bookcave.com">bookcave@bookcave.com</a></p>
+                        <p><i class="fa fa-phone mr-3"></i> + 354 866 1234</p>
+                    </div>
             </div>
-
+              
             <!-- Footer links -->
             <div class="row py-3 d-flex align-items-center">
-                <!--Grid column-->
-
-                <hr>
-                <div class="container text-left text-md-left">
-
-                    <div class="footer-copyright py-3 text-center list-unstyled list-inline">
-                        <!--Copyright-->
-                        <ul class="list-unstyled list-inline">
-
-
+                  <!--Grid column-->
+                  
+ <hr>
+ <div class="container text-left text-md-left">
+     
+                      <div class="footer-copyright py-3 text-center list-unstyled list-inline">
+                      <!--Copyright-->
+                       <ul class="list-unstyled list-inline">
+                            
+                         
                             <li>© The Book Cave </li>
-                            <li>
-                                <a href="#!">Privacy Policy</a>
-                            </li>
-                            <li>
-                                <a href="#!">Terms and Conditions</a>
-                            </li>
+                            <li><a href="#!">Privacy Policy</a></li>
+                            <li><a href="#!">Terms and Conditions</a></li>
 
-                            <li class="list-inline-item">
-                                <a class="btn-floating btn-sm rgba-white-slight mx-1">
-                                    <i class="fa fa-facebook-square"></i>
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a class="btn-floating btn-sm rgba-white-slight mx-1">
-                                    <i class="fa fa-twitter-square"></i>
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a class="btn-floating btn-sm rgba-white-slight mx-1">
-                                    <i class="fa fa-instagram"></i>
-                                </a>
-                            </li>
-                            <!--/.Copyright-->
-                        </ul>
-                    </div>
-                </div>
+                             <li class="list-inline-item"><a class="btn-floating btn-sm rgba-white-slight mx-1"><i class="fa fa-facebook-square"></i></a></li>
+                              <li class="list-inline-item"><a class="btn-floating btn-sm rgba-white-slight mx-1"><i class="fa fa-twitter-square"></i></a></li>
+                              <li class="list-inline-item"><a class="btn-floating btn-sm rgba-white-slight mx-1"><i class="fa fa-instagram"></i></a></li>
+                      <!--/.Copyright-->
+                       </ul>
+                 </div>
+                 </div>
 
-
-            </div>
-        </div>
-        </footer>
+               
+                  </div>
+              </div>
+          </div>  
+      </footer>                 
     </div>
-</div>
 
-<environment include="Development">
-    <script src="~/lib/jquery/dist/jquery.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-</environment>
-<environment exclude="Development">
-    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
-            asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
-            asp-fallback-test="window.jQuery"
-            crossorigin="anonymous"
-            integrity="sha384-K+ctZQ+LL8q6tP7I94W+qzQsfRV2a+AfHIi9k8z8l9ggpc8X+Ytst4yBo/hH+8Fk">
-    </script>
-    <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
-            asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
-            asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
-            crossorigin="anonymous"
-            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
-    </script>
-    <script src="~/js/site.min.js" asp-append-version="true"></script>
-</environment>
+    <environment include="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery"
+                crossorigin="anonymous"
+                integrity="sha384-K+ctZQ+LL8q6tP7I94W+qzQsfRV2a+AfHIi9k8z8l9ggpc8X+Ytst4yBo/hH+8Fk">
+        </script>
+        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                crossorigin="anonymous"
+                integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
+        </script>
+        <script src="~/js/site.min.js" asp-append-version="true"></script>
+    </environment>
 
-@RenderSection("Scripts", required: false)
+    @RenderSection("Scripts", required: false)
 </body>
 </html>
