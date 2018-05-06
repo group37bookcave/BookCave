@@ -95,6 +95,17 @@ table
     display: inline-block;
 }
 
+#upload-image{
+    position: left;
+    float:left;
+}
+
+#form-inputs{
+    position: right;
+    float: right;
+    background-color:hotpink;
+}
+
 
 
 

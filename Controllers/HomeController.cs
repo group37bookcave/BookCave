@@ -28,6 +28,12 @@ namespace BookCave.Controllers
 
             return View();
         }
+         public IActionResult RegisterUser()
+        {
+            ViewData["Message"] = "RegisterForAccount";
+
+            return View();
+        }
 
         public IActionResult Error()
         {
