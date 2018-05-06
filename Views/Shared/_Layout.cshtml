@@ -1,9 +1,11 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/css/site.css"/>
     <title>@ViewData["Title"] - BookCave</title>
 
     <environment include="Development">
@@ -17,6 +19,7 @@
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true"/>
     </environment>
 </head>
+
 <body>
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
@@ -41,26 +44,28 @@
                     <a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a>
                 </li>
                 <li>
-                    <a asp-area="" asp-controller="Home" asp-action="WishList">WishList</a>
+                    <a asp-area="" asp-controller="WishList" asp-action="WishList">WishList</a>
+                </li>
+                <li>
+                    <a asp-area="" asp-controller="Product" asp-action="AllProducts">All Products</a>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
-
 <div class="container body-content">
     @RenderBody()
 
-
-    <!--Footer-->
-    <footer class="footer">
-        <hr>
+    <div id="myFooter" class="container">
+        <!--Footer-->
+        <footer class="page-footer font-small stylish-color-dark pt-4 mt-4">
+        <!--Footer Links-->
         <div class="container text-left text-md-left">
-
+            <!-- Footer links -->
             <div class="row text-left text-md-left mt-3 pb-3">
 
                 <!--First column-->
-                <div class="col-md-5 col-lg-3 mx-auto">
+                <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
                     <p>
                         <a href="#!">About Us</a>
                     </p>
@@ -70,11 +75,14 @@
                     <p>
                         <a href="#!">Q&As</a>
                     </p>
-                    <p><a href="#!">Help</a>
+                    <p>
+                        <a href="#!">Help</a>
+                    </p>
                 </div>
 
+
                 <!--Second column-->
-                <div class="col-md-5 col-lg-2 mx-auto">
+                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
                     <p>
                         <a href="#!">Home</a>
                     </p>
@@ -90,7 +98,7 @@
                 </div>
 
                 <!--Third column-->
-                <div class="col-md-5 col-lg-2 mx-auto">
+                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
                     <p>
                         <a href="#!">Top Rated</a>
                     </p>
@@ -106,7 +114,7 @@
                 </div>
 
                 <!--Fourth column-->
-                <div class="col-md-5 col-lg-2 mx-auto">
+                <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
                     <p>
                         <a href="#!">Account Details</a>
                     </p>
@@ -122,18 +130,27 @@
                 </div>
 
                 <!--Fifth column-->
-                <div class="col-md-5 col-lg-3 mx-auto">
+                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
                     <p>Contact Us</p>
                     <p><i class="fa fa-home mr-3"></i> Menntavegur 1, 105 Reykjavik, Iceland</p>
-                    <p><i class="fa fa-envelope mr-3"></i> bookcave@bookcave.com</p>
+                    <p>
+                        <i class="fa fa-envelope mr-3"></i> <a href="mailto:bookcave@bookcave.com">bookcave@bookcave.com</a>
+                    </p>
                     <p><i class="fa fa-phone mr-3"></i> + 354 866 1234</p>
                 </div>
             </div>
+
+            <!-- Footer links -->
             <div class="row py-3 d-flex align-items-center">
+                <!--Grid column-->
+
+                <hr>
                 <div class="container text-left text-md-left">
+
                     <div class="footer-copyright py-3 text-center list-unstyled list-inline">
-                        <hr>
+                        <!--Copyright-->
                         <ul class="list-unstyled list-inline">
+
 
                             <li>© The Book Cave </li>
                             <li>
@@ -142,6 +159,7 @@
                             <li>
                                 <a href="#!">Terms and Conditions</a>
                             </li>
+
                             <li class="list-inline-item">
                                 <a class="btn-floating btn-sm rgba-white-slight mx-1">
                                     <i class="fa fa-facebook-square"></i>
@@ -157,14 +175,17 @@
                                     <i class="fa fa-instagram"></i>
                                 </a>
                             </li>
+                            <!--/.Copyright-->
                         </ul>
                     </div>
                 </div>
+
+
             </div>
         </div>
-    </footer>
+        </footer>
+    </div>
 </div>
-
 
 <environment include="Development">
     <script src="~/lib/jquery/dist/jquery.js"></script>
