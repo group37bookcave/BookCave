@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/css/site.css" />
     <title>@ViewData["Title"] - BookCave</title>
     <link rel="stylesheet" href="~/css/site.css"/>
     <environment include="Development">
-        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css"/>
-        <link rel="stylesheet" href="~/css/site.css"/>
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -325,81 +327,63 @@
                     <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
                         <p>Contact Us</p>
                         <p><i class="fa fa-home mr-3"></i> Menntavegur 1, 105 Reykjavik, Iceland</p>
-                        <p>
-                            <i class="fa fa-envelope mr-3"></i> <a href="mailto:bookcave@bookcave.com">bookcave@bookcave.com</a>
-                        </p>
+                        <p><i class="fa fa-envelope mr-3"></i> <a href="mailto:bookcave@bookcave.com">bookcave@bookcave.com</a></p>
                         <p><i class="fa fa-phone mr-3"></i> + 354 866 1234</p>
                     </div>
-                </div>
-
-                <!-- Footer links -->
-                <div class="row py-3 d-flex align-items-center">
-                    <!--Grid column-->
-
-                    <hr>
-                    <div class="container text-left text-md-left">
-
-                        <div class="footer-copyright py-3 text-center list-unstyled list-inline">
-                            <!--Copyright-->
-                            <ul class="list-unstyled list-inline">
-
-
-                                <li>© The Book Cave </li>
-                                <li>
-                                    <a href="#!">Privacy Policy</a>
-                                </li>
-                                <li>
-                                    <a href="#!">Terms and Conditions</a>
-                                </li>
-
-                                <li class="list-inline-item">
-                                    <a class="btn-floating btn-sm rgba-white-slight mx-1">
-                                        <i class="fa fa-facebook-square"></i>
-                                    </a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <a class="btn-floating btn-sm rgba-white-slight mx-1">
-                                        <i class="fa fa-twitter-square"></i>
-                                    </a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <a class="btn-floating btn-sm rgba-white-slight mx-1">
-                                        <i class="fa fa-instagram"></i>
-                                    </a>
-                                </li>
-                                <!--/.Copyright-->
-                            </ul>
-                        </div>
-                    </div>
-
-
-                </div>
             </div>
-        </footer>
+              
+            <!-- Footer links -->
+            <div class="row py-3 d-flex align-items-center">
+                  <!--Grid column-->
+                  
+ <hr>
+ <div class="container text-left text-md-left">
+     
+                      <div class="footer-copyright py-3 text-center list-unstyled list-inline">
+                      <!--Copyright-->
+                       <ul class="list-unstyled list-inline">
+                            
+                         
+                            <li>© The Book Cave </li>
+                            <li><a href="#!">Privacy Policy</a></li>
+                            <li><a href="#!">Terms and Conditions</a></li>
+
+                             <li class="list-inline-item"><a class="btn-floating btn-sm rgba-white-slight mx-1"><i class="fa fa-facebook-square"></i></a></li>
+                              <li class="list-inline-item"><a class="btn-floating btn-sm rgba-white-slight mx-1"><i class="fa fa-twitter-square"></i></a></li>
+                              <li class="list-inline-item"><a class="btn-floating btn-sm rgba-white-slight mx-1"><i class="fa fa-instagram"></i></a></li>
+                      <!--/.Copyright-->
+                       </ul>
+                 </div>
+                 </div>
+
+               
+                  </div>
+              </div>
+          </div>  
+      </footer>                 
     </div>
-</div>
 
-<environment include="Development">
-    <script src="~/lib/jquery/dist/jquery.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-</environment>
-<environment exclude="Development">
-    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
-            asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
-            asp-fallback-test="window.jQuery"
-            crossorigin="anonymous"
-            integrity="sha384-K+ctZQ+LL8q6tP7I94W+qzQsfRV2a+AfHIi9k8z8l9ggpc8X+Ytst4yBo/hH+8Fk">
-    </script>
-    <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
-            asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
-            asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
-            crossorigin="anonymous"
-            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
-    </script>
-    <script src="~/js/site.min.js" asp-append-version="true"></script>
-</environment>
+    <environment include="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery"
+                crossorigin="anonymous"
+                integrity="sha384-K+ctZQ+LL8q6tP7I94W+qzQsfRV2a+AfHIi9k8z8l9ggpc8X+Ytst4yBo/hH+8Fk">
+        </script>
+        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                crossorigin="anonymous"
+                integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
+        </script>
+        <script src="~/js/site.min.js" asp-append-version="true"></script>
+    </environment>
 
-@RenderSection("Scripts", required: false)
+    @RenderSection("Scripts", required: false)
 </body>
 </html>
