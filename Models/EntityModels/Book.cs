@@ -14,6 +14,8 @@ namespace BookCave.Models.EntityModels
         public DateTime ReleaseDate { get; set; }
         
         public Publisher Publisher { get; set; }
+
+        public Isbn Isbn { get; set; }
         
         public ICollection<BookLanguage> BookLanguages { get; set; }
 
@@ -22,30 +24,6 @@ namespace BookCave.Models.EntityModels
         public ICollection<BookGenre> BookGenres { get; set; }
 
         public ICollection<BookAgeGroup> BookAgeGroups { get; set; }
-    }
-
-    public class Hardcover : Book
-    {
         
     }
-
-    public class Paperback : Book
-    {
-        
-    }
-
-    public class AudioBook : Book
-    {
-        public double? Size { get; set; }
-
-    }
-
-    public class Ebook : Book
-    {
-        public double? Size { get; set; }
-        
-        public ICollection<EbookNarrator> BookNarrators { get; set; }
-
-    }
-        
 }

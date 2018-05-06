@@ -7,5 +7,7 @@
         public string Isbn10 { get; set; }
         
         public string Isbn13 { get; set; }
+        
+        public string Asin { get; set; }
     }
 }

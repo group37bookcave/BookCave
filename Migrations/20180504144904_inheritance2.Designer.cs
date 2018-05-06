@@ -12,7 +12,7 @@ using System;
 namespace BookCave.Migrations
 {
     [DbContext(typeof(StoreContext))]
-    [Migration("20180504041012_inheritance2")]
+    [Migration("20180504144904_inheritance2")]
     partial class inheritance2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -376,11 +376,15 @@ namespace BookCave.Migrations
 
                     b.Property<string>("Description");
 
+                    b.Property<int?>("IsbnId");
+
                     b.Property<int>("Length");
 
                     b.Property<int?>("PublisherId");
 
                     b.Property<DateTime>("ReleaseDate");
+
+                    b.HasIndex("IsbnId");
 
                     b.HasIndex("PublisherId");
 
@@ -615,6 +619,10 @@ namespace BookCave.Migrations
 
             modelBuilder.Entity("BookCave.Models.EntityModels.Book", b =>
                 {
+                    b.HasOne("BookCave.Models.EntityModels.Isbn", "Isbn")
+                        .WithMany()
+                        .HasForeignKey("IsbnId");
+
                     b.HasOne("BookCave.Models.EntityModels.Publisher", "Publisher")
                         .WithMany("Books")
                         .HasForeignKey("PublisherId");
