@@ -7,12 +7,7 @@ namespace BookCave.Repositories
 {
     public class AuthorRepo
     {
-        private StoreContext _db;
-
-        public AuthorRepo()
-        {
-            _db = new StoreContext();
-        }
+        private StoreContext _db = new StoreContext();
 
         public List<Author> GetAllAuthors()
         {

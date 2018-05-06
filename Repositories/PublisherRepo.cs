@@ -7,12 +7,7 @@ namespace BookCave.Repositories
 {
     public class PublisherRepo
     {
-        private StoreContext _db;
-
-        public PublisherRepo()
-        {
-            _db = new StoreContext();
-        }
+        private StoreContext _db = new StoreContext();
 
         public Publisher GetPublisher(int id)
         {

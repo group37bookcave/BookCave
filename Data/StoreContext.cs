@@ -21,7 +21,6 @@ namespace BookCave.Data
         public DbSet<Country> Countries { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Employee> Employees { get; set; }
-        public DbSet<Admin> Admins { get; set; }
         public DbSet<Genre> Genres { get; set; }
         public DbSet<Isbn> Isbns { get; set; }
         public DbSet<ItemOrder> ItemOrders { get; set; }
@@ -34,6 +33,7 @@ namespace BookCave.Data
         public DbSet<PhysicalSheetMusic> PhysicalSheetMusics { get; set; }
         public DbSet<ZipCode> ZipCodes { get; set; }
 
+        
         // The many to many tables.
         public DbSet<BookAgeGroup> BookAgeGroups { get; set; }
         public DbSet<BookAuthor> BookAuthors { get; set; }
@@ -47,7 +47,6 @@ namespace BookCave.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<User>().ToTable("Users");
             modelBuilder.Entity<Product>().ToTable("Products");
             modelBuilder.Entity<Book>().ToTable("Books");
             modelBuilder.Entity<SheetMusic>().ToTable("SheetMusics");
@@ -64,7 +63,7 @@ namespace BookCave.Data
                 .HasOne(ca => ca.Address)
                 .WithMany(c => c.CustomerAddresses)
                 .HasForeignKey(ca => ca.AddressId);
-                        
+                       
             // Configure many to many between Book and AgeGroup.
             modelBuilder.Entity<BookAgeGroup>().HasKey(bag => new {bag.BookId, bag.AgeGroupId});
             

@@ -8,12 +8,7 @@ namespace BookCave.Repositories
     public class GenreRepo
     
     {
-        private StoreContext _db;
-
-        public GenreRepo()
-        {
-            _db = new StoreContext();
-        }
+        private StoreContext _db = new StoreContext();
 
         public Genre GetGenre(int id)
         {

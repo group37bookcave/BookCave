@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore.Storage.Internal;
 using Microsoft.EntityFrameworkCore.ValueGeneration;
 using System;
 
-namespace BookCave.Migrations
+namespace BookCave.Migrations.Store
 {
     [DbContext(typeof(StoreContext))]
-    [Migration("20180506004200_AuthenticationInheritance")]
-    partial class AuthenticationInheritance
+    [Migration("20180506155609_authentication")]
+    partial class authentication
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -172,6 +172,48 @@ namespace BookCave.Migrations
                     b.ToTable("CountryZipCodes");
                 });
 
+            modelBuilder.Entity("BookCave.Models.EntityModels.Customer", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("AccessFailedCount");
+
+                    b.Property<string>("ConcurrencyStamp");
+
+                    b.Property<string>("Email");
+
+                    b.Property<bool>("EmailConfirmed");
+
+                    b.Property<string>("FirstName");
+
+                    b.Property<string>("LastName");
+
+                    b.Property<bool>("LockoutEnabled");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd");
+
+                    b.Property<string>("NormalizedEmail");
+
+                    b.Property<string>("NormalizedUserName");
+
+                    b.Property<string>("PasswordHash");
+
+                    b.Property<string>("PhoneNumber");
+
+                    b.Property<bool>("PhoneNumberConfirmed");
+
+                    b.Property<string>("SecurityStamp");
+
+                    b.Property<bool>("TwoFactorEnabled");
+
+                    b.Property<string>("UserName");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Customers");
+                });
+
             modelBuilder.Entity("BookCave.Models.EntityModels.CustomerAddress", b =>
                 {
                     b.Property<string>("CustomerId");
@@ -183,19 +225,6 @@ namespace BookCave.Migrations
                     b.HasIndex("AddressId");
 
                     b.ToTable("CustomerAddresses");
-                });
-
-            modelBuilder.Entity("BookCave.Models.EntityModels.CustomerOrder", b =>
-                {
-                    b.Property<string>("CustomerId");
-
-                    b.Property<int>("OrderId");
-
-                    b.HasKey("CustomerId", "OrderId");
-
-                    b.HasIndex("OrderId");
-
-                    b.ToTable("CustomerOrders");
                 });
 
             modelBuilder.Entity("BookCave.Models.EntityModels.Genre", b =>
@@ -354,55 +383,6 @@ namespace BookCave.Migrations
                     b.ToTable("SheetMusicComposers");
                 });
 
-            modelBuilder.Entity("BookCave.Models.EntityModels.User", b =>
-                {
-                    b.Property<string>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("AccessFailedCount");
-
-                    b.Property<string>("ConcurrencyStamp");
-
-                    b.Property<string>("Discriminator")
-                        .IsRequired();
-
-                    b.Property<string>("Email");
-
-                    b.Property<bool>("EmailConfirmed");
-
-                    b.Property<string>("FirstName");
-
-                    b.Property<bool>("IsActive");
-
-                    b.Property<string>("Lastname");
-
-                    b.Property<bool>("LockoutEnabled");
-
-                    b.Property<DateTimeOffset?>("LockoutEnd");
-
-                    b.Property<string>("NormalizedEmail");
-
-                    b.Property<string>("NormalizedUserName");
-
-                    b.Property<string>("PasswordHash");
-
-                    b.Property<string>("PhoneNumber");
-
-                    b.Property<bool>("PhoneNumberConfirmed");
-
-                    b.Property<string>("SecurityStamp");
-
-                    b.Property<bool>("TwoFactorEnabled");
-
-                    b.Property<string>("UserName");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Users");
-
-                    b.HasDiscriminator<string>("Discriminator").HasValue("User");
-                });
-
             modelBuilder.Entity("BookCave.Models.EntityModels.ZipCode", b =>
                 {
                     b.Property<int>("Id")
@@ -446,26 +426,6 @@ namespace BookCave.Migrations
                     b.ToTable("SheetMusics");
 
                     b.HasDiscriminator().HasValue("SheetMusic");
-                });
-
-            modelBuilder.Entity("BookCave.Models.EntityModels.Customer", b =>
-                {
-                    b.HasBaseType("BookCave.Models.EntityModels.User");
-
-
-                    b.ToTable("Customer");
-
-                    b.HasDiscriminator().HasValue("Customer");
-                });
-
-            modelBuilder.Entity("BookCave.Models.EntityModels.Employee", b =>
-                {
-                    b.HasBaseType("BookCave.Models.EntityModels.User");
-
-
-                    b.ToTable("Employee");
-
-                    b.HasDiscriminator().HasValue("Employee");
                 });
 
             modelBuilder.Entity("BookCave.Models.EntityModels.AudioBook", b =>
@@ -529,16 +489,6 @@ namespace BookCave.Migrations
                     b.ToTable("PhysicalSheetMusic");
 
                     b.HasDiscriminator().HasValue("PhysicalSheetMusic");
-                });
-
-            modelBuilder.Entity("BookCave.Models.EntityModels.Admin", b =>
-                {
-                    b.HasBaseType("BookCave.Models.EntityModels.Employee");
-
-
-                    b.ToTable("Admin");
-
-                    b.HasDiscriminator().HasValue("Admin");
                 });
 
             modelBuilder.Entity("BookCave.Models.EntityModels.Address", b =>
@@ -640,19 +590,6 @@ namespace BookCave.Migrations
                     b.HasOne("BookCave.Models.EntityModels.Customer", "Customer")
                         .WithMany("CustomerAddresses")
                         .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("BookCave.Models.EntityModels.CustomerOrder", b =>
-                {
-                    b.HasOne("BookCave.Models.EntityModels.Customer", "Customer")
-                        .WithMany()
-                        .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("BookCave.Models.EntityModels.Order", "Order")
-                        .WithMany()
-                        .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

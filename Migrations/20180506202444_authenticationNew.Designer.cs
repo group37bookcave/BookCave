@@ -8,11 +8,11 @@ using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.EntityFrameworkCore.Storage.Internal;
 using System;
 
-namespace BookCave.Migrations.AuthenticationDb
+namespace BookCave.Migrations
 {
     [DbContext(typeof(AuthenticationDbContext))]
-    [Migration("20180506003915_Authentication")]
-    partial class Authentication
+    [Migration("20180506202444_authenticationNew")]
+    partial class authenticationNew
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
