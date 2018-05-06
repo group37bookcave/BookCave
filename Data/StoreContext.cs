@@ -1,5 +1,7 @@
 ﻿using System.Data.Common;
+using BookCave.Models;
 using BookCave.Models.EntityModels;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace BookCave.Data
@@ -7,6 +9,8 @@ namespace BookCave.Data
     public class StoreContext : DbContext
     {
         // The entity tables.
+
+     
         public DbSet<Address> Addresses { get; set; }
         public DbSet<AgeGroup> AgeGroups { get; set; }
         public DbSet<Author> Authors { get; set; }
@@ -14,7 +18,6 @@ namespace BookCave.Data
         public DbSet<Paperback> Paperbacks { get; set; }
         public DbSet<AudioBook> AudioBooks { get; set; }
         public DbSet<Ebook> Ebooks { get; set; }                
-        // public DbSet<BookType> BookTypes { get; set; }
         public DbSet<Country> Countries { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Employee> Employees { get; set; }
@@ -163,5 +166,6 @@ namespace BookCave.Data
                 "Server=tcp:verklegt2.database.windows.net,1433;Initial Catalog=VLN2_2018_H37;Persist Security Info=False;User ID=VLN2_2018_H37_usr;Password=whi+ePig40;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
             );
         }
+       
     }
 }

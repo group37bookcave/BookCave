@@ -8,6 +8,9 @@ namespace BookCave.Repositories
     {
         private StoreContext _db = new StoreContext();
 
-        
+        public CustomerRepo(StoreContext db)
+        {
+            _db = db;
+        }
     }
 }

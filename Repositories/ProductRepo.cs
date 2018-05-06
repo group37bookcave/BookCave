@@ -7,7 +7,12 @@ namespace BookCave.Repositories
 {
     public class ProductRepo
     {
-        private StoreContext _db = new StoreContext();
+        private StoreContext _db;
+
+        public ProductRepo()
+        {
+            _db = new StoreContext();
+        }
 
         public List<Paperback> GetPaperbacksByAuthor(int id)
         {
