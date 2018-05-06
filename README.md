@@ -9,5 +9,10 @@ Andreas John Gustav Estensson </br>
 Birgitta Feldís Bjarkadóttir </br>
 Brynja Dagmar Jakobsdóttir </br>
 Dagný Ósk Gunnarsdóttir </br>
-Ívar Sveinn Loftsson
+Ívar Sveinn Loftsson </br>
+</br>
+Diary templete:</br>
+https://www.overleaf.com/read/zrmyprbbchfs
 
+Final report:</br>
+https://www.overleaf.com/16026046pmdjwnhtqryd
