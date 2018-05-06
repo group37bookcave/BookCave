@@ -1,4 +1,6 @@
-﻿namespace BookCave.Models.EntityModels
+﻿using System;
+
+namespace BookCave.Models.EntityModels
 {
     public abstract class User : ApplicationUser
     {

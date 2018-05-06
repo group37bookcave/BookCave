@@ -42,7 +42,6 @@ namespace BookCave.Data
         public DbSet<BookLanguage> BookLanguages { get; set; }
         public DbSet<AudiobookNarrator> AudioBookNarrators { get; set; }
         public DbSet<CustomerAddress> CustomerAddresses { get; set; }
-        public DbSet<CustomerOrder> CustomerOrders { get; set; }
         public DbSet<CountryZipCode> CountryZipCodes { get; set; }
         
 
@@ -65,9 +64,7 @@ namespace BookCave.Data
                 .HasOne(ca => ca.Address)
                 .WithMany(c => c.CustomerAddresses)
                 .HasForeignKey(ca => ca.AddressId);
-            
-            modelBuilder.Entity<CustomerOrder>().HasKey(co => new {co.CustomerId, co.OrderId});
-            
+                        
             // Configure many to many between Book and AgeGroup.
             modelBuilder.Entity<BookAgeGroup>().HasKey(bag => new {bag.BookId, bag.AgeGroupId});
             
