@@ -58,27 +58,24 @@ ul {
     padding-left: 0;
 }​
 
-table 
-{
+table {
     border-collapse: collapse;
     border-spacing:0;
     width:100%;
     border: 1px solid;
 }
 
-.book-cave-color{
+.book-cave-color {
     color:rgb(105,202,202);
 }
 
-.button-options > button
-{
+.button-options > button {
     margin-bottom: 10px;
     width: 120px;
    
 }
 
-#green-buttons > button
-{
+#green-buttons > button {
     color: white;
     background-color: rgb(105,202,202);
     margin-bottom: 10px;
@@ -86,29 +83,24 @@ table
 }
 
 
-.stars{
+.stars {
     color: rgb(252, 202, 68);
 }
 
 
-.all-products-header{
+.all-products-header {
     display: inline-block;
 }
 
-#upload-image{
+#upload-image {
     position: left;
     float:left;
 }
 
-#form-inputs{
+#form-inputs {
     position: right;
     float: right;
     background-color:hotpink;
-}
-
-
-a {
-    color: white;
 }
 
 /* BRYNJA DAGMAR JAKOBSD */
@@ -117,15 +109,47 @@ ul {
 }
 
 #browse-hidden {
-    display: none !important;
+    display: none;
+    border-top: 1px solid rgb(105,202,202);
+    border-bottom: 1px solid rgb(105,202,202);
 }
 
 #best-sellers-hidden {
-    display: none !important;
+    display: none;
+    border-top: 1px solid rgb(105,202,202);
+    border-bottom: 1px solid rgb(105,202,202);
 }
 
-#search-input-bar {
-    top: 65px;
+div.container {
+    margin-bottom: 10px;
+}
+
+#corner-up-right > li.dropdown > a, #corner-up-right > li > a > span {
+    color: black;
+}
+
+nav#navbar {
+    border: none;
+    background-color: white;
+}
+
+#bla {
+    border-top: 1px solid rgb(211,211,211);
+    border-bottom: 1px solid rgb(105,202,202);
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+#bla > ul.nav > li > a {
+    color: black;
+}
+
+#bla > ul.nav > li > a:hover {
+    background-color: rgb(105,202,202);
+}
+
+.input-group {
+    top: 50px;
 }
 
 @media only screen and (min-width: 600px){
@@ -134,15 +158,15 @@ ul {
     }
     
 }
-a {
-    color: white;
-}
+
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
 }
+
+/*rgb(238,238,238);*/
 
 /* Carousel */
 .carousel-caption p {

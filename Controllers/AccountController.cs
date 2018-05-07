@@ -20,7 +20,7 @@ namespace BookCave.Controllers
         }
 
         [HttpGet]
-        public IActionResult Register()
+        public IActionResult RegisterUser()
         {
             return View();
         }
