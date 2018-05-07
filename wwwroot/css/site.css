@@ -5,7 +5,7 @@
 }
 
 body {
-    padding-top: 50px;
+    padding-top: 155px;
     padding-bottom: 20px;    
 }
 
@@ -38,19 +38,6 @@ footer a{
     width: 100%;
 }
 
-/* QR code generator */
-#qrCode {
-    margin: 15px;
-}
-
-/* Hide/rearrange for smaller screens */
-@media screen and (max-width: 767px) {
-    /* Hide captions */
-    .carousel-caption {
-        display: none;
-    }
-}
-
 /* Pages styles */
 
 ul {
@@ -66,18 +53,33 @@ table
     border: 1px solid;
 }
 
+td{
+    padding: 10px;
+    
+}
+
+tfoot > tr{
+    text-align: center;
+    border-top: solid;
+    border-width: 1px;
+    border-color:rgb(238, 238,238);
+}
+
+#order-num{
+    margin-left: 430px;
+}
+
+#print-receipt{
+    margin-top: 30px;
+    margin-left: 650px;
+}
+
 .book-cave-color{
     color:rgb(105,202,202);
 }
 
-.button-options > button
-{
-    margin-bottom: 10px;
-    width: 120px;
-   
-}
 
-#green-buttons > button
+.green-buttons > button
 {
     color: white;
     background-color: rgb(105,202,202);
@@ -85,14 +87,23 @@ table
     width: 120px;
 }
 
-
-.stars{
-    color: rgb(252, 202, 68);
+.grey-buttons > button{
+    color: black;
+    background-color:rgb(240,240,240);
+    margin-bottom: 10px;
+    width: 120px;
 }
 
 
-.all-products-header{
-    display: inline-block;
+.button-options > button
+{
+    margin-bottom: 10px;
+    width: 120px;  
+}
+
+
+.stars{
+    color: rgb(252, 202, 68);
 }
 
 #upload-image{
@@ -106,15 +117,25 @@ table
     background-color:hotpink;
 }
 
+.page-header > h1{
+    display: inline;
+    
+}
 
-a {
-    color: white;
+#sort-by{
+    width: 150px;
+    margin-left: 20px;
+}
+
+.filter-and-sort{
+    margin-left: 300px;
+}
+
+.inline-block{
+    display: inline-block;
 }
 
 /* BRYNJA DAGMAR JAKOBSD */
-ul {
-    list-style-type: none;
-}
 
 #browse-hidden {
     display: none !important;
@@ -134,27 +155,6 @@ ul {
     }
     
 }
-a {
-    color: white;
-}
-/* Wrapping element */
-/* Set some basic padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
-}
-
-/* Carousel */
-.carousel-caption p {
-    font-size: 20px;
-    line-height: 1.4;
-}
-
-/* Make .svg files in the carousel display properly in older browsers */
-.carousel-inner .item img[src$=".svg"] {
-    width: 100%;
-}
-
 
 /* Hide/rearrange for smaller screens */
 @media screen and (max-width: 767px) {

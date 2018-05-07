@@ -103,7 +103,7 @@
             <a asp-area="" asp-controller="Home" asp-action="Contact">New Releases</a>
         </li>
         <li>
-            <a asp-area="" asp-controller="Home" asp-action="Contact">Top Rated</a>
+            <a asp-area="" asp-controller="Product" asp-action="AllProducts">Top Rated</a>
         </li>
     </ul>
 </div>
@@ -115,7 +115,7 @@
                     <strong>Top Categories</strong>
                 </li>
                 <li>
-                    <a asp-area="" asp-controller="Home" asp-action="BestSellers">All Products</a>
+                    <a asp-area="" asp-controller="Product" asp-action="AllProducts">All Products</a>
                 </li>
                 <li>
                     <a asp-area="" asp-controller="Home" asp-action="Contact">Audio Books</a>
@@ -281,7 +281,7 @@
                             <a href="#!">Home</a>
                         </p>
                         <p>
-                            <a href="#!">Browse</a>
+                            <a asp-area="" asp-controller="Customer" asp-action="Receipt">Receipt</a>
                         </p>
                         <p>
                             <a href="#!">Best Sellers</a>
