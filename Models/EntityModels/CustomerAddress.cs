@@ -9,6 +9,5 @@
         public int AddressId { get; set; }
 
         public Address Address { get; set; }
-        
     }
 }
