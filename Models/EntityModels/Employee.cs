@@ -1,7 +1,7 @@
 ﻿namespace BookCave.Models.EntityModels
 {
-    public class Employee : User
+    public class Employee
     {
-        
+        public int Id { get; set; }
     }
 }

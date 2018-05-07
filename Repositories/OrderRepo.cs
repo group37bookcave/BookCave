@@ -23,5 +23,9 @@ namespace BookCave.Repositories
             return (from o in _db.Orders
                 select o).ToList();
         }
+        public void AddOrder(int customerId, OrderInputModel order)
+        {
+            
+        }
     }
 }

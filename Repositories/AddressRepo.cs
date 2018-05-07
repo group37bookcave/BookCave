@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+
 using System.Linq;
 using BookCave.Data;
 using BookCave.Models.EntityModels;
@@ -8,6 +9,7 @@ namespace BookCave.Repositories
     public class AddressRepo
     {
         private StoreContext _db = new StoreContext();
+      
         public List<Address> GetAdressesByCustomerId(int id)
         {
             var adresses = (from ca in _db.CustomerAddresses

@@ -8,6 +8,8 @@ namespace BookCave.Models.EntityModels
 
         public string Zip { get; set; }
 
+        public string City { get; set; }
+
         public ICollection<CountryZipCode> CountryZipCodes { get; set; }
     }
 }
