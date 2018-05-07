@@ -76,7 +76,8 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="#" role="button" aria-expanded="false">
+                     
+                    <a asp-controller="ShoppingCart" asp-action="ShoppingCart" role="button" aria-expanded="false">
                         <span class="glyphicon glyphicon-shopping-cart"></span><span> 0 Items</span>
                     </a>
                 </li>
@@ -90,20 +91,20 @@
             <a asp-area="" asp-controller="Home" asp-action="Index">Home</a>
         </li>
         <li>
-            <a href="#">
-                <span>Browse </span><span class="fa fa-chevron-down"></span>
+            <a asp-area="" asp-controller="Product" asp-action="AllProducts">
+                <span>All Products </span><span class="fa fa-chevron-down"></span>
             </a>
         </li>
         <li>
-            <a href="#">
+            <a asp-area="" asp-controller="Product" asp-action="BestSellers">
                 <span>Best Sellers </span><span class="fa fa-chevron-down"></span>
             </a>
         </li>
         <li>
-            <a asp-area="" asp-controller="Home" asp-action="Contact">New Releases</a>
+            <a asp-area="" asp-controller="Product" asp-action="NewReleases">New Releases</a>
         </li>
         <li>
-            <a asp-area="" asp-controller="Product" asp-action="AllProducts">Top Rated</a>
+            <a asp-area="" asp-controller="Product" asp-action="TopRated">Top Rated</a>
         </li>
     </ul>
 </div>
@@ -278,23 +279,24 @@
             <!--Second column-->
             <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
                 <p>
-                    <a href="#!">Home</a>
+                    <a asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                </p>
                 </p>
                 <p>
-                    <a href="#!">Browse</a>
+                    <a asp-area="" asp-controller="Product" asp-action="AllProducts">All Products</a>
                 </p>
                 <p>
-                    <a href="#!">Best Sellers</a>
+                   <a asp-area="" asp-controller="Product" asp-action="BestSellers">Best Sellers</a>
                 </p>
                 <p>
-                    <a href="#!">New Releases</a>
+                   <a asp-area="" asp-controller="Product" asp-action="NewReleases">New Releases</a>
                 </p>
             </div>
 
             <!--Third column-->
             <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
                 <p>
-                    <a href="#!">Top Rated</a>
+                    <a asp-area="" asp-controller="Product" asp-action="TopRated">Top Rated</a>
                 </p>
                 <p>
                     <a href="#!">Shipping</a>
@@ -310,13 +312,13 @@
             <!--Fourth column-->
             <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
                 <p>
-                    <a href="#!">Account Details</a>
+                    <a asp-area="" asp-controller="Customer" asp-action="AccountDetails">Account Details</a>
                 </p>
                 <p>
-                    <a href="#!">Order History</a>
+                     <a asp-area="" asp-controller="Customer" asp-action="OrderHistory">Order History</a>
                 </p>
                 <p>
-                    <a href="#!">Wish List</a>
+                   <a asp-area="" asp-controller="WishList" asp-action="WishList">WishList</a>
                 </p>
                 <p>
                     <a href="#!">Sign Out</a>

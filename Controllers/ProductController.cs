@@ -14,5 +14,20 @@ namespace BookCave.Controllers
         {
             return View();
         }
+
+        public IActionResult NewReleases()
+        {
+            return View();
+        }
+
+        public IActionResult TopRated()
+        {
+            return View();
+        }
+
+         public IActionResult BestSellers()
+        {
+            return View();
+        }
     }
 }

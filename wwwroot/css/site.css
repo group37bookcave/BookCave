@@ -7,10 +7,10 @@
 body {
     padding-top: 155px;
     padding-bottom: 0;    
-
 }
 
 footer{
+    margin-bottom: 0;
     position: sticky;
     padding: 30px;
     background-color:rgb(105,202,202);
@@ -151,12 +151,6 @@ tfoot > tr{
     top: 65px;
 }
 
-@media only screen and (min-width: 600px){
-    footer{
-        
-    }
-    
-}
 
 /* Hide/rearrange for smaller screens */
 @media screen and (max-width: 767px) {
