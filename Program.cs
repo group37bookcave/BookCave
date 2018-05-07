@@ -30,32 +30,6 @@ namespace BookCave
         {
             var db = new StoreContext();
 
-            if (!db.Admins.Any())
-            {
-                var admin = new Admin
-                {
-                    Email = "andreas.estensson@gmail.com",
-                    IsActive = true,
-                    Name = "Andreas Estensson",
-                    Password = "hej"
-                };
-                db.Add(admin);
-                db.SaveChanges();
-            }
-
-            if (!db.Customers.Any())
-            {
-                var cust = new Customer
-                {
-                    Email = "asas@sns.com",
-                    Name = "John Doe",
-                    Password = "JaneDoe",
-                    IsActive = true
-                };
-                db.Add(cust);
-                db.SaveChanges();
-            }
-
             if (!db.Authors.Any())
             {
                 var hardcover_hp5 = new Hardcover
