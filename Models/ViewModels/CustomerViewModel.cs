@@ -9,5 +9,6 @@ namespace BookCave.Models.ViewModels
         public string PhoneNumber { get; set; }
         public List<AddressViewModel> Adresses { get; set; }
         public List<OrderViewModel> Orders { get; set; }
+        public int Id { get; set; }
     }
 }

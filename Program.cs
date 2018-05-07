@@ -30,6 +30,19 @@ namespace BookCave
         {
             var db = new StoreContext();
 
+            if (!db.Countries.Any())
+            {
+                var countries = new List<Country>
+                {
+                    new Country {Name = "Sweden"},
+                    new Country {Name = "Iceland"},
+                    new Country {Name = "Denmark"},
+                    new Country {Name = "Norway"}
+                };
+                db.Countries.AddRange(countries);
+                db.SaveChanges();
+            }
+
             if (!db.Authors.Any())
             {
                 var hardcover_hp5 = new Hardcover
@@ -42,42 +55,43 @@ namespace BookCave
                     ReleaseDate = new DateTime(2003, 06, 21),
                     Price = 17.99,
                 };
-                
+
                 var paperback_hp5 = new Paperback
                 {
                     Name = "Harry Potter and the Order of the Phoenix",
-                    Description = "Dark times have come to Hogwarts. After the Dementors’ attack on his cousin Dudley, Harry Potter knows that Voldemort will stop at nothing to find him. There are many who deny the Dark Lord’s return, but Harry is not alone: a secret Order gathers at Grimmauld Place to fight against the Dark forces. Harry must allow Professor Snape to teach him how to protect himself from Voldemort’s savage assaults on his mind. But they are growing stronger by the day and Harry is running out of time.",
+                    Description =
+                        "Dark times have come to Hogwarts. After the Dementors’ attack on his cousin Dudley, Harry Potter knows that Voldemort will stop at nothing to find him. There are many who deny the Dark Lord’s return, but Harry is not alone: a secret Order gathers at Grimmauld Place to fight against the Dark forces. Harry must allow Professor Snape to teach him how to protect himself from Voldemort’s savage assaults on his mind. But they are growing stronger by the day and Harry is running out of time.",
                     Image = "https://hpmedia.bloomsbury.com/rep/s/9781408855690_309036.jpeg",
                     Publisher = {Name = "Bloomsbury Publishing"},
                     Length = 816,
                     ReleaseDate = new DateTime(2014, 09, 01),
                     Price = 9.45,
                 };
-               
-                
+
+
                 var author = new Author {FirstName = "J.K", LastName = "Rowling"};
                 hardcover_hp5.BookAuthors = new List<BookAuthor>
                 {
                     new BookAuthor {Author = author, Book = hardcover_hp5}
                 };
-                
+
                 paperback_hp5.BookAuthors = new List<BookAuthor>
                 {
                     new BookAuthor {Author = author, Book = paperback_hp5}
                 };
-                
+
                 hardcover_hp5.BookGenres = new List<BookGenre>
                 {
                     new BookGenre {Book = hardcover_hp5, Genre = new Genre {Name = "Fantasy"}},
                     new BookGenre {Book = hardcover_hp5, Genre = new Genre {Name = "Children"}}
                 };
-                
+
                 paperback_hp5.BookGenres = new List<BookGenre>
                 {
                     new BookGenre {Book = paperback_hp5, Genre = new Genre {Name = "Fantasy"}},
                     new BookGenre {Book = paperback_hp5, Genre = new Genre {Name = "Children"}}
                 };
-                
+
                 db.Hardcovers.Add(hardcover_hp5);
                 db.SaveChanges();
                 db.Paperbacks.Add(paperback_hp5);

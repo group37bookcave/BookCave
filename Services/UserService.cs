@@ -7,11 +7,13 @@ namespace BookCave.Services
     {
         private CustomerRepo _cr = new CustomerRepo();
         private AddressRepo _ar = new AddressRepo();
+        private OrderRepo _or = new OrderRepo();
     
         public CustomerViewModel GetCustomer(int id)
         {
             var customer = _cr.GetCustomer(id);
-            var addresses = _ar.GetAddresses(id);
+            var addresses = _cr.GetAddresses(id);
+
             var model = new CustomerViewModel
             {
                 Email = customer.Email,
@@ -22,19 +24,24 @@ namespace BookCave.Services
                 model.Adresses.Add(new AddressViewModel
                 {
                     Street = address.Street,
-                    City = address.City,
+                    City = address.ZipCode.City,
                     Country = address.Country.Name,
-                    Zipcode = address.ZipCode.Zip
+                    Zipcode = address.ZipCode.Zip,
+                    CountryId = address.Country.Id,
+                    AddressId = address.Id
                 });
             }
-
             return model;
         }
+        
+        
 
         public void AddCustomer(CustomerInputModel model)
         {
             _cr.AddCustomer(model);
         }
+        
+        
         
     }
 }

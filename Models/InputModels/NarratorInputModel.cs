@@ -1,11 +1,10 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace BookCave.Services
+namespace BookCave.Models.InputModels
 {
     public class NarratorInputModel
     {
         [Required] public string FirstName { get; set; }
         [Required] public string LastName { get; set; }
-        public int BookId { get; set; }
     }
 }
