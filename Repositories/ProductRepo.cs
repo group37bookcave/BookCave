@@ -15,6 +15,12 @@ namespace BookCave.Repositories
             var product = from p in _db.Products where p.Id == id select p;
             return product.SingleOrDefault();
         }
+        
+        public List<Product> GetAllProducts()
+        {
+            var list = from p in _db.Products select p;
+            return list.ToList();
+        }
 
         public List<Book> GetAllBooks()
         {
@@ -31,13 +37,7 @@ namespace BookCave.Repositories
             return books.ToList();
         }
 
-        public List<Product> GetAllProducts()
-        {
-            var list = from p in _db.Products select p;
-            return list.ToList();
-        }
-
-        public List<Author> GetAuthorByBookId(int id)
+        public List<Author> GetAuthorsByBookId(int id)
         {
             var authors = from a in _db.Authors
                 join b in _db.BookAuthors on a.Id equals b.AuthorId
