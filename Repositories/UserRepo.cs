@@ -7,7 +7,7 @@ namespace BookCave.Repositories
 {
     public class UserRepo
     {
-        private StoreContext _db = new StoreContext();
+        private readonly StoreContext _db = new StoreContext();
 
         public Employee GetEmployee(int id)
         {
@@ -18,14 +18,6 @@ namespace BookCave.Repositories
         {
             return (from c in _db.Customers where c.Id == id select c).FirstOrDefault();
         }
-
-        public List<Address> GetAddresses(int id)
-        {
-            var adresses = (from ca in _db.CustomerAddresses
-                join a in _db.Addresses on ca.AddressId equals a.Id
-                where ca.CustomerId == id
-                select a).ToList();
-            return adresses;
-        }
+       
     }
 }

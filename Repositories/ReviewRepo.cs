@@ -10,9 +10,9 @@ namespace BookCave.Repositories
 {
     public class ReviewRepo
     {
-        private StoreContext _db = new StoreContext();
-        private UserRepo _ur = new UserRepo();
-        private ProductRepo _pr = new ProductRepo();
+        private readonly StoreContext _db = new StoreContext();
+        private readonly UserRepo _ur = new UserRepo();
+        private readonly ProductRepo _pr = new ProductRepo();
 
         public List<Review> GetReviewsByCustomerId(int id)
         {
