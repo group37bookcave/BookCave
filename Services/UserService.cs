@@ -6,13 +6,13 @@ namespace BookCave.Services
     public class UserService
     {
         private CustomerRepo _cr = new CustomerRepo();
-        private AddressRepo _ar = new AddressRepo();
         private OrderRepo _or = new OrderRepo();
     
         public CustomerViewModel GetCustomer(int id)
         {
             var customer = _cr.GetCustomer(id);
             var addresses = _cr.GetAddresses(id);
+
             var model = new CustomerViewModel
             {
                 Email = customer.Email,
