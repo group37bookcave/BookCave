@@ -7,10 +7,10 @@ namespace BookCave.Services
     {
         private CustomerRepo _cr = new CustomerRepo();
         private AddressRepo _ar = new AddressRepo();
-
-        public CustomerViewModel GetCustomer(string email)
+    
+        public CustomerViewModel GetCustomer(int id)
         {
-            var customer = _cr.GetCustomer(email);
+            var customer = _cr.GetCustomer(id);
             var addresses = _ar.GetAddresses(customer);
             var model = new CustomerViewModel
             {
@@ -35,5 +35,6 @@ namespace BookCave.Services
         {
             _cr.AddCustomer(model);
         }
+        
     }
 }

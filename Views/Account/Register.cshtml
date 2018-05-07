@@ -1,4 +1,4 @@
-﻿@model object
+﻿@model BookCave.Models.InputModels.RegisterInputModel
 
 @{
     ViewBag.Title = "title";
@@ -6,3 +6,12 @@
 }
 
 <h2>title</h2>
+<div>
+    <fieldset>
+        <form method="post">
+            <label asp-for="Email">Email: </label><input type="email" asp-controller="Account" asp-action="Register"/>
+            <label asp-for="FirstName">First name: </label><input type="text" asp-controller="Account" asp-action="Register"/>
+            <label asp-for="LastName">Last name:</label>
+        </form>
+    </fieldset>
+</div>
