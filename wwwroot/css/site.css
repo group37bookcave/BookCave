@@ -53,23 +53,52 @@ table
     border: 1px solid;
 }
 
+td{
+    padding: 10px;
+    
+}
+
+tfoot > tr{
+    text-align: center;
+    border-top: solid;
+    border-width: 1px;
+    border-color:rgb(238, 238,238);
+}
+
+#order-num{
+    margin-left: 430px;
+}
+
+#print-receipt{
+    margin-top: 30px;
+    margin-left: 650px;
+}
+
 .book-cave-color{
     color:rgb(105,202,202);
 }
 
-.button-options > button
-{
-    margin-bottom: 10px;
-    width: 120px;
-   
-}
 
-#green-buttons > button
+.green-buttons > button
 {
     color: white;
     background-color: rgb(105,202,202);
     margin-bottom: 10px;
     width: 120px;
+}
+
+.grey-buttons > button{
+    color: black;
+    background-color:rgb(240,240,240);
+    margin-bottom: 10px;
+    width: 120px;
+}
+
+
+.button-options > button
+{
+    margin-bottom: 10px;
+    width: 120px;  
 }
 
 
