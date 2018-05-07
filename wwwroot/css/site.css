@@ -91,13 +91,15 @@ tfoot > tr{
     color: black;
     background-color:rgb(240,240,240);
     margin-bottom: 10px;
-    width: 120px;
+    width: 135px;
 }
 
 .button-options > button
 {
+    float:right;
+    margin-right: 10px;
     margin-bottom: 10px;
-    width: 120px;  
+    width: 140px;  
 }
 
 .stars{
