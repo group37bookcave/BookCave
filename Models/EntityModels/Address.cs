@@ -14,7 +14,10 @@ namespace BookCave.Models.EntityModels
         public string City { get; set; }
 
         public Country Country { get; set; }
+        
+        public ICollection<Order> Orders { get; set; }
 
         public ICollection<CustomerAddress> CustomerAddresses { get; set; }
+
     }
 }

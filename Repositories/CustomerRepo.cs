@@ -10,6 +10,7 @@ namespace BookCave.Repositories
 {
     public class CustomerRepo
     {
+        
         private StoreContext _db = new StoreContext();
 
         public void AddCustomer(CustomerInputModel user)
@@ -24,9 +25,9 @@ namespace BookCave.Repositories
             _db.SaveChanges();
         }
 
-        public Customer GetCustomer(string email)
+        public Customer GetCustomer(int id)
         {
-            var customer = from c in _db.Customers where c.Email.Equals(email) select c;
+            var customer = from c in _db.Customers where c.Id == id select c;
             return customer.FirstOrDefault();
         }
         

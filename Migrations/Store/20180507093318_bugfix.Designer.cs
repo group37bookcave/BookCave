@@ -12,9 +12,10 @@ using System;
 namespace BookCave.Migrations.Store
 {
     [DbContext(typeof(StoreContext))]
-    partial class StoreContextModelSnapshot : ModelSnapshot
+    [Migration("20180507093318_bugfix")]
+    partial class bugfix
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -175,33 +176,18 @@ namespace BookCave.Migrations.Store
                     b.ToTable("CountryZipCodes");
                 });
 
-            modelBuilder.Entity("BookCave.Models.EntityModels.Customer", b =>
+            modelBuilder.Entity("BookCave.Models.EntityModels.CustomerAddress", b =>
                 {
-                    b.Property<string>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Email");
-
-                    b.Property<string>("FirstName");
-
-                    b.Property<string>("LastName");
+                    b.Property<int?>("AddressId");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Customers");
-                });
-
-            modelBuilder.Entity("BookCave.Models.EntityModels.CustomerAddress", b =>
-                {
-                    b.Property<string>("CustomerId");
-
-                    b.Property<int>("AddressId");
-
-                    b.HasKey("CustomerId", "AddressId");
-
                     b.HasIndex("AddressId");
 
-                    b.ToTable("CustomerAddresses");
+                    b.ToTable("CustomerAddress");
                 });
 
             modelBuilder.Entity("BookCave.Models.EntityModels.Employee", b =>
@@ -242,26 +228,6 @@ namespace BookCave.Migrations.Store
                     b.ToTable("Isbns");
                 });
 
-            modelBuilder.Entity("BookCave.Models.EntityModels.ItemOrder", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int?>("OrderId");
-
-                    b.Property<int?>("ProductId");
-
-                    b.Property<int>("Quantity");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("OrderId");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("ItemOrders");
-                });
-
             modelBuilder.Entity("BookCave.Models.EntityModels.Language", b =>
                 {
                     b.Property<int>("Id")
@@ -288,28 +254,6 @@ namespace BookCave.Migrations.Store
                     b.ToTable("Narrators");
                 });
 
-            modelBuilder.Entity("BookCave.Models.EntityModels.Order", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int?>("AddressId");
-
-                    b.Property<string>("CustomerId");
-
-                    b.Property<int?>("PromoCodeId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AddressId");
-
-                    b.HasIndex("CustomerId");
-
-                    b.HasIndex("PromoCodeId");
-
-                    b.ToTable("Orders");
-                });
-
             modelBuilder.Entity("BookCave.Models.EntityModels.Product", b =>
                 {
                     b.Property<int>("Id")
@@ -329,24 +273,6 @@ namespace BookCave.Migrations.Store
                     b.ToTable("Products");
 
                     b.HasDiscriminator<string>("Discriminator").HasValue("Product");
-                });
-
-            modelBuilder.Entity("BookCave.Models.EntityModels.PromoCode", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<DateTime>("EndDate");
-
-                    b.Property<string>("Name");
-
-                    b.Property<double>("Rate");
-
-                    b.Property<DateTime>("StartDate");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("PromoCodes");
                 });
 
             modelBuilder.Entity("BookCave.Models.EntityModels.Publisher", b =>
@@ -575,41 +501,9 @@ namespace BookCave.Migrations.Store
 
             modelBuilder.Entity("BookCave.Models.EntityModels.CustomerAddress", b =>
                 {
-                    b.HasOne("BookCave.Models.EntityModels.Address", "Address")
+                    b.HasOne("BookCave.Models.EntityModels.Address")
                         .WithMany("CustomerAddresses")
-                        .HasForeignKey("AddressId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("BookCave.Models.EntityModels.Customer", "Customer")
-                        .WithMany("CustomerAddresses")
-                        .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("BookCave.Models.EntityModels.ItemOrder", b =>
-                {
-                    b.HasOne("BookCave.Models.EntityModels.Order", "Order")
-                        .WithMany("ItemOrders")
-                        .HasForeignKey("OrderId");
-
-                    b.HasOne("BookCave.Models.EntityModels.Product", "Product")
-                        .WithMany()
-                        .HasForeignKey("ProductId");
-                });
-
-            modelBuilder.Entity("BookCave.Models.EntityModels.Order", b =>
-                {
-                    b.HasOne("BookCave.Models.EntityModels.Address", "Address")
-                        .WithMany("Orders")
                         .HasForeignKey("AddressId");
-
-                    b.HasOne("BookCave.Models.EntityModels.Customer", "Customer")
-                        .WithMany("Orders")
-                        .HasForeignKey("CustomerId");
-
-                    b.HasOne("BookCave.Models.EntityModels.PromoCode", "PromoCode")
-                        .WithMany("Orders")
-                        .HasForeignKey("PromoCodeId");
                 });
 
             modelBuilder.Entity("BookCave.Models.EntityModels.SheetMusicComposer", b =>
