@@ -21,6 +21,14 @@ namespace BookCave.Migrations.Store
                 name: "Id",
                 table: "CustomerAddress");
 
+            migrationBuilder.DropColumn(
+                name: "CountryCode",
+                table: "Countries");
+
+            migrationBuilder.DropColumn(
+                name: "City",
+                table: "Addresses");
+
             migrationBuilder.RenameTable(
                 name: "CustomerAddress",
                 newName: "CustomerAddresses");
@@ -37,11 +45,11 @@ namespace BookCave.Migrations.Store
                 oldClrType: typeof(int),
                 oldNullable: true);
 
-            migrationBuilder.AddColumn<string>(
+            migrationBuilder.AddColumn<int>(
                 name: "CustomerId",
                 table: "CustomerAddresses",
                 nullable: false,
-                defaultValue: "");
+                defaultValue: 0);
 
             migrationBuilder.AddPrimaryKey(
                 name: "PK_CustomerAddresses",
@@ -52,7 +60,8 @@ namespace BookCave.Migrations.Store
                 name: "Customers",
                 columns: table => new
                 {
-                    Id = table.Column<string>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Email = table.Column<string>(nullable: true),
                     FirstName = table.Column<string>(nullable: true),
                     LastName = table.Column<string>(nullable: true)
@@ -85,7 +94,7 @@ namespace BookCave.Migrations.Store
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     AddressId = table.Column<int>(nullable: true),
-                    CustomerId = table.Column<string>(nullable: true),
+                    CustomerId = table.Column<int>(nullable: true),
                     PromoCodeId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
@@ -231,6 +240,16 @@ namespace BookCave.Migrations.Store
                 nullable: false,
                 defaultValue: 0)
                 .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            migrationBuilder.AddColumn<string>(
+                name: "CountryCode",
+                table: "Countries",
+                nullable: true);
+
+            migrationBuilder.AddColumn<string>(
+                name: "City",
+                table: "Addresses",
+                nullable: true);
 
             migrationBuilder.AddPrimaryKey(
                 name: "PK_CustomerAddress",
