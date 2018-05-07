@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
+
 using System.Linq;
 using BookCave.Data;
 using BookCave.Models.EntityModels;
@@ -9,14 +10,13 @@ namespace BookCave.Repositories
     {
         private StoreContext _db = new StoreContext();
 
-        public List<Address> GetAddresses(Customer customer)
+        public List<Address> GetAddresses(int id)
         {
-            var addresses = from a in _db.Addresses
-                join c in _db.CustomerAddresses on a.Id equals c.AddressId
-                where c.CustomerId == customer.Id
-                select a;
-            return addresses.ToList();
+            var adresses = (from ca in _db.CustomerAddresses
+                join a in _db.Addresses on ca.AddressId equals a.Id
+                where ca.CustomerId == id
+                select a).ToList();
+                return adresses;
         }
-       
     }
 }

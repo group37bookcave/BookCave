@@ -11,7 +11,7 @@ namespace BookCave.Services
         public CustomerViewModel GetCustomer(int id)
         {
             var customer = _cr.GetCustomer(id);
-            var addresses = _ar.GetAddresses(customer);
+            var addresses = _ar.GetAddresses(id);
             var model = new CustomerViewModel
             {
                 Email = customer.Email,
