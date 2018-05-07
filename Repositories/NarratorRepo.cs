@@ -1,7 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using BookCave.Data;
+using BookCave.Models;
 using BookCave.Models.EntityModels;
+using BookCave.Models.InputModels;
 
 namespace BookCave.Repositories
 {
