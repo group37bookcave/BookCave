@@ -12,9 +12,10 @@ using System;
 namespace BookCave.Migrations.Store
 {
     [DbContext(typeof(StoreContext))]
-    partial class StoreContextModelSnapshot : ModelSnapshot
+    [Migration("20180507113406_2.0")]
+    partial class _20
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -402,7 +403,7 @@ namespace BookCave.Migrations.Store
 
                     b.HasIndex("PublisherId");
 
-                    b.ToTable("Book");
+                    b.ToTable("Books");
 
                     b.HasDiscriminator().HasValue("Book");
                 });
@@ -412,20 +413,20 @@ namespace BookCave.Migrations.Store
                     b.HasBaseType("BookCave.Models.EntityModels.Product");
 
 
-                    b.ToTable("SheetMusic");
+                    b.ToTable("SheetMusics");
 
                     b.HasDiscriminator().HasValue("SheetMusic");
                 });
 
-            modelBuilder.Entity("BookCave.Models.EntityModels.Audiobook", b =>
+            modelBuilder.Entity("BookCave.Models.EntityModels.AudioBook", b =>
                 {
                     b.HasBaseType("BookCave.Models.EntityModels.Book");
 
                     b.Property<double?>("Size");
 
-                    b.ToTable("Audiobook");
+                    b.ToTable("AudioBook");
 
-                    b.HasDiscriminator().HasValue("Audiobook");
+                    b.HasDiscriminator().HasValue("AudioBook");
                 });
 
             modelBuilder.Entity("BookCave.Models.EntityModels.Ebook", b =>
@@ -493,7 +494,7 @@ namespace BookCave.Migrations.Store
 
             modelBuilder.Entity("BookCave.Models.EntityModels.AudiobookNarrator", b =>
                 {
-                    b.HasOne("BookCave.Models.EntityModels.Audiobook", "Book")
+                    b.HasOne("BookCave.Models.EntityModels.AudioBook", "Book")
                         .WithMany("AudiobookNarrators")
                         .HasForeignKey("AudiobookId")
                         .OnDelete(DeleteBehavior.Cascade);

@@ -17,5 +17,7 @@ namespace BookCave.Models.EntityModels
         public ICollection<CustomerAddress> CustomerAddresses { get; set; }
 
         public ICollection<Order> Orders { get; set; }
+        
+        public ICollection<Review> Reviews { get; set; }
     }
 }    
