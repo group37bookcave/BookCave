@@ -4,7 +4,7 @@
     {
         public int AudiobookId { get; set; }
 
-        public AudioBook Book { get; set; }
+        public Audiobook Book { get; set; }
 
         public int NarratorId { get; set; }
 

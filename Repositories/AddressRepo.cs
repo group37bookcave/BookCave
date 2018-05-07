@@ -7,16 +7,54 @@ namespace BookCave.Repositories
 {
     public class AddressRepo
     {
-        private StoreContext _db = new StoreContext();
-
-        public List<Address> GetAddresses(Customer customer)
+        private readonly StoreContext _db = new StoreContext();
+        private readonly CountryRepo _cr = new CountryRepo();
+        private readonly UserRepo _ur = new UserRepo();
+        
+        private ZipCode GetZipCode(string zip, Country country)
         {
-            var addresses = from a in _db.Addresses
-                join c in _db.CustomerAddresses on a.Id equals c.AddressId
-                where c.CustomerId == customer.Id
-                select a;
-            return addresses.ToList();
+            var zipcode = from c in _db.CountryZipCodes
+                join z in _db.ZipCodes on c.ZipCode.Zip equals zip
+                where c.CountryId == country.Id
+                select z;
+            return zipcode.SingleOrDefault();
         }
-       
+
+        public List<Address> GetAddressesByCustomerId(int id)
+        {
+            var adresses = (from ca in _db.CustomerAddresses
+                join a in _db.Addresses on ca.AddressId equals a.Id
+                where ca.CustomerId == id
+                select a).ToList();
+            return adresses;
+        }
+
+        public void DeleteAddressByAddressId(int id)
+        {
+            var address = new Address {Id = id};
+            _db.Addresses.Remove(address);
+            _db.SaveChanges();
+        }
+
+        public void AddAddressToCustomer(int customerId, AddressInputModel model)
+        {
+            var country = _cr.GetCountryById(model.CountryId);
+            var zip = GetZipCode(model.Zipcode, country) ?? new ZipCode
+            {
+                City = model.City,
+                Zip = model.Zipcode
+            };
+            var address = new Address
+            {
+                Street = model.Street,
+                ZipCode = zip,
+                Country = country,
+            };
+            var customer = _ur.GetCustomer(customerId);
+            address.CustomerAddresses.Add(new CustomerAddress { Address = address, Customer = customer});
+            _db.AddRange(address);
+            _db.SaveChanges();
+
+        }
     }
 }

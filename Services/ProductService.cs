@@ -8,9 +8,6 @@ namespace BookCave.Services
 {
     public class ProductService
     {
-        private ProductRepo _pr = new ProductRepo();
-
-        
-
+        private ProductRepo _pr = new ProductRepo(); 
     }
 }

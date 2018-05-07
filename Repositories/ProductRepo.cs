@@ -9,6 +9,43 @@ namespace BookCave.Repositories
     {
         private StoreContext _db = new StoreContext();
 
+
+        public Product GetProduct(int id)
+        {
+            var product = from p in _db.Products where p.Id == id select p;
+            return product.SingleOrDefault();
+        }
+        
+        public List<Product> GetAllProducts()
+        {
+            var list = from p in _db.Products select p;
+            return list.ToList();
+        }
+
+        public List<Book> GetAllBooks()
+        {
+            var li = from b in _db.Books select b;
+            return li.ToList();
+        }
+
+        public List<Book> GetBooksByAuthorId(int id)
+        {
+            var books = from bookAuthor in _db.BookAuthors
+                join book in _db.Books on bookAuthor.BookId equals book.Id
+                where bookAuthor.AuthorId == id
+                select book;
+            return books.ToList();
+        }
+
+        public List<Author> GetAuthorsByBookId(int id)
+        {
+            var authors = from a in _db.Authors
+                join b in _db.BookAuthors on a.Id equals b.AuthorId
+                where b.BookId == id
+                select a;
+            return authors.ToList();
+        }
+
         public List<Paperback> GetPaperbacksByAuthor(int id)
         {
             var books = from a in _db.BookAuthors
@@ -17,16 +54,12 @@ namespace BookCave.Repositories
                 select b;
             return books.ToList();
         }
-        public Paperback GetPaperback(int id)
-        {
-            return (from p in _db.Paperbacks where p.Id == id select p).FirstOrDefault();
-        }
-        
+
         public List<Paperback> GetAllPaperbacks()
         {
             return (from p in _db.Paperbacks select p).ToList();
         }
-        
+
         public List<Hardcover> GetHardcoversByAuthor(int id)
         {
             var books = from a in _db.BookAuthors
@@ -35,18 +68,13 @@ namespace BookCave.Repositories
                 select b;
             return books.ToList();
         }
-        
-        public Hardcover GetHardcover(int id)
-        {
-            return (from h in _db.Hardcovers where h.Id == id select h).FirstOrDefault();
-        }
-        
+
         public List<Hardcover> GetAllHardCovers()
         {
             return (from h in _db.Hardcovers select h).ToList();
         }
 
-        public List<AudioBook> GetAudioBooksByAuthor(int id)
+        public List<Audiobook> GetAudioBooksByAuthor(int id)
         {
             var books = from a in _db.BookAuthors
                 join b in _db.AudioBooks on a.BookId equals b.Id
@@ -54,13 +82,8 @@ namespace BookCave.Repositories
                 select b;
             return books.ToList();
         }
-        
-        public AudioBook GetAudioBook(int id)
-        {
-            return (from a in _db.AudioBooks where a.Id == id select a).FirstOrDefault();
-        }
-        
-        public List<AudioBook> GetAllAudioBooks()
+
+        public List<Audiobook> GetAllAudioBooks()
         {
             return (from a in _db.AudioBooks select a).ToList();
         }
@@ -73,16 +96,12 @@ namespace BookCave.Repositories
                 select b;
             return books.ToList();
         }
-        public Ebook GetEbook(int id)
-        {
-            return (from e in _db.Ebooks where e.Id == id select e).FirstOrDefault();
-        }
-        
+
         public List<Ebook> GetAllEbooks()
         {
             return (from e in _db.Ebooks select e).ToList();
         }
-        
+
         public List<DigitalSheetMusic> GetDigitalSheetMusicByComposer(int id)
         {
             var music = from c in _db.SheetMusicComposers
@@ -92,51 +111,13 @@ namespace BookCave.Repositories
             return music.ToList();
         }
 
-        public DigitalSheetMusic GetDigitalSheetMusic(int id)
-        {
-            return (from d in _db.DigitalSheetMusics where d.Id == id select d).FirstOrDefault();
-        }
-        
-        public List<DigitalSheetMusic> GetAllSheetMusics()
-        {
-            return (from s in _db.DigitalSheetMusics select s).ToList();
-        }
-        
-        public PhysicalSheetMusic GetPhysicalSheetMusic(int id)
-        {
-            return (from d in _db.PhysicalSheetMusics where d.Id == id select d).FirstOrDefault();
-        }
-        
-        public List<PhysicalSheetMusic> GetPhysicalSheetMusicByComposer(int id)
+        public List<SheetMusic> GetSheetMusicByComposer(int id)
         {
             var music = from c in _db.SheetMusicComposers
-                join s in _db.PhysicalSheetMusics on c.SheetMusicId equals s.Id
+                join m in _db.SheetMusics on c.SheetMusicId equals m.Id
                 where c.ComposerId == id
-                select s;
+                select m;
             return music.ToList();
-        }
-
-        public List<PhysicalSheetMusic> GetAllPhysicalSheetMusics()
-        {
-            return (from p in _db.PhysicalSheetMusics select p).ToList();
-        }
-
-        public List<Book> GetBooksByAuthor(int id)
-        {
-            var books = new List<Book>();
-            books.AddRange(GetAudioBooksByAuthor(id));
-            books.AddRange(GetEbooksByAuthor(id));
-            books.AddRange(GetPaperbacksByAuthor(id));
-            books.AddRange(GetAllHardCovers());
-            return books;
-        }
-
-        public List<SheetMusic> GetMusicByComposer(int id)
-        {
-            var music = new List<SheetMusic>();
-            music.AddRange(GetDigitalSheetMusicByComposer(id));
-            music.AddRange(GetPhysicalSheetMusicByComposer(id));
-            return music;
         }
     }
 }
