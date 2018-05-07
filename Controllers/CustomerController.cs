@@ -14,5 +14,10 @@ namespace BookCave.Controllers
         {
             return View();
         }
+
+        public IActionResult AccountDetails()
+        {
+            return View();
+        }
     }
 }
