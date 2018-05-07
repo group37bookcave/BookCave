@@ -9,13 +9,13 @@
             <hr>
     	    
             <form>
-                <fieldset>
-                    <div class="upload-imge">
-                        <img src="https://i1.wp.com/debcb.com/wp-content/uploads/2015/04/derek-shepherd-photo.png?resize=307%2C376&ssl=1" class="media-object" alt="ItemImage" style="width: 200px; height: 200px;">
+                <fieldset class="inline-block upload-image">
+                   
+                        <img src="https://i1.wp.com/debcb.com/wp-content/uploads/2015/04/derek-shepherd-photo.png?resize=307%2C376&ssl=1" class="media-object" alt="UserImage">
                         <input type="file" name="fileupload" value="fileupload" id="fileupload">  
-                    </div>   
-
-                    <div id="fomat-inputs">
+                   
+                </fieldset> 
+                <fieldset class="inline-block format-inputs">
                         <div class="form-group">
                             <label for="user-name">Name</label>
                             <input type="text" class="form-control" id="user-name" placeholder="Enter name">
@@ -38,8 +38,8 @@
                         </div>
                       
                         <button type="submit" class="btn btn-secondary">Change info? confirm changes?</button>
-                        
-                        <div class="form-group">
+       
+                            <div class="form-group">
                             <label for="user-password">Old Password</label>
                             <input type="password" class="form-control" id="user-password" placeholder="Password">
                         </div>
@@ -54,8 +54,7 @@
                         </div>
                       
                         <button type="submit" class="btn btn-secondary">Change password</button>
-                    </div>   
-                </fieldset>
+    
             </form>
         </div>
     </div>
