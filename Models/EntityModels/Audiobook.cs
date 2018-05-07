@@ -2,7 +2,7 @@
 
 namespace BookCave.Models.EntityModels
 {
-    public class AudioBook : Book
+    public class Audiobook : Book
     {
         public double? Size { get; set; }
 
