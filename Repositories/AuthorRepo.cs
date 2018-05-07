@@ -9,8 +9,6 @@ namespace BookCave.Repositories
     {
         private StoreContext _db = new StoreContext();
 
-        public void AddAuthor()
-
         public List<Author> GetAllAuthors()
         {
             return (from a in _db.Authors
@@ -23,14 +21,3 @@ namespace BookCave.Repositories
         }
     }
 }
-public void AddCustomer(CustomerInputModel user)
-        {
-            var customer = new Customer
-            {
-                FirstName = user.FirstName,
-                LastName = user.LastName,
-                Email = user.Email
-            };
-            _db.Customers.Add(customer);
-            _db.SaveChanges();
-        }

@@ -10,7 +10,7 @@ namespace BookCave.Repositories
     {
         private StoreContext _db = new StoreContext();
 
-        public List<Address> GetAdressesByCustomerId(int id)
+        public List<Address> GetAddresses(int id)
         {
             var adresses = (from ca in _db.CustomerAddresses
                 join a in _db.Addresses on ca.AddressId equals a.Id
