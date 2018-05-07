@@ -12,8 +12,8 @@ using System;
 namespace BookCave.Migrations.Store
 {
     [DbContext(typeof(StoreContext))]
-    [Migration("20180507093854_2.0")]
-    partial class _20
+    [Migration("20180507144450_2.2")]
+    partial class _22
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -26,8 +26,6 @@ namespace BookCave.Migrations.Store
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
-
-                    b.Property<string>("City");
 
                     b.Property<int?>("CountryId");
 
@@ -154,8 +152,6 @@ namespace BookCave.Migrations.Store
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("CountryCode");
-
                     b.Property<string>("Name");
 
                     b.HasKey("Id");
@@ -178,7 +174,7 @@ namespace BookCave.Migrations.Store
 
             modelBuilder.Entity("BookCave.Models.EntityModels.Customer", b =>
                 {
-                    b.Property<string>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Email");
@@ -194,7 +190,7 @@ namespace BookCave.Migrations.Store
 
             modelBuilder.Entity("BookCave.Models.EntityModels.CustomerAddress", b =>
                 {
-                    b.Property<string>("CustomerId");
+                    b.Property<int>("CustomerId");
 
                     b.Property<int>("AddressId");
 
@@ -296,7 +292,7 @@ namespace BookCave.Migrations.Store
 
                     b.Property<int?>("AddressId");
 
-                    b.Property<string>("CustomerId");
+                    b.Property<int?>("CustomerId");
 
                     b.Property<int?>("PromoCodeId");
 
@@ -407,7 +403,7 @@ namespace BookCave.Migrations.Store
 
                     b.HasIndex("PublisherId");
 
-                    b.ToTable("Books");
+                    b.ToTable("Book");
 
                     b.HasDiscriminator().HasValue("Book");
                 });
@@ -417,20 +413,20 @@ namespace BookCave.Migrations.Store
                     b.HasBaseType("BookCave.Models.EntityModels.Product");
 
 
-                    b.ToTable("SheetMusics");
+                    b.ToTable("SheetMusic");
 
                     b.HasDiscriminator().HasValue("SheetMusic");
                 });
 
-            modelBuilder.Entity("BookCave.Models.EntityModels.AudioBook", b =>
+            modelBuilder.Entity("BookCave.Models.EntityModels.Audiobook", b =>
                 {
                     b.HasBaseType("BookCave.Models.EntityModels.Book");
 
                     b.Property<double?>("Size");
 
-                    b.ToTable("AudioBook");
+                    b.ToTable("Audiobook");
 
-                    b.HasDiscriminator().HasValue("AudioBook");
+                    b.HasDiscriminator().HasValue("Audiobook");
                 });
 
             modelBuilder.Entity("BookCave.Models.EntityModels.Ebook", b =>
@@ -488,7 +484,7 @@ namespace BookCave.Migrations.Store
             modelBuilder.Entity("BookCave.Models.EntityModels.Address", b =>
                 {
                     b.HasOne("BookCave.Models.EntityModels.Country", "Country")
-                        .WithMany()
+                        .WithMany("Addresses")
                         .HasForeignKey("CountryId");
 
                     b.HasOne("BookCave.Models.EntityModels.ZipCode", "ZipCode")
@@ -498,7 +494,7 @@ namespace BookCave.Migrations.Store
 
             modelBuilder.Entity("BookCave.Models.EntityModels.AudiobookNarrator", b =>
                 {
-                    b.HasOne("BookCave.Models.EntityModels.AudioBook", "Book")
+                    b.HasOne("BookCave.Models.EntityModels.Audiobook", "Book")
                         .WithMany("AudiobookNarrators")
                         .HasForeignKey("AudiobookId")
                         .OnDelete(DeleteBehavior.Cascade);
