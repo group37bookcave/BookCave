@@ -16,7 +16,7 @@ namespace BookCave.Data
         public DbSet<Author> Authors { get; set; }
         public DbSet<Hardcover> Hardcovers { get; set; }
         public DbSet<Paperback> Paperbacks { get; set; }
-        public DbSet<AudioBook> AudioBooks { get; set; }
+        public DbSet<Audiobook> AudioBooks { get; set; }
         public DbSet<Ebook> Ebooks { get; set; }                
         public DbSet<Country> Countries { get; set; }
         public DbSet<Customer> Customers { get; set; }
@@ -32,6 +32,9 @@ namespace BookCave.Data
         public DbSet<DigitalSheetMusic> DigitalSheetMusics { get; set; }
         public DbSet<PhysicalSheetMusic> PhysicalSheetMusics { get; set; }
         public DbSet<ZipCode> ZipCodes { get; set; }
+        public DbSet<Book> Books { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<SheetMusic> SheetMusics { get; set; }
 
         
         // The many to many tables.
@@ -47,9 +50,9 @@ namespace BookCave.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Product>().ToTable("Products");
-            modelBuilder.Entity<Book>().ToTable("Books");
-            modelBuilder.Entity<SheetMusic>().ToTable("SheetMusics");
+            //modelBuilder.Entity<Product>().ToTable("Products");
+            //modelBuilder.Entity<Book>().ToTable("Books");
+            //modelBuilder.Entity<SheetMusic>().ToTable("SheetMusics");
             
             // Configure many to many between Customer and Address.
             modelBuilder.Entity<CustomerAddress>().HasKey(ca => new {ca.CustomerId, ca.AddressId});

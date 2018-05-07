@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using BookCave.Data;
 using BookCave.Models.EntityModels;
-using Microsoft.EntityFrameworkCore.Query.Sql.Internal;
 
 namespace BookCave.Repositories
 {

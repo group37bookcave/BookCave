@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Logging;
 using BookCave.Data;
 using BookCave.Models.EntityModels;
+using BookCave.Repositories;
 using Microsoft.Extensions.DependencyInjection;
 
 
@@ -16,6 +17,9 @@ namespace BookCave
     {
         public static void Main(string[] args)
         {
+            var repo = new ProductRepo();
+            var product = repo.GetProduct(30);
+            Console.WriteLine($"Name: {product.Name}, Type: {product}");
             var host = BuildWebHost(args);
             SeedData();
             host.Run();
