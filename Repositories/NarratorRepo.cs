@@ -9,6 +9,17 @@ namespace BookCave.Repositories
     {
         private StoreContext _db = new StoreContext();
 
+        public void AddNarrator(NarratorInputModel user)
+        {
+            var narrator = new Narrator
+            {
+                FirstName = user.FirstName,
+                LastName = user.LastName
+            };
+            _db.Narrators.Add(narrator);
+            _db.SaveChanges();
+        }
+
         public List<Narrator> GetAllNarrators()
         {
             return (from n in _db.Narrators
