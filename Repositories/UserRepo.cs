@@ -8,7 +8,7 @@ namespace BookCave.Repositories
     public class UserRepo
     {
         private StoreContext _db = new StoreContext();
-         public Employee GetEmployee(int id)
+        public Employee GetEmployee(int id)
         {
             return (from e in _db.Employees where e.Id == id select e).FirstOrDefault();
         }
