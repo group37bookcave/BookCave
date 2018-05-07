@@ -9,6 +9,24 @@ namespace BookCave.Repositories
     {
         private StoreContext _db = new StoreContext();
 
+        public List<Book> GetAllBooks()
+        {
+            var list = new List<Book>();
+            list.AddRange(GetAllAudioBooks());
+            list.AddRange(GetAllEbooks());
+            list.AddRange(GetAllHardCovers());
+            list.AddRange(GetAllPaperbacks());
+            return list;
+        }
+        
+        public List<Product> GetAllProducts()
+        {
+            var list = new List<Product>();
+            list.AddRange(GetAllBooks());
+            list.AddRange(GetAllSheetMusics());
+            return list;
+        }
+        
         public List<Paperback> GetPaperbacksByAuthor(int id)
         {
             var books = from a in _db.BookAuthors
@@ -17,6 +35,7 @@ namespace BookCave.Repositories
                 select b;
             return books.ToList();
         }
+        
         public Paperback GetPaperback(int id)
         {
             return (from p in _db.Paperbacks where p.Id == id select p).FirstOrDefault();

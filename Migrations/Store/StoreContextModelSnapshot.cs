@@ -26,8 +26,6 @@ namespace BookCave.Migrations.Store
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("City");
-
                     b.Property<int?>("CountryId");
 
                     b.Property<string>("Street");
@@ -153,8 +151,6 @@ namespace BookCave.Migrations.Store
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("CountryCode");
-
                     b.Property<string>("Name");
 
                     b.HasKey("Id");
@@ -177,7 +173,7 @@ namespace BookCave.Migrations.Store
 
             modelBuilder.Entity("BookCave.Models.EntityModels.Customer", b =>
                 {
-                    b.Property<string>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Email");
@@ -193,7 +189,7 @@ namespace BookCave.Migrations.Store
 
             modelBuilder.Entity("BookCave.Models.EntityModels.CustomerAddress", b =>
                 {
-                    b.Property<string>("CustomerId");
+                    b.Property<int>("CustomerId");
 
                     b.Property<int>("AddressId");
 
@@ -295,7 +291,7 @@ namespace BookCave.Migrations.Store
 
                     b.Property<int?>("AddressId");
 
-                    b.Property<string>("CustomerId");
+                    b.Property<int?>("CustomerId");
 
                     b.Property<int?>("PromoCodeId");
 
@@ -487,7 +483,7 @@ namespace BookCave.Migrations.Store
             modelBuilder.Entity("BookCave.Models.EntityModels.Address", b =>
                 {
                     b.HasOne("BookCave.Models.EntityModels.Country", "Country")
-                        .WithMany()
+                        .WithMany("Addresses")
                         .HasForeignKey("CountryId");
 
                     b.HasOne("BookCave.Models.EntityModels.ZipCode", "ZipCode")
