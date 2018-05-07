@@ -2,14 +2,18 @@
     ViewData["Title"] = "All Products";
 }
 
-
-<!--<p id=no-wish-list> No items in your Wish List </p>-->
 <div class="container">
     <div class="row">
         <div class="col-sm-12 col-md-10 col-md-offset-1">
-                <h1 class="all-products-header"><span class="book-cave-color">ALL</span><span>PRODUCTS</span></h1>
-                <a id="filter">Filter</a>
-                    <form class="all-products-header">
+            <div class="page-header">
+               <div class="inline-block">
+                <h1><span class="book-cave-color">ALL</span><span>PRODUCTS</span></h1>
+               </div>
+                
+                
+                <span class="filter-and-sort">
+                    <a class="inline-block">Filter</a>
+                    <form class="inline-block">
                         <select class="form-control" id="sort-by">
                         <option value="">Sort by:</option>
                         <option value="name">Name</option>
@@ -22,8 +26,10 @@
                         <option value="rating">Rating</option>
                         </select>
                     </form>
-                <hr>
-                
+                </span>
+              
+            </div>
+
                 <table>
                     <tbody>
                         <tr class="list-item">
@@ -54,10 +60,10 @@
                             </td>
                         
                             <td class="col-sm-1 col-md-1">
-                                <div class="button-options grey-button"> 
+                                <div class="button-options grey-buttons"> 
                                     <button type="button" class="btn">Buy Now</button>
                                 </div>
-                                <div id="green-buttons">
+                                <div class="green-buttons">
                                     <button type="button" class="btn">Add to cart</button>
                                     <button type="button" class="btn">Add to WishList</button>
                                 </div>	
