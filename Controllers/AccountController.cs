@@ -1,9 +1,7 @@
 ﻿using System.Security.Claims;
 using System.Threading.Tasks;
 using BookCave.Models;
-using BookCave.Models.EntityModels;
 using BookCave.Models.InputModels;
-using BookCave.Models.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -29,7 +27,7 @@ namespace BookCave.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Register(RegisterViewModel model)
+        public async Task<IActionResult> Register(RegisterInputModel model)
         {
             if (!ModelState.IsValid)
             {
@@ -62,7 +60,7 @@ namespace BookCave.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Login(LoginViewModel model)
+        public async Task<IActionResult> Login(LoginInputModel model)
         {
             if (!ModelState.IsValid)
             {
