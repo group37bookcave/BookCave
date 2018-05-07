@@ -2,15 +2,23 @@
     ViewData["Title"] = "Your Receipt";
 }
 
-<!--<p id=no-wish-list> No items in your Wish List </p>-->
 <div class="container">
     <div class="row">
         <div class="col-sm-12 col-md-10 col-md-offset-1">
-            <h1><span class="book-cave-color">YOUR</span><span>RECEIPT</span></h1>
-            <p>Order no. 123</p>
-            <hr/>
+            <div class="page-header">
+                <h1 clas="inline-block"><span class="book-cave-color">YOUR</span><span>RECEIPT</span></h1>
+                <p id="order-num" class="inline-block">Order no. 123</p>
+            </div>
+        
             <table>   
                 <tbody>
+                    <tfoot>
+                        <tr>
+                        <td colspan="2"></td>
+                        <td><strong>Total</strong></td>
+                        <td><strong>100$<strong></td>
+                        </tr>
+                    </tfoot>
                     <tr class="list-item">
                         <td class="col-sm-8 col-md-6">
                         <div class="media">
@@ -46,14 +54,10 @@
                             <p><strong>Total Price: 100$</strong></p>
                         </td>
                     </tr>
-                    <tr>
-                        <td>Total</td>
-                        <td>100.00$</td>
-                    </tr>
                 </tbody>
             </table>
-            <div class="button-options grey-button"> 
-                <button type="button" class="btn">Print Receipt</button>
+            <div class="button-options grey-buttons"> 
+                <button id="print-receipt" type="button" class="btn">Print Receipt</button>
             </div>
         </div>
     </div>
