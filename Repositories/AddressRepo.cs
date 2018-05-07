@@ -17,8 +17,6 @@ namespace BookCave.Repositories
                 where ca.CustomerId == id
                 select a).ToList();
                 return adresses;
-
         }
-       
     }
 }
