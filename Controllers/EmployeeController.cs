@@ -15,5 +15,13 @@ namespace BookCave.Controllers
             return View();
         }
 
-}
+        public IActionResult EmpAllProducts(){
+            return View();
+        }
+
+        public IActionResult Orders()
+        {
+            throw new NotImplementedException();
+        }
+    }
 }

@@ -11,9 +11,9 @@ namespace BookCave.Repositories
     public class CustomerRepo
     {
         
-        private StoreContext _db = new StoreContext();
+        private readonly StoreContext _db = new StoreContext();
 
-        public void AddCustomer(CustomerInputModel user)
+        public int AddCustomer(CustomerInputModel user)
         {
             var customer = new Customer
             {
@@ -23,6 +23,7 @@ namespace BookCave.Repositories
             };
             _db.Customers.AddRange(customer);
             _db.SaveChanges();
+            return customer.Id;
         }
 
         public Customer GetCustomer(int id)
