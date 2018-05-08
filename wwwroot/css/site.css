@@ -5,7 +5,7 @@
 }
 
 body {
-    padding-top: 210px;
+    padding-top: 235px;
     padding-bottom: 0;    
 }
 
@@ -88,6 +88,7 @@ tfoot > tr{
     background-color:rgb(240,240,240);
     margin-bottom: 10px;
     width: 135px;
+    float: right;
 }
 
 .inline-block{
@@ -123,6 +124,10 @@ tfoot > tr{
 
 .form-inputs {
     margin-left: 20px;
+}
+
+.form-group{
+    padding:5px;
 }
 
 
