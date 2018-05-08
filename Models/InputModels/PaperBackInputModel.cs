@@ -5,10 +5,8 @@ using BookCave.Models.EntityModels;
 
 namespace BookCave.Models.InputModels
 {
-
-
-    public class HardCoverInputModel
-    {
+    public class PaperBackInputModel
+    {        
         [Required] public double Price { get; set; }
         
         [Required] public string Name { get; set; }

@@ -17,14 +17,17 @@ namespace BookCave.Controllers
 
         public IActionResult TermsAndCond()
         {
-            return View();
+            throw new NotImplementedException();
         }
 
         public IActionResult About()
         {
-            ViewData["Message"] = "Your application description page.";
+            throw new NotImplementedException();
+        }
 
-            return null;
+        public IActionResult TopRated()
+        {
+            throw new NotImplementedException();
         }
 
         public IActionResult Contact()

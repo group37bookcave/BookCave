@@ -6,19 +6,23 @@
     <div class="row">
         <div class="col-sm-12 col-md-10 col-md-offset-1">
 
-             <div class="page-header">
-                <span id="page-name"><h1><span class="book-cave-color">ACCOUNT</span><span id="list">DETAILS</span></h1></span>
+            <div class="page-header">
+                <span id="page-name">
+                    <h1>
+                        <span class="book-cave-color">ACCOUNT</span><span id="list">DETAILS</span>
+                    </h1>
+                </span>
             </div>
-    	    
+
             <form>
 
-                <fieldset class="inline-block upload-image">  
+                <fieldset class="inline-block upload-image">
                     <input type="image" src="https://getstamped.co.uk/wp-content/uploads/Placeholder.jpg" style="width: 300px"/>
-                    <input type="file" id="user-image" style="display: none;" />   
-                </fieldset> 
+                    <input type="file" id="user-image" style="display: none;"/>
+                </fieldset>
                 <fieldset>
                     <div class="form-inputs">
-                                         <div class="form-group">
+                        <div class="form-group">
                             <label for="user-name">Name</label>
                             <input type="text" class="form-control" id="user-name" placeholder="Enter name">
                         </div>
@@ -38,28 +42,28 @@
                             <label for="user-fav-book">Favorite book</label>
                             <input type="text" class="form-control" id="user-fav-book" placeholder="Enter your favorite book">
                         </div>
-                      
-                         <div class="grey-buttons">
-                        <button type="submit" class="btn grey-buttons">Update</button>
+
+                        <div class="grey-buttons">
+                            <a class="btn btn-default grey-buttons" type="button" asp-area="" asp-controller="" asp-action="">Update</a>
                         </div>
-                   
-                  
-                    <div class="form-group">
-                        <label for="user-password">New Password</label>
-                        <input type="password" class="form-control" id="user-password" placeholder="Password">
-                     </div>
-                    <div class="form-group">
-                        <label for="user-password-confirm">Confirm New Password</label>                            
-                        <input type="password" class="form-control" id="user-password-confirm" placeholder="Password">
+
+
+                        <div class="form-group">
+                            <label for="user-password">New Password</label>
+                            <input type="password" class="form-control" id="user-password" placeholder="Password">
+                        </div>
+                        <div class="form-group">
+                            <label for="user-password-confirm">Confirm New Password</label>
+                            <input type="password" class="form-control" id="user-password-confirm" placeholder="Password">
+                        </div>
+                        <div class="grey-buttons">
+                            <a class="btn btn-default grey-buttons" type="button" asp-area="" asp-controller="" asp-action="">Update</a>
+                        </div>
                     </div>
-                    <div class="grey-buttons">
-                        <button type="submit" class="btn grey-buttons">Update</button>
-                    </div>
-                 
+
                 </fieldset>
-            
+
             </form>
         </div>
     </div>
 </div>
-
