@@ -24,6 +24,11 @@ namespace BookCave.Controllers
             return View();
         }
 
+        public IActionResult BookDetail()
+        {
+            return View();
+        }
+
         public IActionResult NewReleases()
         {
             return View();
