@@ -1,1 +1,61 @@
-Review Page
+@{
+    ViewData["Title"] = "Review Order";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-md-10 col-md-offset-1">
+            <div class="page-header">
+                <h1 clas="inline-block"><span class="book-cave-color">REVIEW</span><span>ORDER</span></h1>
+            </div>
+        
+            <table>   
+                <tbody>
+                    <tfoot>
+                        <tr>
+                        <td colspan="2"></td>
+                        <td><strong>Total</strong></td>
+                        <td><strong>100$</strong></td>
+                        </tr>
+                    </tfoot>
+                    <tr class="list-item">
+                        <td class="col-sm-8 col-md-6">
+                            <div class="media">
+                                <a class="pull-left" href="#"> <div class="col-sm-2 hidden-xs"><img src="http://placehold.it/180x200/456" class="media-object" alt="ItemImage" style="width: 180px; height: 200px;"></div> </a>
+                                <div class="media-body">
+                                    <h4>Item name</h4>
+                                    <ul>
+                                        <li>Author:</li>
+                                        <li>Format:</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </td>
+                    
+                        <td class="col-sm-2 col-md-2">		
+                            <p>2</p>
+                        </td>
+
+                        <td class="col-sm-2 col-md-2">
+                            <p><strong>Price: $50.00</strong></p>
+                        </td>
+                        
+                        <td class="col-sm-2 col-md-2">
+                            <p><strong>Total Price: 100$</strong></p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>your addresses</h3>
+
+            <div class="button-options grey-buttons">
+                <a class="btn btn-default grey-buttons" type="button" asp-area="" asp-controller="" asp-action="">Confirmation</a>
+                <a class="btn btn-default grey-buttons" type="button" asp-area="" asp-controller="" asp-action="">Back To Addresses</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+           
+
