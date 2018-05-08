@@ -8,17 +8,12 @@ using BookCave.Models.ViewModels;
 
 namespace BookCave.Controllers
 {
-    [Authorize]
-    public class WishListController : Controller
+    public class EmployeeController : Controller
     {
-        
-        public IActionResult WishList()
+        public IActionResult EmpAccountDetails()
         {
-            
-            ViewData["Message"] = "Your wish list.";
-
             return View();
         }
-    }
-        
+
+}
 }

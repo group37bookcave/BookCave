@@ -8,6 +8,7 @@ using BookCave.Models.ViewModels;
 
 namespace BookCave.Controllers
 {
+    [Authorize]
     public class CustomerController : Controller
     {
         public IActionResult Receipt()

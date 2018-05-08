@@ -10,7 +10,7 @@
             <div class=page-header>  
                 <h1><span class="book-cave-color">ALL</span><span>PRODUCTS</span></h1>
             </div>
-                <a id="filter">Filter</a>
+                <a asp-area="" asp-controller="" asp-action="">Filter</a>
                     <form class="all-products-header">
                         <select class="form-control" id="sort-by">
                         <option value="">Sort by:</option>
@@ -57,11 +57,11 @@
                         
                             <td class="col-sm-1 col-md-1">
                                 <div class="button-options grey-button"> 
-                                    <button type="button" class="btn">View Details</button>
+                                    <a class="btn btn-default" type="button" asp-area="" asp-controller="" asp-action="">View Details</a>
                                 </div>
                                 <div id="green-buttons">
-                                    <button type="button" class="btn">Edit Details</button>
-                                    <button type="button" class="btn">Publish</button>
+                                    <a class="btn btn-default" type="button" asp-area="" asp-controller="" asp-action="">Edit Details</a>
+                                    <a class="btn btn-default" type="button" asp-area="" asp-controller="" asp-action="">Publish</a>
                                 </div>	
                             </td>
                         </tr>
