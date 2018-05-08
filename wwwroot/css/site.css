@@ -74,18 +74,20 @@ tfoot > tr{
     color:rgb(105,202,202);
 }
 
-.green-buttons > button
+.green-buttons > a
 {
     color: white;
     background-color: rgb(105,202,202);
+    border:none;
     margin-bottom: 10px;
-    width: 120px;
+    width: 120px; 
 }
 
 
-.grey-buttons > button{
+.grey-buttons > a{
     color: black;
     background-color:rgb(240,240,240);
+    border:none;
     margin-bottom: 10px;
     width: 135px;
     float: right;
@@ -118,7 +120,7 @@ tfoot > tr{
     float:left;
 }
 
-.button-options > button
+.button-options > a
 {
     float:right;
     margin-right: 10px;
