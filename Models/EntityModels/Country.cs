@@ -8,6 +8,8 @@ namespace BookCave.Models.EntityModels
 
         public string Name { get; set; }
         
+        public double ShippingCost { get; set; }
+        
         public ICollection<Address> Addresses { get; set; }
 
         public ICollection<CountryZipCode> CountryZipCodes { get; set; }

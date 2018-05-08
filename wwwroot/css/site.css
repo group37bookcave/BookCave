@@ -6,7 +6,7 @@
 
 body {
     padding-top: 155px;
-    padding-bottom: 0;
+    padding-bottom: 0;    
 
 }
 
@@ -56,7 +56,6 @@ table
 
 td{
     padding: 10px;
-    
 }
 
 tfoot > tr{
@@ -67,12 +66,12 @@ tfoot > tr{
 }
 
 #order-num{
-    margin-left: 430px;
+    margin-left: 600px;
 }
 
 #print-receipt{
-    margin-top: 30px;
-    margin-left: 650px;
+    margin-top: 50px;
+    margin-left: 820px;
 }
 
 .book-cave-color{
@@ -95,13 +94,11 @@ tfoot > tr{
     width: 120px;
 }
 
-
 .button-options > button
 {
     margin-bottom: 10px;
     width: 120px;  
 }
-
 
 .stars{
     color: rgb(252, 202, 68);
@@ -112,15 +109,8 @@ tfoot > tr{
     float:left;
 }
 
-#form-inputs{
-    position: right;
-    float: right;
-    background-color:hotpink;
-}
-
 .page-header > h1{
     display: inline;
-    
 }
 
 #sort-by{
@@ -135,6 +125,17 @@ tfoot > tr{
 .inline-block{
     display: inline-block;
 }
+
+.upload-image{
+    float:left;
+}
+
+.format-inputs{
+    float:right;
+    margin-right: 20%;
+}
+
+
 
 /* BRYNJA DAGMAR JAKOBSD */
 

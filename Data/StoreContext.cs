@@ -34,6 +34,7 @@ namespace BookCave.Data
         public DbSet<ZipCode> ZipCodes { get; set; }
         public DbSet<Book> Books { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<Review> Reviews { get; set; }
         public DbSet<SheetMusic> SheetMusics { get; set; }
 
         
@@ -50,10 +51,6 @@ namespace BookCave.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //modelBuilder.Entity<Product>().ToTable("Products");
-            //modelBuilder.Entity<Book>().ToTable("Books");
-            //modelBuilder.Entity<SheetMusic>().ToTable("SheetMusics");
-            
             // Configure many to many between Customer and Address.
             modelBuilder.Entity<CustomerAddress>().HasKey(ca => new {ca.CustomerId, ca.AddressId});
             

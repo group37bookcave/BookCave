@@ -16,7 +16,7 @@ namespace BookCave.Models.InputModels
         
         [Required] public string Description { get; set; }
 
-        [Required] public int? Length { get; set; }
+        [Required] public int Length { get; set; }
         
         [Required] public double? Size { get; set; }
 
@@ -24,7 +24,7 @@ namespace BookCave.Models.InputModels
 
         [Required] public Publisher Publisher { get; set; }
         
-        [Required] public List<Isbn> Isbns { get; set; }
+        [Required] public Isbn Isbns { get; set; }
 
         [Required] public List<Language> Languages { get; set; }
 
@@ -34,6 +34,6 @@ namespace BookCave.Models.InputModels
 
         [Required] public List<AgeGroup> AgeGroups { get; set; }
         
-        [Required] public List<NarratorInputModel> Narrators { get; set; }
+        [Required] public List<Narrator> Narrators { get; set; }
     }
 }

@@ -6,7 +6,6 @@ namespace BookCave.Services
     public class UserService
     {
         private CustomerRepo _cr = new CustomerRepo();
-        private AddressRepo _ar = new AddressRepo();
         private OrderRepo _or = new OrderRepo();
     
         public CustomerViewModel GetCustomer(int id)

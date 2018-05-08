@@ -1,18 +1,28 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using BookCave.Data;
+using BookCave.Models;
 using BookCave.Models.EntityModels;
+using BookCave.Models.InputModels;
 
 namespace BookCave.Repositories
 {
     public class ProductRepo
     {
         private StoreContext _db = new StoreContext();
+        private AuthorRepo _ar = new AuthorRepo();
+        private NarratorRepo _nr = new NarratorRepo();
 
         public Product GetProduct(int id)
         {
             var product = from p in _db.Products where p.Id == id select p;
             return product.SingleOrDefault();
+        }
+        
+        public List<Product> GetAllProducts()
+        {
+            var list = from p in _db.Products select p;
+            return list.ToList();
         }
 
         public List<Book> GetAllBooks()
@@ -30,13 +40,7 @@ namespace BookCave.Repositories
             return books.ToList();
         }
 
-        public List<Product> GetAllProducts()
-        {
-            var list = from p in _db.Products select p;
-            return list.ToList();
-        }
-
-        public List<Author> GetAuthorByBookId(int id)
+        public List<Author> GetAuthorsByBookId(int id)
         {
             var authors = from a in _db.Authors
                 join b in _db.BookAuthors on a.Id equals b.AuthorId
@@ -117,6 +121,90 @@ namespace BookCave.Repositories
                 where c.ComposerId == id
                 select m;
             return music.ToList();
+        }
+        public void AddAudioBook(AudioBookInputModel book)
+        {
+            var checkIsbn = (from i in _db.Books
+                where i.Isbn == book.Isbns
+                select i).ToArray();
+            if(!checkIsbn.Any(item => item.Isbn == book.Isbns))
+            {
+                foreach (var author in book.Authors)
+                {
+                    var checkAuthor = (from a in _ar.GetAllAuthors()
+                        where a.FirstName == author.FirstName &&
+                        a.LastName == author.LastName
+                        select a).ToArray();
+                    if(!checkAuthor.Any(Item => Item.FirstName == author.FirstName))
+                    {
+                        var addAuthor = new AuthorInputModel
+                        {
+                            FirstName = author.FirstName,
+                            LastName = author.LastName
+                        };
+                        _ar.AddAuthor(addAuthor);
+                    }
+                }
+
+                foreach (var narrator in book.Narrators)
+                {
+                    var checkNarrator = (from n in _nr.GetAllNarrators()
+                        where n.FirstName == narrator.FirstName &&
+                        n.LastName == narrator.LastName
+                        select n).ToArray();
+                    if(!checkNarrator.Any(Item => Item.FirstName == narrator.FirstName && Item.LastName == narrator.LastName ))
+                    {
+                        var addNarrator = new NarratorInputModel
+                        {
+                            FirstName = narrator.FirstName,
+                            LastName = narrator.LastName
+                        };
+                        _nr.AddNarrator(addNarrator);
+                    }
+                }
+
+                var audio = new Audiobook
+                {
+                    Price = book.Price,
+                    Name = book.Name,
+                    Image = book.Image,
+                    Description = book.Description,
+                    Length = book.Length,
+                    Size = book.Size,
+                    ReleaseDate = book.ReleaseDate,
+                    Publisher = book.Publisher,
+                    Isbn = book.Isbns,
+                };
+
+
+                audio.BookAgeGroups = new List<BookAgeGroup>();
+                foreach (var ageGroup in book.AgeGroups)
+                {
+                    audio.BookAgeGroups.Add(new BookAgeGroup { Book = audio, AgeGroup = ageGroup });
+                };
+                audio.BookAuthors = new List<BookAuthor>();
+                foreach (var author in book.Authors)
+                {
+                    audio.BookAuthors.Add(new BookAuthor { Book = audio, Author = author });
+                };
+                audio.BookGenres = new List<BookGenre>();
+                foreach (var genre in book.Genres)
+                {
+                    audio.BookGenres.Add(new BookGenre { Book = audio, Genre = genre });
+                };
+                audio.BookLanguages = new List<BookLanguage>();
+                foreach (var language in book.Languages)
+                {
+                    audio.BookLanguages.Add(new BookLanguage { Book = audio, Language = language });
+                };
+                audio.AudiobookNarrators = new List<AudiobookNarrator>();
+                foreach (var narrator in book.Narrators)
+                {
+                    audio.AudiobookNarrators.Add(new AudiobookNarrator { Book = audio, Narrator = narrator });
+                };
+                _db.AudioBooks.AddRange(audio);
+                _db.SaveChanges();
+            }
         }
     }
 }

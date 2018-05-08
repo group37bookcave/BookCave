@@ -30,7 +30,7 @@ namespace BookCave.Repositories
             var order = from o in _db.Orders where o.Id == orderId select o;
             return order.SingleOrDefault();
         }
-        
+
         public void AddOrder(OrderInputModel model)
         {
             var products = new List<ItemOrder>();
@@ -39,6 +39,7 @@ namespace BookCave.Repositories
                 products.Add(
                     new ItemOrder {Product = item.Item, Quantity = item.Quantity});
             }
+
             var order = new Order
             {
                 Address = model.Address,
@@ -51,3 +52,4 @@ namespace BookCave.Repositories
         }
     }
 }
+

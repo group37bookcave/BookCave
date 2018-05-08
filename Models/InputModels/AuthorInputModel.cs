@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace BookCave.Services
+namespace BookCave.Models
 {
     public class AuthorInputModel
     {

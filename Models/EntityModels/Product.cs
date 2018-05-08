@@ -1,4 +1,6 @@
 ﻿
+using System.Collections.Generic;
+
 namespace BookCave.Models.EntityModels
 {
     public abstract class Product
@@ -10,5 +12,7 @@ namespace BookCave.Models.EntityModels
         public string Name { get; set; }
 
         public string Image { get; set; }
+
+        public ICollection<Review> Reviews { get; set; }
     }
 }
