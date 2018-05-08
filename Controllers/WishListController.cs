@@ -8,10 +8,10 @@ using BookCave.Models.ViewModels;
 
 namespace BookCave.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class WishListController : Controller
     {
-        
+
         public IActionResult WishList()
         {
             

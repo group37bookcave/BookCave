@@ -14,7 +14,6 @@
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute"/>
         <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" asp-append-version="true"/>
-        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true"/>
     </environment>
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
@@ -51,51 +50,7 @@
         </div>
         <div class="col-xs-3">
             <ul id="corner-up-right" class="nav navbar-nav navbar-right">
-
-                @Html.Partial("_LogInPartial")
-                <!--
-                @{ 
-                    Html.Partial("_LogInPartial");
-                }
-                -->
-
-                <!-- _LogInPartial starts
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">New User / Sign In</a>
-                    <ul class="dropdown-menu" style="padding: 15px; min-width: 250px;">
-                        <li>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
-                                        <div class="form-group">
-                                            <label class="sr-only" for="exampleInputEmail2">Email address</label>
-                                            <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Email address" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="sr-only" for="exampleInputPassword2">Password</label>
-                                            <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <span>
-                                                <a asp-controller="Account" asp-action="RegisterUser" role="button" class="btn btn-default">New User</a>
-                                            </span>
-                                            <span>
-                                                <a  role="button" class="btn btn-default">Sign In</a>
-                                            </span>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a asp-controller="ShoppingCart" asp-action="ShoppingCart" role="button" aria-expanded="false">
-                        <span class="glyphicon glyphicon-shopping-cart"></span><span> 0 Items</span>
-                    </a>
-                </li>
-                    _LogInPartial ends -->
-
+                @await Html.PartialAsync("_LogInPartial")
             </ul>
         </div>
     </div>
