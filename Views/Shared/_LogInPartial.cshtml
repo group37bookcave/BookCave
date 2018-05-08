@@ -1,0 +1,96 @@
+@using Microsoft.AspNetCore.Identity
+@using System.Security.Claims
+@using BookCave.Models.EntityModels
+
+@inject SignInManager<ApplicationUser> SignInManager
+
+@{
+    var claim = ((ClaimsIdentity) User.Identity).Claims.FirstOrDefault(c => c.Type == "Name")?.Value;
+}
+
+@if(SignInManager.IsSignedIn(User))
+{
+    /* Employee */
+    <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hi @User <span class="caret"></span></a>
+        <ul class="dropdown-menu" style="padding: 15px; min-width: 250px;">
+            <li>
+                <div class="row">
+                    <div class="col-md-12">
+                        <a asp-controller="Employee" asp-action="Orders">All Orders</a>
+                        <a asp-controller="Product" asp-action="Register">Add a Book</a>
+                        <a asp-controller="" asp-action="">Add Sheet Music</a>
+                        <a asp-controller="Account" asp-action="Logout">Sign Out</a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </li>
+
+
+    /* Customer */
+    <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hi @User <span class="caret"></span></a>
+        <ul class="dropdown-menu" style="padding: 15px; min-width: 250px;">
+            <li>
+                <div class="row">
+                    <div class="col-md-12">
+                        <a asp-controller="Account" asp-action="Details">Account Details</a>
+                        <a asp-controller="Customer" asp-action="WishList">WishList</a>
+                        <a asp-controller="Customer" asp-action="Orders">My Orders</a>
+                        <a asp-controller="Account" asp-action="Logout">Sign Out</a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <a asp-controller="Order" asp-action="ShoppingCart" role="button" aria-expanded="false">
+            <span class="glyphicon glyphicon-shopping-cart"></span><span id="nr-of-items"> 0 Items</span>
+        </a>
+    </li>
+
+
+/*
+    <form asp-controller="Account" asp-action="LogOut" method="post">
+        
+    </form>
+*/
+}
+else
+{
+    <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">New User / Sign In</a>
+        <ul class="dropdown-menu" style="padding: 15px; min-width: 250px;">
+            <li>
+                <div class="row">
+                    <div class="col-md-12">
+                        <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
+                            <div class="form-group">
+                                <label class="sr-only" for="exampleInputEmail2">Email address</label>
+                                <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Email address" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="sr-only" for="exampleInputPassword2">Password</label>
+                                <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password" required>
+                            </div>
+                            <div class="form-group">
+                                <span>
+                                    <a asp-controller="Account" asp-action="Register" role="button" class="btn btn-default">New User</a>
+                                </span>
+                                <span>
+                                    <a  role="button" class="btn btn-default">Sign In</a>
+                                </span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <a asp-controller="Order" asp-action="ShoppingCart" role="button" aria-expanded="false">
+            <span class="glyphicon glyphicon-shopping-cart"></span><span id="nr-of-items"> 0 Items</span>
+        </a>
+    </li>
+}

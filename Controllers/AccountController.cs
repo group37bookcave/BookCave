@@ -99,5 +99,15 @@ namespace BookCave.Controllers
             await _signInManager.SignOutAsync();
             return RedirectToAction("Login", "Account");
         }
+
+        public IActionResult AccessDenied()
+        {
+            return View();
+        }
+
+        public IActionResult Details()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
