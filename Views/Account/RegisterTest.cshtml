@@ -1,0 +1,11 @@
+﻿@model BookCave.Models.InputModels.RegisterInputModel
+
+<h2>REGISTER NEW USER</h2>
+
+<form asp-controller="Account" asp-action="RegisterTest">
+    <label asp-for="FirstName">First name: </label><input asp-for="FirstName" type="text"/><br/>
+    <label asp-for="LastName">Last name: </label><input asp-for="LastName" type="text"/><br/>
+    <label asp-for="Email">Email: </label><input asp-for="Email" type="email"/><br/>
+    <label asp-for="Password">Password: </label><input asp-for="Password" type="password"/><br/>
+    <button type="submit">Submit</button>
+</form>

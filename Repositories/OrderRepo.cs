@@ -3,14 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using BookCave.Data;
 using BookCave.Models.EntityModels;
+using BookCave.Models.InputModels;
+using BookCave.Models.ViewModels;
 
 namespace BookCave.Repositories
 {
     public class OrderRepo
     {
         private StoreContext _db = new StoreContext();
-        private ProductRepo _pr = new ProductRepo();
         private CustomerRepo _cr = new CustomerRepo();
+        private ProductRepo _pr = new ProductRepo();
+
 
         public List<Order> GetAllOrdersByCustomerId(int customerId)
         {
@@ -31,24 +34,83 @@ namespace BookCave.Repositories
             return order.SingleOrDefault();
         }
 
-        public void AddOrder(OrderInputModel model)
+        public Order UpdateOrder(OrderInputModel model)
         {
-            var products = new List<ItemOrder>();
-            foreach (var item in model.Items)
+            var order = GetOrderById(model.OrderId);
+
+            order.Address = model.Address;
+            order.ItemOrders = ConvertToItemOrder(model.Items);
+            order.PromoCode = model.PromoCode;
+            _db.SaveChanges();
+            return order;
+        }
+
+        public Order AddToOrder(int productId, int orderId)
+        {
+            var order = GetOrderById(orderId);
+            var itemorder = new ItemOrder
             {
-                products.Add(
-                    new ItemOrder {Product = item.Item, Quantity = item.Quantity});
+                Order = order,
+                Product = _pr.GetProduct(productId)
+            };
+            order.ItemOrders.Add(itemorder);
+            _db.Update(order);
+            _db.SaveChanges();
+            return order;
+        }
+
+        private List<ItemOrder> ConvertToItemOrder(IEnumerable<ItemOrderViewModel> items)
+        {
+            return items.Select(item =>
+                new ItemOrder
+                {
+                    Product = _pr.GetProduct(item.ProductId),
+                    Quantity = item.Quantity
+                }).ToList();
+        }
+
+        public bool CheckoutOrder(int orderId)
+        {
+            var order = (from o in _db.Orders where o.Id == orderId select o).SingleOrDefault();
+            if (order == null)
+            {
+                return false;
             }
 
+            order.IsCheckedOut = true;
+            _db.SaveChanges();
+            return true;
+        }
+
+        public Order GetActiveOrder(int customerId)
+        {
+            if (!HasActiveOrder(customerId))
+            {
+                return CreateNewOrder(customerId);
+            }
+
+            var order = from o in _db.Orders where o.Customer.Id == customerId && o.IsCheckedOut select o;
+            return order.SingleOrDefault();
+        }
+
+        private Order CreateNewOrder(int customerId)
+        {
             var order = new Order
             {
-                Address = model.Address,
-                Customer = _cr.GetCustomer(model.Customer.Id),
-                ItemOrders = products,
-                PromoCode = model.PromoCode
+                Customer = _cr.GetCustomer(customerId),
+                IsCheckedOut = false,
             };
-            _db.Orders.AddRange(order);
+            _db.Orders.Add(order);
             _db.SaveChanges();
+            return order;
+        }
+
+        private bool HasActiveOrder(int customerId)
+        {
+            var order = from o in _db.Orders
+                where o.Customer.Id == customerId && o.IsCheckedOut == false
+                select o;
+            return order.Any();
         }
     }
 }

@@ -24,17 +24,17 @@ namespace BookCave.Controllers
 
         public IActionResult BestSellers()
         {
-            return View();
+            throw new NotImplementedException();
         }
 
         public IActionResult NewReleases()
         {
-            return View();
+            throw new NotImplementedException();
         }
 
         public IActionResult TopRated()
         {
-            return View();
+            throw new NotImplementedException();
         }
 
         public IActionResult Contact()
