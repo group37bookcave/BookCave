@@ -7,10 +7,10 @@
 body {
     padding-top: 210px;
     padding-bottom: 0;    
-
 }
 
 footer{
+    margin-bottom: 0;
     position: sticky;
     padding: 30px;
     background-color:rgb(105,202,202);
@@ -97,13 +97,15 @@ tfoot > tr{
     color: black;
     background-color:rgb(240,240,240);
     margin-bottom: 10px;
-    width: 120px;
+    width: 135px;
 }
 
 .button-options > button
 {
+    float:right;
+    margin-right: 10px;
     margin-bottom: 10px;
-    width: 120px;  
+    width: 140px;  
 }
 
 .stars {
@@ -205,12 +207,6 @@ nav#navbar {
     top: 50px;
 }
 
-@media only screen and (min-width: 600px){
-    footer{
-        
-    }
-    
-}
 
 /* Hide/rearrange for smaller screens */
 @media screen and (max-width: 767px) {

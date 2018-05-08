@@ -15,26 +15,16 @@ namespace BookCave.Controllers
             return View();
         }
 
+        public IActionResult TermsAndCond()
+        {
+            return View();
+        }
+
         public IActionResult About()
         {
             ViewData["Message"] = "Your application description page.";
 
             return null;
-        }
-
-        public IActionResult BestSellers()
-        {
-            return View();
-        }
-
-        public IActionResult NewReleases()
-        {
-            return View();
-        }
-
-        public IActionResult TopRated()
-        {
-            return View();
         }
 
         public IActionResult Contact()
@@ -43,6 +33,8 @@ namespace BookCave.Controllers
         
         return null;
         }
+
+      
 
         public IActionResult Error()
         {
