@@ -88,10 +88,15 @@ tfoot > tr{
     background-color:rgb(240,240,240);
     margin-bottom: 10px;
     width: 135px;
+    float: right;
 }
 
 .inline-block{
     display: inline-block;
+}
+
+.check-options{
+    float: right;
 }
 
 .page-header > h1{
@@ -125,6 +130,10 @@ tfoot > tr{
     margin-left: 20px;
 }
 
+.form-group{
+    padding:5px;
+}
+
 
 
 /*products */ 
@@ -139,7 +148,8 @@ tfoot > tr{
 }
 
 .filter-and-sort{
-    margin-left: 300px;
+    margin-left: 450px;
+
 }
 
 .all-products-header {
