@@ -24,7 +24,9 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-3">
-            <img src="~/images/smallLogo.svg" alt="Logo">
+            <a <a asp-area="" asp-controller="Home" asp-action="Index">
+                <img src="~/images/smallLogo.svg" alt="Logo">
+            </a>
         </div>
         <div class="col-xs-6">
 
@@ -66,10 +68,10 @@
                                         </div>
                                         <div class="form-group">
                                             <span>
-                                                <a asp-controller="Account" asp-action="RegisterUser" role="button" class="btn btn-success">New User</a>
+                                                <a asp-controller="Customer" asp-action="RegisterUser" role="button" class="btn btn-success">New User</a>
                                             </span>
                                             <span>
-                                                <a asp-controller="Account" asp-action="RegisterUser" role="button" class="btn btn-success">Sign In</a>
+                                                <a asp-controller="Customer" asp-action="RegisterUser" role="button" class="btn btn-success">Sign In</a>
                                             </span>
                                         </div>
                                     </form>
