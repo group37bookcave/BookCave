@@ -7,7 +7,7 @@ using BookCave.Services;
 
 namespace BookCave.Repositories
 {
-    public class UserRepo
+    public class EmployeeRepo
     {
         private readonly StoreContext _db = new StoreContext();
 
@@ -16,15 +16,22 @@ namespace BookCave.Repositories
             return (from e in _db.Employees where e.Id == id select e).FirstOrDefault();
         }
 
-        public Customer GetCustomer(int id)
+        public void UpdateEmployee(int id)
         {
-            return (from c in _db.Customers where c.Id == id select c).FirstOrDefault();
+            var employee = GetEmployee(id);
         }
 
-        public void UpdateCustomer(CustomerInputModel model)
+        public int AddEmployee(EmployeeInputModel model)
         {
-            
+            var employee = new Employee
+            {
+                Email = model.Email,
+                FirstName = model.FirstName,
+                LastName = model.LastName,
+            };
+            _db.Add(employee);
+            _db.SaveChanges();
+            return employee.Id;
         }
-       
     }
 }
