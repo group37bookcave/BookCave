@@ -24,6 +24,11 @@ namespace BookCave.Controllers
             return View();
         }
 
+        public IActionResult BookDetail()
+        {
+            return View();
+        }
+
         public IActionResult NewReleases()
         {
             return View();
@@ -38,6 +43,7 @@ namespace BookCave.Controllers
         {
             return View();
         }
+
         
         [HttpGet]
         public IActionResult Register()
