@@ -8,14 +8,14 @@ using BookCave.Models.ViewModels;
 
 namespace BookCave.Controllers
 {
-    public class ShoppingCartController : Controller
+    public class EmployeeController : Controller
     {
-        public IActionResult ShoppingCart()
+        public IActionResult EmpAccountDetails()
         {
             return View();
         }
 
-        public IActionResult RemoveProduct()
+        public IActionResult Orders()
         {
             throw new NotImplementedException();
         }

@@ -5,8 +5,9 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-12 col-md-10 col-md-offset-1">
-            <span id="page-name"><h1><span class="book-cave-color">WISH</span><span id="list">LIST</span></h1></span>
-            <hr>
+            <div class=page-header>  
+            <h1><span class="book-cave-color">WISH</span><span>LIST</span></h1>
+            </div>
             <table>             
                 <tbody>
                     <tr class="list-item">
@@ -17,7 +18,14 @@
                                     <h4>Item name</h4>
                                     <ul>
                                         <li>Author:</li>
-                                        <li>Format:</li>
+                                        <li>
+                                            <select>
+                                                <option>HardCover</option>
+                                                <option>Physical</option>
+                                                <option>AudioBook</option>
+                                                <option>E-Book</option>
+                                            </select>
+                                        </li>
                                         <li>Length:</li>
                                         <li>Release date:</li>
                                         <li>Language:</li>  
@@ -37,7 +45,7 @@
                         </td>
                         
                         <td class="col-sm-1 col-md-1">
-                            <div class="button-options">
+                            <div class="button-options grey-buttons">
                                 <button type="button" class="btn">Move to cart</button>
                                 <button type="button" class="btn">Remove</button>    
                             </div>	
@@ -46,7 +54,7 @@
                 </tbody>
             </table>
             <hr>
-            <div>
+            <div class="check-options">
                 <input type="checkbox" value="price-drop" id="price-drop">
                 <label for="price-drop">Email notification when price drops</label><br>
 

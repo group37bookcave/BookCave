@@ -5,12 +5,12 @@
 }
 
 body {
-    padding-top: 155px;
+    padding-top: 235px;
     padding-bottom: 0;    
-
 }
 
 footer{
+    margin-bottom: 0;
     position: sticky;
     padding: 30px;
     background-color:rgb(105,202,202);
@@ -46,13 +46,18 @@ ul {
     padding-left: 0;
 }​
 
-table 
-{
+table {
     border-collapse: collapse;
     border-spacing:0;
     width:100%;
     border: 1px solid;
 }
+
+
+.book-cave-color {
+    color:rgb(105,202,202);
+}
+
 
 td{
     padding: 10px;
@@ -65,6 +70,42 @@ tfoot > tr{
     border-color:rgb(238, 238,238);
 }
 
+.book-cave-color{
+    color:rgb(105,202,202);
+}
+
+.green-buttons > a
+{
+    color: white;
+    background-color: rgb(105,202,202);
+    border:none;
+    margin-bottom: 10px;
+    width: 120px; 
+}
+
+
+.grey-buttons > a{
+    color: black;
+    background-color:rgb(240,240,240);
+    border:none;
+    margin-bottom: 10px;
+    width: 135px;
+    float: right;
+}
+
+.inline-block{
+    display: inline-block;
+}
+
+.check-options{
+    float: right;
+}
+
+.page-header > h1{
+    display: inline;
+}
+
+/* Receit */
 #order-num{
     margin-left: 600px;
 }
@@ -74,44 +115,34 @@ tfoot > tr{
     margin-left: 820px;
 }
 
-.book-cave-color{
-    color:rgb(105,202,202);
-}
-
-
-.green-buttons > button
-{
-    color: white;
-    background-color: rgb(105,202,202);
-    margin-bottom: 10px;
-    width: 120px;
-}
-
-.grey-buttons > button{
-    color: black;
-    background-color:rgb(240,240,240);
-    margin-bottom: 10px;
-    width: 120px;
-}
-
-.button-options > button
-{
-    margin-bottom: 10px;
-    width: 120px;  
-}
-
-.stars{
-    color: rgb(252, 202, 68);
-}
-
-#upload-image{
-    position: left;
+/* user info */
+.upload-image{
     float:left;
 }
 
-.page-header > h1{
-    display: inline;
+.button-options > a
+{
+    float:right;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    width: 140px;  
 }
+
+.form-inputs {
+    margin-left: 20px;
+}
+
+.form-group{
+    padding:5px;
+}
+
+
+
+/*products */ 
+.stars {
+    color: rgb(252, 202, 68);
+}
+
 
 #sort-by{
     width: 150px;
@@ -119,43 +150,64 @@ tfoot > tr{
 }
 
 .filter-and-sort{
-    margin-left: 300px;
+    margin-left: 450px;
+
 }
 
-.inline-block{
+.all-products-header {
     display: inline-block;
 }
 
-.upload-image{
-    float:left;
-}
 
-.format-inputs{
-    float:right;
-    margin-right: 20%;
-}
+
+
 
 
 
 /* BRYNJA DAGMAR JAKOBSD */
 
 #browse-hidden {
-    display: none !important;
+    display: none;
+    border-top: 1px solid rgb(105,202,202);
+    border-bottom: 1px solid rgb(105,202,202);
 }
 
 #best-sellers-hidden {
-    display: none !important;
+    display: none;
+    border-top: 1px solid rgb(105,202,202);
+    border-bottom: 1px solid rgb(105,202,202);
 }
 
-#search-input-bar {
-    top: 65px;
+div.container {
+    margin-bottom: 10px;
 }
 
-@media only screen and (min-width: 600px){
-    footer{
-        
-    }
-    
+#corner-up-right > li.dropdown > a, #corner-up-right > li > a > span {
+    color: black;
+}
+
+nav #navbar {
+    border: none;
+    background-color: white;
+}
+
+#bla {
+    border-top: 1px solid rgb(211,211,211);
+    border-bottom: 1px solid rgb(105,202,202);
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+#bla > ul.nav > li > a {
+    color: black;
+}
+
+#bla > ul.nav > li > a:hover {
+    background-color: rgb(105,202,202);
+}
+
+.input-group {
+    top: 50px;
 }
 
 /* Hide/rearrange for smaller screens */
@@ -164,4 +216,15 @@ tfoot > tr{
     .carousel-caption {
         display: none;
     }
+}
+
+/* Product View */
+.row{
+    padding-bottom: 20px;
+}
+.col img{
+    flex: 20%;
+    max-width: 283px;
+    padding: 0 4px;
+    float: left;
 }

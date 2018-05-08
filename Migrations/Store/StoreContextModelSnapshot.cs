@@ -153,6 +153,8 @@ namespace BookCave.Migrations.Store
 
                     b.Property<string>("Name");
 
+                    b.Property<double>("ShippingCost");
+
                     b.HasKey("Id");
 
                     b.ToTable("Countries");
@@ -293,6 +295,8 @@ namespace BookCave.Migrations.Store
 
                     b.Property<int?>("CustomerId");
 
+                    b.Property<bool>("IsCheckedOut");
+
                     b.Property<int?>("PromoCodeId");
 
                     b.HasKey("Id");
@@ -355,6 +359,30 @@ namespace BookCave.Migrations.Store
                     b.HasKey("Id");
 
                     b.ToTable("Publishers");
+                });
+
+            modelBuilder.Entity("BookCave.Models.EntityModels.Review", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int?>("CustomerId");
+
+                    b.Property<DateTime>("DateReviewed");
+
+                    b.Property<int?>("ProductId");
+
+                    b.Property<int?>("Rating");
+
+                    b.Property<string>("ReviewString");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CustomerId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("Reviews");
                 });
 
             modelBuilder.Entity("BookCave.Models.EntityModels.SheetMusicComposer", b =>
@@ -606,6 +634,17 @@ namespace BookCave.Migrations.Store
                     b.HasOne("BookCave.Models.EntityModels.PromoCode", "PromoCode")
                         .WithMany("Orders")
                         .HasForeignKey("PromoCodeId");
+                });
+
+            modelBuilder.Entity("BookCave.Models.EntityModels.Review", b =>
+                {
+                    b.HasOne("BookCave.Models.EntityModels.Customer", "Customer")
+                        .WithMany("Reviews")
+                        .HasForeignKey("CustomerId");
+
+                    b.HasOne("BookCave.Models.EntityModels.Product", "Product")
+                        .WithMany("Reviews")
+                        .HasForeignKey("ProductId");
                 });
 
             modelBuilder.Entity("BookCave.Models.EntityModels.SheetMusicComposer", b =>

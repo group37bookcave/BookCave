@@ -12,6 +12,8 @@ namespace BookCave.Models.EntityModels
 
         public PromoCode PromoCode { get; set; }
 
-        public ICollection<ItemOrder> ItemOrders { get; set; } 
+        public ICollection<ItemOrder> ItemOrders { get; set; }
+
+        public bool IsCheckedOut { get; set; }
     }
 }

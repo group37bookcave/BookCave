@@ -17,9 +17,6 @@ namespace BookCave
     {
         public static void Main(string[] args)
         {
-            var repo = new ProductRepo();
-            var product = repo.GetProduct(30);
-            Console.WriteLine($"Name: {product.Name}, Type: {product}");
             var host = BuildWebHost(args);
             SeedData();
             host.Run();
