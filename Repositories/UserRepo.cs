@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using System.Linq;
 using BookCave.Data;
 using BookCave.Models.EntityModels;
+using BookCave.Models.InputModels;
+using BookCave.Services;
 
 namespace BookCave.Repositories
 {
@@ -17,6 +19,11 @@ namespace BookCave.Repositories
         public Customer GetCustomer(int id)
         {
             return (from c in _db.Customers where c.Id == id select c).FirstOrDefault();
+        }
+
+        public void UpdateCustomer(CustomerInputModel model)
+        {
+            
         }
        
     }

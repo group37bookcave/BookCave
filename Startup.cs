@@ -5,9 +5,11 @@ using System.Threading.Tasks;
 using BookCave.Data;
 using BookCave.Models;
 using BookCave.Models.EntityModels;
+using BookCave.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Rewrite;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -17,7 +19,7 @@ namespace BookCave
     public class Startup
     {
         public Startup(IConfiguration configuration)
-        {
+        {            
             Configuration = configuration;
         }
 
@@ -38,6 +40,8 @@ namespace BookCave
                 // Password settings
                 options.Password.RequiredLength = 8;
                 options.Password.RequiredUniqueChars = 6;
+                options.Password.RequireDigit = false;
+                options.Password.RequireNonAlphanumeric = false;
 
                 // User settings
                 options.User.RequireUniqueEmail = true;
@@ -56,6 +60,10 @@ namespace BookCave
                 options.AccessDeniedPath = "/Account/AccessDenied";
                 options.SlidingExpiration = true;
             });
+            
+
+            services.Configure<AuthMessageSenderOptions>(Configuration);
+
             services.AddMvc();
         }
 
@@ -65,13 +73,17 @@ namespace BookCave
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                
             }
             else
             {
                 app.UseExceptionHandler("/Home/Error");
             }
+            
+
             app.UseAuthentication();
             app.UseStaticFiles();
+           
 
             app.UseMvc(routes =>
             {

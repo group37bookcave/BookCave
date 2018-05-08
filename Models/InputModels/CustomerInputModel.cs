@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace BookCave.Services
+namespace BookCave.Models.InputModels
 {
     public class CustomerInputModel
     {
@@ -13,6 +13,6 @@ namespace BookCave.Services
         
         public string Zipcode { get; set; }
 
-        public string Country { get; set; }
+        public int CountryId { get; set; }
     }
 }

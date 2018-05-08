@@ -216,7 +216,6 @@ nav #navbar {
     top: 50px;
 }
 
-
 /* Hide/rearrange for smaller screens */
 @media screen and (max-width: 767px) {
     /* Hide captions */
@@ -231,7 +230,7 @@ nav #navbar {
 }
 .col img{
     flex: 20%;
-    max-width: 24.2%;
+    max-width: 283px;
     padding: 0 4px;
     float: left;
 }

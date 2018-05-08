@@ -23,7 +23,7 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-3">
-            <a <a asp-area="" asp-controller="Home" asp-action="Index">
+            <a asp-area="" asp-controller="Home" asp-action="Index">
                 <img src="~/images/smallLogo.svg" alt="Logo">
             </a>
         </div>
@@ -50,8 +50,17 @@
         </div>
         <div class="col-xs-3">
             <ul id="corner-up-right" class="nav navbar-nav navbar-right">
+
+                @Html.Partial("_LogInPartial")
+                <!--
+                @{ 
+                    Html.Partial("_LogInPartial");
+                }
+                -->
+
+                <!-- _LogInPartial starts
                 <li class="dropdown">
-                    <a href="http://www.jquery2dotnet.com" class="dropdown-toggle" data-toggle="dropdown">New User / Sign In</a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">New User / Sign In</a>
                     <ul class="dropdown-menu" style="padding: 15px; min-width: 250px;">
                         <li>
                             <div class="row">
@@ -67,10 +76,13 @@
                                         </div>
                                         <div class="form-group">
                                             <span>
-                                                <a asp-controller="Customer" asp-action="RegisterUser" role="button" class="btn btn-success">New User</a>
+                                                <a asp-controller="Account" asp-action="Register" role="button" class="btn btn-success">New User</a>
                                             </span>
                                             <span>
-                                                <a asp-controller="Customer" asp-action="RegisterUser" role="button" class="btn btn-success">Sign In</a>
+                                                <a asp-controller="Account" asp-action="Register" role="button" class="btn btn-success">Sign In</a>                                            </span>
+
+                                            <span>
+                                                <a  role="button" class="btn btn-default">Sign In</a>
                                             </span>
                                         </div>
                                     </form>
@@ -80,10 +92,12 @@
                     </ul>
                 </li>
                 <li>
-                    <a asp-controller="ShoppingCart" asp-action="ShoppingCart" role="button" aria-expanded="false">
+                    <a asp-controller="Order" asp-action="ShoppingCart" role="button" aria-expanded="false">
                         <span class="glyphicon glyphicon-shopping-cart"></span><span> 0 Items</span>
                     </a>
                 </li>
+                    _LogInPartial ends -->
+
             </ul>
         </div>
     </div>
@@ -151,7 +165,7 @@
                     <strong>Other Categories</strong>
                 </li>
                 <li>
-                    <a asp-area="" asp-controller="Home" asp-action="BestSellers">Biography</a>
+                    <a asp-area="" asp-controller="Product" asp-action="BestSellers">Biography</a>
                 </li>
                 <li>
                     <a asp-area="" asp-controller="Home" asp-action="Contact">Children's Books</a>
@@ -180,7 +194,7 @@
             <ul>
                 <li></li>
                 <li>
-                    <a asp-area="" asp-controller="Home" asp-action="BestSellers">Personal Development</a>
+                    <a asp-area="" asp-controller="Product" asp-action="BestSellers">Personal Development</a>
                 </li>
                 <li>
                     <a asp-area="" asp-controller="Home" asp-action="Contact">Poetry & Drama</a>
@@ -211,7 +225,7 @@
                     <strong>Top Authors</strong>
                 </li>
                 <li>
-                    <a asp-area="" asp-controller="Home" asp-action="BestSellers">J.K. Rowling</a>
+                    <a asp-area="" asp-controller="Product" asp-action="BestSellers">J.K. Rowling</a>
                 </li>
                 <li>
                     <a asp-area="" asp-controller="Home" asp-action="Contact">Roald Dahl</a>
@@ -244,10 +258,10 @@
             <strong>Best Sellers</strong>
         </li>
         <li>
-            <a asp-area="" asp-controller="Home" asp-action="BestSellers">Our Best Sellers</a>
+            <a asp-area="" asp-controller="Product" asp-action="BestSellers">Our Best Sellers</a>
         </li>
         <li>
-            <a asp-area="" asp-controller="Home" asp-action="Contact">New York Times Best Sellers</a>
+            <a asp-area="" asp-controller="Product" asp-action="BestSellers">New York Times Best Sellers</a>
         </li>
     </ul>
 </div>
@@ -312,7 +326,6 @@
 
                     <a asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                 </p>
-                </p>
                 <p>
                     <a asp-area="" asp-controller="Product" asp-action="AllProducts">All Products</a>
                 </p>
@@ -329,7 +342,6 @@
             <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
 
                     <a asp-area="" asp-controller="Product" asp-action="TopRated">Top Rated</a>
-                </p>
                 <p>
                     <a href="#!">Shipping</a>
 
@@ -356,7 +368,7 @@
                      <a asp-area="" asp-controller="Customer" asp-action="OrderHistory">Order History</a>
                 </p>
                 <p>
-                   <a asp-area="" asp-controller="WishList" asp-action="WishList">WishList</a>
+                   <a asp-area="" asp-controller="Customer" asp-action="WishList">WishList</a>
 
                 </p>
                 <p>
