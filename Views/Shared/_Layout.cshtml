@@ -4,9 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="~/css/site.css" />
     <title>@ViewData["Title"] - BookCave</title>
-    <link rel="stylesheet" href="~/css/site.css"/>
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />
@@ -18,34 +16,39 @@
         <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" asp-append-version="true"/>
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true"/>
     </environment>
+    <link rel="stylesheet" href="~/css/site.css" />
 </head>
 
 <body>
-<nav class="navbar navbar-inverse navbar-fixed-top" style="background-color: white;">
+<nav id="navbar" class="navbar navbar-inverse navbar-fixed-top" style="background-color: white;">
 <div class="container">
     <div class="row">
         <div class="col-xs-3">
             <img src="~/images/smallLogo.svg" alt="Logo">
         </div>
         <div class="col-xs-6">
-            <div id="search-input-bar" class="input-group">
-                <select name="filter-searchbar" class="form-control">
-                    <option value="all">All</option>
-                    <option value="author">Author</option>
-                    <option value="isbn">ISBN</option>
-                    <option value="title">Title</option>
-                </select>
-                <input type="hidden" name="search_param" value="all" id="search_param">
-                <input type="text" class="form-control" name="x" placeholder="Search term...">
-                <span class="input-group-btn">
-                    <button class="btn btn-default" type="button">
-                        <span class="glyphicon glyphicon-search"></span>
+
+            <div class="input-group">
+                <div class="input-group-btn search-panel">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                        <span id="search_concept">All</span> <span class="caret"></span>
                     </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#author">All</a></li>
+                        <li><a href="#author">Author</a></li>
+                        <li><a href="#its_equal">ISBN</a></li>
+                        <li><a href="#greather_than">Title</a></li>
+                    </ul>
+                </div>
+                <input type="hidden" name="search_param" value="all" id="search_param">
+                <input type="text" class="form-control" name="x" placeholder="Search by keyword, title, author or ISBN">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
                 </span>
             </div>
         </div>
         <div class="col-xs-3">
-            <ul class="nav navbar-nav navbar-right">
+            <ul id="corner-up-right" class="nav navbar-nav navbar-right">
                 <li class="dropdown">
                     <a href="http://www.jquery2dotnet.com" class="dropdown-toggle" data-toggle="dropdown">New User / Sign In</a>
                     <ul class="dropdown-menu" style="padding: 15px; min-width: 250px;">
@@ -63,10 +66,10 @@
                                         </div>
                                         <div class="form-group">
                                             <span>
-                                                <button type="submit" class="btn btn-success btn-block">New User</button>
+                                                <a asp-controller="Account" asp-action="RegisterUser" role="button" class="btn btn-success">New User</a>
                                             </span>
                                             <span>
-                                                <button type="submit" class="btn btn-success btn-block">Sign In</button>
+                                                <a asp-controller="Account" asp-action="RegisterUser" role="button" class="btn btn-success">Sign In</a>
                                             </span>
                                         </div>
                                     </form>
@@ -76,7 +79,6 @@
                     </ul>
                 </li>
                 <li>
-                     
                     <a asp-controller="ShoppingCart" asp-action="ShoppingCart" role="button" aria-expanded="false">
                         <span class="glyphicon glyphicon-shopping-cart"></span><span> 0 Items</span>
                     </a>
@@ -85,18 +87,19 @@
         </div>
     </div>
 </div>
-<div class="navbar-collapse collapse">
+<div id="bla" class="navbar-collapse collapse">
     <ul class="nav navbar-nav">
         <li>
             <a asp-area="" asp-controller="Home" asp-action="Index">Home</a>
         </li>
         <li>
-            <a asp-area="" asp-controller="Product" asp-action="AllProducts">
+
+            <a id = "browse-hover" asp-area="" asp-controller="Product" asp-action="AllProducts">
                 <span>All Products </span><span class="fa fa-chevron-down"></span>
             </a>
         </li>
         <li>
-            <a asp-area="" asp-controller="Product" asp-action="BestSellers">
+            <a id ="best-sellers-hover" asp-area="" asp-controller="Product" asp-action="BestSellers">
                 <span>Best Sellers </span><span class="fa fa-chevron-down"></span>
             </a>
         </li>
@@ -108,7 +111,7 @@
         </li>
     </ul>
 </div>
-<div id="browse-hidden" class="navbar-collapse collapse">
+<div id="browse-hidden">
     <div class="row">
         <div class="col-sm-3">
             <ul>
@@ -234,7 +237,7 @@
         </div>
     </div>
 </div>
-<div id="best-sellers-hidden" class="navbar-collapse collapse">
+<div id="best-sellers-hidden">
     <ul>
         <li>
             <strong>Best Sellers</strong>
@@ -251,6 +254,43 @@
 
 <div class="container body-content">
     @RenderBody()
+    <h2>BEST SELLERS</h2>
+    <div class="container"> 
+        <!--Product View-->
+        <div class="row">
+            <div class="col">
+                <img src="https://hpmedia.bloomsbury.com/rep/s/978%201408855928_309033.jpeg"/>
+            </div>
+            <div class="col">
+                <img src="https://hpmedia.bloomsbury.com/rep/s/9781408855935_309037.jpeg"/>
+            </div>
+            <div class="col">
+                <img src="https://hpmedia.bloomsbury.com/rep/s/9781408855942_309034.jpeg"/>
+            </div>
+            <div class="col">
+                <img src="https://hpmedia.bloomsbury.com/rep/s/9781408855959_309031.jpeg"/>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <h2>NEW RELEASES</h2>
+    <div class="container"> 
+        <!--Product View-->
+        <div class="row">
+            <div class="col">
+                <img src="https://kbimages1-a.akamaihd.net/a174025c-fc54-4013-97c2-232bf790faee/1200/1200/False/the-subtle-art-of-not-giving-a-f-ck.jpg"/>
+            </div>            
+            <div class="col">
+                <img src="https://images-na.ssl-images-amazon.com/images/I/7153PGFRSBL.jpg"/>
+            </div>
+            <div class="col">
+                <img src="https://www.hodder.co.uk/assets/HodderStoughton/img/book/565/isbn9781473621565.jpg"/>
+            </div>
+            <div class="col">
+                <img src="https://images-na.ssl-images-amazon.com/images/I/71%2BT4DhJiiL.jpg"/>
+            </div>
+        </div>
+    </div>
 </div>
 
 <!--Footer-->
