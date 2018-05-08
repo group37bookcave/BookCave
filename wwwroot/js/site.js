@@ -1,8 +1,7 @@
 ﻿// Write your JavaScript code.
-
 $("input[type='image']").click(function() {
     $("input[id='user-image']").click();
-
+});
 
 $(document).ready(function(e){
     $('.search-panel .dropdown-menu').find('a').click(function(e) {
