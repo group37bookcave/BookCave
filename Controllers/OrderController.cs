@@ -20,6 +20,11 @@ namespace BookCave.Controllers
             return View();
         }
 
+          public IActionResult Address()
+        {
+            return View();
+        }
+
         public IActionResult RemoveProduct()
         {
             throw new NotImplementedException();
@@ -27,7 +32,7 @@ namespace BookCave.Controllers
         
         public IActionResult Review()
         {
-            throw new NotImplementedException();
+            return View();
         }
     }
 }

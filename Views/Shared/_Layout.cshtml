@@ -7,14 +7,13 @@
     <title>@ViewData["Title"] - BookCave</title>
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-        <link rel="stylesheet" href="~/css/site.css" />
+        <link rel="stylesheet" href="~/css/site.css"/>
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute"/>
         <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" asp-append-version="true"/>
-        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true"/>
     </environment>
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
@@ -51,54 +50,7 @@
         </div>
         <div class="col-xs-3">
             <ul id="corner-up-right" class="nav navbar-nav navbar-right">
-
-                @Html.Partial("_LogInPartial")
-                <!--
-                @{ 
-                    Html.Partial("_LogInPartial");
-                }
-                -->
-
-                <!-- _LogInPartial starts
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">New User / Sign In</a>
-                    <ul class="dropdown-menu" style="padding: 15px; min-width: 250px;">
-                        <li>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
-                                        <div class="form-group">
-                                            <label class="sr-only" for="exampleInputEmail2">Email address</label>
-                                            <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Email address" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="sr-only" for="exampleInputPassword2">Password</label>
-                                            <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <span>
-                                                <a asp-controller="Account" asp-action="Register" role="button" class="btn btn-success">New User</a>
-                                            </span>
-                                            <span>
-                                                <a asp-controller="Account" asp-action="Register" role="button" class="btn btn-success">Sign In</a>                                            </span>
-
-                                            <span>
-                                                <a  role="button" class="btn btn-default">Sign In</a>
-                                            </span>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a asp-controller="Order" asp-action="ShoppingCart" role="button" aria-expanded="false">
-                        <span class="glyphicon glyphicon-shopping-cart"></span><span> 0 Items</span>
-                    </a>
-                </li>
-                    _LogInPartial ends -->
-
+                @await Html.PartialAsync("_LogInPartial")
             </ul>
         </div>
     </div>
@@ -106,7 +58,7 @@
 <div id="bla" class="navbar-collapse collapse">
     <ul class="nav navbar-nav">
         <li>
-            <a asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+            <a asp-controller="Home" asp-action="Index">Home</a>
         </li>
         <li>
 
@@ -120,10 +72,10 @@
             </a>
         </li>
         <li>
-            <a asp-area="" asp-controller="Product" asp-action="NewReleases">New Releases</a>
+            <a asp-controller="Product" asp-action="NewReleases">New Releases</a>
         </li>
         <li>
-            <a asp-area="" asp-controller="Product" asp-action="TopRated">Top Rated</a>
+            <a asp-controller="Product" asp-action="TopRated">Top Rated</a>
         </li>
     </ul>
 </div>
@@ -132,37 +84,35 @@
         <div class="col-sm-3">
             <ul>
                 <li>
-                    <strong>Top Categories</strong>
+                    <strong>Categories</strong>
                 </li>
                 <li>
-                    <a asp-area="" asp-controller="Product" asp-action="AllProducts">All Products</a>
+                    <a asp-controller="Product" asp-action="AllProducts">All Products</a>
                 </li>
                 <li>
-                    <a asp-area="" asp-controller="Home" asp-action="Contact">Audio Books</a>
+                    <a asp-controller="Home" asp-action="Contact">Audio Books</a>
                 </li>
                 <li>
-                    <a asp-area="" asp-controller="Home" asp-action="Contact">E - Books</a>
+                    <a asp-controller="Home" asp-action="Contact">E - Books</a>
                 </li>
                 <li>
-                    <a asp-area="" asp-controller="Home" asp-action="Contact">Hardcover</a>
+                    <a asp-controller="Home" asp-action="Contact">Hardcover</a>
                 </li>
                 <li>
-                    <a asp-area="" asp-controller="Home" asp-action="Contact">Paperback</a>
+                    <a asp-controller="Home" asp-action="Contact">Paperback</a>
                 </li>
                 <li>
-                    <a asp-area="" asp-controller="Home" asp-action="Contact">Sheet Music</a>
-                </li>
-                <li>
-                    <a asp-area="" asp-controller="Home" asp-action="Contact">Fiction</a>
-                </li>
-                <li>
-                    <a asp-area="" asp-controller="Home" asp-action="Contact">Non - Fiction</a>
+                    <a asp-controller="Home" asp-action="Contact">Sheet Music</a>
                 </li>
             </ul>
         </div>
         <div class="col-sm-2">
             <ul>
+                <li></li>
                 <li>
+<<<<<<< HEAD
+                    <a asp-controller="Home" asp-action="BestSellers">Biographies & Memoirs</a>
+=======
                     <strong>Other Categories</strong>
                 </li>
                 <li>
@@ -173,26 +123,30 @@
                 </li>
                 <li>
                     <a asp-area="" asp-controller="Home" asp-action="Contact">Crafts & Hobbies</a>
+>>>>>>> 37be76254677340e93dcd065e4fc22298a2811d7
                 </li>
                 <li>
-                    <a asp-area="" asp-controller="Home" asp-action="Contact">Crime & Thriller</a>
+                    <a asp-controller="Home" asp-action="Contact">Children</a>
                 </li>
                 <li>
-                    <a asp-area="" asp-controller="Home" asp-action="Contact">Cook Books</a>
+                    <a asp-controller="Home" asp-action="Contact">Fantasy</a>
                 </li>
                 <li>
-                    <a asp-area="" asp-controller="Home" asp-action="Contact">Fantasy</a>
+                    <a asp-controller="Home" asp-action="Contact">Fiction</a>
                 </li>
                 <li>
-                    <a asp-area="" asp-controller="Home" asp-action="Contact">Mind, Body & Spirit</a>
+                    <a asp-controller="Home" asp-action="Contact">Mystery, Thriller & Suspense</a>
                 </li>
                 <li>
-                    <a asp-area="" asp-controller="Home" asp-action="Contact">Natural History</a>
+                    <a asp-controller="Home" asp-action="Contact">Self-Help</a>
                 </li>
             </ul>
         </div>
         <div class="col-sm-3">
             <ul>
+<<<<<<< HEAD
+                
+=======
                 <li></li>
                 <li>
                     <a asp-area="" asp-controller="Product" asp-action="BestSellers">Personal Development</a>
@@ -218,6 +172,7 @@
                 <li>
                     <a asp-area="" asp-controller="Home" asp-action="Contact">Travel Guides</a>
                 </li>
+>>>>>>> 37be76254677340e93dcd065e4fc22298a2811d7
             </ul>
         </div>
         <div class="col-sm-2 ">
@@ -226,28 +181,32 @@
                     <strong>Top Authors</strong>
                 </li>
                 <li>
+<<<<<<< HEAD
+                    <a asp-controller="Home" asp-action="BestSellers">J.K. Rowling</a>
+=======
                     <a asp-area="" asp-controller="Product" asp-action="BestSellers">J.K. Rowling</a>
+>>>>>>> 37be76254677340e93dcd065e4fc22298a2811d7
                 </li>
                 <li>
-                    <a asp-area="" asp-controller="Home" asp-action="Contact">Roald Dahl</a>
+                    <a asp-controller="Home" asp-action="Contact">Yrsa Sigurðardóttir</a>
                 </li>
                 <li>
-                    <a asp-area="" asp-controller="Home" asp-action="Contact">Stephen King</a>
+                    <a asp-controller="Home" asp-action="Contact">James Comey</a>
                 </li>
                 <li>
-                    <a asp-area="" asp-controller="Home" asp-action="Contact">Dr. Seuss</a>
+                    <a asp-controller="Home" asp-action="Contact">Robert Peterson</a>
                 </li>
                 <li>
-                    <a asp-area="" asp-controller="Home" asp-action="Contact">James Patterson</a>
+                    <a asp-controller="Home" asp-action="Contact">Mark Manson</a>
                 </li>
                 <li>
-                    <a asp-area="" asp-controller="Home" asp-action="Contact">Sarah J. Maas</a>
+                    <a asp-controller="Home" asp-action="Contact">Faith Hunter</a>
                 </li>
                 <li>
-                    <a asp-area="" asp-controller="Home" asp-action="Contact">Brandon Sanderson</a>
+                    <a asp-controller="Home" asp-action="Contact">Brandon Sanderson</a>
                 </li>
                 <li>
-                    <a asp-area="" asp-controller="Home" asp-action="Contact">See all</a>
+                    <a asp-controller="Home" asp-action="Contact">See all</a>
                 </li>
             </ul>
         </div>
@@ -259,10 +218,17 @@
             <strong>Best Sellers</strong>
         </li>
         <li>
+<<<<<<< HEAD
+            <a asp-controller="Home" asp-action="BestSellers">Our Best Sellers</a>
+        </li>
+        <li>
+            <a asp-controller="Home" asp-action="Contact">New York Times Best Sellers</a>
+=======
             <a asp-area="" asp-controller="Product" asp-action="BestSellers">Our Best Sellers</a>
         </li>
         <li>
             <a asp-area="" asp-controller="Product" asp-action="BestSellers">New York Times Best Sellers</a>
+>>>>>>> 37be76254677340e93dcd065e4fc22298a2811d7
         </li>
     </ul>
 </div>
@@ -415,12 +381,12 @@
                                 <a asp-controller="Home" asp-action="TermsAndCond">Terms and Conditions</a>
                             </li>
                             <li class="list-inline-item">
-                                <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                                <a href="http://www.facebook.com" class="btn-floating btn-sm rgba-white-slight mx-1">
                                     <i class="fa fa-facebook-square"></i>
                                 </a>
                             </li>
                             <li class="list-inline-item">
-                                <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                                <a href="http://www.twitter.com" class="btn-floating btn-sm rgba-white-slight mx-1">
                                     <i class="fa fa-twitter-square"></i>
                                 </a>
                             </li>

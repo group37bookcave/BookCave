@@ -22,6 +22,11 @@ namespace BookCave.Controllers
             return View(products);
         }
 
+        public IActionResult BookDetail()
+        {
+            return View();
+        }
+
         public IActionResult NewReleases()
         {
             return View();
@@ -36,6 +41,7 @@ namespace BookCave.Controllers
         {
             return View();
         }
+
         
         [HttpGet]
         //[Authorize(Policy = "Employee")]

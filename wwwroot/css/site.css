@@ -136,6 +136,14 @@ tfoot > tr{
     padding:5px;
 }
 
+/*payment pages*/
+
+.address-form{
+    
+    margin-left:20%;
+    margin-right: 20%;
+    padding-bottom: 100px;
+}
 
 
 /*products */ 
@@ -157,11 +165,6 @@ tfoot > tr{
 .all-products-header {
     display: inline-block;
 }
-
-
-
-
-
 
 
 /* BRYNJA DAGMAR JAKOBSD */

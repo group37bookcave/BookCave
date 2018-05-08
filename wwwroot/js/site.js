@@ -12,11 +12,7 @@ $(document).ready(function(e){
 		$('.input-group #search_param').val(param);
     });
 
-    $("#browse-hover").hover(function () {
-        $("#browse-hidden").show();
-    }, function () {
-        $("#browse-hidden").hide();
-    });
+ 
 
     $("#best-sellers-hover").hover(function () {
         $("#best-sellers-hidden").show();
