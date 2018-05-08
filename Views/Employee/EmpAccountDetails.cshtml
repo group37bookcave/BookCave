@@ -3,9 +3,6 @@
 }
 
 
- @{
-    ViewData["Title"] = "Account Details";
-}
 
 <div class="container">
     <div class="row">
@@ -36,13 +33,10 @@
                             <label for="user-phone">Phone Number</label>
                             <input type="text" class="form-control" id="user-phone" placeholder="Enter phone number">
                         </div>
-                     
-                      
-                         <div class="grey-buttons">
-                        <button type="submit" class="btn grey-buttons">Update</button>
+                        <div class="grey-buttons">
+                            <a class="btn btn-default grey-buttons" type="button" asp-area="" asp-controller="" asp-action="">Update</a>
                         </div>
                    
-                  
                     <div class="form-group">
                         <label for="user-password">New Password</label>
                         <input type="password" class="form-control" id="user-password" placeholder="Password">
@@ -52,7 +46,7 @@
                         <input type="password" class="form-control" id="user-password-confirm" placeholder="Password">
                     </div>
                     <div class="grey-buttons">
-                        <button type="submit" class="btn grey-buttons">Update</button>
+                       <a class="btn btn-default grey-buttons" type="button" asp-area="" asp-controller="" asp-action="">Update</a>
                     </div>
                  
                 </fieldset>
