@@ -49,8 +49,17 @@
         </div>
         <div class="col-xs-3">
             <ul id="corner-up-right" class="nav navbar-nav navbar-right">
+
+                @Html.Partial("_LogInPartial")
+                <!--
+                @{ 
+                    Html.Partial("_LogInPartial");
+                }
+                -->
+
+                <!-- _LogInPartial starts
                 <li class="dropdown">
-                    <a href="http://www.jquery2dotnet.com" class="dropdown-toggle" data-toggle="dropdown">New User / Sign In</a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">New User / Sign In</a>
                     <ul class="dropdown-menu" style="padding: 15px; min-width: 250px;">
                         <li>
                             <div class="row">
@@ -66,10 +75,10 @@
                                         </div>
                                         <div class="form-group">
                                             <span>
-                                                <a asp-controller="Account" asp-action="RegisterUser" role="button" class="btn btn-success">New User</a>
+                                                <a asp-controller="Account" asp-action="RegisterUser" role="button" class="btn btn-default">New User</a>
                                             </span>
                                             <span>
-                                                <a asp-controller="Account" asp-action="RegisterUser" role="button" class="btn btn-success">Sign In</a>
+                                                <a  role="button" class="btn btn-default">Sign In</a>
                                             </span>
                                         </div>
                                     </form>
@@ -83,6 +92,8 @@
                         <span class="glyphicon glyphicon-shopping-cart"></span><span id="nr-of-items"> 0 Items</span>
                     </a>
                 </li>
+                    _LogInPartial ends -->
+
             </ul>
         </div>
     </div>
