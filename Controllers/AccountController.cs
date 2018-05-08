@@ -19,8 +19,6 @@ namespace BookCave.Controllers
 
         private readonly UserService _userService;
 
-        private readonly OrderService _orderService;
-
         public AccountController(
             SignInManager<ApplicationUser> signInManager,
             UserManager<ApplicationUser> userManager)
@@ -28,18 +26,17 @@ namespace BookCave.Controllers
             _signInManager = signInManager;
             _userManager = userManager;
             _userService = new UserService();
-            _orderService = new OrderService();
         }
 
         [HttpGet]
-        public IActionResult RegisterTest()
+        public IActionResult Register() 
         {
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> RegisterTest(RegisterInputModel model)
+        public async Task<IActionResult> Register(RegisterInputModel model)
         {
             if (!ModelState.IsValid)
             {

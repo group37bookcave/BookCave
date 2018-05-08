@@ -4,9 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="~/css/site.css" />
     <title>@ViewData["Title"] - BookCave</title>
-    <link rel="stylesheet" href="~/css/site.css"/>
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />
@@ -18,34 +16,39 @@
         <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" asp-append-version="true"/>
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true"/>
     </environment>
+    <link rel="stylesheet" href="~/css/site.css" />
 </head>
 
 <body>
-<nav class="navbar navbar-inverse navbar-fixed-top" style="background-color: white;">
+<nav id="navbar" class="navbar navbar-inverse navbar-fixed-top" style="background-color: white;">
 <div class="container">
     <div class="row">
         <div class="col-xs-3">
             <img src="~/images/smallLogo.svg" alt="Logo">
         </div>
         <div class="col-xs-6">
-            <div id="search-input-bar" class="input-group">
-                <select name="filter-searchbar" class="form-control">
-                    <option value="all">All</option>
-                    <option value="author">Author</option>
-                    <option value="isbn">ISBN</option>
-                    <option value="title">Title</option>
-                </select>
-                <input type="hidden" name="search_param" value="all" id="search_param">
-                <input type="text" class="form-control" name="x" placeholder="Search term...">
-                <span class="input-group-btn">
-                    <button class="btn btn-default" type="button">
-                        <span class="glyphicon glyphicon-search"></span>
+
+            <div class="input-group">
+                <div class="input-group-btn search-panel">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                        <span id="search_concept">All</span> <span class="caret"></span>
                     </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#author">All</a></li>
+                        <li><a href="#author">Author</a></li>
+                        <li><a href="#its_equal">ISBN</a></li>
+                        <li><a href="#greather_than">Title</a></li>
+                    </ul>
+                </div>
+                <input type="hidden" name="search_param" value="all" id="search_param">
+                <input type="text" class="form-control" name="x" placeholder="Search by keyword, title, author or ISBN">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
                 </span>
             </div>
         </div>
         <div class="col-xs-3">
-            <ul class="nav navbar-nav navbar-right">
+            <ul id="corner-up-right" class="nav navbar-nav navbar-right">
                 <li class="dropdown">
                     <a href="http://www.jquery2dotnet.com" class="dropdown-toggle" data-toggle="dropdown">New User / Sign In</a>
                     <ul class="dropdown-menu" style="padding: 15px; min-width: 250px;">
@@ -63,10 +66,10 @@
                                         </div>
                                         <div class="form-group">
                                             <span>
-                                                <button type="submit" class="btn btn-success btn-block">New User</button>
+                                                <a asp-controller="Account" asp-action="Register" role="button" class="btn btn-success">New User</a>
                                             </span>
                                             <span>
-                                                <button type="submit" class="btn btn-success btn-block">Sign In</button>
+                                                <a asp-controller="Account" asp-action="Register" role="button" class="btn btn-success">Sign In</a>
                                             </span>
                                         </div>
                                     </form>
@@ -76,7 +79,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="#" role="button" aria-expanded="false">
+                    <a asp-controller="ShoppingCart" asp-action="ShoppingCart" role="button" aria-expanded="false">
                         <span class="glyphicon glyphicon-shopping-cart"></span><span> 0 Items</span>
                     </a>
                 </li>
@@ -84,30 +87,31 @@
         </div>
     </div>
 </div>
-<div class="navbar-collapse collapse">
+<div id="bla" class="navbar-collapse collapse">
     <ul class="nav navbar-nav">
         <li>
             <a asp-area="" asp-controller="Home" asp-action="Index">Home</a>
         </li>
         <li>
-            <a href="#">
-                <span>Browse </span><span class="fa fa-chevron-down"></span>
+
+            <a id = "browse-hover" asp-area="" asp-controller="Product" asp-action="AllProducts">
+                <span>All Products </span><span class="fa fa-chevron-down"></span>
             </a>
         </li>
         <li>
-            <a href="#">
+            <a id ="best-sellers-hover" asp-area="" asp-controller="Product" asp-action="BestSellers">
                 <span>Best Sellers </span><span class="fa fa-chevron-down"></span>
             </a>
         </li>
         <li>
-            <a asp-area="" asp-controller="Home" asp-action="Contact">New Releases</a>
+            <a asp-area="" asp-controller="Product" asp-action="NewReleases">New Releases</a>
         </li>
         <li>
-            <a asp-area="" asp-controller="Product" asp-action="AllProducts">Top Rated</a>
+            <a asp-area="" asp-controller="Product" asp-action="TopRated">Top Rated</a>
         </li>
     </ul>
 </div>
-<div id="browse-hidden" class="navbar-collapse collapse">
+<div id="browse-hidden">
     <div class="row">
         <div class="col-sm-3">
             <ul>
@@ -146,7 +150,7 @@
                     <strong>Other Categories</strong>
                 </li>
                 <li>
-                    <a asp-area="" asp-controller="Home" asp-action="BestSellers">Biography</a>
+                    <a asp-area="" asp-controller="Product" asp-action="BestSellers">Biography</a>
                 </li>
                 <li>
                     <a asp-area="" asp-controller="Home" asp-action="Contact">Children's Books</a>
@@ -175,7 +179,7 @@
             <ul>
                 <li></li>
                 <li>
-                    <a asp-area="" asp-controller="Home" asp-action="BestSellers">Personal Development</a>
+                    <a asp-area="" asp-controller="Product" asp-action="BestSellers">Personal Development</a>
                 </li>
                 <li>
                     <a asp-area="" asp-controller="Home" asp-action="Contact">Poetry & Drama</a>
@@ -206,7 +210,7 @@
                     <strong>Top Authors</strong>
                 </li>
                 <li>
-                    <a asp-area="" asp-controller="Home" asp-action="BestSellers">J.K. Rowling</a>
+                    <a asp-area="" asp-controller="Product" asp-action="BestSellers">J.K. Rowling</a>
                 </li>
                 <li>
                     <a asp-area="" asp-controller="Home" asp-action="Contact">Roald Dahl</a>
@@ -233,16 +237,16 @@
         </div>
     </div>
 </div>
-<div id="best-sellers-hidden" class="navbar-collapse collapse">
+<div id="best-sellers-hidden">
     <ul>
         <li>
             <strong>Best Sellers</strong>
         </li>
         <li>
-            <a asp-area="" asp-controller="Home" asp-action="BestSellers">Our Best Sellers</a>
+            <a asp-area="" asp-controller="Product" asp-action="BestSellers">Our Best Sellers</a>
         </li>
         <li>
-            <a asp-area="" asp-controller="Home" asp-action="Contact">New York Times Best Sellers</a>
+            <a asp-area="" asp-controller="Product" asp-action="BestSellers">New York Times Best Sellers</a>
         </li>
     </ul>
 </div>
@@ -250,6 +254,24 @@
 
 <div class="container body-content">
     @RenderBody()
+    <h2>BEST SELLERS</h2>
+    <div class="container"> 
+        <!--Product View-->
+        <div class="row">
+            <div class="col">
+                <img src="https://hpmedia.bloomsbury.com/rep/s/978%201408855928_309033.jpeg"/>
+            </div>
+            <div class="col">
+                <img src="https://hpmedia.bloomsbury.com/rep/s/9781408855935_309037.jpeg"/>
+            </div>
+            <div class="col">
+                <img src="https://hpmedia.bloomsbury.com/rep/s/9781408855942_309034.jpeg"/>
+            </div>
+            <div class="col">
+                <img src="https://hpmedia.bloomsbury.com/rep/s/9781408855959_309031.jpeg"/>
+            </div>
+        </div>
+    </div>
 </div>
 
 <!--Footer-->
@@ -286,33 +308,28 @@
             <!--Second column-->
             <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
                 <p>
-                    <a href="#!">
-                        Home
-                    </a>
+
+                    <a asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                 </p>
                 <p>
-                    <a href="#!">
-                        Browse
-                    </a>
+                    <a asp-area="" asp-controller="Product" asp-action="AllProducts">All Products</a>
                 </p>
                 <p>
-                    <a href="#!">
-                        Best Sellers
-                    </a>
+                   <a asp-area="" asp-controller="Product" asp-action="BestSellers">Best Sellers</a>
                 </p>
                 <p>
-                    <a href="#!">
-                        New Releases
-                    </a>
+                   <a asp-area="" asp-controller="Product" asp-action="NewReleases">New Releases</a>
+
                 </p>
             </div>
 
             <!--Third column-->
             <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+
+                    <a asp-area="" asp-controller="Product" asp-action="TopRated">Top Rated</a>
                 <p>
-                    <a href="#!">
-                        Top Rated
-                    </a>
+                    <a href="#!">Shipping</a>
+
                 </p>
                 <p>
                     <a href="#!">
@@ -329,19 +346,15 @@
             <!--Fourth column-->
             <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
                 <p>
-                    <a href="#!">
-                        Account Details
-                    </a>
+
+                    <a asp-area="" asp-controller="Customer" asp-action="AccountDetails">Account Details</a>
                 </p>
                 <p>
-                    <a href="#!">
-                        Order History
-                    </a>
+                     <a asp-area="" asp-controller="Customer" asp-action="OrderHistory">Order History</a>
                 </p>
                 <p>
-                    <a href="#!">
-                        Wish List
-                    </a>
+                   <a asp-area="" asp-controller="WishList" asp-action="WishList">WishList</a>
+
                 </p>
                 <p>
                     <a href="#!">
@@ -383,7 +396,7 @@
                                 <a href="#!">Privacy Policy</a>
                             </li>
                             <li>
-                                <a href="#!">Terms and Conditions</a>
+                                <a asp-controller="Home" asp-action="TermsAndCond">Terms and Conditions</a>
                             </li>
                             <li class="list-inline-item">
                                 <a class="btn-floating btn-sm rgba-white-slight mx-1">
@@ -396,7 +409,7 @@
                                 </a>
                             </li>
                             <li class="list-inline-item">
-                                <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                                <a href="http://www.instagram.com" class="btn-floating btn-sm rgba-white-slight mx-1">
                                     <i class="fa fa-instagram"></i>
                                 </a>
                             </li>
