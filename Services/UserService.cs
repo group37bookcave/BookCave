@@ -1,4 +1,5 @@
-﻿using BookCave.Models.ViewModels;
+﻿using BookCave.Models.InputModels;
+using BookCave.Models.ViewModels;
 using BookCave.Repositories;
 
 namespace BookCave.Services
@@ -6,7 +7,6 @@ namespace BookCave.Services
     public class UserService
     {
         private CustomerRepo _cr = new CustomerRepo();
-        private OrderRepo _or = new OrderRepo();
     
         public CustomerViewModel GetCustomer(int id)
         {
@@ -32,12 +32,21 @@ namespace BookCave.Services
             }
             return model;
         }
-        
-        
 
-        public void AddCustomer(CustomerInputModel model)
+        private int AddCustomer(CustomerInputModel model)
         {
-            _cr.AddCustomer(model);
+            return _cr.AddCustomer(model);
+        }
+
+        public int CreateCustomer(RegisterInputModel model)
+        {
+            var customer = new CustomerInputModel
+            {
+                FirstName = model.FirstName,
+                LastName = model.LastName,
+                Email = model.Email
+            };
+            return AddCustomer(customer);
         }
         
         

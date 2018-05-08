@@ -5,9 +5,7 @@ using BookCave.Models.EntityModels;
 
 namespace BookCave.Models.InputModels
 {
-
-
-    public class HardCoverInputModel
+    public class EbookInputModel 
     {
         [Required] public double Price { get; set; }
         
@@ -32,5 +30,7 @@ namespace BookCave.Models.InputModels
         [Required] public List<Genre> Genres { get; set; }
 
         [Required] public List<AgeGroup> AgeGroups { get; set; }
+        
+        [Required] public double? Size { get; set; }
     }
 }

@@ -1,6 +1,6 @@
 @using Microsoft.AspNetCore.Identity
 @using System.Security.Claims
-@using BookCave.Models
+@using BookCave.Models.EntityModels
 
 @inject SignInManager<ApplicationUser> SignInManager
 
@@ -17,7 +17,7 @@
             <li>
                 <div class="row">
                     <div class="col-md-12">
-                        <a asp-controller="Customer" asp-action="Orders">All Orders</a>
+                        <a asp-controller="Employee" asp-action="Orders">All Orders</a>
                         <a asp-controller="Product" asp-action="Register">Add a Book</a>
                         <a asp-controller="" asp-action="">Add Sheet Music</a>
                         <a asp-controller="Account" asp-action="Logout">Sign Out</a>
@@ -36,8 +36,8 @@
                 <div class="row">
                     <div class="col-md-12">
                         <a asp-controller="Account" asp-action="Details">Account Details</a>
-                        <a asp-controller="WishList" asp-action="WishList">WishList</a>
-                        <a asp-controller="WishList" asp-action="OrderHistory">My Orders</a>
+                        <a asp-controller="Customer" asp-action="WishList">WishList</a>
+                        <a asp-controller="Customer" asp-action="Orders">My Orders</a>
                         <a asp-controller="Account" asp-action="Logout">Sign Out</a>
                     </div>
                 </div>
@@ -45,7 +45,7 @@
         </ul>
     </li>
     <li>
-        <a asp-controller="ShoppingCart" asp-action="ShoppingCart" role="button" aria-expanded="false">
+        <a asp-controller="Order" asp-action="ShoppingCart" role="button" aria-expanded="false">
             <span class="glyphicon glyphicon-shopping-cart"></span><span id="nr-of-items"> 0 Items</span>
         </a>
     </li>
@@ -76,7 +76,7 @@ else
                             </div>
                             <div class="form-group">
                                 <span>
-                                    <a asp-controller="Account" asp-action="RegisterUser" role="button" class="btn btn-default">New User</a>
+                                    <a asp-controller="Account" asp-action="Register" role="button" class="btn btn-default">New User</a>
                                 </span>
                                 <span>
                                     <a  role="button" class="btn btn-default">Sign In</a>
@@ -89,7 +89,7 @@ else
         </ul>
     </li>
     <li>
-        <a asp-controller="ShoppingCart" asp-action="ShoppingCart" role="button" aria-expanded="false">
+        <a asp-controller="Order" asp-action="ShoppingCart" role="button" aria-expanded="false">
             <span class="glyphicon glyphicon-shopping-cart"></span><span id="nr-of-items"> 0 Items</span>
         </a>
     </li>

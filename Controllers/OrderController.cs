@@ -8,7 +8,7 @@ using BookCave.Models.ViewModels;
 
 namespace BookCave.Controllers
 {
-    public class ShoppingCartController : Controller
+    public class OrderController : Controller
     {
         public IActionResult ShoppingCart()
         {
@@ -16,6 +16,11 @@ namespace BookCave.Controllers
         }
 
         public IActionResult RemoveProduct()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IActionResult Review()
         {
             throw new NotImplementedException();
         }
