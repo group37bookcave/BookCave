@@ -70,19 +70,9 @@ tfoot > tr{
     border-color:rgb(238, 238,238);
 }
 
-#order-num{
-    margin-left: 600px;
-}
-
-#print-receipt{
-    margin-top: 50px;
-    margin-left: 820px;
-}
-
 .book-cave-color{
     color:rgb(105,202,202);
 }
-
 
 .green-buttons > button
 {
@@ -100,6 +90,29 @@ tfoot > tr{
     width: 135px;
 }
 
+.inline-block{
+    display: inline-block;
+}
+
+.page-header > h1{
+    display: inline;
+}
+
+/* Receit */
+#order-num{
+    margin-left: 600px;
+}
+
+#print-receipt{
+    margin-top: 50px;
+    margin-left: 820px;
+}
+
+/* user info */
+.upload-image{
+    float:left;
+}
+
 .button-options > button
 {
     float:right;
@@ -108,18 +121,17 @@ tfoot > tr{
     width: 140px;  
 }
 
+.form-inputs {
+    margin-left: 20px;
+}
+
+
+
+/*products */ 
 .stars {
     color: rgb(252, 202, 68);
 }
 
-#upload-image{
-    position: left;
-    float:left;
-}
-
-.page-header > h1{
-    display: inline;
-}
 
 #sort-by{
     width: 150px;
@@ -130,35 +142,14 @@ tfoot > tr{
     margin-left: 300px;
 }
 
-
 .all-products-header {
     display: inline-block;
 }
 
-#upload-image {
-    position: left;
-    float:left;
-}
-
-#form-inputs {
-    position: right;
-    float: right;
-    background-color:hotpink;
-}
 
 
-.inline-block{
-    display: inline-block;
-}
 
-.upload-image{
-    float:left;
-}
 
-.format-inputs{
-    float:right;
-    margin-right: 20%;
-}
 
 
 /* BRYNJA DAGMAR JAKOBSD */
@@ -183,7 +174,7 @@ div.container {
     color: black;
 }
 
-nav#navbar {
+nav #navbar {
     border: none;
     background-color: white;
 }
