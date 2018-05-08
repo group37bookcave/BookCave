@@ -20,5 +20,15 @@ namespace BookCave.Controllers
         {
             return View();
         }
+
+          public IActionResult OrderHistory()
+        {
+            return View();
+        }
+
+          public IActionResult RegisterUser()
+        {
+            return View();
+        }
     }
 }

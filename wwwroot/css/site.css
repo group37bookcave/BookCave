@@ -5,12 +5,12 @@
 }
 
 body {
-    padding-top: 210px;
+    padding-top: 235px;
     padding-bottom: 0;    
-
 }
 
 footer{
+    margin-bottom: 0;
     position: sticky;
     padding: 30px;
     background-color:rgb(105,202,202);
@@ -70,19 +70,9 @@ tfoot > tr{
     border-color:rgb(238, 238,238);
 }
 
-#order-num{
-    margin-left: 600px;
-}
-
-#print-receipt{
-    margin-top: 50px;
-    margin-left: 820px;
-}
-
 .book-cave-color{
     color:rgb(105,202,202);
 }
-
 
 .green-buttons > button
 {
@@ -97,27 +87,60 @@ tfoot > tr{
     color: black;
     background-color:rgb(240,240,240);
     margin-bottom: 10px;
-    width: 120px;
+    width: 135px;
+    float: right;
 }
 
-.button-options > button
-{
-    margin-bottom: 10px;
-    width: 120px;  
+.inline-block{
+    display: inline-block;
 }
 
-.stars {
-    color: rgb(252, 202, 68);
-}
-
-#upload-image{
-    position: left;
-    float:left;
+.check-options{
+    float: right;
 }
 
 .page-header > h1{
     display: inline;
 }
+
+/* Receit */
+#order-num{
+    margin-left: 600px;
+}
+
+#print-receipt{
+    margin-top: 50px;
+    margin-left: 820px;
+}
+
+/* user info */
+.upload-image{
+    float:left;
+}
+
+.button-options > button
+{
+    float:right;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    width: 140px;  
+}
+
+.form-inputs {
+    margin-left: 20px;
+}
+
+.form-group{
+    padding:5px;
+}
+
+
+
+/*products */ 
+.stars {
+    color: rgb(252, 202, 68);
+}
+
 
 #sort-by{
     width: 150px;
@@ -125,38 +148,18 @@ tfoot > tr{
 }
 
 .filter-and-sort{
-    margin-left: 300px;
-}
+    margin-left: 450px;
 
+}
 
 .all-products-header {
     display: inline-block;
 }
 
-#upload-image {
-    position: left;
-    float:left;
-}
-
-#form-inputs {
-    position: right;
-    float: right;
-    background-color:hotpink;
-}
 
 
-.inline-block{
-    display: inline-block;
-}
 
-.upload-image{
-    float:left;
-}
 
-.format-inputs{
-    float:right;
-    margin-right: 20%;
-}
 
 
 /* BRYNJA DAGMAR JAKOBSD */
@@ -181,7 +184,7 @@ div.container {
     color: black;
 }
 
-nav#navbar {
+nav #navbar {
     border: none;
     background-color: white;
 }
@@ -205,16 +208,6 @@ nav#navbar {
     top: 50px;
 }
 
-/*
-@media only screen and (min-width: 600px){
-    footer{
-        
-    }
-    
-}
-*/
-
-
 /* Hide/rearrange for smaller screens */
 @media screen and (max-width: 767px) {
     /* Hide captions */
@@ -229,7 +222,7 @@ nav#navbar {
 }
 .col img{
     flex: 20%;
-    max-width: 24.2%;
+    max-width: 283px;
     padding: 0 4px;
     float: left;
 }
