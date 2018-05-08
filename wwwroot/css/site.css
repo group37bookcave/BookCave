@@ -5,7 +5,7 @@
 }
 
 body {
-    padding-top: 155px;
+    padding-top: 210px;
     padding-bottom: 0;    
 
 }
@@ -218,4 +218,15 @@ nav#navbar {
     .carousel-caption {
         display: none;
     }
+}
+
+/* Product View */
+.container{
+    
+}
+.col img{
+    flex: 20%;
+    max-width: 24.2%;
+    padding: 0 4px;
+    float: left;
 }
