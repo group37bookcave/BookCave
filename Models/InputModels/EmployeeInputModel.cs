@@ -5,7 +5,7 @@ namespace BookCave.Models.InputModels
 {
     public class EmployeeInputModel
     {
-        [Required] public string Email { get; set; }
+        [Required] [EmailAddress] public string Email { get; set; }
 
         [Required] public string FirstName { get; set; }
 

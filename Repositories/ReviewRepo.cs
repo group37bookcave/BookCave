@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using BookCave.Data;
@@ -11,8 +11,8 @@ namespace BookCave.Repositories
     public class ReviewRepo
     {
         private readonly StoreContext _db = new StoreContext();
-        private readonly UserRepo _ur = new UserRepo();
-        private readonly ProductRepo _pr = new ProductRepo();
+        private readonly CustomerRepo _customerRepo = new CustomerRepo();
+        private readonly ProductRepo _productRepo= new ProductRepo();
 
         public List<Review> GetReviewsByCustomerId(int id)
         {
@@ -30,9 +30,9 @@ namespace BookCave.Repositories
         {
             var review = new Review
             {
-                Customer = _ur.GetCustomer(model.CustomerId),
+                Customer = _customerRepo.GetCustomer(model.CustomerId),
                 DateReviewed = DateTime.Today,
-                Product = _pr.GetProduct(model.ProductId),
+                Product = _productRepo.GetProduct(model.ProductId),
                 Rating = model.Rating,
                 ReviewString = model.Review
             };
