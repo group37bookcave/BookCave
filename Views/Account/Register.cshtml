@@ -1,41 +1,43 @@
-@model BookCave.Models.InputModels.CustomerInputModel
 
-@{
-    ViewData["Title"] = "Account Details";
+@model BookCave.Models.InputModels.RegisterInputModel
+
+    ViewData["Title"] = "Register User";
+
 }
+
 
 <div class="container">
     <div class="row">
         <div class="col-sm-12 col-md-10 col-md-offset-1">
+             <div class="page-header">
+            <span id="page-name"><h1><span class="book-cave-color">NEW</span><span id="list">USER</span></h1></span>
 
-            <div class="page-header">
-                <span id="page-name">
-                    <h1>
-                        <span class="book-cave-color">ACCOUNT</span><span id="list">DETAILS</span>
-                    </h1>
-                </span>
-            </div>
+             </div>
 
             <form class="input-form" method="post">
 
                 <fieldset class="inline-block upload-image">
-                    <input asp-for="@Model.Image" type="image" src="https://getstamped.co.uk/wp-content/uploads/Placeholder.jpg" style="width: 300px"/>
+                    <input asp-for="@Model.Image"type="image" src="https://getstamped.co.uk/wp-content/uploads/Placeholder.jpg" style="width: 300px"/>
                     <input asp-for="@Model.Image" type="file" id="user-image" style="display: none;"/>
+
                 </fieldset>
                 <fieldset>
                     <div class="form-inputs">
                         <div class="form-group">
+
                             <label asp-for="@Model.FirstName">First Name</label>
-                            <input asp-for="@Model.FirstName" type="text" class="form-control" id="user-name" placeholder="Enter first name">
+                            <input asp-for="@Model.FirstName" type="text" class="form-control" id="user-name"  placeholder="Enter name">
+                            <span asp-validation-for="@Model.FirstName"></span>
+                        </div>
+                          <div class="form-group">
+                            <label asp-for="@Model.LastName">Last Name</label>
+                            <input asp-for="@Model.LastName" type="text" class="form-control" id="user-name" placeholder="Enter name">
+                             <span asp-validation-for="@Model.LastName"></span>
                         </div>
                         <div class="form-group">
-                            <label asp-for="@Model.LastName">Last Name</label>
-                            <input asp-for="@Model.LastName" type="text" class="form-control" id="user-name" placeholder="Enter last name">
-                        </div>
-                                <div class="form-group">
-                    <label asp-for="@Model.Street">Street</label>
-                    <input asp-for="@Model.Street" type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-                </div>
+                        <label asp-for="@Model.Street">Street</label>
+                        <input asp-for="@Model.Street" type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+                    </div>
              
                 <div class="form-row">
                     <div class="form-group col-md-2">
@@ -57,8 +59,8 @@
                         <div class="form-group">
                             <label asp-for="@Model.Email">Email address</label>
                             <input asp-for="@Model.Email" type="email" class="form-control" id="user-email" placeholder="Enter email">
+                             <span asp-validation-for="@Model.Email"></span>
                         </div>
-                    
                         <div class="form-group">
                             <label asp-for="@Model.PhoneNumber">Phone Number</label>
                             <input asp-for="@Model.PhoneNumber" type="text" class="form-control" id="user-phone" placeholder="Enter phone number">
@@ -66,25 +68,22 @@
                         <div class="form-group">
                             <label asp-for="@Model.FavoriteBook">Favorite book</label>
                             <input asp-for="@Model.FavoriteBook" type="text" class="form-control" id="user-fav-book" placeholder="Enter your favorite book">
+                             <span asp-validation-for="@Model.FavoriteBook"></span>
                         </div>
-
-                        <div class="grey-buttons">
-                            <a class="btn btn-default grey-buttons" type="submit">Update</a>
-                        </div>
-
 
                         <div class="form-group">
-                            <label for="user-password">New Password</label>
-                            <input type="password" class="form-control" id="user-password" placeholder="Password">
+                            <label asp-for="@Model.Password">Password</label>
+                            <input asp-for="@Model.Password" type="password" class="form-control" id="user-password" placeholder="Password">
                         </div>
                         <div class="form-group">
-                            <label for="user-password-confirm">Confirm New Password</label>
-                            <input type="password" class="form-control" id="user-password-confirm" placeholder="Password">
+                            <label asp-for="@Model.Password">Confirm Password</label>
+                            <input asp-for="@Model.Password" type="password" class="form-control" id="user-password-confirm" placeholder="Password">
                         </div>
                         <div class="grey-buttons">
-                            <a class="btn btn-default grey-buttons" type="submit">Update</a>
+                            <a class="btn btn-default grey-buttons" type="submit" >Register</a>
+
                         </div>
-                    </div>
+                    </div></div>
 
                 </fieldset>
 
@@ -92,3 +91,6 @@
         </div>
     </div>
 </div>
+
+           
+

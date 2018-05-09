@@ -1,8 +1,8 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace BookCave.Models.InputModels
+namespace BookCave.Models
 {
-    public class NarratorInputModel
+    public class ComposerInputModel
     {
         [Required] public string FirstName { get; set; }
         [Required] public string LastName { get; set; }

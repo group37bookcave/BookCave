@@ -5,7 +5,7 @@ using BookCave.Models.EntityModels;
 
 namespace BookCave.Models.InputModels
 {
-    public class PaperBackInputModel 
+    public class SheetMusicInputModel 
     {        
         [Required] public double Price { get; set; }
         
@@ -17,18 +17,15 @@ namespace BookCave.Models.InputModels
 
         [Required] public int Pages { get; set; }
 
+        public double? Size { get; set; } 
+
         [Required] public DateTime ReleaseDate { get; set; }
 
         [Required] public Publisher Publisher { get; set; }
 
         [Required] public Isbn Isbns { get; set; }
 
-        [Required] public List<Language> Languages { get; set; }
+        [Required] public List<Composer> Composers { get; set; }
 
-        [Required] public List<Author> Authors { get; set; }
-
-        [Required] public List<Genre> Genres { get; set; }
-
-        [Required] public List<AgeGroup> AgeGroups { get; set; }
     }
 }

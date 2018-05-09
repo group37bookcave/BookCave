@@ -5,19 +5,19 @@
 }
 
 body {
-    padding-top: 235px;
+    padding-top: 200px;
     padding-bottom: 0;
 }
 
-footer{
+footer {
     margin-bottom: 0;
     position: sticky;
     padding: 30px;
-    background-color:rgb(105,202,202);
+    background-color: rgb(105,202,202);
     color: white;
 }
 
-footer a{
+footer a {
     color: white;
 }
 
@@ -47,35 +47,34 @@ ul {
 
 table {
     border-collapse: collapse;
-    border-spacing:0;
-    width:100%;
+    border-spacing: 0;
+    width: 100%;
     border: 1px solid;
 }
 
 .book-cave-color {
-    color:rgb(105,202,202);
+    color: rgb(105,202,202);
 }
 
-td{
+td {
     padding: 10px;
 }
 
-tfoot > tr{
+tfoot > tr {
     text-align: center;
     border-top: solid;
     border-width: 1px;
-    border-color:rgb(238, 238,238);
+    border-color: rgb(238, 238,238);
 }
 
 .book-cave-color{
     color:rgb(105,202,202);
 }
 
-.green-buttons > a
-{
+.green-buttons > a {
     color: white;
     background-color: rgb(105,202,202);
-    border:none;
+    border: none;
     margin-bottom: 10px;
     width: 120px; 
 }
@@ -84,45 +83,44 @@ tfoot > tr{
     color: rgb(211,211,211);
 }
 
-.grey-buttons > a{
+.grey-buttons > a {
     color: black;
-    background-color:rgb(240,240,240);
+    background-color: rgb(240,240,240);
     border:none;
     margin-bottom: 10px;
     width: 135px;
     float: right;
 }
 
-.inline-block{
+.inline-block {
     display: inline-block;
 }
 
-.check-options{
+.check-options {
     float: right;
 }
 
-.page-header > h1{
+.page-header > h1 {
     display: inline;
 }
 
-/* Receit */
-#order-num{
+/* Receipt */
+#order-num {
     margin-left: 600px;
 }
 
-#print-receipt{
+#print-receipt {
     margin-top: 50px;
     margin-left: 820px;
 }
 
 /* user info */
-.upload-image{
-    float:left;
+.upload-image {
+    float: left;
 }
 
-.button-options > a
-{
-    float:right;
+.button-options > a {
+    float: right;
     margin-right: 10px;
     margin-bottom: 10px;
     width: 140px;  
@@ -132,15 +130,13 @@ tfoot > tr{
     margin-left: 20px;
 }
 
-.form-group{
-    padding:5px;
+.form-group {
+    padding: 5px;
 }
 
-
 /*payment pages*/
-.address-form{
-    
-    margin-left:20%;
+.address-form {
+    margin-left: 20%;
     margin-right: 20%;
     padding-bottom: 100px;
 }
@@ -168,7 +164,6 @@ tfoot > tr{
 .sign-in-group {
     margin-bottom: 0px;
 }
-
 
 .user-buttons {
     width: 49%;
@@ -220,14 +215,14 @@ nav#navbar {
     padding-right: 200px;
 }
 
-.col img{
+.col img {
     flex: 20%;
     max-width: 283px;
-    padding: 0 4px;
+    padding: 0px 4px;
     float: left;
 }
 
-#bookDetailImg{
+#bookDetailImg {
     max-width: 170px;
 }
 
@@ -237,28 +232,28 @@ nav#navbar {
 }
 
 /* Mega menu */
-  .navbar-default .navbar-nav>li>a {
+.navbar-default .navbar-nav>li>a {
     width: 200px;
     font-weight: bold;
-  }
+}
   
-  .mega-dropdown {
-    position: static !important;
-  }
+.mega-dropdown {
+    position: static !important;    /*ATH THETTA*/
+}
   
-  .mega-dropdown-menu {
+.mega-dropdown-menu {
     padding: 20px 0px;
     width: 100%;
     box-shadow: none;
     -webkit-box-shadow: none;
     border-bottom: 1px solid rgb(105,202,202);
-  }
+}
 
-  .mega-dropdown-menu > li > ul > li {
+.mega-dropdown-menu > li > ul > li {
     list-style: none;
-  }
+}
   
-  .mega-dropdown-menu > li > ul > li > a {
+.mega-dropdown-menu > li > ul > li > a {
     display: block;
     padding: 3px 20px;
     clear: both;

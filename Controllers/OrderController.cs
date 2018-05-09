@@ -29,10 +29,10 @@ namespace BookCave.Controllers
         {
             throw new NotImplementedException();
         }
-        
-        public IActionResult Review()
+
+        public IActionResult ReviewPage()
         {
-            return View();
+            throw new NotImplementedException();
         }
     }
 }

@@ -15,7 +15,7 @@
                 </span>
             </div>
 
-            <form>
+            <form class="input-form" method="post">
 
                 <fieldset class="inline-block upload-image">
                     <input type="image" src="https://getstamped.co.uk/wp-content/uploads/Placeholder.jpg" style="width: 300px"/>
@@ -24,37 +24,39 @@
                 <fieldset>
                     <div class="form-inputs">
                         <div class="form-group">
-                            <label for="user-name">Name</label>
-                            <input type="text" class="form-control" id="user-name" placeholder="Enter name">
+                            <label asp-for="@Model.FirstName">First Name</label>
+                            <input asp-for="@Model.FirstName" type="text" class="form-control" id="user-name" placeholder="Enter first name">
+                        </div>
+                         <div class="form-group">
+                            <label asp-for="@Model.LastName">Last Name</label>
+                            <input asp-for="@Model.LastName" type="text" class="form-control" id="user-name" placeholder="Enter last name">
                         </div>
 
                         <div class="form-group">
-                            <label for="user-email">Email address</label>
-                            <input type="email" class="form-control" id="user-email" placeholder="Enter email">
+                            <label asp-for="@Model.Email">Email address</label>
+                            <input asp-for="@Model.Email" type="email" class="form-control" id="user-email" placeholder="Enter email">
                         </div>
                         <div class="form-group">
-                            <label for="user-phone">Phone Number</label>
-                            <input type="text" class="form-control" id="user-phone" placeholder="Enter phone number">
+                            <label asp-for="@Model.PhoneNumber">Phone Number</label>
+                            <input asp-for="@Model.PhoneNumber" type="text" class="form-control" id="user-phone" placeholder="Enter phone number">
                         </div>
                         <div class="grey-buttons">
-                            <a class="btn btn-default grey-buttons" type="button" asp-area="" asp-controller="" asp-action="">Update</a>
+                            <a class="btn btn-default grey-buttons" type="submit" asp-area="" asp-controller="" asp-action="">Update</a>
                         </div>
 
                         <div class="form-group">
-                            <label for="user-password">New Password</label>
-                            <input type="password" class="form-control" id="user-password" placeholder="Password">
+                            <label asp-for="@Model.Password">New Password</label>
+                            <input asp-for="@Model.Password" type="password" class="form-control" id="user-password" placeholder="Password">
                         </div>
                         <div class="form-group">
-                            <label for="user-password-confirm">Confirm New Password</label>
-                            <input type="password" class="form-control" id="user-password-confirm" placeholder="Password">
+                            <label asp-for="@Model.Password">Confirm New Password</label>
+                            <input asp-for="@Model.Password" type="password" class="form-control" id="user-password-confirm" placeholder="Password">
                         </div>
                         <div class="grey-buttons">
-                            <a class="btn btn-default grey-buttons" type="button" asp-area="" asp-controller="" asp-action="">Update</a>
+                            <a class="btn btn-default grey-buttons" type="submit" asp-area="" asp-controller="" asp-action="">Update</a>
                         </div>
                     </div>
-
                 </fieldset>
-
             </form>
         </div>
     </div>
