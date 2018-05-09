@@ -11,6 +11,7 @@ namespace BookCave.Controllers
 {
     //[Authorize(Policy = "Customer")]
     public class CustomerController : Controller
+    
     {
         public IActionResult Receipt()
         {
@@ -27,11 +28,11 @@ namespace BookCave.Controllers
             return View();
         }
 
-          public IActionResult RegisterUser()
+        public IActionResult Login()
         {
             return View();
         }
-
+        
         public IActionResult Orders()
         {
             throw new NotImplementedException();

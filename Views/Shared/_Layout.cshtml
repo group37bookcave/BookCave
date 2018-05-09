@@ -7,7 +7,7 @@
     <title>@ViewData["Title"] - BookCave</title>
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-        <link rel="stylesheet" href="~/css/site.css" />
+        <link rel="stylesheet" href="~/css/site.css"/>
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -110,11 +110,7 @@
             <ul>
                 <li></li>
                 <li>
-<<<<<<< HEAD
-                    <a asp-controller="Home" asp-action="BestSellers">Biographies & Memoirs</a>
-=======
-                    <strong>Other Categories</strong>
-                </li>
+                    <a asp-controller="Product" asp-action="BestSellers">Biographies & Memoirs</a>
                 <li>
                     <a asp-area="" asp-controller="Product" asp-action="BestSellers">Biography</a>
                 </li>
@@ -123,56 +119,7 @@
                 </li>
                 <li>
                     <a asp-area="" asp-controller="Home" asp-action="Contact">Crafts & Hobbies</a>
->>>>>>> 37be76254677340e93dcd065e4fc22298a2811d7
                 </li>
-                <li>
-                    <a asp-controller="Home" asp-action="Contact">Children</a>
-                </li>
-                <li>
-                    <a asp-controller="Home" asp-action="Contact">Fantasy</a>
-                </li>
-                <li>
-                    <a asp-controller="Home" asp-action="Contact">Fiction</a>
-                </li>
-                <li>
-                    <a asp-controller="Home" asp-action="Contact">Mystery, Thriller & Suspense</a>
-                </li>
-                <li>
-                    <a asp-controller="Home" asp-action="Contact">Self-Help</a>
-                </li>
-            </ul>
-        </div>
-        <div class="col-sm-3">
-            <ul>
-<<<<<<< HEAD
-                
-=======
-                <li></li>
-                <li>
-                    <a asp-area="" asp-controller="Product" asp-action="BestSellers">Personal Development</a>
-                </li>
-                <li>
-                    <a asp-area="" asp-controller="Home" asp-action="Contact">Poetry & Drama</a>
-                </li>
-                <li>
-                    <a asp-area="" asp-controller="Home" asp-action="Contact">Religion</a>
-                </li>
-                <li>
-                    <a asp-area="" asp-controller="Home" asp-action="Contact">Romance</a>
-                </li>
-                <li>
-                    <a asp-area="" asp-controller="Home" asp-action="Contact">Science & Geography</a>
-                </li>
-                <li>
-                    <a asp-area="" asp-controller="Home" asp-action="Contact">Science Fiction</a>
-                </li>
-                <li>
-                    <a asp-area="" asp-controller="Home" asp-action="Contact">Sport</a>
-                </li>
-                <li>
-                    <a asp-area="" asp-controller="Home" asp-action="Contact">Travel Guides</a>
-                </li>
->>>>>>> 37be76254677340e93dcd065e4fc22298a2811d7
             </ul>
         </div>
         <div class="col-sm-2 ">
@@ -181,11 +128,7 @@
                     <strong>Top Authors</strong>
                 </li>
                 <li>
-<<<<<<< HEAD
-                    <a asp-controller="Home" asp-action="BestSellers">J.K. Rowling</a>
-=======
                     <a asp-area="" asp-controller="Product" asp-action="BestSellers">J.K. Rowling</a>
->>>>>>> 37be76254677340e93dcd065e4fc22298a2811d7
                 </li>
                 <li>
                     <a asp-controller="Home" asp-action="Contact">Yrsa Sigurðardóttir</a>
@@ -218,17 +161,10 @@
             <strong>Best Sellers</strong>
         </li>
         <li>
-<<<<<<< HEAD
-            <a asp-controller="Home" asp-action="BestSellers">Our Best Sellers</a>
+            <a asp-controller="Product" asp-action="BestSellers">Our Best Sellers</a>
         </li>
         <li>
             <a asp-controller="Home" asp-action="Contact">New York Times Best Sellers</a>
-=======
-            <a asp-area="" asp-controller="Product" asp-action="BestSellers">Our Best Sellers</a>
-        </li>
-        <li>
-            <a asp-area="" asp-controller="Product" asp-action="BestSellers">New York Times Best Sellers</a>
->>>>>>> 37be76254677340e93dcd065e4fc22298a2811d7
         </li>
     </ul>
 </div>
@@ -264,25 +200,26 @@
         <div class="container row text-left text-md-left mt-3 pb-3">
 
             <!--First column-->
-            <div class="col col-lg-2 col-xl-2 mx-auto mt-3">
+            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
                 <p>
-                    <a href="#!">
-                        About Us
+
+                    <a asp-area="" asp-controller="Customer" asp-action="AccountDetails">
+                        Account Details
+                    </a>
+                </p>
+                <p>
+                    <a asp-area="" asp-controller="Customer" asp-action="OrderHistory">
+                        Order History
+                    </a>
+                </p>
+                <p>
+                    <a asp-area="" asp-controller="Customer" asp-action="WishList">
+                        WishList
                     </a>
                 </p>
                 <p>
                     <a href="#!">
-                        Contact Us
-                    </a>
-                </p>
-                <p>
-                    <a href="#!">
-                        Q&As
-                    </a>
-                </p>
-                <p>
-                    <a href="#!">
-                        Help
+                        Sign Out
                     </a>
                 </p>
             </div>
@@ -291,16 +228,24 @@
             <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
                 <p>
 
-                    <a asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                    <a asp-area="" asp-controller="Home" asp-action="Index">
+                        Home
+                    </a>
                 </p>
                 <p>
-                    <a asp-area="" asp-controller="Product" asp-action="AllProducts">All Products</a>
+                    <a asp-area="" asp-controller="Product" asp-action="AllProducts">
+                        All Products
+                    </a>
                 </p>
                 <p>
-                   <a asp-area="" asp-controller="Product" asp-action="BestSellers">Best Sellers</a>
+                    <a asp-area="" asp-controller="Product" asp-action="BestSellers">
+                        Best Sellers
+                    </a>
                 </p>
                 <p>
-                   <a asp-area="" asp-controller="Product" asp-action="NewReleases">New Releases</a>
+                    <a asp-area="" asp-controller="Product" asp-action="NewReleases">
+                        New Releases
+                    </a>
 
                 </p>
             </div>
@@ -308,10 +253,11 @@
             <!--Third column-->
             <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
 
-                    <a asp-area="" asp-controller="Product" asp-action="TopRated">Top Rated</a>
+                    
                 <p>
-                    <a href="#!">Shipping</a>
-
+                    <a asp-area="" asp-controller="Product" asp-action="TopRated">
+                        Top Rated
+                    </a>
                 </p>
                 <p>
                     <a href="#!">
@@ -326,21 +272,20 @@
             </div>
 
             <!--Fourth column-->
-            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+            <div class="col col-lg-2 col-xl-2 mx-auto mt-3">
                 <p>
-
-                    <a asp-area="" asp-controller="Customer" asp-action="AccountDetails">Account Details</a>
+                    <a href="#!">
+                        About Us
+                    </a>
                 </p>
                 <p>
-                     <a asp-area="" asp-controller="Customer" asp-action="OrderHistory">Order History</a>
-                </p>
-                <p>
-                   <a asp-area="" asp-controller="Customer" asp-action="WishList">WishList</a>
-
+                    <a asp-area="" asp-controller="Product" asp-action="BookDetail">
+                        Q&As
+                    </a>
                 </p>
                 <p>
                     <a href="#!">
-                        Sign Out
+                        Help
                     </a>
                 </p>
             </div>
@@ -381,12 +326,12 @@
                                 <a asp-controller="Home" asp-action="TermsAndCond">Terms and Conditions</a>
                             </li>
                             <li class="list-inline-item">
-                                <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                                <a href="http://www.facebook.com" class="btn-floating btn-sm rgba-white-slight mx-1">
                                     <i class="fa fa-facebook-square"></i>
                                 </a>
                             </li>
                             <li class="list-inline-item">
-                                <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                                <a href="http://www.twitter.com" class="btn-floating btn-sm rgba-white-slight mx-1">
                                     <i class="fa fa-twitter-square"></i>
                                 </a>
                             </li>
