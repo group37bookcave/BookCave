@@ -1,7 +1,8 @@
+
 @model BookCave.Models.InputModels.RegisterInputModel
 
-@{
     ViewData["Title"] = "Register User";
+
 }
 
 
@@ -12,16 +13,18 @@
             <span id="page-name"><h1><span class="book-cave-color">NEW</span><span id="list">USER</span></h1></span>
 
              </div>
-            
+
             <form method="post">
 
                 <fieldset class="inline-block upload-image">
                     <input asp-for="@Model.Image"type="image" src="https://getstamped.co.uk/wp-content/uploads/Placeholder.jpg" style="width: 300px"/>
                     <input asp-for="@Model.Image" type="file" id="user-image" style="display: none;"/>
+
                 </fieldset>
                 <fieldset>
                     <div class="form-inputs">
                         <div class="form-group">
+
                             <label asp-for="@Model.FirstName">First Name</label>
                             <input asp-for="@Model.FirstName" type="text" class="form-control" id="user-name"  placeholder="Enter name">
                             <span asp-validation-for="@Model.FirstName"></span>
@@ -61,6 +64,7 @@
                         </div>
                         <div class="grey-buttons">
                             <a class="btn btn-default grey-buttons" type="submit" >Register</a>
+
                         </div>
                     </div>
 
