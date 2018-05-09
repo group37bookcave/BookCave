@@ -1,4 +1,6 @@
-﻿using BookCave.Models.EntityModels;
+﻿using System;
+using System.Collections.Generic;
+using BookCave.Models.EntityModels;
 using BookCave.Models.InputModels;
 using BookCave.Models.ViewModels;
 using BookCave.Repositories;
@@ -10,7 +12,7 @@ namespace BookCave.Services
         private readonly CustomerRepo _customerRepo = new CustomerRepo();
         private readonly EmployeeRepo _employeeRepo = new EmployeeRepo();
         private readonly AddressRepo _addressRepo = new AddressRepo();
-    
+
         public CustomerViewModel GetCustomer(int id)
         {
             var customer = _customerRepo.GetCustomer(id);
@@ -33,6 +35,7 @@ namespace BookCave.Services
                     AddressId = address.Id
                 });
             }
+
             return model;
         }
 
@@ -46,12 +49,13 @@ namespace BookCave.Services
                 FavoriteBook = model.FavoriteBook,
                 PhoneNumber = model.PhoneNumber
             };
+            var customerId = _customerRepo.AddCustomer(customer);
             var address = _addressRepo.NewAddress(model.Street, model.Zipcode, model.City, model.CountryId);
-            customer.CustomerAddresses.Add(new CustomerAddress { Customer = customer, Address = address});
-            return _customerRepo.AddCustomer(customer);
+            _addressRepo.AddAddressToCustomer(customerId, address);
+            return customerId;
         }
 
-        
+
         public int CreateEmployee(RegisterInputModel model)
         {
             var employee = new EmployeeInputModel

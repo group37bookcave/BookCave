@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
@@ -14,10 +15,11 @@ namespace BookCave.Repositories
         
         private ZipCode GetZipCode(string zip, int countryId)
         {
-            var zipcode = from c in _db.CountryZipCodes
-                join z in _db.ZipCodes on c.ZipCode.Zip equals zip
-                where c.CountryId == countryId
+            var zipcode = from z in _db.ZipCodes
+                join c in _db.Countries on z.Country.Id equals c.Id
+                where c.Id == countryId
                 select z;
+                
             return zipcode.SingleOrDefault();
         }
 
@@ -37,33 +39,37 @@ namespace BookCave.Repositories
             _db.SaveChanges();
         }
 
-        public void AddAddressToCustomer(int customerId, AddressInputModel model)
+        public void AddAddressToCustomer(int customerId, Address model)
         {
             var customer = _customerRepo.GetCustomer(customerId);
-            var address = NewAddress(model.Street,model.Zipcode, model.City, model.CountryId);
-            customer.CustomerAddresses.Add(new CustomerAddress { Address = address, Customer = customer});
-            _db.AddRange(address);
+            customer.CustomerAddresses.Add(new CustomerAddress { Address = model, Customer = customer});
+            _db.Update(customer);
             _db.SaveChanges();
         }
 
         public Address NewAddress(string street, string zipcode, string city, int countryId)
         {
-            var zip = GetZipCode(zipcode, countryId) ?? new ZipCode
-            {
-                City = city,
-                Zip = zipcode,
-                Country = _countryRepo.GetCountryById(countryId)
-            };
-            
+            var zip = GetZipCode(zipcode, countryId) ?? CreateZipCode(zipcode, city, countryId);
+
             var address = new Address
             {
                 Street = street,
                 ZipCode = zip
             };
-            
-            _db.Addresses.AddRange(address);
-            _db.SaveChanges();
             return address;
+        }
+
+        private ZipCode CreateZipCode(string zipcode, string city, int countryId)
+        {
+            var zip = new ZipCode
+            {
+                City = city,
+                Zip = zipcode,
+                Country = _countryRepo.GetCountryById(countryId)
+            };
+            _db.ZipCodes.AddRange(zip);
+            _db.SaveChanges();
+            return zip;
         }
     }
 }

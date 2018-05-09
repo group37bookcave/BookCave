@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using BookCave.Data;
 using BookCave.Models;
@@ -15,6 +16,7 @@ namespace BookCave.Repositories
 
         public int AddCustomer(Customer user)
         {
+            Console.WriteLine("Adding customer to db");
             _db.Customers.AddRange(user);
             _db.SaveChanges();
             return user.Id;
@@ -45,7 +47,7 @@ namespace BookCave.Repositories
                 Address = address,
                 Customer = customer
             });
-            _db.Add(address);
+            _db.AddRange(address);
             _db.SaveChanges();
         }
         

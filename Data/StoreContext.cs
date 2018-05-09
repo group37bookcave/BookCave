@@ -47,7 +47,6 @@ namespace BookCave.Data
         public DbSet<BookLanguage> BookLanguages { get; set; }
         public DbSet<AudiobookNarrator> AudioBookNarrators { get; set; }
         public DbSet<CustomerAddress> CustomerAddresses { get; set; }
-        public DbSet<CountryZipCode> CountryZipCodes { get; set; }
         
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
