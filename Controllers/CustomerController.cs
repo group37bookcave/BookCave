@@ -46,30 +46,6 @@ namespace BookCave.Controllers
         {
             return View();
         }
-
-
-        /*Remove, laga nöfn á föllum */
-        /*[HttpGet]
-        public IActionResult Remove(int id){
-            
-            if(id == null)
-            {
-                View("NotFound");
-            }
-
-            var product = productService.GetProduct(id);
-            return View(product);
-        }
-*/
-        [HttpPost]
-        public IActionResult Remove(int id){
-            /*if(id == null)
-            {
-                return View();
-            }
-            */
-            productService.RemoveProduct(id);
-            return RedirectToAction("Index");
-        }
+        
     }
 }
