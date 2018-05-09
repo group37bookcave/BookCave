@@ -17,7 +17,7 @@ namespace BookCave.Controllers
 
         public IActionResult TermsAndCond()
         {
-            throw new NotImplementedException();
+            return View();
         }
 
         public IActionResult About()

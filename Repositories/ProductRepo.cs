@@ -12,6 +12,7 @@ namespace BookCave.Repositories
         private StoreContext _db = new StoreContext();
         private AuthorRepo _ar = new AuthorRepo();
         private NarratorRepo _nr = new NarratorRepo();
+        private ComposerRepo _cr = new ComposerRepo();
 
         public Product GetProduct(int id)
         {
@@ -123,6 +124,22 @@ namespace BookCave.Repositories
             return music.ToList();
         }
 
+        public List<Book> GetBooksByGenreId(int id)
+        {
+            var books = from BookGenre in _db.BookGenres
+                join book in _db.Books on BookGenre.BookId equals book.Id
+                where BookGenre.GenreId == id
+                select book;
+            return books.ToList();
+        }
+        public List<Product> GetProductsByName(string name)
+        {
+            var products = from product in _db.Products
+                where product.Name.Contains(name)
+                select product;
+            return products.ToList();
+        }
+
         public void CheckAuthor(List<Author> authors) 
         {
             foreach (var author in authors)
@@ -158,6 +175,25 @@ namespace BookCave.Repositories
                         LastName = narrator.LastName
                     };
                     _nr.AddNarrator(addNarrator);
+                }
+            }
+        }
+        private void CheckComposer(List<Composer> composers)
+        {
+        foreach (var composer in composers)
+            {
+                var checkComposer = (from c in _cr.GetAllComposers()
+                    where c.FirstName == composer.FirstName &&
+                    c.LastName == composer.LastName
+                    select c);
+                if(!checkComposer.Any())
+                {
+                    var addComposer = new ComposerInputModel
+                    {
+                        FirstName = composer.FirstName,
+                        LastName = composer.LastName
+                    };
+                    _cr.AddComposer(addComposer);
                 }
             }
         }
@@ -339,5 +375,59 @@ namespace BookCave.Repositories
                 _db.SaveChanges();
             }
         }
+        public void AddSheetMusic(SheetMusicInputModel music)
+        {
+            if(!CheckIsbn(music.Isbns))
+            {
+                CheckComposer(music.Composers);
+                var sheetMusic = new PhysicalSheetMusic
+                {
+                    Price = music.Price,
+                    Name = music.Name,
+                    Image = music.Image,
+                    Description = music.Description,
+                    ReleaseDate = music.ReleaseDate,
+                    Publisher = music.Publisher,
+                    Isbn = music.Isbns,
+                    Length = music.Pages
+                };
+
+                sheetMusic.SheetMusicComposers = new List<SheetMusicComposer>();
+                foreach (var composer in music.Composers)
+                {
+                    sheetMusic.SheetMusicComposers.Add(new SheetMusicComposer { SheetMusic = sheetMusic, Composer = composer});
+                };
+                _db.PhysicalSheetMusics.AddRange(sheetMusic);
+                _db.SaveChanges();
+            }
+        }
+        public void AddDigitalSheetMusic(SheetMusicInputModel music)
+        {
+            if(!CheckIsbn(music.Isbns))
+            {
+                CheckComposer(music.Composers);
+                var sheetMusic = new DigitalSheetMusic
+                {
+                    Price = music.Price,
+                    Name = music.Name,
+                    Image = music.Image,
+                    Description = music.Description,
+                    ReleaseDate = music.ReleaseDate,
+                    Publisher = music.Publisher,
+                    Isbn = music.Isbns,
+                    Length = music.Pages,
+                    Size = music.Size
+                };
+
+                sheetMusic.SheetMusicComposers = new List<SheetMusicComposer>();
+                foreach (var composer in music.Composers)
+                {
+                    sheetMusic.SheetMusicComposers.Add(new SheetMusicComposer { SheetMusic = sheetMusic, Composer = composer});
+                };
+                _db.DigitalSheetMusics.AddRange(sheetMusic);
+                _db.SaveChanges();
+            }
+        }
+        
     }
 }
