@@ -29,13 +29,20 @@ namespace BookCave.Controllers
         }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> f4fe682cf2cff9d3d014823f7397160089133d1c
         public IActionResult Login()
         {
             return View();
         }
+<<<<<<< HEAD
 
 =======
 >>>>>>> b62e0b3f7cd4dc9c06a7b66a226491308a64d115
+=======
+        
+>>>>>>> f4fe682cf2cff9d3d014823f7397160089133d1c
         public IActionResult Orders()
         {
             throw new NotImplementedException();
