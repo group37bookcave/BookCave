@@ -1,9 +1,8 @@
-﻿// Write your JavaScript code.
-$("input[type='image']").click(function() {
-    $("input[id='user-image']").click();
-});
+﻿$(document).ready(function(e){
+    $("input[type='image']").click(function() {
+        $("input[id='user-image']").click();
+    });
 
-$(document).ready(function(e){
     $('.search-panel .dropdown-menu').find('a').click(function(e) {
 		e.preventDefault();
 		var param = $(this).attr("href").replace("#","");
@@ -12,12 +11,8 @@ $(document).ready(function(e){
 		$('.input-group #search_param').val(param);
     });
 
- 
 
-    $("#best-sellers-hover").hover(function () {
-        $("#best-sellers-hidden").show();
-    }, function () {
-        $("#best-sellers-hidden").hide();
-    });
-
+//    $(document).on('click', '.mega-dropdown', function(e) {
+//        e.stopPropagation()
+//    });
 });
