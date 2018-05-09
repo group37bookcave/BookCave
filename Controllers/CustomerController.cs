@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace BookCave.Controllers
 {
-    [Authorize(Policy = "Customer")]
+   /* [Authorize(Policy = "Customer")]*/
     public class CustomerController : Controller
     {
         public IActionResult Receipt()
@@ -23,6 +23,11 @@ namespace BookCave.Controllers
         }
 
           public IActionResult OrderHistory()
+        {
+            return View();
+        }
+
+        public IActionResult Login()
         {
             return View();
         }

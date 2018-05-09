@@ -25,9 +25,9 @@ namespace BookCave.Controllers
             throw new NotImplementedException();
         }
 
-        public IActionResult Review()
+        public IActionResult ReviewPage()
         {
-            throw new NotImplementedException();
+            return View();
         }
     }
 }
