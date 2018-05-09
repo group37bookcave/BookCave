@@ -136,6 +136,12 @@ tfoot > tr{
     padding:5px;
 }
 
+/*payment pages*/
+
+.address-form{
+    margin:20%;
+    margin-top:0%;
+}
 
 
 /*products */ 

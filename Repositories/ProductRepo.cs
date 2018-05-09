@@ -122,47 +122,59 @@ namespace BookCave.Repositories
                 select m;
             return music.ToList();
         }
+
+        public void CheckAuthor(List<Author> authors) //Listi af authors
+        {
+            foreach (var author in authors)
+            {
+                var checkAuthor = (from a in _ar.GetAllAuthors()
+                    where a.FirstName == author.FirstName &&
+                    a.LastName == author.LastName
+                    select a);
+                if(!checkAuthor.Any())
+                {
+                    var addAuthor = new AuthorInputModel
+                    {
+                        FirstName = author.FirstName,
+                        LastName = author.LastName
+                    };
+                    _ar.AddAuthor(addAuthor);
+                }
+            }
+        }
+        private void CheckNarrator(List<Narrator> narrators)
+        {
+        foreach (var narrator in narrators)
+            {
+                var checkNarrator = (from n in _nr.GetAllNarrators()
+                    where n.FirstName == narrator.FirstName &&
+                    n.LastName == narrator.LastName
+                    select n);
+                if(!checkNarrator.Any())
+                {
+                    var addNarrator = new NarratorInputModel
+                    {
+                        FirstName = narrator.FirstName,
+                        LastName = narrator.LastName
+                    };
+                    _nr.AddNarrator(addNarrator);
+                }
+            }
+        }
+        private bool CheckIsbn(Isbn isbn)
+        {
+            var check = (from i in _db.Books
+                where i.Isbn == isbn
+                select i);
+            return check.Any();
+        }
+        //public void CheckNarrator()
         public void AddAudioBook(AudioBookInputModel book)
         {
-            var checkIsbn = (from i in _db.Books
-                where i.Isbn == book.Isbns
-                select i).ToArray();
-            if(!checkIsbn.Any(item => item.Isbn == book.Isbns))
+            if(!CheckIsbn(book.Isbns))
             {
-                foreach (var author in book.Authors)
-                {
-                    var checkAuthor = (from a in _ar.GetAllAuthors()
-                        where a.FirstName == author.FirstName &&
-                        a.LastName == author.LastName
-                        select a).ToArray();
-                    if(!checkAuthor.Any(Item => Item.FirstName == author.FirstName))
-                    {
-                        var addAuthor = new AuthorInputModel
-                        {
-                            FirstName = author.FirstName,
-                            LastName = author.LastName
-                        };
-                        _ar.AddAuthor(addAuthor);
-                    }
-                }
-
-                foreach (var narrator in book.Narrators)
-                {
-                    var checkNarrator = (from n in _nr.GetAllNarrators()
-                        where n.FirstName == narrator.FirstName &&
-                        n.LastName == narrator.LastName
-                        select n).ToArray();
-                    if(!checkNarrator.Any(Item => Item.FirstName == narrator.FirstName && Item.LastName == narrator.LastName ))
-                    {
-                        var addNarrator = new NarratorInputModel
-                        {
-                            FirstName = narrator.FirstName,
-                            LastName = narrator.LastName
-                        };
-                        _nr.AddNarrator(addNarrator);
-                    }
-                }
-
+                CheckAuthor(book.Authors);
+                CheckNarrator(book.Narrators);
                 var audio = new Audiobook
                 {
                     Price = book.Price,
@@ -175,7 +187,6 @@ namespace BookCave.Repositories
                     Publisher = book.Publisher,
                     Isbn = book.Isbns,
                 };
-
 
                 audio.BookAgeGroups = new List<BookAgeGroup>();
                 foreach (var ageGroup in book.AgeGroups)
