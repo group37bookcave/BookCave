@@ -28,6 +28,11 @@ namespace BookCave.Controllers
         {
             return View();
         }
+        
+        public IActionResult AuthorDetail()
+        {
+            return View();
+        }
 
         public IActionResult NewReleases()
         {
