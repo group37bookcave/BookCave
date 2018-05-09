@@ -87,7 +87,7 @@ tfoot > tr{
     color: rgb(211,211,211);
 }
 
-.grey-buttons > a{
+.grey-buttons a, .grey-buttons input {
     color: black;
     background-color:rgb(240,240,240);
     border:none;
@@ -95,6 +95,7 @@ tfoot > tr{
     width: 135px;
     float: right;
 }
+
 
 .inline-block{
     display: inline-block;

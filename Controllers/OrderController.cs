@@ -3,12 +3,14 @@ using BookCave.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 
+
 namespace BookCave.Controllers
 {
     //[Authorize(Policy = "Customer")]
     public class OrderController : Controller
     {
         private readonly OrderService _orderService;
+        
 
         public OrderController()
         {
@@ -16,7 +18,15 @@ namespace BookCave.Controllers
         }
 
         public IActionResult ShoppingCart()
-        {
+        {/*
+            int userId = int.Parse(User.FindFirst("customerId").Value);
+            if(userId==0)
+            {
+                return View();
+            }
+
+            var ActiveOrder = _orderService.GetActiveOrder(userId);
+            return View(ActiveOrder);*/
             return View();
         }
 
@@ -32,7 +42,12 @@ namespace BookCave.Controllers
 
         public IActionResult ReviewPage()
         {
-            throw new NotImplementedException();
+            return View();
+        }
+
+          public IActionResult Receipt()
+        {
+            return View();
         }
     }
 }
