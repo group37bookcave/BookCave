@@ -147,11 +147,11 @@ namespace BookCave.Repositories
                 select book).ToList();
             return books;
         }
-        public Book GetBookByIsbn(Isbn isbn)
+        public List<Book> GetBookByIsbn(Isbn isbn)
         {
             var book = (from books in _db.Books
                 where books.Isbn == isbn
-                select books).SingleOrDefault();
+                select books).ToList();
             return book;
         }
 
