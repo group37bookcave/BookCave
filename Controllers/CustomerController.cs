@@ -9,7 +9,8 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace BookCave.Controllers
 {
-    //[Authorize(Policy = "Customer")]
+    // [Authorize(Policy = "Customer")]
+
     public class CustomerController : Controller
     
     {
@@ -28,6 +29,11 @@ namespace BookCave.Controllers
             return View();
         }
 
+        public IActionResult Login()
+        {
+            return View();
+        }
+        
         public IActionResult Orders()
         {
             throw new NotImplementedException();

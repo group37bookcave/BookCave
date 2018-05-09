@@ -20,13 +20,13 @@ namespace BookCave.Repositories
             return product.SingleOrDefault();
         }
         
-        public List<Product> GetAllProducts()
+        public IEnumerable<Product> GetAllProducts()
         {
             var list = from p in _db.Products select p;
             return list.ToList();
         }
 
-        public List<Book> GetAllBooks()
+        public IEnumerable<Book> GetAllBooks()
         {
             var li = from b in _db.Books select b;
             return li.ToList();
