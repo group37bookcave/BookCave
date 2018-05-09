@@ -1,9 +1,17 @@
 ﻿// Write your JavaScript code.
-$("input[type='image']").click(function() {
-    $("input[id='user-image']").click();
-});
 
 $(document).ready(function(e){
+    
+    $("input[type='image']").click(function() {
+        $("input[id='user-image']").click();
+    });
+    
+    /*Submit forms*/ 
+    $("input[type='submit']").click(function()
+    {
+        $("input[id='input-form']").submit();
+    });
+    
     $('.search-panel .dropdown-menu').find('a').click(function(e) {
 		e.preventDefault();
 		var param = $(this).attr("href").replace("#","");
