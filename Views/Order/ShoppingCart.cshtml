@@ -1,4 +1,5 @@
-@model IEnumerable<BookCave.Models.EntityModels.Product>
+@model BookCave.Models.ViewModels.OrderViewModel
+@model List<BookCave.Models.ViewModels.ProductViewModel>
 
 @{
     ViewData["Title"] = "Shopping Cart";
@@ -15,8 +16,41 @@
             </div>
             <table>
                 <tbody>
-                   @foreach(var product in Model){
-                        
+                 @foreach (var item in Model.Items)
+                 {
+                    <tr class="list-item">
+                        <td class="col-sm-8 col-md-6">
+                            <div class="media">
+                                <a class="pull-left" asp-controller="Product" asp-action="BookDetail">
+                                    <div class="col-sm-2 hidden-xs">
+                                        <img class="bookDetailImg" src=@item.Image class="media-object" alt="ItemImage">
+                                    </div>
+                                </a>
+                                <div class="media-body">
+                                    <ul>
+                                        <h4>@item.Name</h4>
+                                    </ul>
+                                </div>
+                            </div>
+                        </td>
+
+                        <td class="col-sm-1 col-md-1">
+                            <p>
+                                <strong>Price: $@item.Price</strong>
+                            </p>
+                        </td>
+
+                        <td class="col-sm-1 col-md-1">
+
+                            <div class="button-options grey-buttons">
+                                <a class="btn btn-default" type="button" asp-area="" asp-controller="" asp-action="">Buy Now</a>
+                            </div>
+                            <div class="button-options green-buttons">
+                                <a class="btn btn-default" type="button" asp-area="" asp-controller="" asp-action="">Add to Cart</a>
+                                <a class="btn btn-default" type="button" asp-area="" asp-controller="" asp-action="">Add to WishList</a>
+                            </div>
+                        </td>
+                    </tr>
                 }
                 </tbody>
             </table>

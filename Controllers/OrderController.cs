@@ -20,8 +20,8 @@ namespace BookCave.Controllers
         {
             int userId = int.Parse(User.FindFirst("customerId").Value);
 
-            var ActiveOrders = _orderService.GetActiveOrder(userId);
-            return View(ActiveOrders);
+            var ActiveOrder = _orderService.GetActiveOrder(userId);
+            return View(ActiveOrder);
         }
 
           public IActionResult Address()
