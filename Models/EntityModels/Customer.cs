@@ -11,6 +11,10 @@ namespace BookCave.Models.EntityModels
         public string LastName { get; set; }
         
         public string Email { get; set; }
+        
+        public string FavoriteBook { get; set; }
+
+        public string PhoneNumber { get; set; }
 
         public string FullName => LastName + ", " + FirstName;
 

@@ -1,4 +1,4 @@
-﻿﻿// Write your JavaScript code.
+﻿// Write your JavaScript code.
 
 $(document).ready(function(e){
     
@@ -19,7 +19,10 @@ $(document).ready(function(e){
 		$('.search-panel span#search_concept').text(concept);
 		$('.input-group #search_param').val(param);
     });
-
+    
+    $("#logout-a").click(function(){
+        $("#logout-f").submit();
+    });
 
 //    $(document).on('click', '.mega-dropdown', function(e) {
 //        e.stopPropagation()

@@ -47,11 +47,15 @@
                 </tbody>
             </table>
 
-            <h3>your addresses</h3>
+            <div id="user-addresses">
+                <h4>Your Billing Address is:</h4>
+                <h4>Your Shipping Address is:</h4>
+
+            </div>
 
             <div class="button-options grey-buttons">
-                <a class="btn btn-default grey-buttons" type="button" asp-area="" asp-controller="" asp-action="">Confirmation</a>
-                <a class="btn btn-default grey-buttons" type="button" asp-area="" asp-controller="" asp-action="">Back To Addresses</a>
+                <a class="btn btn-default grey-buttons" type="button" asp-area="" asp-controller="Order" asp-action="Receipt">Confirm & Pay</a>
+                <a class="btn btn-default grey-buttons" type="button" asp-area="" asp-controller="Order" asp-action="Address">Edit Addresses</a>
             </div>
         </div>
     </div>

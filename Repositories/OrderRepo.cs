@@ -10,8 +10,8 @@ namespace BookCave.Repositories
 {
     public class OrderRepo
     {
-        private StoreContext _db = new StoreContext();
-        private CustomerRepo _cr = new CustomerRepo();
+        private readonly StoreContext _db = new StoreContext();
+        private readonly CustomerRepo _cr = new CustomerRepo();
         private ProductRepo _pr = new ProductRepo();
 
 
