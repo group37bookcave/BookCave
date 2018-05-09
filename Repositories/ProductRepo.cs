@@ -124,6 +124,22 @@ namespace BookCave.Repositories
             return music.ToList();
         }
 
+        public List<Book> GetBooksByGenreId(int id)
+        {
+            var books = from BookGenre in _db.BookGenres
+                join book in _db.Books on BookGenre.BookId equals book.Id
+                where BookGenre.GenreId == id
+                select book;
+            return books.ToList();
+        }
+        public List<Product> GetProductsByName(string name)
+        {
+            var products = from product in _db.Products
+                where product.Name.Contains(name)
+                select product;
+            return products.ToList();
+        }
+
         public void CheckAuthor(List<Author> authors) 
         {
             foreach (var author in authors)
@@ -412,5 +428,6 @@ namespace BookCave.Repositories
                 _db.SaveChanges();
             }
         }
+        
     }
 }
