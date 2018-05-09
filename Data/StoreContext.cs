@@ -129,19 +129,6 @@ namespace BookCave.Data
                 .WithMany(b => b.AudiobookNarrators)
                 .HasForeignKey(bn => bn.AudiobookId);
             
-            // Configure many to many between Country and ZipCode.
-            modelBuilder.Entity<CountryZipCode>().HasKey(cz => new {cz.CountryId, cz.ZipCodeId});
-            
-            modelBuilder.Entity<CountryZipCode>()
-                .HasOne(cz => cz.Country)
-                .WithMany(c => c.CountryZipCodes)
-                .HasForeignKey(cz => cz.CountryId);
-            
-            modelBuilder.Entity<CountryZipCode>()
-                .HasOne(cz => cz.ZipCode)
-                .WithMany(c => c.CountryZipCodes)
-                .HasForeignKey(cz => cz.ZipCodeId);
-            
             // Configure many to many between Sheetmusic and Composer.
             modelBuilder.Entity<SheetMusicComposer>().HasKey(sma => new {sma.SheetMusicId, sma.ComposerId});
 

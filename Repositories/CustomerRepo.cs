@@ -13,17 +13,11 @@ namespace BookCave.Repositories
         
         private readonly StoreContext _db = new StoreContext();
 
-        public int AddCustomer(CustomerInputModel user)
+        public int AddCustomer(Customer user)
         {
-            var customer = new Customer
-            {
-                FirstName = user.FirstName,
-                LastName = user.LastName,
-                Email = user.Email
-            };
-            _db.Customers.AddRange(customer);
+            _db.Customers.AddRange(user);
             _db.SaveChanges();
-            return customer.Id;
+            return user.Id;
         }
 
         public Customer GetCustomer(int id)
