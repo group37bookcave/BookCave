@@ -257,5 +257,46 @@ namespace BookCave.Repositories
                 _db.SaveChanges();
             }
         }
+        public void AddHardCover(HardCoverInputModel book)
+        {
+            if(!CheckIsbn(book.Isbns))
+            {
+                CheckAuthor(book.Authors);
+                var hardcover = new Hardcover
+                {
+                    Price = book.Price,
+                    Name = book.Name,
+                    Image = book.Image,
+                    Description = book.Description,
+                    ReleaseDate = book.ReleaseDate,
+                    Publisher = book.Publisher,
+                    Isbn = book.Isbns,
+                    Length = book.Pages
+                };
+
+                hardcover.BookAgeGroups = new List<BookAgeGroup>();
+                foreach (var ageGroup in book.AgeGroups)
+                {
+                    hardcover.BookAgeGroups.Add(new BookAgeGroup { Book = hardcover, AgeGroup = ageGroup });
+                };
+                hardcover.BookAuthors = new List<BookAuthor>();
+                foreach (var author in book.Authors)
+                {
+                    hardcover.BookAuthors.Add(new BookAuthor { Book = hardcover, Author = author });
+                };
+                hardcover.BookGenres = new List<BookGenre>();
+                foreach (var genre in book.Genres)
+                {
+                    hardcover.BookGenres.Add(new BookGenre { Book = hardcover, Genre = genre });
+                };
+                hardcover.BookLanguages = new List<BookLanguage>();
+                foreach (var language in book.Languages)
+                {
+                    hardcover.BookLanguages.Add(new BookLanguage { Book = hardcover, Language = language });
+                };
+                _db.Hardcovers.AddRange(hardcover);
+                _db.SaveChanges();
+            }
+        }
     }
 }
