@@ -9,8 +9,9 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace BookCave.Controllers
 {
-   /* [Authorize(Policy = "Customer")]*/
+    //[Authorize(Policy = "Customer")]
     public class CustomerController : Controller
+    
     {
         public IActionResult Receipt()
         {
@@ -31,7 +32,7 @@ namespace BookCave.Controllers
         {
             return View();
         }
-
+        
         public IActionResult Orders()
         {
             throw new NotImplementedException();
