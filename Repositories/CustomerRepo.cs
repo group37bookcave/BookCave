@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using BookCave.Data;
 using BookCave.Models;
@@ -13,17 +14,12 @@ namespace BookCave.Repositories
         
         private readonly StoreContext _db = new StoreContext();
 
-        public int AddCustomer(CustomerInputModel user)
+        public int AddCustomer(Customer user)
         {
-            var customer = new Customer
-            {
-                FirstName = user.FirstName,
-                LastName = user.LastName,
-                Email = user.Email
-            };
-            _db.Customers.AddRange(customer);
+            Console.WriteLine("Adding customer to db");
+            _db.Customers.AddRange(user);
             _db.SaveChanges();
-            return customer.Id;
+            return user.Id;
         }
 
         public Customer GetCustomer(int id)
@@ -51,7 +47,7 @@ namespace BookCave.Repositories
                 Address = address,
                 Customer = customer
             });
-            _db.Add(address);
+            _db.AddRange(address);
             _db.SaveChanges();
         }
         

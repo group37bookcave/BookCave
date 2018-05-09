@@ -8,47 +8,55 @@
     var claim = ((ClaimsIdentity) User.Identity).Claims.FirstOrDefault(c => c.Type == "Name")?.Value;
 }
 
-@if(SignInManager.IsSignedIn(User))
+@if (SignInManager.IsSignedIn(User))
 {
-    /* Employee */
-    <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hi @User <span class="caret"></span></a>
-        <ul class="dropdown-menu" style="padding: 15px; min-width: 250px;">
-            <li>
-                <div class="row">
-                    <div class="col-md-12">
-                        <a asp-controller="Employee" asp-action="Orders">All Orders</a>
-                        <a asp-controller="Product" asp-action="Register">Add a Book</a>
-                        <a asp-controller="" asp-action="">Add Sheet Music</a>
-                        <a asp-controller="Account" asp-action="Logout">Sign Out</a>
+    if (User.HasClaim("Role", "Employee"))
+    {
+        /* Employee */
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hi @claim <span class="caret"></span></a>
+            <ul class="dropdown-menu" style="padding: 15px; min-width: 250px;">
+                <li>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a asp-controller="Employee" asp-action="Orders">All Orders</a>
+                            <a asp-controller="Product" asp-action="Register">Add a Book</a>
+                            <a asp-controller="" asp-action="">Add Sheet Music</a>
+                            <form method="post">
+                                <button type="submit" class="btn btn-link" asp-controller="Account" asp-action="Logout">Sign Out</button>
+                            </form>
+                        </div>
                     </div>
-                </div>
-            </li>
-        </ul>
-    </li>
-
-
-    /* Customer */
-    <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hi @User <span class="caret"></span></a>
-        <ul class="dropdown-menu" style="padding: 15px; min-width: 250px;">
-            <li>
-                <div class="row">
-                    <div class="col-md-12">
-                        <a asp-controller="Account" asp-action="Details">Account Details</a>
-                        <a asp-controller="Customer" asp-action="WishList">WishList</a>
-                        <a asp-controller="Customer" asp-action="Orders">My Orders</a>
-                        <a asp-controller="Account" asp-action="Logout">Sign Out</a>
+                </li>
+            </ul>
+        </li>
+    }
+    else if (User.HasClaim("Role", "Customer"))
+    {
+        /* Customer */
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hi @claim <span class="caret"></span></a>
+            <ul class="dropdown-menu" style="padding: 15px; min-width: 250px;">
+                <li>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a asp-controller="Account" asp-action="Details">Account Details</a>
+                            <a asp-controller="Customer" asp-action="WishList">WishList</a>
+                            <a asp-controller="Customer" asp-action="Orders">My Orders</a>
+                            <form method="post">
+                                <button type="submit" class="btn btn-link btn-primary" asp-controller="Account" asp-action="Logout">Sign Out</button>
+                            </form>
+                        </div>
                     </div>
-                </div>
-            </li>
-        </ul>
-    </li>
-    <li>
-        <a asp-controller="Order" asp-action="ShoppingCart" role="button" aria-expanded="false">
-            <span class="glyphicon glyphicon-shopping-cart"></span><span id="nr-of-items"> 0 Items</span>
-        </a>
-    </li>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a asp-controller="Order" asp-action="ShoppingCart" role="button" aria-expanded="false">
+                <span class="glyphicon glyphicon-shopping-cart"></span><span id="nr-of-items"> 0 Items</span>
+            </a>
+        </li>
+    }
 
 
 /*
@@ -65,7 +73,7 @@ else
             <li>
                 <div class="row">
                     <div class="col-md-12">
-                        <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
+                        <form class="form" role="form" method="post" accept-charset="UTF-8" id="login-nav">
                             <div class="form-group">
                                 <label class="sr-only" for="exampleInputEmail2">Email address</label>
                                 <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Email address" required>
@@ -79,7 +87,7 @@ else
                                     <a asp-controller="Account" asp-action="Register" role="button" class="btn btn-default">New User</a>
                                 </span>
                                 <span>
-                                    <a  role="button" class="btn btn-default">Sign In</a>
+                                    <button asp-controller="Account" asp-action="Login" role="button" class="btn btn-default" type="submit">Sign In</button>
                                 </span>
                             </div>
                         </form>

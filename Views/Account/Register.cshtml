@@ -1,18 +1,22 @@
-
+@using BookCave.Repositories
 @model BookCave.Models.InputModels.RegisterInputModel
 
+@{
     ViewData["Title"] = "Register User";
-
 }
 
 
 <div class="container">
     <div class="row">
         <div class="col-sm-12 col-md-10 col-md-offset-1">
-             <div class="page-header">
-            <span id="page-name"><h1><span class="book-cave-color">NEW</span><span id="list">USER</span></h1></span>
+            <div class="page-header">
+                <span id="page-name">
+                    <h1>
+                        <span class="book-cave-color">NEW</span><span id="list">USER</span>
+                    </h1>
+                </span>
 
-             </div>
+            </div>
 
             <form class="input-form" method="post">
 
@@ -26,64 +30,72 @@
                         <div class="form-group">
 
                             <label asp-for="@Model.FirstName">First Name</label>
-                            <input asp-for="@Model.FirstName" type="text" class="form-control" id="user-name"  placeholder="Enter name">
+                            <input asp-for="@Model.FirstName" type="text" class="form-control" id="user-name" placeholder="Enter name">
                             <span asp-validation-for="@Model.FirstName"></span>
                         </div>
-                          <div class="form-group">
+                        <div class="form-group">
                             <label asp-for="@Model.LastName">Last Name</label>
                             <input asp-for="@Model.LastName" type="text" class="form-control" id="user-name" placeholder="Enter name">
-                             <span asp-validation-for="@Model.LastName"></span>
+                            <span asp-validation-for="@Model.LastName"></span>
                         </div>
                         <div class="form-group">
-                        <label asp-for="@Model.Street">Street</label>
-                        <input asp-for="@Model.Street" type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-                    </div>
-             
-                <div class="form-row">
-                    <div class="form-group col-md-2">
-                        <label asp-for="@Model.Zipcode">Zip</label>
-                        <input asp-for="@Model.Zipcode" type="text" class="form-control" id="inputZip" placeholder="Zip Code">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label asp-for="@Model.City">City</label>
-                        <input asp-for="@Model.City" type="text" class="form-control" id="inputCity" placeholder="City">
-                    </div>  
-    
-                    <div class="form-group col-md-4">
-                        <label asp-for="@Model.Country">Country</label>
-                            <select asp-for="@Model.Country" id="inputState" class="form-control">
-                                <option selected>Select country</option>
-                                <option>LAND 1.......</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="@Model.Email">Email address</label>
-                            <input asp-for="@Model.Email" type="email" class="form-control" id="user-email" placeholder="Enter email">
-                             <span asp-validation-for="@Model.Email"></span>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="@Model.PhoneNumber">Phone Number</label>
-                            <input asp-for="@Model.PhoneNumber" type="text" class="form-control" id="user-phone" placeholder="Enter phone number">
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="@Model.FavoriteBook">Favorite book</label>
-                            <input asp-for="@Model.FavoriteBook" type="text" class="form-control" id="user-fav-book" placeholder="Enter your favorite book">
-                             <span asp-validation-for="@Model.FavoriteBook"></span>
+                            <label asp-for="@Model.Street">Street</label>
+                            <input asp-for="@Model.Street" type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
                         </div>
 
-                        <div class="form-group">
-                            <label asp-for="@Model.Password">Password</label>
-                            <input asp-for="@Model.Password" type="password" class="form-control" id="user-password" placeholder="Password">
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="@Model.Password">Confirm Password</label>
-                            <input asp-for="@Model.Password" type="password" class="form-control" id="user-password-confirm" placeholder="Password">
-                        </div>
-                        <div class="grey-buttons">
-                            <a class="btn btn-default grey-buttons" type="submit" >Register</a>
+                        <div class="form-row">
+                            <div class="form-group col-md-2">
+                                <label asp-for="@Model.Zipcode">Zip</label>
+                                <input asp-for="@Model.Zipcode" type="text" class="form-control" id="inputZip" placeholder="Zip Code">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label asp-for="@Model.City">City</label>
+                                <input asp-for="@Model.City" type="text" class="form-control" id="inputCity" placeholder="City">
+                            </div>
 
+                            <div class="form-group col-md-4">
+                                <label asp-for="@Model.CountryId">Country</label>
+                                <select asp-for="@Model.CountryId" id="inputState" class="form-control">
+                                    <option selected>Select country</option>
+                                    @using (Html.BeginForm())
+                                    {
+                                        var countries = BookCave.Services.Helper.GetLanguages();
+                                        foreach (var country in countries)
+                                        {
+                                            <option value=@country.Id>@country.Name</option>
+                                        }
+                                    }
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="@Model.Email">Email address</label>
+                                <input asp-for="@Model.Email" type="email" class="form-control" id="user-email" placeholder="Enter email">
+                                <span asp-validation-for="@Model.Email"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="@Model.PhoneNumber">Phone Number</label>
+                                <input asp-for="@Model.PhoneNumber" type="text" class="form-control" id="user-phone" placeholder="Enter phone number">
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="@Model.FavoriteBook">Favorite book</label>
+                                <input asp-for="@Model.FavoriteBook" type="text" class="form-control" id="user-fav-book" placeholder="Enter your favorite book">
+                                <span asp-validation-for="@Model.FavoriteBook"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="@Model.Password">Password</label>
+                                <input asp-for="@Model.Password" type="password" class="form-control" id="user-password" placeholder="Password">
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="@Model.ConfirmPassword">Confirm Password</label>
+                                <input asp-for="@Model.ConfirmPassword" type="password" class="form-control" id="user-password-confirm" placeholder="Password">
+                            </div>
+                            <div class="grey-buttons">
+                                <a class="btn btn-default grey-buttons" type="submit">Register</a>
+
+                            </div>
                         </div>
-                    </div>
+                    </div></div>
 
                 </fieldset>
 
@@ -91,6 +103,3 @@
         </div>
     </div>
 </div>
-
-           
-

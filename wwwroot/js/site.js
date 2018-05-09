@@ -19,8 +19,10 @@ $(document).ready(function(e){
 		$('.search-panel span#search_concept').text(concept);
 		$('.input-group #search_param').val(param);
     });
-
- 
+    
+    $("#logout-a").click(function(){
+        $("#logout-f").submit();
+    });
 
     $("#best-sellers-hover").hover(function () {
         $("#best-sellers-hidden").show();
