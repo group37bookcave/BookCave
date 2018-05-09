@@ -9,6 +9,7 @@ namespace BookCave.Models.InputModels
 
         [EmailAddress] public string Email { get; set; }
 
+        [Required(ErrorMessage="Please enter password.")]
         public string Password { get; set; }
 
         public bool RememberMe { get; set; }

@@ -5,6 +5,7 @@ namespace BookCave.Repositories
 {
     public class AddressInputModel
     {
+
         [Required(ErrorMessage="Please enter street.")]
         public string Street { get; set; }
 
@@ -13,6 +14,7 @@ namespace BookCave.Repositories
         [Required(ErrorMessage="Please enter city.")]   
         public string City { get; set; }
         [Required(ErrorMessage="Please select country.")]
+
         public int CountryId { get; set; }
     }
 }
