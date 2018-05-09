@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using BookCave.Models.ViewModels;
 using BookCave.Services;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BookCave.Controllers
 {
@@ -18,10 +15,26 @@ namespace BookCave.Controllers
             _productService = new ProductService();
         }
 
-        public IActionResult AllProducts(string query)
+        public IActionResult AllProducts()
         {
             var products = _productService.GetAllProducts();
             return View(products);
+        }
+
+        public IActionResult BookDetail(int id)
+        {
+            var product = _productService.GetProduct(id);
+            if (product == null)
+            {
+                return View("Error");
+            }
+
+            return View(product);
+        }
+        
+        public IActionResult AuthorDetail()
+        {
+            return View();
         }
 
         public IActionResult NewReleases()
@@ -39,24 +52,15 @@ namespace BookCave.Controllers
             return View();
         }
         
-        public IActionResult Details(int id)
-        {
-            var product = _productService.GetProduct(id);
-            if (product == null)
-            {
-                return View("Error");
-            }
-
-            return View(product);
-        }
-        
         [HttpGet]
+        //[Authorize(Policy = "Employee")]
         public IActionResult Register()
         {
             throw new NotImplementedException();
         }
 
         [HttpPost]
+        //[Authorize(Policy = "Employee")]
         public IActionResult Register(HardCoverViewModel model)
         {
             throw new NotImplementedException();
