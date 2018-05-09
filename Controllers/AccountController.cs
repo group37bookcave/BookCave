@@ -103,6 +103,12 @@ namespace BookCave.Controllers
             return View();
         }
 
+        public IActionResult LoginPage()
+        {
+            return View();
+        }
+    
+        
         public IActionResult Details()
         {
             throw new System.NotImplementedException();

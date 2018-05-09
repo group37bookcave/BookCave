@@ -20,6 +20,7 @@ namespace BookCave.Data
         public DbSet<Ebook> Ebooks { get; set; }                
         public DbSet<Country> Countries { get; set; }
         public DbSet<Customer> Customers { get; set; }
+        public DbSet<Composer> Composers { get; set; }
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Genre> Genres { get; set; }
         public DbSet<Isbn> Isbns { get; set; }

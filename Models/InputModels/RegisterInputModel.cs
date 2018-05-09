@@ -25,6 +25,8 @@ namespace BookCave.Models.InputModels
         [Required(ErrorMessage = "Selet your country")]
         public int CountryId { get; set; }
 
+        public Ima Type { get; set; }
+
         public string FavoriteBook { get; set; }
 
         public string PhoneNumber { get; set; }

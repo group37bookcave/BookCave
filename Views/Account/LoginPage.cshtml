@@ -1,0 +1,53 @@
+@model BookCave.Models.InputModels.LoginInputModel
+
+
+
+@{
+    ViewData["Title"] = "LOG IN";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-md-10 col-md-offset-1">
+            <div class="page-header">
+                <h1 clas="inline-block"><span class="book-cave-color">LOG</span><span>IN</span></h1>
+            </div>
+            <div class="login-form">
+                
+
+            <form method="post" class="address-form">
+                <fieldset>
+                    <div class="form-inputs">
+                     
+                        <div class="form-group">
+                            
+                            <label asp-for="@Model.Email">Email address</label></br>
+                            <span asp-validation-for="@Model.Email"></span>
+                            <input class="form-control" id="user-email" asp-for="@Model.Email" placeholder="Enter email">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label asp-for="@Model.Password">Password</label></br>
+                            <span asp-validation-for="@Model.Password"></span>
+                            <input type="password" class="form-control" id="user-password" asp-for="@Model.Password" placeholder="Password">
+                        </div>
+                        <div class="form-group">
+                            <input type="checkbox" asp-for="@Model.RememberMe">
+                            <label asp-for="@Model.RememberMe">Remember me</label>
+                            
+                        </div>
+
+                       
+                        <div class="grey-buttons">
+                           <input type="submit" value="LogIn">
+                            <!--<a class="btn btn-default grey-buttons" type="submit" value="LogIn">Log In</a>-->
+                        </div>
+                    </div>
+
+                </fieldset>
+
+            </form>
+        </div>
+    </div>
+</div>
+        
