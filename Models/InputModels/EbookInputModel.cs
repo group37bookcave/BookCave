@@ -21,7 +21,7 @@ namespace BookCave.Models.InputModels
 
         [Required] public Publisher Publisher { get; set; }
 
-        [Required] public List<Isbn> Isbns { get; set; }
+        [Required] public Isbn Isbns { get; set; }
 
         [Required] public List<Language> Languages { get; set; }
 

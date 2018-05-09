@@ -123,7 +123,7 @@ namespace BookCave.Repositories
             return music.ToList();
         }
 
-        public void CheckAuthor(List<Author> authors) //Listi af authors
+        public void CheckAuthor(List<Author> authors) 
         {
             foreach (var author in authors)
             {
@@ -168,7 +168,6 @@ namespace BookCave.Repositories
                 select i);
             return check.Any();
         }
-        //public void CheckNarrator()
         public void AddAudioBook(AudioBookInputModel book)
         {
             if(!CheckIsbn(book.Isbns))
@@ -214,6 +213,47 @@ namespace BookCave.Repositories
                     audio.AudiobookNarrators.Add(new AudiobookNarrator { Book = audio, Narrator = narrator });
                 };
                 _db.AudioBooks.AddRange(audio);
+                _db.SaveChanges();
+            }
+        }
+        public void AddEBook(EbookInputModel book)
+        {
+            if(!CheckIsbn(book.Isbns))
+            {
+                CheckAuthor(book.Authors);
+                var ebook = new Ebook
+                {
+                    Price = book.Price,
+                    Name = book.Name,
+                    Image = book.Image,
+                    Description = book.Description,
+                    Size = book.Size,
+                    ReleaseDate = book.ReleaseDate,
+                    Publisher = book.Publisher,
+                    Isbn = book.Isbns
+                };
+
+                ebook.BookAgeGroups = new List<BookAgeGroup>();
+                foreach (var ageGroup in book.AgeGroups)
+                {
+                    ebook.BookAgeGroups.Add(new BookAgeGroup { Book = ebook, AgeGroup = ageGroup });
+                };
+                ebook.BookAuthors = new List<BookAuthor>();
+                foreach (var author in book.Authors)
+                {
+                    ebook.BookAuthors.Add(new BookAuthor { Book = ebook, Author = author });
+                };
+                ebook.BookGenres = new List<BookGenre>();
+                foreach (var genre in book.Genres)
+                {
+                    ebook.BookGenres.Add(new BookGenre { Book = ebook, Genre = genre });
+                };
+                ebook.BookLanguages = new List<BookLanguage>();
+                foreach (var language in book.Languages)
+                {
+                    ebook.BookLanguages.Add(new BookLanguage { Book = ebook, Language = language });
+                };
+                _db.Ebooks.AddRange(ebook);
                 _db.SaveChanges();
             }
         }
