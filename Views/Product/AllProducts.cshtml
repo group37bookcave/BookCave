@@ -32,57 +32,71 @@
 
             </div>
 
+
             <table>
                 <tbody>
                 @foreach (var item in Model)
                 {
-                    <tr class="list-item">
-                        <td class="col-sm-8 col-md-6">
-                            <div class="media">
-                                <a class="pull-left" asp-controller="Product" asp-action="BookDetail">
-                                    <div class="col-sm-2 hidden-xs">
-                                        <img class="bookDetailImg" src=@item.Image class="media-object" alt="ItemImage">
-                                    </div>
-                                </a>
-                                <div class="media-body">
-                                    <ul>
-                                        <h4>@item.Name</h4>
-                                        <li>Author:</li>
-                                        <li>Format: @item.GetType().Name</li>
-                                        <li>Length:</li>
-                                        <li>Release date:</li>
-                                        <li>Language:</li>
-                                    </ul>
+                    <tr>
+                        <td class="col-sm-3 col-md-3" valign="top">
+                            <div>
+                                <img alt="Cover Art" class="bookDetailImg" src="@item.Image"/>
+                            </div>
+                        </td>
+                        <td class="col-sm-5 col-md-5" valign="top">
+                            <div>
+                                <ul>
+                                    <li><h4>@item.Name</h4></li>
+                                    <li>Author: J.K. Rowling</li>
+                                    <li>
+                                        Format: @item.GetType().Name
+                                    </li>
+                                    <li>Pages: 480</li>
+                                    <li>Release Date: 01-09-2014</li>
+                                    <li>Language: English</li>
+                                    <li>
+                                        <span class="stars fa fa-star"></span>
+                                        <span class="stars fa fa-star"></span>
+                                        <span class="stars fa fa-star"></span>
+                                        <span class="stars fa fa-star"></span>
+                                        <span class="stars fa fa-star"></span>
+                                        <span class="grey"> 5 Ratings </span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </td>
+                        <td class="col-sm-2 col-md-2" valign="top">
+                            <div>
+                                <h5>Price: 
+                                    $@item.Price
+                                </h5>
+                            </div>
+                        </td>
+                        <td class="col-sm-2 col-md-2" valign="top">
 
-                                    <span class="stars fa fa-star"></span>
-                                    <span class="stars fa fa-star"></span>
-                                    <span class="stars fa fa-star"></span>
-                                    <span class="stars fa fa-star"></span>
-                                    <span class="stars fa fa-star"></span>
+                            <div>
+                                <div class="button-options grey-buttons">
+                                    <a class="btn btn-default" type="button" asp-area="" asp-controller="" asp-action="">
+                                        Buy Now
+                                    </a>
+                                </div>
+                                <div class="button-options green-buttons">
+                                    <a class="btn btn-default" type="button" asp-area="" asp-controller="" asp-action="">
+                                        Add to Cart
+                                    </a>
+                                </div>
+                                <div class="button-options green-buttons">
+                                    <a class="btn btn-default" type="button" asp-area="" asp-controller="" asp-action="">
+                                        Add to WishList
+                                    </a>
                                 </div>
                             </div>
-                        </td>
 
-                        <td class="col-sm-1 col-md-1">
-                            <p>
-                                <strong>Price: $@item.Price</strong>
-                            </p>
-                        </td>
-
-                        <td class="col-sm-1 col-md-1">
-
-                            <div class="button-options grey-buttons">
-                                <a class="btn btn-default" type="button" asp-area="" asp-controller="" asp-action="">Buy Now</a>
-                            </div>
-                            <div class="button-options green-buttons">
-                                <a class="btn btn-default" type="button" asp-area="" asp-controller="" asp-action="">Add to Cart</a>
-                                <a class="btn btn-default" type="button" asp-area="" asp-controller="" asp-action="">Add to WishList</a>
-                            </div>
                         </td>
                     </tr>
                 }
                 </tbody>
             </table>
-        </div>
+<hr/>        </div>
     </div>
 </div>
