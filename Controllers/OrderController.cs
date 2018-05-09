@@ -18,7 +18,7 @@ namespace BookCave.Controllers
         }
 
         public IActionResult ShoppingCart()
-        {
+        {/*
             int userId = int.Parse(User.FindFirst("customerId").Value);
             if(userId==0)
             {
@@ -26,7 +26,8 @@ namespace BookCave.Controllers
             }
 
             var ActiveOrder = _orderService.GetActiveOrder(userId);
-            return View(ActiveOrder);
+            return View(ActiveOrder);*/
+            return View();
         }
 
           public IActionResult Address()
@@ -41,7 +42,12 @@ namespace BookCave.Controllers
 
         public IActionResult ReviewPage()
         {
-            throw new NotImplementedException();
+            return View();
+        }
+
+          public IActionResult Receipt()
+        {
+            return View();
         }
     }
 }

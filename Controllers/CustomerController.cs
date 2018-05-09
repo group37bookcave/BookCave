@@ -17,10 +17,7 @@ namespace BookCave.Controllers
     
     {
         private readonly ProductService productService = new ProductService();
-        public IActionResult Receipt()
-        {
-            return View();
-        }
+      
 
         public IActionResult AccountDetails()
         {
