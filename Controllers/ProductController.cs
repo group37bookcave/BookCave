@@ -23,13 +23,8 @@ namespace BookCave.Controllers
 
         public IActionResult BookDetail(int id)
         {
-            var product = _productService.GetProduct(id);
-            if (product == null)
-            {
-                return View("Error");
-            }
 
-            return View(product);
+            return View();
         }
         
         public IActionResult AuthorDetail()
