@@ -18,10 +18,10 @@ namespace BookCave.Controllers
             _productService = new ProductService();
         }
 
-        public IActionResult AllProducts()
+        public IActionResult AllProducts(string query)
         {
             var products = _productService.GetAllProducts();
-            return View();
+            return View(products);
         }
 
         public IActionResult NewReleases()
@@ -37,6 +37,17 @@ namespace BookCave.Controllers
          public IActionResult BestSellers()
         {
             return View();
+        }
+        
+        public IActionResult Details(int id)
+        {
+            var product = _productService.GetProduct(id);
+            if (product == null)
+            {
+                return View("Error");
+            }
+
+            return View(product);
         }
         
         [HttpGet]
