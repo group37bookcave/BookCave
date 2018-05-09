@@ -21,13 +21,13 @@
                      
                         <div class="form-group">
                             
-                            <label asp-for="@Model.Email">Email address</label></br>
+                            <label asp-for="@Model.Email">Email address</label><br/>
                             <span asp-validation-for="@Model.Email"></span>
                             <input class="form-control" id="user-email" asp-for="@Model.Email" placeholder="Enter email">
                         </div>
                         
                         <div class="form-group">
-                            <label asp-for="@Model.Password">Password</label></br>
+                            <label asp-for="@Model.Password">Password</label><br/>
                             <span asp-validation-for="@Model.Password"></span>
                             <input type="password" class="form-control" id="user-password" asp-for="@Model.Password" placeholder="Password">
                         </div>
@@ -49,5 +49,4 @@
             </form>
         </div>
     </div>
-</div>
-        
+</div></div>
