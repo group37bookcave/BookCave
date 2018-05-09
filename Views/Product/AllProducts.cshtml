@@ -1,3 +1,5 @@
+@model IEnumerable<BookCave.Models.EntityModels.Product>
+
 @{
     ViewData["Title"] = "All Products";
 }
@@ -40,15 +42,15 @@
                                     <h4>Item name</h4>
                                     <ul>
                                         <li>Author:</li>
-                                          <select>
-                                                <option>HardCover</option>
-                                                <option>Physical</option>
-                                                <option>AudioBook</option>
-                                                <option>E-Book</option>
-                                            </select>
+                                        <select>
+                                            <option>HardCover</option>
+                                            <option>Physical</option>
+                                            <option>AudioBook</option>
+                                            <option>E-Book</option>
+                                        </select>
                                         <li>Length:</li>
                                         <li>Release date:</li>
-                                        <li>Language:</li>  
+                                        <li>Language:</li>
                                     </ul>
                                    
                                     <span class="stars fa fa-star"></span>

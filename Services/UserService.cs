@@ -6,12 +6,13 @@ namespace BookCave.Services
 {
     public class UserService
     {
-        private CustomerRepo _cr = new CustomerRepo();
+        private readonly CustomerRepo _customerRepo = new CustomerRepo();
+        private readonly EmployeeRepo _employeeRepo = new EmployeeRepo();
     
         public CustomerViewModel GetCustomer(int id)
         {
-            var customer = _cr.GetCustomer(id);
-            var addresses = _cr.GetAddresses(id);
+            var customer = _customerRepo.GetCustomer(id);
+            var addresses = _customerRepo.GetAddresses(id);
 
             var model = new CustomerViewModel
             {
@@ -33,11 +34,6 @@ namespace BookCave.Services
             return model;
         }
 
-        private int AddCustomer(CustomerInputModel model)
-        {
-            return _cr.AddCustomer(model);
-        }
-
         public int CreateCustomer(RegisterInputModel model)
         {
             var customer = new CustomerInputModel
@@ -46,10 +42,19 @@ namespace BookCave.Services
                 LastName = model.LastName,
                 Email = model.Email
             };
-            return AddCustomer(customer);
+            return _customerRepo.AddCustomer(customer);
         }
+
         
-        
-        
+        public int CreateEmployee(RegisterInputModel model)
+        {
+            var employee = new EmployeeInputModel
+            {
+                Email = model.Email,
+                FirstName = model.FirstName,
+                LastName = model.LastName
+            };
+            return _employeeRepo.AddEmployee(employee);
+        }
     }
 }

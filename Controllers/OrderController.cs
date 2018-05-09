@@ -1,15 +1,20 @@
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+using BookCave.Services;
 using Microsoft.AspNetCore.Mvc;
-using BookCave.Models.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BookCave.Controllers
 {
+    //[Authorize(Policy = "Customer")]
     public class OrderController : Controller
     {
+        private readonly OrderService _orderService;
+
+        public OrderController()
+        {
+            _orderService = new OrderService();
+        }
+
         public IActionResult ShoppingCart()
         {
             return View();
@@ -24,8 +29,8 @@ namespace BookCave.Controllers
         {
             throw new NotImplementedException();
         }
-
-        public IActionResult ReviewPage()
+        
+        public IActionResult Review()
         {
             return View();
         }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using BookCave.Models.EntityModels;
 using BookCave.Models.ViewModels;
 using BookCave.Repositories;
 
@@ -7,16 +8,13 @@ namespace BookCave.Services
 {
     public class ProductService
     {
-        private ProductRepo _pr = new ProductRepo();
+        private ProductRepo _productRepo = new ProductRepo();
 
-        public List<ProductViewModel> GetAllProducts()
+        public IEnumerable<Product> GetAllProducts()
         {
-            throw new NotImplementedException();
+            return _productRepo.GetAllProducts();
         }
 
-        private ProductViewModel ConvertToProductViewModel()
-        {
-            throw new NotImplementedException();
-        }
+
     }
 }
