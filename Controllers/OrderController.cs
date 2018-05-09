@@ -9,6 +9,7 @@ namespace BookCave.Controllers
     public class OrderController : Controller
     {
         private readonly OrderService _orderService;
+        
 
         public OrderController()
         {
@@ -17,11 +18,10 @@ namespace BookCave.Controllers
 
         public IActionResult ShoppingCart()
         {
-           /* 
-            var ActiveOrders = _orderService.GetActiveOrder();
+            int userId = int.Parse(User.FindFirst("customerId").Value);
+
+            var ActiveOrders = _orderService.GetActiveOrder(userId);
             return View(ActiveOrders);
-            */
-            throw new NotImplementedException();
         }
 
           public IActionResult Address()
