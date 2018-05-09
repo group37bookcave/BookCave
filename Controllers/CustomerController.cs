@@ -5,7 +5,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using BookCave.Models.ViewModels;
+using BookCave.Services;
 using Microsoft.AspNetCore.Authorization;
+
 
 namespace BookCave.Controllers
 {
@@ -14,6 +16,7 @@ namespace BookCave.Controllers
     public class CustomerController : Controller
     
     {
+        private readonly ProductService productService = new ProductService();
         public IActionResult Receipt()
         {
             return View();
@@ -41,7 +44,32 @@ namespace BookCave.Controllers
 
         public IActionResult WishList()
         {
-            throw new NotImplementedException();
+            return View();
+        }
+
+
+        /*Remove, laga nöfn á föllum */
+        /*[HttpGet]
+        public IActionResult Remove(int id){
+            
+            if(id == null)
+            {
+                View("NotFound");
+            }
+
+            var product = productService.GetProduct(id);
+            return View(product);
+        }
+*/
+        [HttpPost]
+        public IActionResult Remove(int id){
+            /*if(id == null)
+            {
+                return View();
+            }
+            */
+            productService.RemoveProduct(id);
+            return RedirectToAction("Index");
         }
     }
 }

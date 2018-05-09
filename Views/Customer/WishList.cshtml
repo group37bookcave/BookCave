@@ -46,8 +46,10 @@
                         
                         <td class="col-sm-1 col-md-1">
                             <div class="button-options grey-buttons">
-                                <button type="button" class="btn">Move to cart</button>
-                                <button type="button" class="btn">Remove</button>    
+                                <a type="button" class="btn">Move to cart</a>
+                                <form method="post">
+                                    <input asp-action="Customer" asp-route-id="@product.Id" type="submit" value="Remove" class="btn">
+                                </form>  
                             </div>	
                         </td>
                     </tr>

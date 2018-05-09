@@ -17,7 +17,14 @@ namespace BookCave.Controllers
 
         public IActionResult ShoppingCart()
         {
-            return View();
+           /* 
+            var ActiveOrders = _orderService.GetActiveOrder();
+            /*Vantar product id og user id */
+            /*var products = _orderService.AddToOrder();
+            return View(products);
+            return View(ActiveOrders);
+            */
+            throw new NotImplementedException();
         }
 
           public IActionResult Address()

@@ -34,6 +34,11 @@ namespace BookCave.Services
             return ConvertToOrderViewModel(order);
         }
 
+         public OrderViewModel GetActiveOrder(int customerId)
+        {
+            var order = _orderRepo.GetActiveOrder(customerId);
+            return ConvertToOrderViewModel(order);
+        }
 
         private static OrderViewModel ConvertToOrderViewModel(Order order)
         {
