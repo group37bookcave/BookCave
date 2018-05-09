@@ -47,6 +47,14 @@ namespace BookCave.Services
             return product;
         }
 
+
+        public Product RemoveProduct(int id)
+        {
+            var productToRemove = _productRepo.GetProduct(id);
+          /*  productToRemove.Remove(productToRemove);*/
+            return productToRemove;
+        }
+
         private ProductViewModel ConvertToProductViewModel()
         {
             throw new NotImplementedException();

@@ -36,8 +36,24 @@
                         <div class="form-group">
                             <label asp-for="@Model.LastName">Last Name</label>
                             <input asp-for="@Model.LastName" type="text" class="form-control" id="user-name" placeholder="Enter name">
-                            <span asp-validation-for="@Model.LastName"></span>
+
+                             <span asp-validation-for="@Model.LastName"></span>
                         </div>
+                             <div class="form-group">
+                                <label asp-for="@Model.Email">Email address</label>
+                                <input asp-for="@Model.Email" type="email" class="form-control" id="user-email" placeholder="Enter email">
+                                <span asp-validation-for="@Model.Email"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="@Model.PhoneNumber">Phone Number</label>
+                                <input asp-for="@Model.PhoneNumber" type="text" class="form-control" id="user-phone" placeholder="Enter phone number">
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="@Model.FavoriteBook">Favorite book</label>
+                                <input asp-for="@Model.FavoriteBook" type="text" class="form-control" id="user-fav-book" placeholder="Enter your favorite book">
+                                <span asp-validation-for="@Model.FavoriteBook"></span>
+                            </div>
+                        
                         <div class="form-group">
                             <label asp-for="@Model.Street">Street</label>
                             <input asp-for="@Model.Street" type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
@@ -67,20 +83,7 @@
                                     }
                                 </select>
                             </div>
-                            <div class="form-group">
-                                <label asp-for="@Model.Email">Email address</label>
-                                <input asp-for="@Model.Email" type="email" class="form-control" id="user-email" placeholder="Enter email">
-                                <span asp-validation-for="@Model.Email"></span>
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="@Model.PhoneNumber">Phone Number</label>
-                                <input asp-for="@Model.PhoneNumber" type="text" class="form-control" id="user-phone" placeholder="Enter phone number">
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="@Model.FavoriteBook">Favorite book</label>
-                                <input asp-for="@Model.FavoriteBook" type="text" class="form-control" id="user-fav-book" placeholder="Enter your favorite book">
-                                <span asp-validation-for="@Model.FavoriteBook"></span>
-                            </div>
+            
 
                             <div class="form-group">
                                 <label asp-for="@Model.Password">Password</label>
@@ -95,7 +98,8 @@
 
                             </div>
                         </div>
-                    </div></div>
+                    </div>
+                    </div>
 
                 </fieldset>
 
