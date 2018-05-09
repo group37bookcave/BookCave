@@ -1,4 +1,5 @@
-﻿using System.Security.Claims;
+﻿using System;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using BookCave.Models.EntityModels;
 using BookCave.Models.InputModels;
@@ -63,6 +64,7 @@ namespace BookCave.Controllers
             user.UserId = customerId;
             
             // Add claims to the ApplicationUser.
+            await _userManager.AddClaimAsync(user, new Claim("CustomerId", customerId.ToString()));
             await _userManager.AddClaimAsync(user, new Claim("Role", "Customer"));
             await _userManager.AddClaimAsync(user, new Claim("Name", $"{model.FirstName} {model.LastName}"));
             
@@ -95,7 +97,7 @@ namespace BookCave.Controllers
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
-            return RedirectToAction("Login", "Account");
+            return RedirectToAction("Index", "Home");
         }
 
         public IActionResult AccessDenied()
