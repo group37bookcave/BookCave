@@ -40,6 +40,14 @@ namespace BookCave.Repositories
                 select book;
             return books.ToList();
         }
+        public List<Book> GetBooksByAuthorName(string name)
+        {
+            var books = from bookAuthor in _db.BookAuthors
+                join book in _db.Books on bookAuthor.BookId equals book.Id
+                where bookAuthor.Author.FullName.Contains(name)
+                select book;
+            return books.ToList();
+        }
 
         public List<Author> GetAuthorsByBookId(int id)
         {
@@ -132,15 +140,22 @@ namespace BookCave.Repositories
                 select book;
             return books.ToList();
         }
-        public List<Product> GetProductsByName(string name)
+        public List<Book> GetBooksByName(string name)
         {
-            var products = from product in _db.Products
-                where product.Name.Contains(name)
-                select product;
-            return products.ToList();
+            var books = (from book in _db.Books
+                where book.Name.Contains(name)
+                select book).ToList();
+            return books;
+        }
+        public Book GetBookByIsbn(Isbn isbn)
+        {
+            var book = (from books in _db.Books
+                where books.Isbn == isbn
+                select books).SingleOrDefault();
+            return book;
         }
 
-        public void CheckAuthor(List<Author> authors) 
+        private void CheckAuthor(List<Author> authors) 
         {
             foreach (var author in authors)
             {

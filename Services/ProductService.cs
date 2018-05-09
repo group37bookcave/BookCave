@@ -30,5 +30,25 @@ namespace BookCave.Services
         {
             return _productRepo.GetAllBooks();
         }
+        public List<Book> GetBooksByAuthorId(int id)
+        {
+            return _productRepo.GetBooksByAuthorId(id);
+        }
+        public List<Author> GetAuthorsByBookId(int id)
+        {
+            return _productRepo.GetAuthorsByBookId(id);
+        }
+        public List<Book> SearchByName(string name)
+        {
+            return _productRepo.GetBooksByName(name);
+        }
+        public List<Book> SearchByAuthor(string name)
+        {
+            return _productRepo.GetBooksByAuthorName(name);
+        }
+        public Book SearchByIsbn(Isbn isbn)
+        {
+            return _productRepo.GetBookByIsbn(isbn);
+        }
     }
 }
