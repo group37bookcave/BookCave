@@ -14,7 +14,7 @@
 
              </div>
 
-            <form method="post">
+            <form class="input-form" method="post">
 
                 <fieldset class="inline-block upload-image">
                     <input asp-for="@Model.Image"type="image" src="https://getstamped.co.uk/wp-content/uploads/Placeholder.jpg" style="width: 300px"/>
@@ -35,9 +35,26 @@
                              <span asp-validation-for="@Model.LastName"></span>
                         </div>
                         <div class="form-group">
-                            <label asp-for="@Model.Address">Address</label>
-                            <input asp-for="@Model.Address" type="text" class="form-control" id="user-address" placeholder="Enter address">
-                             <span asp-validation-for="@Model.Address"></span>
+                        <label asp-for="@Model.Street">Street</label>
+                        <input asp-for="@Model.Street" type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+                    </div>
+             
+                <div class="form-row">
+                    <div class="form-group col-md-2">
+                        <label asp-for="@Model.Zipcode">Zip</label>
+                        <input asp-for="@Model.Zipcode" type="text" class="form-control" id="inputZip" placeholder="Zip Code">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label asp-for="@Model.City">City</label>
+                        <input asp-for="@Model.City" type="text" class="form-control" id="inputCity" placeholder="City">
+                    </div>  
+    
+                    <div class="form-group col-md-4">
+                        <label asp-for="@Model.Country">Country</label>
+                            <select asp-for="@Model.Country" id="inputState" class="form-control">
+                                <option selected>Select country</option>
+                                <option>LAND 1.......</option>
+                            </select>
                         </div>
                         <div class="form-group">
                             <label asp-for="@Model.Email">Email address</label>
