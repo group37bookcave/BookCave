@@ -1,9 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+
 using BookCave.Models.EntityModels;
 using BookCave.Models.InputModels;
 using BookCave.Models.ViewModels;
 using BookCave.Repositories;
+
 
 namespace BookCave.Services
 {
@@ -37,6 +40,10 @@ namespace BookCave.Services
          public OrderViewModel GetActiveOrder(int customerId)
         {
             var order = _orderRepo.GetActiveOrder(customerId);
+            if(order == null)
+            {
+                throw new NotImplementedException();
+            }
             return ConvertToOrderViewModel(order);
         }
 
