@@ -9,7 +9,7 @@ $(document).ready(function(e){
     /*Submit forms*/ 
     $("input[type='submit']").click(function()
     {
-        $("input[id='input-form']").submit();
+        $("input[class='input-form']").submit();
     });
     
     $('.search-panel .dropdown-menu').find('a').click(function(e) {
