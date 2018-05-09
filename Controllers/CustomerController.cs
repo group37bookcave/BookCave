@@ -9,7 +9,8 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace BookCave.Controllers
 {
-    //[Authorize(Policy = "Customer")]
+    // [Authorize(Policy = "Customer")]
+
     public class CustomerController : Controller
     
     {

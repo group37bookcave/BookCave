@@ -18,13 +18,18 @@ namespace BookCave.Controllers
         public IActionResult AllProducts()
         {
             var products = _productService.GetAllProducts();
-            
             return View(products);
         }
 
-        public IActionResult BookDetail()
+        public IActionResult BookDetail(int id)
         {
-            return View();
+            var product = _productService.GetProduct(id);
+            if (product == null)
+            {
+                return View("Error");
+            }
+
+            return View(product);
         }
         
         public IActionResult AuthorDetail()
@@ -46,7 +51,6 @@ namespace BookCave.Controllers
         {
             return View();
         }
-
         
         [HttpGet]
         //[Authorize(Policy = "Employee")]
