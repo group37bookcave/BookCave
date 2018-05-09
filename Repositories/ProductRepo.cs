@@ -298,5 +298,46 @@ namespace BookCave.Repositories
                 _db.SaveChanges();
             }
         }
+        public void AddPaperback(PaperBackInputModel book)
+        {
+            if(!CheckIsbn(book.Isbns))
+            {
+                CheckAuthor(book.Authors);
+                var paperback = new Paperback
+                {
+                    Price = book.Price,
+                    Name = book.Name,
+                    Image = book.Image,
+                    Description = book.Description,
+                    ReleaseDate = book.ReleaseDate,
+                    Publisher = book.Publisher,
+                    Isbn = book.Isbns,
+                    Length = book.Pages
+                };
+
+                paperback.BookAgeGroups = new List<BookAgeGroup>();
+                foreach (var ageGroup in book.AgeGroups)
+                {
+                    paperback.BookAgeGroups.Add(new BookAgeGroup { Book = paperback, AgeGroup = ageGroup });
+                };
+                paperback.BookAuthors = new List<BookAuthor>();
+                foreach (var author in book.Authors)
+                {
+                    paperback.BookAuthors.Add(new BookAuthor { Book = paperback, Author = author });
+                };
+                paperback.BookGenres = new List<BookGenre>();
+                foreach (var genre in book.Genres)
+                {
+                    paperback.BookGenres.Add(new BookGenre { Book = paperback, Genre = genre });
+                };
+                paperback.BookLanguages = new List<BookLanguage>();
+                foreach (var language in book.Languages)
+                {
+                    paperback.BookLanguages.Add(new BookLanguage { Book = paperback, Language = language });
+                };
+                _db.Paperbacks.AddRange(paperback);
+                _db.SaveChanges();
+            }
+        }
     }
 }
