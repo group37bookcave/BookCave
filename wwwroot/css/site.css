@@ -83,6 +83,9 @@ tfoot > tr{
     width: 120px; 
 }
 
+.grey{
+    color: rgb(211,211,211);
+}
 
 .grey-buttons > a{
     color: black;
@@ -222,12 +225,25 @@ nav #navbar {
 }
 
 /* Product View */
-.row{
-    padding-bottom: 20px;
+
+
+.details {
+    padding-right: 200px;
 }
+
 .col img{
     flex: 20%;
     max-width: 283px;
     padding: 0 4px;
     float: left;
+}
+
+
+#bookDetailImg{
+    max-width: 170px;
+}
+
+.container-fluid {
+    padding-left: 60px;
+    padding-right: 60px;
 }
