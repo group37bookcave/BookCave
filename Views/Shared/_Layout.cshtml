@@ -50,54 +50,7 @@
         </div>
         <div class="col-xs-3">
             <ul id="corner-up-right" class="nav navbar-nav navbar-right">
-
-                @Html.Partial("_LogInPartial")
-                <!--
-                @{ 
-                    Html.Partial("_LogInPartial");
-                }
-                -->
-
-                <!-- _LogInPartial starts
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">New User / Sign In</a>
-                    <ul class="dropdown-menu" style="padding: 15px; min-width: 250px;">
-                        <li>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
-                                        <div class="form-group">
-                                            <label class="sr-only" for="exampleInputEmail2">Email address</label>
-                                            <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Email address" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="sr-only" for="exampleInputPassword2">Password</label>
-                                            <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <span>
-                                                <a asp-controller="Account" asp-action="Register" role="button" class="btn btn-success">New User</a>
-                                            </span>
-                                            <span>
-                                                <a asp-controller="Account" asp-action="Register" role="button" class="btn btn-success">Sign In</a>                                            </span>
-
-                                            <span>
-                                                <a  role="button" class="btn btn-default">Sign In</a>
-                                            </span>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a asp-controller="Order" asp-action="ShoppingCart" role="button" aria-expanded="false">
-                        <span class="glyphicon glyphicon-shopping-cart"></span><span> 0 Items</span>
-                    </a>
-                </li>
-                    _LogInPartial ends -->
-
+                @await Html.PartialAsync("_LogInPartial")
             </ul>
         </div>
     </div>
@@ -105,7 +58,7 @@
 <div id="bla" class="navbar-collapse collapse">
     <ul class="nav navbar-nav">
         <li>
-            <a asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+            <a asp-controller="Home" asp-action="Index">Home</a>
         </li>
         <li>
 
@@ -119,10 +72,10 @@
             </a>
         </li>
         <li>
-            <a asp-area="" asp-controller="Product" asp-action="NewReleases">New Releases</a>
+            <a asp-controller="Product" asp-action="NewReleases">New Releases</a>
         </li>
         <li>
-            <a asp-area="" asp-controller="Product" asp-action="TopRated">Top Rated</a>
+            <a asp-controller="Product" asp-action="TopRated">Top Rated</a>
         </li>
     </ul>
 </div>
@@ -131,39 +84,33 @@
         <div class="col-sm-3">
             <ul>
                 <li>
-                    <strong>Top Categories</strong>
+                    <strong>Categories</strong>
                 </li>
                 <li>
-                    <a asp-area="" asp-controller="Product" asp-action="AllProducts">All Products</a>
+                    <a asp-controller="Product" asp-action="AllProducts">All Products</a>
                 </li>
                 <li>
-                    <a asp-area="" asp-controller="Home" asp-action="Contact">Audio Books</a>
+                    <a asp-controller="Home" asp-action="Contact">Audio Books</a>
                 </li>
                 <li>
-                    <a asp-area="" asp-controller="Home" asp-action="Contact">E - Books</a>
+                    <a asp-controller="Home" asp-action="Contact">E - Books</a>
                 </li>
                 <li>
-                    <a asp-area="" asp-controller="Home" asp-action="Contact">Hardcover</a>
+                    <a asp-controller="Home" asp-action="Contact">Hardcover</a>
                 </li>
                 <li>
-                    <a asp-area="" asp-controller="Home" asp-action="Contact">Paperback</a>
+                    <a asp-controller="Home" asp-action="Contact">Paperback</a>
                 </li>
                 <li>
-                    <a asp-area="" asp-controller="Home" asp-action="Contact">Sheet Music</a>
-                </li>
-                <li>
-                    <a asp-area="" asp-controller="Home" asp-action="Contact">Fiction</a>
-                </li>
-                <li>
-                    <a asp-area="" asp-controller="Home" asp-action="Contact">Non - Fiction</a>
+                    <a asp-controller="Home" asp-action="Contact">Sheet Music</a>
                 </li>
             </ul>
         </div>
         <div class="col-sm-2">
             <ul>
+                <li></li>
                 <li>
-                    <strong>Other Categories</strong>
-                </li>
+                    <a asp-controller="Product" asp-action="BestSellers">Biographies & Memoirs</a>
                 <li>
                     <a asp-area="" asp-controller="Product" asp-action="BestSellers">Biography</a>
                 </li>
@@ -172,50 +119,6 @@
                 </li>
                 <li>
                     <a asp-area="" asp-controller="Home" asp-action="Contact">Crafts & Hobbies</a>
-                </li>
-                <li>
-                    <a asp-area="" asp-controller="Home" asp-action="Contact">Crime & Thriller</a>
-                </li>
-                <li>
-                    <a asp-area="" asp-controller="Home" asp-action="Contact">Cook Books</a>
-                </li>
-                <li>
-                    <a asp-area="" asp-controller="Home" asp-action="Contact">Fantasy</a>
-                </li>
-                <li>
-                    <a asp-area="" asp-controller="Home" asp-action="Contact">Mind, Body & Spirit</a>
-                </li>
-                <li>
-                    <a asp-area="" asp-controller="Home" asp-action="Contact">Natural History</a>
-                </li>
-            </ul>
-        </div>
-        <div class="col-sm-3">
-            <ul>
-                <li></li>
-                <li>
-                    <a asp-area="" asp-controller="Product" asp-action="BestSellers">Personal Development</a>
-                </li>
-                <li>
-                    <a asp-area="" asp-controller="Home" asp-action="Contact">Poetry & Drama</a>
-                </li>
-                <li>
-                    <a asp-area="" asp-controller="Home" asp-action="Contact">Religion</a>
-                </li>
-                <li>
-                    <a asp-area="" asp-controller="Home" asp-action="Contact">Romance</a>
-                </li>
-                <li>
-                    <a asp-area="" asp-controller="Home" asp-action="Contact">Science & Geography</a>
-                </li>
-                <li>
-                    <a asp-area="" asp-controller="Home" asp-action="Contact">Science Fiction</a>
-                </li>
-                <li>
-                    <a asp-area="" asp-controller="Home" asp-action="Contact">Sport</a>
-                </li>
-                <li>
-                    <a asp-area="" asp-controller="Home" asp-action="Contact">Travel Guides</a>
                 </li>
             </ul>
         </div>
@@ -228,25 +131,25 @@
                     <a asp-area="" asp-controller="Product" asp-action="BestSellers">J.K. Rowling</a>
                 </li>
                 <li>
-                    <a asp-area="" asp-controller="Home" asp-action="Contact">Roald Dahl</a>
+                    <a asp-controller="Home" asp-action="Contact">Yrsa Sigurðardóttir</a>
                 </li>
                 <li>
-                    <a asp-area="" asp-controller="Home" asp-action="Contact">Stephen King</a>
+                    <a asp-controller="Home" asp-action="Contact">James Comey</a>
                 </li>
                 <li>
-                    <a asp-area="" asp-controller="Home" asp-action="Contact">Dr. Seuss</a>
+                    <a asp-controller="Home" asp-action="Contact">Robert Peterson</a>
                 </li>
                 <li>
-                    <a asp-area="" asp-controller="Home" asp-action="Contact">James Patterson</a>
+                    <a asp-controller="Home" asp-action="Contact">Mark Manson</a>
                 </li>
                 <li>
-                    <a asp-area="" asp-controller="Home" asp-action="Contact">Sarah J. Maas</a>
+                    <a asp-controller="Home" asp-action="Contact">Faith Hunter</a>
                 </li>
                 <li>
-                    <a asp-area="" asp-controller="Home" asp-action="Contact">Brandon Sanderson</a>
+                    <a asp-controller="Home" asp-action="Contact">Brandon Sanderson</a>
                 </li>
                 <li>
-                    <a asp-area="" asp-controller="Home" asp-action="Contact">See all</a>
+                    <a asp-controller="Home" asp-action="Contact">See all</a>
                 </li>
             </ul>
         </div>
@@ -258,10 +161,10 @@
             <strong>Best Sellers</strong>
         </li>
         <li>
-            <a asp-area="" asp-controller="Product" asp-action="BestSellers">Our Best Sellers</a>
+            <a asp-controller="Product" asp-action="BestSellers">Our Best Sellers</a>
         </li>
         <li>
-            <a asp-area="" asp-controller="Product" asp-action="BestSellers">New York Times Best Sellers</a>
+            <a asp-controller="Home" asp-action="Contact">New York Times Best Sellers</a>
         </li>
     </ul>
 </div>
@@ -297,25 +200,26 @@
         <div class="container row text-left text-md-left mt-3 pb-3">
 
             <!--First column-->
-            <div class="col col-lg-2 col-xl-2 mx-auto mt-3">
+            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
                 <p>
-                    <a href="#!">
-                        About Us
+
+                    <a asp-area="" asp-controller="Customer" asp-action="AccountDetails">
+                        Account Details
+                    </a>
+                </p>
+                <p>
+                    <a asp-area="" asp-controller="Customer" asp-action="OrderHistory">
+                        Order History
+                    </a>
+                </p>
+                <p>
+                    <a asp-area="" asp-controller="Customer" asp-action="WishList">
+                        WishList
                     </a>
                 </p>
                 <p>
                     <a href="#!">
-                        Contact Us
-                    </a>
-                </p>
-                <p>
-                    <a href="#!">
-                        Q&As
-                    </a>
-                </p>
-                <p>
-                    <a href="#!">
-                        Help
+                        Sign Out
                     </a>
                 </p>
             </div>
@@ -324,16 +228,24 @@
             <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
                 <p>
 
-                    <a asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                    <a asp-area="" asp-controller="Home" asp-action="Index">
+                        Home
+                    </a>
                 </p>
                 <p>
-                    <a asp-area="" asp-controller="Product" asp-action="AllProducts">All Products</a>
+                    <a asp-area="" asp-controller="Product" asp-action="AllProducts">
+                        All Products
+                    </a>
                 </p>
                 <p>
-                   <a asp-area="" asp-controller="Product" asp-action="BestSellers">Best Sellers</a>
+                    <a asp-area="" asp-controller="Product" asp-action="BestSellers">
+                        Best Sellers
+                    </a>
                 </p>
                 <p>
-                   <a asp-area="" asp-controller="Product" asp-action="NewReleases">New Releases</a>
+                    <a asp-area="" asp-controller="Product" asp-action="NewReleases">
+                        New Releases
+                    </a>
 
                 </p>
             </div>
@@ -341,10 +253,11 @@
             <!--Third column-->
             <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
 
-                    <a asp-area="" asp-controller="Product" asp-action="TopRated">Top Rated</a>
+                    
                 <p>
-                    <a href="#!">Shipping</a>
-
+                    <a asp-area="" asp-controller="Product" asp-action="TopRated">
+                        Top Rated
+                    </a>
                 </p>
                 <p>
                     <a href="#!">
@@ -359,21 +272,20 @@
             </div>
 
             <!--Fourth column-->
-            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+            <div class="col col-lg-2 col-xl-2 mx-auto mt-3">
                 <p>
-
-                    <a asp-area="" asp-controller="Customer" asp-action="AccountDetails">Account Details</a>
+                    <a href="#!">
+                        About Us
+                    </a>
                 </p>
                 <p>
-                     <a asp-area="" asp-controller="Customer" asp-action="OrderHistory">Order History</a>
-                </p>
-                <p>
-                   <a asp-area="" asp-controller="Customer" asp-action="WishList">WishList</a>
-
+                    <a asp-area="" asp-controller="Product" asp-action="BookDetail">
+                        Q&As
+                    </a>
                 </p>
                 <p>
                     <a href="#!">
-                        Sign Out
+                        Help
                     </a>
                 </p>
             </div>

@@ -26,7 +26,7 @@ namespace BookCave.Controllers
         }
 
         [HttpGet]
-        public IActionResult RegisterUser() 
+        public IActionResult Register() 
         {
             return View();
         }
@@ -55,24 +55,22 @@ namespace BookCave.Controllers
             }
 
             // The user has been registered.
+            
             // Create a Customer in the database for the user.
             var customerId = _userService.CreateCustomer(model);
             
-            // Map the CustomerId to the ApplicationUser
+            // Map the CustomerId to the ApplicationUser.
             user.UserId = customerId;
             
-            
+            // Add claims to the ApplicationUser.
+            await _userManager.AddClaimAsync(user, new Claim("Role", "Customer"));
             await _userManager.AddClaimAsync(user, new Claim("Name", $"{model.FirstName} {model.LastName}"));
+            
+            // Sign in the ApplicationUser
             await _signInManager.SignInAsync(user, false);
             return RedirectToAction("Index", "Home");
         }
-/*
-        [HttpGet]
-        public IActionResult Login()
-        {
-            return View();
-        }
-*/
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginInputModel model)

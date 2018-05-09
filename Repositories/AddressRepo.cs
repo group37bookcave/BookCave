@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
 using BookCave.Data;
 using BookCave.Models.EntityModels;
@@ -8,8 +8,8 @@ namespace BookCave.Repositories
     public class AddressRepo
     {
         private readonly StoreContext _db = new StoreContext();
-        private readonly CountryRepo _cr = new CountryRepo();
-        private readonly UserRepo _ur = new UserRepo();
+        private readonly CountryRepo _countryRepo = new CountryRepo();
+        private readonly CustomerRepo _customerRepo = new CustomerRepo();
         
         private ZipCode GetZipCode(string zip, Country country)
         {
@@ -38,7 +38,7 @@ namespace BookCave.Repositories
 
         public void AddAddressToCustomer(int customerId, AddressInputModel model)
         {
-            var country = _cr.GetCountryById(model.CountryId);
+            var country = _countryRepo.GetCountryById(model.CountryId);
             var zip = GetZipCode(model.Zipcode, country) ?? new ZipCode
             {
                 City = model.City,
@@ -50,7 +50,7 @@ namespace BookCave.Repositories
                 ZipCode = zip,
                 Country = country,
             };
-            var customer = _ur.GetCustomer(customerId);
+            var customer = _customerRepo.GetCustomer(customerId);
             address.CustomerAddresses.Add(new CustomerAddress { Address = address, Customer = customer});
             _db.AddRange(address);
             _db.SaveChanges();

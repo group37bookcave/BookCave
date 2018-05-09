@@ -3,48 +3,93 @@
     ViewData["Title"] = "NAME OF BOOK"; <!--MUNA AÐ BREYTA-->
 }
 
-<div>
-    <div class="row">
+
+<div class="container-fluid">
+    <div class="row center">
         <div class="col-sm-12 col-md-10 col-md-offset-1">
             <div class="page-header">
-                <div class="inline-block">
-                   <h1>NAME OF BOOK</h1>
+                <div>
+                    <h2><span class="book-cave-color">BOOK</span><span>DETAILS</span></h2>
                 </div>
-                
-                <span class="filter-and-sort">
-                    <a class="inline-block">Filter</a>
-                    <form class="inline-block">
-                        <select class="form-control" id="sort-by">
-                        <option value="">Sort by:</option>
-                        <option value="name">Name</option>
-                        <option value="author">Author</option>
-                        <option value="price">Price</option>
-                        <option value="popularity">Popularity</option>
-                        <option value="pages">Number of pages</option>
-                        <option value="release-year">Release Year</option>
-                        <option value="lenght">Length</option>
-                        <option value="rating">Rating</option>
-                        </select>
-                    </form>
-                </span>
             </div>
+                <div class="col-sm-3">
+                    <img id="bookDetailImg" src="https://hpmedia.bloomsbury.com/rep/s/9781408855676_309040.jpeg"/>
+                </div>
+                <div class="col-sm-5">
+                    <ul>
+                        <li><h4>Harry Potter and the <br/> Prisoner of Azkaban</h4></li>
+                        <li>Author: J.K. Rowling</li>
+                        <li>
+                            Format:
+                            <select>
+                                <!--<option>Audio Book</option>
+                                <option>E-Book</option>-->
+                                <option>Hardcover</option>
+                                <option>Paperback</option>
+                            </select>
+                        </li>
+                        <li>Pages: 480</li>
+                        <li>Release Date: 01-09-2014</li>
+                        <li>Language: English</li>
+                        <li>Publisher: Bloomsbury</li>
+                        <li>
+                            <span class="stars fa fa-star"></span>
+                            <span class="stars fa fa-star"></span>
+                            <span class="stars fa fa-star"></span>
+                            <span class="stars fa fa-star"></span>
+                            <span class="stars fa fa-star"></span>
+                            <span class="grey"> 5 Ratings </span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-sm-2">
+                    <h5>Price:</h5>
+                </div>
+                <div class="col-sm-2">
+                    <div class="button-options grey-buttons">
+                        <a class="btn btn-default" type="button" asp-area="" asp-controller="" asp-action="">
+                            Buy Now
+                        </a>
+                    </div>
+                    <div class="button-options green-buttons">
+                        <a class="btn btn-default" type="button" asp-area="" asp-controller="" asp-action="">
+                            Add to Cart
+                        </a>
+                    </div>
+                    <div class="button-options green-buttons">
+                        <a class="btn btn-default" type="button" asp-area="" asp-controller="" asp-action="">
+                            Add to WishList
+                        </a>
+                    </div>
+                    <div class="button-options green-buttons">
+                        <a class="btn btn-default" type="button" asp-area="" asp-controller="" asp-action="">
+                            Add a Review
+                        </a>
+                    </div>
+                </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-10 col-md-offset-1">
+                <div>
+                    <h3>Synopsis</h3>
+                    <hr/>
+                    <div>
+                        When the Knight Bus crashes through the darkness and screeches to a halt in front of him, it’s the start of another far from ordinary year at Hogwarts for Harry Potter. Sirius Black, escaped mass-murderer and follower of Lord Voldemort, is on the run – and they say he is coming after Harry. In his first ever Divination class, Professor Trelawney sees an omen of death in Harry’s tea leaves … But perhaps most terrifying of all are the Dementors patrolling the school grounds, with their soul-sucking kiss …
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-10 col-md-offset-1">
+                <div>
+                
+                    <h3>Review</h3>
 
-            <table>
-                <tbody>
-                    <tr class="list-item">
-                        <td class="col-sm-8 col-md-6">
-                            <div class="media">
-                            <a class="pull-left" href="#"> <div class="col-sm-2 hidden-xs"><img src="http://placehold.it/180x200/456" class="media-object" alt="ItemImage" style="width: 180px; height: 200px;"></div> </a>
-                            <div class="media-body">
-                                <h4>Item name</h4>
-                                <ul>
-                                    <li>Author:</li>
-                                    <li>Format:</li>
-                                    <li>Length:</li>
-                                    <li>Release date:</li>
-                                    <li>Language:</li>  
-                                </ul>
-                                   
+                    <hr/>
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <div>Mr. Cool </div>
+                            <div>
                                 <span class="stars fa fa-star"></span>
                                 <span class="stars fa fa-star"></span>
                                 <span class="stars fa fa-star"></span>
@@ -52,24 +97,68 @@
                                 <span class="stars fa fa-star"></span>
                             </div>
                         </div>
-                        </td>
-                    
-                        <td class="col-sm-1 col-md-1">
-                            <p><strong>Price: $0.00</strong></p>
-                        </td>
-                        
-                        <td class="col-sm-1 col-md-1">
-                                <div class="button-options grey-buttons"> 
-                                    <a class="btn btn-default" type="button" asp-area="" asp-controller="" asp-action="">Buy Now</a>
-                                </div>
-                                <div class="button-options green-buttons">
-                                    <a class="btn btn-default" type="button" asp-area="" asp-controller="" asp-action="">Add to Cart</a>
-                                    <a class="btn btn-default" type="button" asp-area="" asp-controller="" asp-action="">Add to WishList</a>
-                                </div>		
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+                        <div class="col-sm-10">
+                            <div>
+                                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row center">
+                        <div class="col-sm-2">
+                            <div>Mr. Cool </div>
+                            <div>
+                                <span class="stars fa fa-star"></span>
+                                <span class="stars fa fa-star"></span>
+                                <span class="stars fa fa-star"></span>
+                                <span class="stars fa fa-star"></span>
+                                <span class="stars fa fa-star"></span>
+                            </div>
+                        </div>
+                        <div class="col-sm-10">
+                            <div>
+                                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row center">
+                        <div class="col-sm-2">
+                            <div>Mr. Cool </div>
+                            <div>
+                                <span class="stars fa fa-star"></span>
+                                <span class="stars fa fa-star"></span>
+                                <span class="stars fa fa-star"></span>
+                                <span class="stars fa fa-star"></span>
+                                <span class="stars fa fa-star"></span>
+                            </div>
+                        </div>
+                        <div class="col-sm-10">
+                            <div>
+                                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row center">
+                        <div class="col-sm-2">
+                            <div>Mr. Cool </div>
+                            <div>
+                                <span class="stars fa fa-star"></span>
+                                <span class="stars fa fa-star"></span>
+                                <span class="stars fa fa-star"></span>
+                                <span class="stars fa fa-star"></span>
+                                <span class="stars fa fa-star"></span>
+                            </div>
+                        </div>
+                        <div class="col-sm-10">
+                            <div>
+                                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
