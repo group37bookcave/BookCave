@@ -12,16 +12,6 @@ namespace BookCave.Repositories
         private readonly StoreContext _db = new StoreContext();
         private readonly CountryRepo _countryRepo = new CountryRepo();
         private readonly CustomerRepo _customerRepo = new CustomerRepo();
-        
-        private ZipCode GetZipCode(string zip, int countryId)
-        {
-            var zipcode = from z in _db.ZipCodes
-                join c in _db.Countries on z.Country.Id equals c.Id
-                where c.Id == countryId
-                select z;
-                
-            return zipcode.SingleOrDefault();
-        }
 
         public List<Address> GetAddressesByCustomerId(int id)
         {
@@ -39,37 +29,16 @@ namespace BookCave.Repositories
             _db.SaveChanges();
         }
 
-        public void AddAddressToCustomer(int customerId, Address model)
+        public void AddAddressToCustomer(int customerId, int addressId)
         {
-            var customer = _customerRepo.GetCustomer(customerId);
-            customer.CustomerAddresses.Add(new CustomerAddress { Address = model, Customer = customer});
-            _db.Update(customer);
+            _db.CustomerAddresses.Add(new CustomerAddress {AddressId = addressId, CustomerId = customerId});
             _db.SaveChanges();
         }
 
-        public Address NewAddress(string street, string zipcode, string city, int countryId)
+        public void AddAddress(Address address)
         {
-            var zip = GetZipCode(zipcode, countryId) ?? CreateZipCode(zipcode, city, countryId);
-
-            var address = new Address
-            {
-                Street = street,
-                ZipCode = zip
-            };
-            return address;
-        }
-
-        private ZipCode CreateZipCode(string zipcode, string city, int countryId)
-        {
-            var zip = new ZipCode
-            {
-                City = city,
-                Zip = zipcode,
-                Country = _countryRepo.GetCountryById(countryId)
-            };
-            _db.ZipCodes.AddRange(zip);
+            _db.Addresses.Add(address);
             _db.SaveChanges();
-            return zip;
         }
     }
 }

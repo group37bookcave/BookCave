@@ -32,7 +32,6 @@ namespace BookCave.Data
         public DbSet<Publisher> Publishers { get; set; }
         public DbSet<DigitalSheetMusic> DigitalSheetMusics { get; set; }
         public DbSet<PhysicalSheetMusic> PhysicalSheetMusics { get; set; }
-        public DbSet<ZipCode> ZipCodes { get; set; }
         public DbSet<Book> Books { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Review> Reviews { get; set; }

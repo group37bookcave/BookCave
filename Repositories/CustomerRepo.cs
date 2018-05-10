@@ -6,6 +6,7 @@ using BookCave.Models;
 using BookCave.Models.EntityModels;
 using BookCave.Models.InputModels;
 using BookCave.Services;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace BookCave.Repositories
 {
@@ -16,7 +17,6 @@ namespace BookCave.Repositories
 
         public int AddCustomer(Customer user)
         {
-            Console.WriteLine("Adding customer to db");
             _db.Customers.AddRange(user);
             _db.SaveChanges();
             return user.Id;
@@ -28,6 +28,7 @@ namespace BookCave.Repositories
             return customer.SingleOrDefault();
         }
         
+
         public void AddAddressToCustomer(int customerId, AddressInputModel model)
         {
             var customer = GetCustomer(customerId);
@@ -51,6 +52,7 @@ namespace BookCave.Repositories
             _db.SaveChanges();
         }
         
+
         public List<Address> GetAddresses(int customerId)
         {
             var addresses = from a in _db.Addresses
