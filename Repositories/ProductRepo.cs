@@ -4,6 +4,7 @@ using BookCave.Data;
 using BookCave.Models;
 using BookCave.Models.EntityModels;
 using BookCave.Models.InputModels;
+using BookCave.Models.ViewModels;
 
 namespace BookCave.Repositories
 {
@@ -14,12 +15,12 @@ namespace BookCave.Repositories
         private NarratorRepo _nr = new NarratorRepo();
         private ComposerRepo _cr = new ComposerRepo();
 
-        public Product GetProduct(int id)
+        public Product GetProduct(int? id)
         {
             var product = from p in _db.Products where p.Id == id select p;
             return product.SingleOrDefault();
         }
-        
+
         public IEnumerable<Product> GetAllProducts()
         {
             var list = from p in _db.Products select p;
@@ -40,6 +41,7 @@ namespace BookCave.Repositories
                 select book;
             return books.ToList();
         }
+
         public List<Book> GetBooksByAuthorName(string name)
         {
             var books = from bookAuthor in _db.BookAuthors
@@ -86,28 +88,42 @@ namespace BookCave.Repositories
             return (from h in _db.Hardcovers select h).ToList();
         }
 
-        public List<Language> GetBookLanguages(int id) 
+        public List<Language> GetBookLanguages(int id)
         {
-            var languages = from l in _db.BookLanguages 
-            where l.BookId == id 
-            select l.Language;
+            var languages = from l in _db.BookLanguages
+                where l.BookId == id
+                select l.Language;
             return languages.ToList();
         }
 
         public List<Genre> GetBookGenres(int id)
         {
-            var genres = from g in _db.BookGenres 
-            where g.BookId == id 
-            select g.Genre;
+            var genres = from g in _db.BookGenres
+                where g.BookId == id
+                select g.Genre;
             return genres.ToList();
         }
 
         public List<AgeGroup> GetBookAgeGroup(int id)
         {
             var ageGroups = from a in _db.BookAgeGroups
-            where a.BookId == id
-            select a.AgeGroup;
+                where a.BookId == id
+                select a.AgeGroup;
             return ageGroups.ToList();
+        }
+
+        public List<ReviewViewModel> GetBookReview(int id)
+        {
+            var reviews = from r in _db.Reviews
+                where r.Product.Id == id
+                select new ReviewViewModel
+                {
+                    Id = r.Id,
+                    Rating = r.Rating,
+                    Review = r.ReviewString,
+                    ReviewedBy = r.Customer.FullName
+                };
+            return reviews.ToList();
         }
 
         public List<Audiobook> GetAudioBooksByAuthor(int id)
@@ -164,6 +180,7 @@ namespace BookCave.Repositories
                 select book;
             return books.ToList();
         }
+
         public List<Book> GetBooksByName(string name)
         {
             var books = (from book in _db.Books
@@ -171,6 +188,7 @@ namespace BookCave.Repositories
                 select book).ToList();
             return books;
         }
+
         public List<Book> GetBookByIsbn(Isbn isbn)
         {
             var book = (from books in _db.Books
@@ -179,15 +197,15 @@ namespace BookCave.Repositories
             return book;
         }
 
-        private void CheckAuthor(List<Author> authors) 
+        private void CheckAuthor(List<Author> authors)
         {
             foreach (var author in authors)
             {
                 var checkAuthor = (from a in _ar.GetAllAuthors()
                     where a.FirstName == author.FirstName &&
-                    a.LastName == author.LastName
+                          a.LastName == author.LastName
                     select a);
-                if(!checkAuthor.Any())
+                if (!checkAuthor.Any())
                 {
                     var addAuthor = new AuthorInputModel
                     {
@@ -198,15 +216,16 @@ namespace BookCave.Repositories
                 }
             }
         }
+
         private void CheckNarrator(List<Narrator> narrators)
         {
-        foreach (var narrator in narrators)
+            foreach (var narrator in narrators)
             {
                 var checkNarrator = (from n in _nr.GetAllNarrators()
                     where n.FirstName == narrator.FirstName &&
-                    n.LastName == narrator.LastName
+                          n.LastName == narrator.LastName
                     select n);
-                if(!checkNarrator.Any())
+                if (!checkNarrator.Any())
                 {
                     var addNarrator = new NarratorInputModel
                     {
@@ -217,15 +236,16 @@ namespace BookCave.Repositories
                 }
             }
         }
+
         private void CheckComposer(List<Composer> composers)
         {
-        foreach (var composer in composers)
+            foreach (var composer in composers)
             {
                 var checkComposer = (from c in _cr.GetAllComposers()
                     where c.FirstName == composer.FirstName &&
-                    c.LastName == composer.LastName
+                          c.LastName == composer.LastName
                     select c);
-                if(!checkComposer.Any())
+                if (!checkComposer.Any())
                 {
                     var addComposer = new ComposerInputModel
                     {
@@ -236,6 +256,7 @@ namespace BookCave.Repositories
                 }
             }
         }
+
         private bool CheckIsbn(Isbn isbn)
         {
             var check = (from i in _db.Books
@@ -243,9 +264,10 @@ namespace BookCave.Repositories
                 select i);
             return check.Any();
         }
+
         public void AddAudioBook(AudioBookInputModel book)
         {
-            if(!CheckIsbn(book.Isbns))
+            if (!CheckIsbn(book.Isbns))
             {
                 CheckAuthor(book.Authors);
                 CheckNarrator(book.Narrators);
@@ -265,35 +287,46 @@ namespace BookCave.Repositories
                 audio.BookAgeGroups = new List<BookAgeGroup>();
                 foreach (var ageGroup in book.AgeGroups)
                 {
-                    audio.BookAgeGroups.Add(new BookAgeGroup { Book = audio, AgeGroup = ageGroup });
-                };
+                    audio.BookAgeGroups.Add(new BookAgeGroup {Book = audio, AgeGroup = ageGroup});
+                }
+
+                ;
                 audio.BookAuthors = new List<BookAuthor>();
                 foreach (var author in book.Authors)
                 {
-                    audio.BookAuthors.Add(new BookAuthor { Book = audio, Author = author });
-                };
+                    audio.BookAuthors.Add(new BookAuthor {Book = audio, Author = author});
+                }
+
+                ;
                 audio.BookGenres = new List<BookGenre>();
                 foreach (var genre in book.Genres)
                 {
-                    audio.BookGenres.Add(new BookGenre { Book = audio, Genre = genre });
-                };
+                    audio.BookGenres.Add(new BookGenre {Book = audio, Genre = genre});
+                }
+
+                ;
                 audio.BookLanguages = new List<BookLanguage>();
                 foreach (var language in book.Languages)
                 {
-                    audio.BookLanguages.Add(new BookLanguage { Book = audio, Language = language });
-                };
+                    audio.BookLanguages.Add(new BookLanguage {Book = audio, Language = language});
+                }
+
+                ;
                 audio.AudiobookNarrators = new List<AudiobookNarrator>();
                 foreach (var narrator in book.Narrators)
                 {
-                    audio.AudiobookNarrators.Add(new AudiobookNarrator { Book = audio, Narrator = narrator });
-                };
+                    audio.AudiobookNarrators.Add(new AudiobookNarrator {Book = audio, Narrator = narrator});
+                }
+
+                ;
                 _db.AudioBooks.AddRange(audio);
                 _db.SaveChanges();
             }
         }
+
         public void AddEBook(EbookInputModel book)
         {
-            if(!CheckIsbn(book.Isbns))
+            if (!CheckIsbn(book.Isbns))
             {
                 CheckAuthor(book.Authors);
                 var ebook = new Ebook
@@ -311,30 +344,39 @@ namespace BookCave.Repositories
                 ebook.BookAgeGroups = new List<BookAgeGroup>();
                 foreach (var ageGroup in book.AgeGroups)
                 {
-                    ebook.BookAgeGroups.Add(new BookAgeGroup { Book = ebook, AgeGroup = ageGroup });
-                };
+                    ebook.BookAgeGroups.Add(new BookAgeGroup {Book = ebook, AgeGroup = ageGroup});
+                }
+
+                ;
                 ebook.BookAuthors = new List<BookAuthor>();
                 foreach (var author in book.Authors)
                 {
-                    ebook.BookAuthors.Add(new BookAuthor { Book = ebook, Author = author });
-                };
+                    ebook.BookAuthors.Add(new BookAuthor {Book = ebook, Author = author});
+                }
+
+                ;
                 ebook.BookGenres = new List<BookGenre>();
                 foreach (var genre in book.Genres)
                 {
-                    ebook.BookGenres.Add(new BookGenre { Book = ebook, Genre = genre });
-                };
+                    ebook.BookGenres.Add(new BookGenre {Book = ebook, Genre = genre});
+                }
+
+                ;
                 ebook.BookLanguages = new List<BookLanguage>();
                 foreach (var language in book.Languages)
                 {
-                    ebook.BookLanguages.Add(new BookLanguage { Book = ebook, Language = language });
-                };
+                    ebook.BookLanguages.Add(new BookLanguage {Book = ebook, Language = language});
+                }
+
+                ;
                 _db.Ebooks.AddRange(ebook);
                 _db.SaveChanges();
             }
         }
+
         public void AddHardCover(HardCoverInputModel book)
         {
-            if(!CheckIsbn(book.Isbns))
+            if (!CheckIsbn(book.Isbns))
             {
                 CheckAuthor(book.Authors);
                 var hardcover = new Hardcover
@@ -352,30 +394,39 @@ namespace BookCave.Repositories
                 hardcover.BookAgeGroups = new List<BookAgeGroup>();
                 foreach (var ageGroup in book.AgeGroups)
                 {
-                    hardcover.BookAgeGroups.Add(new BookAgeGroup { Book = hardcover, AgeGroup = ageGroup });
-                };
+                    hardcover.BookAgeGroups.Add(new BookAgeGroup {Book = hardcover, AgeGroup = ageGroup});
+                }
+
+                ;
                 hardcover.BookAuthors = new List<BookAuthor>();
                 foreach (var author in book.Authors)
                 {
-                    hardcover.BookAuthors.Add(new BookAuthor { Book = hardcover, Author = author });
-                };
+                    hardcover.BookAuthors.Add(new BookAuthor {Book = hardcover, Author = author});
+                }
+
+                ;
                 hardcover.BookGenres = new List<BookGenre>();
                 foreach (var genre in book.Genres)
                 {
-                    hardcover.BookGenres.Add(new BookGenre { Book = hardcover, Genre = genre });
-                };
+                    hardcover.BookGenres.Add(new BookGenre {Book = hardcover, Genre = genre});
+                }
+
+                ;
                 hardcover.BookLanguages = new List<BookLanguage>();
                 foreach (var language in book.Languages)
                 {
-                    hardcover.BookLanguages.Add(new BookLanguage { Book = hardcover, Language = language });
-                };
+                    hardcover.BookLanguages.Add(new BookLanguage {Book = hardcover, Language = language});
+                }
+
+                ;
                 _db.Hardcovers.AddRange(hardcover);
                 _db.SaveChanges();
             }
         }
+
         public void AddPaperback(PaperBackInputModel book)
         {
-            if(!CheckIsbn(book.Isbns))
+            if (!CheckIsbn(book.Isbns))
             {
                 CheckAuthor(book.Authors);
                 var paperback = new Paperback
@@ -393,30 +444,39 @@ namespace BookCave.Repositories
                 paperback.BookAgeGroups = new List<BookAgeGroup>();
                 foreach (var ageGroup in book.AgeGroups)
                 {
-                    paperback.BookAgeGroups.Add(new BookAgeGroup { Book = paperback, AgeGroup = ageGroup });
-                };
+                    paperback.BookAgeGroups.Add(new BookAgeGroup {Book = paperback, AgeGroup = ageGroup});
+                }
+
+                ;
                 paperback.BookAuthors = new List<BookAuthor>();
                 foreach (var author in book.Authors)
                 {
-                    paperback.BookAuthors.Add(new BookAuthor { Book = paperback, Author = author });
-                };
+                    paperback.BookAuthors.Add(new BookAuthor {Book = paperback, Author = author});
+                }
+
+                ;
                 paperback.BookGenres = new List<BookGenre>();
                 foreach (var genre in book.Genres)
                 {
-                    paperback.BookGenres.Add(new BookGenre { Book = paperback, Genre = genre });
-                };
+                    paperback.BookGenres.Add(new BookGenre {Book = paperback, Genre = genre});
+                }
+
+                ;
                 paperback.BookLanguages = new List<BookLanguage>();
                 foreach (var language in book.Languages)
                 {
-                    paperback.BookLanguages.Add(new BookLanguage { Book = paperback, Language = language });
-                };
+                    paperback.BookLanguages.Add(new BookLanguage {Book = paperback, Language = language});
+                }
+
+                ;
                 _db.Paperbacks.AddRange(paperback);
                 _db.SaveChanges();
             }
         }
+
         public void AddSheetMusic(SheetMusicInputModel music)
         {
-            if(!CheckIsbn(music.Isbns))
+            if (!CheckIsbn(music.Isbns))
             {
                 CheckComposer(music.Composers);
                 var sheetMusic = new PhysicalSheetMusic
@@ -434,15 +494,22 @@ namespace BookCave.Repositories
                 sheetMusic.SheetMusicComposers = new List<SheetMusicComposer>();
                 foreach (var composer in music.Composers)
                 {
-                    sheetMusic.SheetMusicComposers.Add(new SheetMusicComposer { SheetMusic = sheetMusic, Composer = composer});
-                };
+                    sheetMusic.SheetMusicComposers.Add(new SheetMusicComposer
+                    {
+                        SheetMusic = sheetMusic,
+                        Composer = composer
+                    });
+                }
+
+                ;
                 _db.PhysicalSheetMusics.AddRange(sheetMusic);
                 _db.SaveChanges();
             }
         }
+
         public void AddDigitalSheetMusic(SheetMusicInputModel music)
         {
-            if(!CheckIsbn(music.Isbns))
+            if (!CheckIsbn(music.Isbns))
             {
                 CheckComposer(music.Composers);
                 var sheetMusic = new DigitalSheetMusic
@@ -461,12 +528,23 @@ namespace BookCave.Repositories
                 sheetMusic.SheetMusicComposers = new List<SheetMusicComposer>();
                 foreach (var composer in music.Composers)
                 {
-                    sheetMusic.SheetMusicComposers.Add(new SheetMusicComposer { SheetMusic = sheetMusic, Composer = composer});
-                };
+                    sheetMusic.SheetMusicComposers.Add(new SheetMusicComposer
+                    {
+                        SheetMusic = sheetMusic,
+                        Composer = composer
+                    });
+                }
+
+                ;
                 _db.DigitalSheetMusics.AddRange(sheetMusic);
                 _db.SaveChanges();
             }
         }
-        
+
+        public string GetPublisherByBookId(string name)
+        {
+
+            throw new System.NotImplementedException();
+        }
     }
 }

@@ -16,7 +16,7 @@ namespace BookCave.Models.EntityModels
 
         public string PhoneNumber { get; set; }
 
-        public string FullName => LastName + ", " + FirstName;
+        public string FullName => FirstName + " " + LastName;
 
         public ICollection<CustomerAddress> CustomerAddresses { get; set; }
 
