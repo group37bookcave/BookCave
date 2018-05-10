@@ -74,17 +74,18 @@ tfoot > tr{
     color:rgb(105,202,202);
 }
 
-.green-buttons > a
+.grey{
+    color: rgb(211,211,211);
+}
+
+.green-buttons a, .green-buttons input
 {
     color: white;
     background-color: rgb(105,202,202);
     border:none;
     margin-bottom: 10px;
-    width: 120px; 
-}
-
-.grey{
-    color: rgb(211,211,211);
+    width: 120px;
+    float:right; 
 }
 
 .grey-buttons a, .grey-buttons input {

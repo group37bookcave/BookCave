@@ -35,6 +35,11 @@ namespace BookCave.Controllers
             return View();
         }
 
+          public IActionResult PaymentGateway()
+        {
+            return View();
+        }
+
         public IActionResult RemoveProduct()
         {
             throw new NotImplementedException();
