@@ -18,6 +18,10 @@ namespace BookCave.Models.InputModels
 
         //public Country BillingCountryId { get; set; }
 
+        [Required(ErrorMessage="Please enter street.")]
+
+        public string ShippingStreet { get; set; }
+
         public string ShippingZipCode { get; set; }
         [Required(ErrorMessage="Please enter city.")]   
         public string ShippingCity { get; set; }

@@ -19,27 +19,27 @@
                 <fieldset>
                     <legend class="book-cave-color">Billing Address</legend>       
                     <div class="form-group">
-                        <span asp-validation-for="Street"></span>
-                        <label asp-for="Street">Street</label>
-                        <input asp-for="Street" type="text" class="form-control" id="Street" placeholder="Street">
+                        <span asp-validation-for="BillingStreet"></span>
+                        <label asp-for="BillingStreet">Street</label>
+                        <input asp-for="BillingStreet" type="text" class="form-control" id="BillingStreet" placeholder="Street">
                     </div>
 
                     <div class="form-group col-md-2">
-                        <span asp-validation-for="ZipCode"></span>
-                        <label asp-for="ZipCode">Zip Code</label>
-                        <input asp-for="ZipCode" type="text" class="form-control" id="ZipCode" placeholder="ZipCode">
+                        <span asp-validation-for="BillingZipCode"></span>
+                        <label asp-for="BillingZipCode">Zip Code</label>
+                        <input asp-for="BillingZipCode" type="text" class="form-control" id="BillingZipCode" placeholder="ZipCode">
                     </div>  
 
                     <div class="form-group col-md-6">
-                        <span asp-validation-for="City"></span>
-                        <label asp-for="City">City</label>
-                        <input asp-for="City" type="text" class="form-control" id="City" placeholder="City">
+                        <span asp-validation-for="BillingCity"></span>
+                        <label asp-for="BillingCity">City</label>
+                        <input asp-for="BillingCity" type="text" class="form-control" id="BillingCity" placeholder="City">
                     </div>  
                 
-                    <div class="form-group col-md-4">
-                        <span asp-validation-for="Country"></span>
-                        <label asp-for="Country">Country</label>
-                        <select asp-for="Country" id="Country" class="form-control">
+                   <!-- <div class="form-group col-md-4">
+                        <span asp-validation-for="BillingCountry"></span>
+                        <label asp-for="BillingCountry">Country</label>
+                        <select asp-for="BillingCountry" id="BillingCountry" class="form-control">
                             <option selected>Select country</option>
 
                             @using (Html.BeginForm()) 
@@ -52,31 +52,31 @@
                             }
                             </select>
                     </div>
-                    
+                    -->
                     <legend class="book-cave-color">Shipping Address</legend>
                                 
                     <div class="form-group">
-                        <span asp-validation-for="Street"></span>
-                        <label asp-for="Street">Street</label>
-                        <input asp-for="Street" type="text" class="form-control" id="Street" placeholder="Street">
+                        <span asp-validation-for="ShippingStreet"></span>
+                        <label asp-for="ShippingStreet">Street</label>
+                        <input asp-for="ShippingStreet" type="text" class="form-control" id="ShippingStreet" placeholder="Street">
                     </div>
                 
                     <div class="form-group col-md-2">
-                        <span asp-validation-for="ZipCode"></span>
-                        <label asp-for="ZipCode">Zip Code</label>
-                        <input asp-for="ZipCode" type="text" class="form-control" id="ZipCode" placeholder="ZipCode">
+                        <span asp-validation-for="ShippingZipCode"></span>
+                        <label asp-for="ShippingZipCode">Zip Code</label>
+                        <input asp-for="ShippingZipCode" type="text" class="form-control" id="ShippingZipCode" placeholder="ZipCode">
                     </div>  
 
                     <div class="form-group col-md-6">
-                        <span asp-validation-for="City"></span>
-                        <label asp-for="City">City</label>
-                        <input asp-for="City" type="text" class="form-control" id="City" placeholder="City">
+                        <span asp-validation-for="ShippingCity"></span>
+                        <label asp-for="ShippingCity">City</label>
+                        <input asp-for="ShippingCity" type="text" class="form-control" id="ShippingCity" placeholder="City">
                     </div>  
-                        
+                   <!--     
                     <div class="form-group col-md-4">
-                        <span asp-validation-for="Country"></span>
-                            <label asp-for="Country">Country</label>
-                            <select asp-for="Country" id="Country" class="form-control">
+                        <span asp-validation-for="ShippingCountry"></span>
+                            <label asp-for="ShippingCountry">Country</label>
+                            <select asp-for="ShippingCountry" id="ShippingdotnCountry" class="form-control">
                             <option selected>Select country</option>
                             @using (Html.BeginForm()) 
                             {
@@ -88,6 +88,7 @@
                             }
                         </select>
                     </div>
+                    -->
                     <div class="button-options grey-buttons">
                         <input class="btn" type="submit" value="Review Order">
                         <a class="btn btn-default grey-buttons" type="button" asp-area="" asp-controller="Order" asp-action="ShoppingCart">Edit Order</a>
