@@ -50,8 +50,15 @@ namespace BookCave.Controllers
             return View();
         }
 
-          public IActionResult Receipt()
+        public IActionResult Receipt()
         {
+            return View();
+        }
+        public IActionResult AddToCart(int id)
+        {
+            var customerId = int.Parse( User.FindFirst("CustomerID").Value );
+            var order = _orderService.GetActiveOrder(customerId);
+            var add = _orderService.AddToOrder(id, order.OrderId);
             return View();
         }
     }
