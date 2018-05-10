@@ -218,11 +218,11 @@ nav#navbar {
 .col img {
     flex: 20%;
     max-width: 283px;
-    padding: 0px 4px;
+    padding: 0 4px;
     float: left;
 }
 
-#bookDetailImg {
+.bookDetailImg {
     max-width: 170px;
 }
 
