@@ -16,6 +16,8 @@ namespace BookCave.Models.ViewModels
         public string Image { get; set; }
 
         public List<ReviewViewModel> Reviews { get; set; }
+
+        public double Rating { get; set; }
         
         public string Description { get; set; }
         

@@ -10,30 +10,19 @@ namespace BookCave.Services
     {
         private readonly ProductRepo _productRepo = new ProductRepo();
 
+        public List<BookViewModel> Top10()
+        {
+            var books = _productRepo.GetTop10();
+            return ConvertToBookViewModel(books);
+        }
+        
         private List<BookViewModel> ConvertToBookViewModel(IEnumerable<Book> books)
         {
             var viewModels = new List<BookViewModel>();
             foreach(var book in books)
             {
-            viewModels.Add(new BookViewModel
-                {
-                    Id = book.Id,
-                    Price = book.Price,
-                    Name = book.Name,
-                    Image = book.Image,
-                    Reviews = _productRepo.GetBookReview(book.Id),
-                    Description = book.Description,
-                    Format = book.GetType().Name,
-                    Length = book.Length,
-                    ReleaseDate = book.ReleaseDate,
-                    Publisher = _productRepo.GetPublisherByBookId(book.Id),
-                    Isbn = book.Isbn,
-                    Authors = _productRepo.GetAuthorsByBookId(book.Id),
-                    Languages = _productRepo.GetBookLanguages(book.Id),
-                    Genres = _productRepo.GetBookGenres(book.Id),
-                    AgeGroups = _productRepo.GetBookAgeGroup(book.Id)
-                }
-            );
+                var model = GetBookById(book.Id);
+                viewModels.Add(model);
             }
             return viewModels;
         }
@@ -70,7 +59,6 @@ namespace BookCave.Services
             var product = _productRepo.GetProduct(id);
             return product;
         }
-
 
         public Product RemoveProduct(int id)
         {

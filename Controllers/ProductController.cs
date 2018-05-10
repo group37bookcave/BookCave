@@ -46,7 +46,8 @@ namespace BookCave.Controllers
 
         public IActionResult TopRated()
         {
-            return View();
+            var books = _productService.Top10();
+            return View(books);
         }
 
          public IActionResult BestSellers()

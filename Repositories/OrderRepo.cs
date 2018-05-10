@@ -12,7 +12,7 @@ namespace BookCave.Repositories
     {
         private readonly StoreContext _db = new StoreContext();
         private readonly CustomerRepo _cr = new CustomerRepo();
-        private ProductRepo _pr = new ProductRepo();
+        private readonly ProductRepo _pr = new ProductRepo();
 
 
         public List<Order> GetAllOrdersByCustomerId(int customerId)
@@ -45,18 +45,48 @@ namespace BookCave.Repositories
             return order;
         }
 
+        public Order RemoveFromOrder(int productId, int orderId)
+        {
+            var order = GetOrderById(orderId);
+            RemoveItem(productId, order);
+            return order;
+        }
+
+        private void RemoveItem(int productId, Order order)
+        {
+            var item = (from i in order.ItemOrders where i.ProductId == productId select i).SingleOrDefault();
+            order.ItemOrders.Remove(item);
+            _db.Update(order);
+            _db.SaveChanges();
+        }
+
         public Order AddToOrder(int productId, int orderId)
         {
             var order = GetOrderById(orderId);
-            var itemorder = new ItemOrder
+            var itemorder = GetItemOrder(productId, order.ItemOrders);
+            if (itemorder != null)
             {
-                Order = order,
-                Product = _pr.GetProduct(productId)
-            };
-            order.ItemOrders.Add(itemorder);
-            _db.Update(order);
+                itemorder.Quantity++;
+                _db.Update(itemorder);
+            }
+            else
+            {
+                itemorder = new ItemOrder
+                {
+                    OrderId = orderId,
+                    ProductId = productId,
+                    Quantity = 1
+                };              
+                order.ItemOrders.Add(itemorder);
+                _db.Update(order);
+            }
             _db.SaveChanges();
             return order;
+        }
+
+        private ItemOrder GetItemOrder(int productId, IEnumerable<ItemOrder> items)
+        {
+            return items.FirstOrDefault(item => item.ProductId == productId);
         }
 
         private List<ItemOrder> ConvertToItemOrder(IEnumerable<ItemOrderViewModel> items)
