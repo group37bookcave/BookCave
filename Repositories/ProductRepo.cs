@@ -26,7 +26,7 @@ namespace BookCave.Repositories
             return list.ToList();
         }
 
-        public IEnumerable<Book> GetAllBooks()
+        public List<Book> GetAllBooks()
         {
             var li = from b in _db.Books select b;
             return li.ToList();
@@ -84,6 +84,30 @@ namespace BookCave.Repositories
         public List<Hardcover> GetAllHardCovers()
         {
             return (from h in _db.Hardcovers select h).ToList();
+        }
+
+        public List<Language> GetBookLanguages(int id) 
+        {
+            var languages = from l in _db.BookLanguages 
+            where l.BookId == id 
+            select l.Language;
+            return languages.ToList();
+        }
+
+        public List<Genre> GetBookGenres(int id)
+        {
+            var genres = from g in _db.BookGenres 
+            where g.BookId == id 
+            select g.Genre;
+            return genres.ToList();
+        }
+
+        public List<AgeGroup> GetBookAgeGroup(int id)
+        {
+            var ageGroups = from a in _db.BookAgeGroups
+            where a.BookId == id
+            select a.AgeGroup;
+            return ageGroups.ToList();
         }
 
         public List<Audiobook> GetAudioBooksByAuthor(int id)

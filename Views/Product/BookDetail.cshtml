@@ -1,11 +1,14 @@
+@model IEnumerable<BookCave.Models.ViewModels.BookViewModel>
+
 
 @{
-    ViewData["Title"] = "NAME OF BOOK"; <!--MUNA AÐ BREYTA-->
+    ViewData["Title"] = ""; <!--MUNA AÐ BREYTA-->
 }
 
 
 <div class="container-fluid">
     <div class="row center">
+    @foreach(var book in Model){
         <div class="col-sm-12 col-md-10 col-md-offset-1">
             <div class="page-header">
                 <div>
@@ -17,21 +20,21 @@
                 <tr>
                     <td class="col-sm-3 col-md-3" valign="top">
                         <div>
-                            <img alt="Cover Art" class="bookDetailImg" src="https://hpmedia.bloomsbury.com/rep/s/9781408855676_309040.jpeg"/>
+                            <img alt="Cover Art" class="bookDetailImg" src="@book.Image"/>
                         </div>
                     </td>
                     <td class="col-sm-5 col-md-5" valign="top">
                         <div>
                             <ul>
-                                <li><h4>Harry Potter and the <br/> Prisoner of Azkaban</h4></li>
-                                <li>Author: J.K. Rowling</li>
+                                <li><h4>@book.Name</h4></li>
+                                <li>Author: @book.BookAuthors</li>
                                 <li>
-                                    Format:
+                                    Format: @book.GetType().Name
                                 </li>
-                                <li>Pages: 480</li>
-                                <li>Release Date: 01-09-2014</li>
-                                <li>Language: English</li>
-                                <li>Publisher: Bloomsbury</li>
+                                <li>Pages: @book.Length</li>
+                                <li>Release Date: @book.ReleaseDate</li>
+                                <li>Language: @book.BookLanguages</li>
+                                <li>Publisher: @book.Publisher</li>
                                 <li>
                                     <span class="fa fa-star grey"></span>
                                     <span class="fa fa-star grey"></span>
@@ -49,7 +52,7 @@
                         </div>
                     </td>
                     <td class="col-sm-2 col-md-2" valign="top">
-            
+
                         <div>
                             <div class="button-options grey-buttons">
                                 <a class="btn btn-default" type="button" asp-area="" asp-controller="" asp-action="">
@@ -72,7 +75,7 @@
                                 </a>
                             </div>
                         </div>
-        
+
                     </td>
                 </tr>
                 </tbody>
@@ -84,7 +87,7 @@
                     <h3>Synopsis</h3>
                     <hr/>
                     <div>
-                        When the Knight Bus crashes through the darkness and screeches to a halt in front of him, it’s the start of another far from ordinary year at Hogwarts for Harry Potter. Sirius Black, escaped mass-murderer and follower of Lord Voldemort, is on the run – and they say he is coming after Harry. In his first ever Divination class, Professor Trelawney sees an omen of death in Harry’s tea leaves … But perhaps most terrifying of all are the Dementors patrolling the school grounds, with their soul-sucking kiss …
+                        @book.Description
                     </div>
                 </div>
             </div>
@@ -92,83 +95,32 @@
         <div class="row">
             <div class="col-sm-12 col-md-10 col-md-offset-1">
                 <div>
-                
+                    @foreach(var review in @book.Reviews){
                     <h3>Review</h3>
 
                     <hr/>
-                    <div class="row">
-                        <div class="col-sm-2">
-                            <div>Mr. Cool </div>
-                            <div>
-                                <span class="stars fa fa-star"></span>
-                                <span class="stars fa fa-star"></span>
-                                <span class="stars fa fa-star"></span>
-                                <span class="stars fa fa-star"></span>
-                                <span class="stars fa fa-star"></span>
+                        <div class="row">
+                            <div class="col-sm-2">
+                                <div>@review.Customer.FullName </div>
+                                <div> @review.Rating out of 5.
+                                    <span class="fa fa-star grey"></span>
+                                    <span class="fa fa-star grey"></span>
+                                    <span class="fa fa-star grey"></span>
+                                    <span class="fa fa-star grey"></span>
+                                    <span class="fa fa-star grey"></span>
+                                </div>
+                            </div>
+                            <div class="col-sm-10">
+                                <div>
+                                    @review.ReviewString
+                                    <hr>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-sm-10">
-                            <div>
-                                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-                                <hr>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row center">
-                        <div class="col-sm-2">
-                            <div>Mr. Cool </div>
-                            <div>
-                                <span class="stars fa fa-star"></span>
-                                <span class="stars fa fa-star"></span>
-                                <span class="stars fa fa-star"></span>
-                                <span class="stars fa fa-star"></span>
-                                <span class="stars fa fa-star"></span>
-                            </div>
-                        </div>
-                        <div class="col-sm-10">
-                            <div>
-                                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-                                <hr>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row center">
-                        <div class="col-sm-2">
-                            <div>Mr. Cool </div>
-                            <div>
-                                <span class="stars fa fa-star"></span>
-                                <span class="stars fa fa-star"></span>
-                                <span class="stars fa fa-star"></span>
-                                <span class="stars fa fa-star"></span>
-                                <span class="stars fa fa-star"></span>
-                            </div>
-                        </div>
-                        <div class="col-sm-10">
-                            <div>
-                                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-                                <hr>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row center">
-                        <div class="col-sm-2">
-                            <div>Mr. Cool </div>
-                            <div>
-                                <span class="stars fa fa-star"></span>
-                                <span class="stars fa fa-star"></span>
-                                <span class="stars fa fa-star"></span>
-                                <span class="stars fa fa-star"></span>
-                                <span class="stars fa fa-star"></span>
-                            </div>
-                        </div>
-                        <div class="col-sm-10">
-                            <div>
-                                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-                            </div>
-                        </div>
-                    </div>
+                    }
                 </div>
             </div>
         </div>
+    }
     </div>
 </div>

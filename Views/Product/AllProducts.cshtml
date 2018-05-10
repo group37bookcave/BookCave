@@ -1,4 +1,4 @@
-@model IEnumerable<BookCave.Models.EntityModels.Product>
+@model IEnumerable<BookCave.Models.ViewModels.BookViewModel>
 
 @{
     ViewData["Title"] = "All Products";
@@ -45,24 +45,26 @@
                         </td>
                         <td class="col-sm-5 col-md-5" valign="top">
                             <div>
-                                <ul>
-                                    <li><h4>@item.Name</h4></li>
-                                    <li>Author: </li>
-                                    <li>
-                                        Format: @item.GetType().Name
-                                    </li>
-                                    <li>Pages: </li>
-                                    <li>Release Date: </li>
-                                    <li>Language: </li>
-                                    <li>
-                                        <span class="fa fa-star grey"></span>
-                                        <span class="fa fa-star grey"></span>
-                                        <span class="fa fa-star grey"></span>
-                                        <span class="fa fa-star grey"></span>
-                                        <span class="fa fa-star grey"></span>
-                                        <span class="grey"> No rating(s) </span>
-                                    </li>
-                                </ul>
+                                
+                                    <ul>
+                                        <li><h4>@item.Name</h4></li>
+                                        <li>Author: @item.BookAuthors.FirstOrDefault()</li>
+                                        <li>
+                                            Format: @item.GetType().Name
+                                        </li>
+                                        <li>Pages: @item.Length</li>
+                                        <li>Release Date: @item.ReleaseDate</li>
+                                       
+                                        <li>
+                                            <span class="fa fa-star grey"></span>
+                                            <span class="fa fa-star grey"></span>
+                                            <span class="fa fa-star grey"></span>
+                                            <span class="fa fa-star grey"></span>
+                                            <span class="fa fa-star grey"></span>
+                                            <span class="grey"> No rating(s) </span>
+                                        </li>
+                                    </ul>
+                                
                             </div>
                         </td>
                         <td class="col-sm-2 col-md-2" valign="top">

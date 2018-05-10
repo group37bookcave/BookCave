@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 *{
     margin: 0;
     padding: 0;
@@ -275,3 +276,255 @@ nav#navbar {
  ul.nav-product-list > li > a:hover {
     background-color: rgb(105,202,202);
 }
+=======
+*{
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+body {
+    padding-top: 200px;
+    padding-bottom: 0;    
+}
+
+footer{
+    margin-bottom: 0;
+    position: sticky;
+    padding: 30px;
+    background-color:rgb(105,202,202);
+    color: white;
+}
+
+footer a{
+    color: white;
+}
+
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+/* Carousel */
+.carousel-caption p {
+    font-size: 20px;
+    line-height: 1.4;
+}
+
+/* Make .svg files in the carousel display properly in older browsers */
+.carousel-inner .item img[src$=".svg"] {
+    width: 100%;
+}
+
+/* Pages styles */
+
+ul {
+    list-style: none;
+    padding-left: 0;
+}​
+
+table {
+    border-collapse: collapse;
+    border-spacing:0;
+    width:100%;
+    border: 1px solid;
+}
+
+
+.book-cave-color {
+    color:rgb(105,202,202);
+}
+
+
+td{
+    padding: 10px;
+}
+
+tfoot > tr{
+    text-align: center;
+    border-top: solid;
+    border-width: 1px;
+    border-color:rgb(238, 238,238);
+}
+
+.book-cave-color{
+    color:rgb(105,202,202);
+}
+
+.grey{
+    color: rgb(211,211,211);
+}
+
+.green-buttons a, .green-buttons input
+{
+    color: white;
+    background-color: rgb(105,202,202);
+    border:none;
+    margin-bottom: 10px;
+    width: 120px;
+    float:right; 
+}
+
+.grey-buttons a, .grey-buttons input {
+    color: black;
+    background-color:rgb(240,240,240);
+    border:none;
+    margin-bottom: 10px;
+    width: 135px;
+    float: right;
+}
+
+
+.inline-block{
+    display: inline-block;
+}
+
+.check-options{
+    float: right;
+}
+
+.page-header > h1{
+    display: inline;
+}
+
+/* Receit */
+#order-num{
+    margin-left: 600px;
+}
+
+#print-receipt{
+    margin-top: 50px;
+    margin-left: 820px;
+}
+
+/* user info */
+.upload-image{
+    float:left;
+}
+
+.button-options > a
+{
+    float:right;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    width: 140px;  
+}
+
+.form-inputs {
+    margin-left: 20px;
+}
+
+.form-group{
+    padding:5px;
+}
+
+/*payment pages*/
+
+.address-form{
+    
+    margin-left:20%;
+    margin-right: 20%;
+    padding-bottom: 100px;
+}
+
+
+/*products */ 
+.stars {
+    color: rgb(252, 202, 68);
+}
+
+
+#sort-by{
+    width: 150px;
+    margin-left: 20px;
+}
+
+.filter-and-sort{
+    margin-left: 450px;
+
+}
+
+.all-products-header {
+    display: inline-block;
+}
+
+
+/* BRYNJA DAGMAR JAKOBSD */
+
+#browse-hidden {
+    display: none;
+    border-top: 1px solid rgb(105,202,202);
+    border-bottom: 1px solid rgb(105,202,202);
+}
+
+#best-sellers-hidden {
+    display: none;
+    border-top: 1px solid rgb(105,202,202);
+    border-bottom: 1px solid rgb(105,202,202);
+}
+
+div.container {
+    margin-bottom: 10px;
+}
+
+#corner-up-right > li.dropdown > a, #corner-up-right > li > a > span {
+    color: black;
+}
+
+nav #navbar {
+    border: none;
+    background-color: white;
+}
+
+#bla {
+    border-top: 1px solid rgb(211,211,211);
+    border-bottom: 1px solid rgb(105,202,202);
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+#bla > ul.nav > li > a {
+    color: black;
+}
+
+#bla > ul.nav > li > a:hover {
+    background-color: rgb(105,202,202);
+}
+
+.input-group {
+    top: 50px;
+}
+
+/* Hide/rearrange for smaller screens */
+@media screen and (max-width: 767px) {
+    /* Hide captions */
+    .carousel-caption {
+        display: none;
+    }
+}
+
+/* Product View */
+
+
+.details {
+    padding-right: 200px;
+}
+
+.col img{
+    flex: 20%;
+    max-width: 283px;
+    padding: 0 4px;
+    float: left;
+}
+
+.bookDetailImg{
+    max-width: 170px;
+}
+
+.container-fluid {
+    padding-left: 60px;
+    padding-right: 60px;
+}
+>>>>>>> 91b8d01f56877bf42802937fe2902eadf60478c4

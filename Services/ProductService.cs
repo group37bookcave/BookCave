@@ -10,7 +10,7 @@ namespace BookCave.Services
     {
         private readonly ProductRepo _productRepo = new ProductRepo();
 
-        private List<BookViewModel> ConvertToBookViewModel(List<Book> books)
+        private static List<BookViewModel> ConvertToBookViewModel(IEnumerable<Book> books)
         {
             var viewModels = new List<BookViewModel>();
             foreach(Book book in books)
@@ -27,10 +27,10 @@ namespace BookCave.Services
                     ReleaseDate = book.ReleaseDate,
                     Publisher = book.Publisher,
                     Isbn = book.Isbn,
-                    BookLanguages = book.BookLanguages,
-                    BookAuthors = book.BookAuthors,
-                    BookGenres = book.BookGenres,
-                    BookAgeGroups = book.BookAgeGroups
+                    Authors = _productRepo.GetAuthorsByBookId(book.Id),
+                    Languages = _productRepo.GetBookLanguages(book.Id),
+                    Genres = _productRepo.GetBookGenres(book.Id),
+                    AgeGroups = _productRepo.GetBookAgeGroup(book.Id)
                 }
             );
             }
@@ -60,9 +60,9 @@ namespace BookCave.Services
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Book> GetAllBooks()
+        public List<BookViewModel> GetAllBooks()
         {
-            return _productRepo.GetAllBooks();
+            return ConvertToBookViewModel(_productRepo.GetAllBooks());
         }
         public List<Book> GetBooksByAuthorId(int id)
         {

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using BookCave.Models.EntityModels;
 using Microsoft.AspNetCore.Mvc;
 using BookCave.Models.ViewModels;
 using BookCave.Services;
@@ -17,8 +19,8 @@ namespace BookCave.Controllers
 
         public IActionResult AllProducts()
         {
-            var products = _productService.GetAllProducts();
-            return View(products);
+            var books = _productService.GetAllBooks();
+            return View(books);
         }
 
         public IActionResult BookDetail(int id)

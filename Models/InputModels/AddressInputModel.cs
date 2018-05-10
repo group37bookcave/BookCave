@@ -1,19 +1,20 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
+
 namespace BookCave.Repositories
 {
     public class AddressInputModel
     {
-        [Required(ErrorMessage="Please add street.")]
+
+        [Required(ErrorMessage="Please enter street.")]
         public string Street { get; set; }
 
-        [Required(ErrorMessage="Please add ZipCode.")]
+        [Required(ErrorMessage="Please enter ZipCode.")]
         public string Zipcode { get; set; }
-        
-        [Required(ErrorMessage="Please add city.")]
+        [Required(ErrorMessage="Please enter city.")]   
         public string City { get; set; }
-        
-        [Required(ErrorMessage="Please select Country.")]
+        [Required(ErrorMessage="Please select country.")]
+
         public int CountryId { get; set; }
     }
 }
