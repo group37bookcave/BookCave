@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using BookCave.Models.EntityModels;
 using BookCave.Models.InputModels;
 using BookCave.Models.ViewModels;
@@ -16,7 +15,7 @@ namespace BookCave.Services
         public CustomerViewModel GetCustomer(int id)
         {
             var customer = _customerRepo.GetCustomer(id);
-            var addresses = _customerRepo.GetAddresses(id);
+            var addresses = _addressRepo.GetAddressesByCustomerId(id);
 
             var model = new CustomerViewModel
             {
@@ -28,10 +27,9 @@ namespace BookCave.Services
                 model.Adresses.Add(new AddressViewModel
                 {
                     Street = address.Street,
-                    City = address.ZipCode.City,
-                    Country = address.Country.Name,
-                    Zipcode = address.ZipCode.Zip,
-                    CountryId = address.Country.Id,
+                    City = address.City,
+                    Country = address.Country,
+                    Zipcode = address.ZipCode,
                     AddressId = address.Id
                 });
             }
@@ -49,9 +47,12 @@ namespace BookCave.Services
                 FavoriteBook = model.FavoriteBook,
                 PhoneNumber = model.PhoneNumber
             };
-            var customerId = _customerRepo.AddCustomer(customer);
             var address = _addressRepo.NewAddress(model.Street, model.Zipcode, model.City, model.CountryId);
-            _addressRepo.AddAddressToCustomer(customerId, address);
+            customer.CustomerAddresses = new List<CustomerAddress>
+            {
+                new CustomerAddress{ AddressId = address.Id, CustomerId = customer.Id}
+            };
+            var customerId = _customerRepo.AddCustomer(customer);
             return customerId;
         }
 

@@ -12,9 +12,10 @@ using System;
 namespace BookCave.Migrations.Store
 {
     [DbContext(typeof(StoreContext))]
-    partial class StoreContextModelSnapshot : ModelSnapshot
+    [Migration("20180509154153_3.0")]
+    partial class _30
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -26,17 +27,17 @@ namespace BookCave.Migrations.Store
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("City");
-
                     b.Property<int?>("CountryId");
 
                     b.Property<string>("Street");
 
-                    b.Property<string>("ZipCode");
+                    b.Property<int?>("ZipCodeId");
 
                     b.HasKey("Id");
 
                     b.HasIndex("CountryId");
+
+                    b.HasIndex("ZipCodeId");
 
                     b.ToTable("Addresses");
                 });
@@ -395,6 +396,24 @@ namespace BookCave.Migrations.Store
                     b.ToTable("SheetMusicComposers");
                 });
 
+            modelBuilder.Entity("BookCave.Models.EntityModels.ZipCode", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("City");
+
+                    b.Property<int?>("CountryId");
+
+                    b.Property<string>("Zip");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CountryId");
+
+                    b.ToTable("ZipCodes");
+                });
+
             modelBuilder.Entity("BookCave.Models.EntityModels.Book", b =>
                 {
                     b.HasBaseType("BookCave.Models.EntityModels.Product");
@@ -516,6 +535,10 @@ namespace BookCave.Migrations.Store
                     b.HasOne("BookCave.Models.EntityModels.Country", "Country")
                         .WithMany("Addresses")
                         .HasForeignKey("CountryId");
+
+                    b.HasOne("BookCave.Models.EntityModels.ZipCode", "ZipCode")
+                        .WithMany()
+                        .HasForeignKey("ZipCodeId");
                 });
 
             modelBuilder.Entity("BookCave.Models.EntityModels.AudiobookNarrator", b =>
@@ -644,6 +667,13 @@ namespace BookCave.Migrations.Store
                         .WithMany("SheetMusicComposers")
                         .HasForeignKey("SheetMusicId")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("BookCave.Models.EntityModels.ZipCode", b =>
+                {
+                    b.HasOne("BookCave.Models.EntityModels.Country", "Country")
+                        .WithMany("ZipCodes")
+                        .HasForeignKey("CountryId");
                 });
 
             modelBuilder.Entity("BookCave.Models.EntityModels.Book", b =>

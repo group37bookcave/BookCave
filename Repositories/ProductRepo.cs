@@ -9,10 +9,10 @@ namespace BookCave.Repositories
 {
     public class ProductRepo
     {
-        private StoreContext _db = new StoreContext();
-        private AuthorRepo _ar = new AuthorRepo();
-        private NarratorRepo _nr = new NarratorRepo();
-        private ComposerRepo _cr = new ComposerRepo();
+        private readonly StoreContext _db = new StoreContext();
+        private readonly AuthorRepo _ar = new AuthorRepo();
+        private readonly NarratorRepo _nr = new NarratorRepo();
+        private readonly ComposerRepo _cr = new ComposerRepo();
 
         public Product GetProduct(int id)
         {
