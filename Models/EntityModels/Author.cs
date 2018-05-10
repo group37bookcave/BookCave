@@ -10,7 +10,7 @@ namespace BookCave.Models.EntityModels
 
         public string LastName { get; set; }
 
-        public string FullName => FirstName + ", " + LastName;
+        public string FullName => FirstName + " " + LastName;
 
         public ICollection<BookAuthor> BookAuthors { get; set; }
     }

@@ -13,6 +13,6 @@ namespace BookCave.Models.EntityModels
 
         public string Image { get; set; }
 
-        public ICollection<Review> Reviews { get; set; }
+        public List<Review> Reviews { get; set; }
     }
 }

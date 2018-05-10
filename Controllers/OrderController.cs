@@ -1,4 +1,6 @@
 using System;
+using System.Linq;
+using System.Security.Claims;
 using BookCave.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
@@ -13,27 +15,47 @@ namespace BookCave.Controllers
     {
         private readonly OrderService _orderService;
         
-
         public OrderController()
         {
             _orderService = new OrderService();
         }
 
+
         public IActionResult ShoppingCart()
-        {/*
-            int userId = int.Parse(User.FindFirst("customerId").Value);
-            if(userId==0)
+        {
+            var userId = int.Parse(User.FindFirst("customerId").Value);
+            
+            if(userId == 0)
             {
                 return View();
             }
-
-            var ActiveOrder = _orderService.GetActiveOrder(userId);
-            return View(ActiveOrder);*/
-            return View();
+            var activeOrder = _orderService.GetActiveOrder(userId);
+            return View(activeOrder);
         }
 
+
+        [HttpPost]
+        public IActionResult Remove(int? id)
+        {
+            if(id == null)
+            {
+                return View("ShoppingCart");
+            }
+
+            /*var productToRemove = _orderService;
+            var productToRemove = (from s in DataBase.Orders
+                                    where s.Id == id
+                                    select s).SingleOrDefault();
+            Database.Remove(productToRemove);
+            */
+
+            return RedirectToAction("ShoppingCart");
+        }
+
+
+
         [HttpGet]
-          public IActionResult Address()
+        public IActionResult Address()
         {
             return View();
         }    
@@ -41,15 +63,7 @@ namespace BookCave.Controllers
         [HttpPost]
         public IActionResult Address(Address address){
             if(ModelState.IsValid){
-            var addr = new Address()
-            {
-                
-            };
-            
-            var newMovie = new Address()
-            {
-             
-            };
+        
 
             /*_orderService.AddToOrder.Address.Add(address); */
             return RedirectToAction("ReviewPage");

@@ -11,7 +11,5 @@ namespace BookCave.Models.EntityModels
         public double ShippingCost { get; set; }
         
         public ICollection<Address> Addresses { get; set; }
-
-        public ICollection<ZipCode> ZipCodes { get; set; }
     }
 }

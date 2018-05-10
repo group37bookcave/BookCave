@@ -58,10 +58,10 @@ namespace BookCave.Controllers
             // Create an Employee in the database for the user.
             var employeeId = _userService.CreateEmployee(model);
 
-            // Map the CustomerId to the ApplicationUser.
-            user.UserId = employeeId;
 
             // Add claims to the ApplicationUser.
+            await _userManager.AddClaimAsync(user, new Claim("EmployeeId", employeeId.ToString()));
+
             await _userManager.AddClaimAsync(user, new Claim("Role", "Employee"));
             await _userManager.AddClaimAsync(user, new Claim("Name", $"{model.FirstName} {model.LastName}"));
 

@@ -27,7 +27,7 @@ namespace BookCave.Controllers
         }
 
         [HttpGet]
-        public IActionResult Register() 
+        public IActionResult Register()
         {
             return View();
         }
@@ -59,9 +59,6 @@ namespace BookCave.Controllers
             
             // Create a Customer in the database for the user.
             var customerId = _userService.CreateCustomer(model);
-            
-            // Map the CustomerId to the ApplicationUser.
-            user.UserId = customerId;
             
             // Add claims to the ApplicationUser.
             await _userManager.AddClaimAsync(user, new Claim("CustomerId", customerId.ToString()));

@@ -56,8 +56,6 @@
                     </div>
                 </div>
             </div>
-
-
             <table>
                 <tbody>
                 @foreach (var item in Model)
@@ -74,7 +72,7 @@
                                     <ul>
                                         <li>
                                             <h4>
-                                                @item.Name
+                                                <a href="/Product/BookDetail/@item.Id">@item.Name</a>
                                             </h4>
                                         </li>
                                         <li>
@@ -84,7 +82,7 @@
                                             Format: @item.Format
                                         </li>
                                         <li>
-                                            Pages: @item.Length
+                                            Length: @item.Length
                                         </li>
                                         <li>
                                             Release Date: @item.ReleaseDate.Day/@item.ReleaseDate.Month/@item.ReleaseDate.Year
@@ -136,6 +134,7 @@
                 }
                 </tbody>
             </table>
-<hr/>        </div>
+        <hr/>        
+        </div>
     </div>
 </div>
