@@ -28,6 +28,31 @@ namespace BookCave.Repositories
             return customer.SingleOrDefault();
         }
         
+/* 
+        public void AddAddressToCustomer(int customerId, AddressInputModel model)
+        {
+            var customer = GetCustomer(customerId);
+            var country = (from c in _db.Countries where c.Id == model.CountryId select c).FirstOrDefault();
+            var address = new Address
+            {
+               Country = country,
+               Street = model.Street,
+               ZipCode = new ZipCode
+               {
+                  City = model.City,
+                  Zip = model.Zipcode
+                }
+            };
+            address.CustomerAddresses.Add(new CustomerAddress
+            {
+                Address = address,
+                Customer = customer
+            });
+            _db.AddRange(address);
+            _db.SaveChanges();
+        }
+        */
+
         public List<Address> GetAddresses(int customerId)
         {
             var addresses = from a in _db.Addresses

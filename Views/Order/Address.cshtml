@@ -1,4 +1,4 @@
-@model BookCave.Models.EntityModels.Address
+@model BookCave.Models.InputModels.AddressInputModel
 @{
     ViewData["Title"] = "Address Page";
 }
@@ -15,81 +15,88 @@
                 </span>
             </div>
 
-    	    <form method="post" class="address-form">
-
-                <legend class="book-cave-color">Billing Address</legend>
-                <div class="form-group">
-                    <span asp-validation-for="@Model.Street"></span>
-                    <label asp-for="@Model.Street">Street</label>
-                    <input asp-for="@Model.Street" type="text" class="form-control" id="inputAddress" placeholder="Street">
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-2">
-                         <span asp-validation-for="@Model.ZipCode"></span>
-                        <label asp-for="@Model.ZipCode">Zip Code</label>
-                        <input asp-for="@Model.ZipCode" type="text" class="form-control" id="inputZip" placeholder="ZipCode">
+            <form action="Address" class="address-form" method="post">
+                <fieldset>
+                    <legend class="book-cave-color">Billing Address</legend>       
+                    <div class="form-group">
+                        <span asp-validation-for="BillingStreet"></span>
+                        <label asp-for="BillingStreet">Street</label>
+                        <input asp-for="BillingStreet" type="text" class="form-control" id="BillingStreet" placeholder="Street">
                     </div>
+
+                    <div class="form-group col-md-2">
+                        <span asp-validation-for="BillingZipCode"></span>
+                        <label asp-for="BillingZipCode">Zip Code</label>
+                        <input asp-for="BillingZipCode" type="text" class="form-control" id="BillingZipCode" placeholder="ZipCode">
+                    </div>  
 
                     <div class="form-group col-md-6">
-                         <span asp-validation-for="@Model.City"></span>
-                        <label for="@Model.City">City</label>
-                        <input type="text" class="form-control" id="city" placeholder="City">
-                    </div>
-   
+                        <span asp-validation-for="BillingCity"></span>
+                        <label asp-for="BillingCity">City</label>
+                        <input asp-for="BillingCity" type="text" class="form-control" id="BillingCity" placeholder="City">
+                    </div>  
+                
                     <div class="form-group col-md-4">
-                         <span asp-validation-for="@Model.Country"></span>
-                        <label asp-for="@Model.Country">Country</label>
-                        <select asp-for="@Model.Country" id="inputCountry" class="form-control">
+                       <!-- <span asp-validation-for="BillingCountry"></span>
+                        <label asp-for="BillingCountry">Country</label>-->
+                         <label>bla</label>
+                        <select  id="BillingCountry" class="form-control">
                             <option selected>Select country</option>
-                                @using (Html.BeginForm())
+
+                            @using (Html.BeginForm()) 
+                            {
+                                var countries = BookCave.Services.Helper.GetLanguages();
+                                foreach (var country in countries)
                                 {
-                                    var countries = BookCave.Services.Helper.GetLanguages();
-                                    foreach (var country in countries)
-                                    {
-                                         <option value=@country.Id>@country.Name</option>
-                                    }
+                                    <option value=@country.Id>@country.Name</option>
                                 }
+                            }
                             </select>
-                </div>
-            </div>
-        </form>
-           
-        <form class="address-form">
+                    </div>
+                    
+                    <legend class="book-cave-color">Shipping Address</legend>
+                                
+                    <div class="form-group">
+                        <span asp-validation-for="ShippingStreet"></span>
+                        <label asp-for="ShippingStreet">Street</label>
+                        <input asp-for="ShippingStreet" type="text" class="form-control" id="ShippingStreet" placeholder="Street">
+                    </div>
+                
+                    <div class="form-group col-md-2">
+                        <span asp-validation-for="ShippingZipCode"></span>
+                        <label asp-for="ShippingZipCode">Zip Code</label>
+                        <input asp-for="ShippingZipCode" type="text" class="form-control" id="ShippingZipCode" placeholder="ZipCode">
+                    </div>  
 
-            <legend class="book-cave-color">Shipping Address</legend>
+                    <div class="form-group col-md-6">
+                        <span asp-validation-for="ShippingCity"></span>
+                        <label asp-for="ShippingCity">City</label>
+                        <input asp-for="ShippingCity" type="text" class="form-control" id="ShippingCity" placeholder="City">
+                    </div>  
+                       
+                    <div class="form-group col-md-4">
+                        <!--<span asp-validation-for="ShippingCountry"></span>
+                            <label asp-for="ShippingCountry">Country</label>-->
+                            <label>bla</label>
+                            <select  id="ShippingCountry" class="form-control">
+                            <option selected>Select country</option>
+                            @using (Html.BeginForm()) 
+                            {
+                                var countries = BookCave.Services.Helper.GetLanguages();
+                                foreach (var country in countries)
+                            {
+                                <option value=@country.Id>@country.Name</option>
+                            }
+                            }
+                        </select>
+                    </div>
+                    
+                    <div class="button-options grey-buttons">
+                        <input class="btn" type="submit" value="Review Order">
+                        <a class="btn btn-default grey-buttons" type="button" asp-area="" asp-controller="Order" asp-action="ShoppingCart">Edit Order</a>
+                    </div> 
+                </fieldset> 
             </form>
-<!--
-            <div class="form-group">
-                <label for="inputAddress">Address</label>
-                <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-            </div>
-            <div class="form-group">
-                <label for="inputAddress2">Address 2</label>
-                <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-            </div>
-            <div class="form-row">
-                <div class="form-group col-md-2">
-                    <label for="inputZip">Zip</label>
-                    <input type="text" class="form-control" id="inputZip">
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="inputCity">City</label>
-                    <input type="text" class="form-control" id="inputCity">
-                </div>
-
-                <div class="form-group col-md-4">
-                    <label for="inputState">Country</label>
-                    <select id="inputState" class="form-control">
-                        <option selected>Select country</option>
-                        <option>LAND 1.......</option>
-                    </select>
-                </div>
-            </div></form>
-            -->
-             <div class="button-options grey-buttons">
-                 <input class="btn btn-default grey-buttons" type="submit" value="Review Order">
-                <a class="btn btn-default grey-buttons" type="button" asp-area="" asp-controller="Order" asp-action="ShoppingCart">Edit Order</a>
-            </div>
         </div>
     </div>
 </div>

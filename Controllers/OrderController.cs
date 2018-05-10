@@ -14,11 +14,12 @@ namespace BookCave.Controllers
     public class OrderController : Controller
     {
         private readonly OrderService _orderService;
-
+        
         public OrderController()
         {
             _orderService = new OrderService();
         }
+
 
         public IActionResult ShoppingCart()
         {
@@ -32,8 +33,29 @@ namespace BookCave.Controllers
             return View(activeOrder);
         }
 
+
+        [HttpPost]
+        public IActionResult Remove(int? id)
+        {
+            if(id == null)
+            {
+                return View("ShoppingCart");
+            }
+
+            /*var productToRemove = _orderService;
+            var productToRemove = (from s in DataBase.Orders
+                                    where s.Id == id
+                                    select s).SingleOrDefault();
+            Database.Remove(productToRemove);
+            */
+
+            return RedirectToAction("ShoppingCart");
+        }
+
+
+
         [HttpGet]
-          public IActionResult Address()
+        public IActionResult Address()
         {
             return View();
         }    
@@ -41,15 +63,7 @@ namespace BookCave.Controllers
         [HttpPost]
         public IActionResult Address(Address address){
             if(ModelState.IsValid){
-            var addr = new Address()
-            {
-                
-            };
-            
-            var newMovie = new Address()
-            {
-             
-            };
+        
 
             /*_orderService.AddToOrder.Address.Add(address); */
             return RedirectToAction("ReviewPage");
