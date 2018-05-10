@@ -23,6 +23,7 @@ namespace BookCave.Services
                     Image = book.Image,
                     Reviews = book.Reviews,
                     Description = book.Description,
+                    Format = book.GetType().Name,
                     Length = book.Length,
                     ReleaseDate = book.ReleaseDate,
                     Publisher = book.Publisher,

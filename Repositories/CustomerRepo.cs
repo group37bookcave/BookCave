@@ -31,15 +31,15 @@ namespace BookCave.Repositories
         public void AddAddressToCustomer(int customerId, AddressInputModel model)
         {
             var customer = GetCustomer(customerId);
-            var country = (from c in _db.Countries where c.Id == model.CountryId select c).FirstOrDefault();
+            //var country = (from c in _db.Countries where c.Id == model.CountryId select c).FirstOrDefault();
             var address = new Address
             {
-                Country = country,
+               // Country = country,
                 Street = model.Street,
                 ZipCode = new ZipCode
                 {
-                    City = model.City,
-                    Zip = model.Zipcode
+                 //   City = model.City,
+                   // Zip = model.Zipcode
                 }
             };
             address.CustomerAddresses.Add(new CustomerAddress

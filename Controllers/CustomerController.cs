@@ -18,12 +18,18 @@ namespace BookCave.Controllers
     {
         private readonly ProductService productService = new ProductService();
       
-
+        [HttpGet]
         public IActionResult AccountDetails()
         {
             return View();
         }
 
+        [HttpPost]
+       /* public IActionResult AccountDetails()
+        {
+            return View();
+        }
+*/
           public IActionResult OrderHistory()
         {
             return View();
