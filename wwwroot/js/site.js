@@ -24,10 +24,7 @@ $(document).ready(function(e){
         $("#logout-f").submit();
     });
 
-    $("#best-sellers-hover").hover(function () {
-        $("#best-sellers-hidden").show();
-    }, function () {
-        $("#best-sellers-hidden").hide();
-    });
-
+//    $(document).on('click', '.mega-dropdown', function(e) {
+//        e.stopPropagation()
+//    });
 });

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using BookCave.Data;
 using BookCave.Models.EntityModels;
@@ -18,8 +19,13 @@ namespace BookCave.Repositories
 
         public Country GetCountryById(int id)
         {
-            var country = from c in _db.Countries where c.Id == id select c;
-            return country.SingleOrDefault();
+            var country = (from c in _db.Countries where c.Id == id select c).SingleOrDefault();
+            if (country != null)
+            {
+                return country;
+            }
+            Console.WriteLine("NULLLL");
+            return null;
         }
 
         public void AddCountry(CountryInputModel model)
@@ -30,7 +36,6 @@ namespace BookCave.Repositories
                 ShippingCost = model.ShippingCost
             };
             _db.Countries.Add(country);
-
         }
     }
 }

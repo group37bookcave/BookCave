@@ -1,4 +1,4 @@
-@model IEnumerable<BookCave.Models.EntityModels.Product>
+@model IEnumerable<BookCave.Models.ViewModels.BookViewModel>
 
 @{
     ViewData["Title"] = "All Products";
@@ -45,24 +45,38 @@
                         </td>
                         <td class="col-sm-5 col-md-5" valign="top">
                             <div>
-                                <ul>
-                                    <li><h4>@item.Name</h4></li>
-                                    <li>Author: </li>
-                                    <li>
-                                        Format: @item.GetType().Name
-                                    </li>
-                                    <li>Pages: </li>
-                                    <li>Release Date: </li>
-                                    <li>Language: </li>
-                                    <li>
-                                        <span class="fa fa-star grey"></span>
-                                        <span class="fa fa-star grey"></span>
-                                        <span class="fa fa-star grey"></span>
-                                        <span class="fa fa-star grey"></span>
-                                        <span class="fa fa-star grey"></span>
-                                        <span class="grey"> No rating(s) </span>
-                                    </li>
-                                </ul>
+                                
+                                    <ul>
+                                        <li>
+                                            <h4>
+                                                @item.Name
+                                            </h4>
+                                        </li>
+                                        <li>
+                                            Author: @foreach(var author in item.Authors){@author.FullName}
+                                        </li>
+                                        <li>
+                                            Format: @item.Format
+                                        </li>
+                                        <li>
+                                            Length: @item.Length
+                                        </li>
+                                        <li>
+                                            Release Date: @item.ReleaseDate.Day/@item.ReleaseDate.Month/@item.ReleaseDate.Year
+                                        </li>
+                                        <li>
+                                            Language: @foreach(var lan in item.Languages){@lan.Name}                                                 
+                                        </li>
+                                        <li>
+                                            <span class="fa fa-star grey"></span>
+                                            <span class="fa fa-star grey"></span>
+                                            <span class="fa fa-star grey"></span>
+                                            <span class="fa fa-star grey"></span>
+                                            <span class="fa fa-star grey"></span>
+                                            <span class="grey"> No rating(s) </span>
+                                        </li>
+                                    </ul>
+                                
                             </div>
                         </td>
                         <td class="col-sm-2 col-md-2" valign="top">
