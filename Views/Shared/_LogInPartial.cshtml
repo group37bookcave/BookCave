@@ -59,6 +59,7 @@ else if (User.HasClaim("Role", "Customer"))
         </a>
     </li>
 }
+}
 else
 {
     <li class="dropdown">
@@ -81,8 +82,7 @@ else
                                     <a asp-controller="Account" asp-action="RegisterUser" role="button" class="btn btn-default user-buttons">New User</a>
                                 </span>
                                 <span>
-                                    //<a  role="button" class="btn btn-default user-buttons">Sign In</a>
-                                    <button asp-controller="Account" asp-action="Login" role="button" class="btn btn-default" type="submit">Sign In</button>
+                                    <button asp-controller="Account" asp-action="Login" role="button" class="btn btn-default user-buttons" type="submit">Sign In</button>
                                 </span>
                             </div>
                         </form>
@@ -96,5 +96,4 @@ else
             <span class="glyphicon glyphicon-shopping-cart"></span><span id="nr-of-items"> 0 Items</span>
         </a>
     </li>
-}
 }
