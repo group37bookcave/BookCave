@@ -222,7 +222,7 @@ nav#navbar {
     float: left;
 }
 
-#bookDetailImg {
+.bookDetailImg {
     max-width: 170px;
 }
 
