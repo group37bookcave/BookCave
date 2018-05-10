@@ -1,5 +1,4 @@
 @model BookCave.Models.EntityModels.Address
-
 @{
     ViewData["Title"] = "Address Page";
 }
@@ -16,8 +15,6 @@
                 </span>
             </div>
 
-
-            
     	    <form method="post" class="address-form">
 
                 <h3 class="book-cave-color">Billing Address</h3>
@@ -30,6 +27,7 @@
                         <label asp-for="@Model.ZipCode">Zip Code</label>
                         <input asp-for="@Model.ZipCode" type="text" class="form-control" id="inputZip" placeholder="ZipCode">
                     </div>
+
                   
     
                     <div class="form-group col-md-4">
