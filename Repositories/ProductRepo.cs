@@ -26,7 +26,7 @@ namespace BookCave.Repositories
             return list.ToList();
         }
 
-        public IEnumerable<Book> GetAllBooks()
+        public List<Book> GetAllBooks()
         {
             var li = from b in _db.Books select b;
             return li.ToList();
