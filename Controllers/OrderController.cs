@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using BookCave.Models.EntityModels;
 using BookCave.Models.InputModels;
+using System.Security.Claims;
 
 
 namespace BookCave.Controllers
@@ -18,16 +19,16 @@ namespace BookCave.Controllers
             _orderService = new OrderService();
         }
 
-
+        
         public IActionResult ShoppingCart()
         {
-          /*  int userId = int.Parse(User.FindFirst("customerId").Value);
+            int userId = int.Parse(User.FindFirst("CustomerId").Value);
             if(userId==0)
             {
-                return View();
+                return View("Error");
             }
 
-            var ActiveOrder = _orderService.GetActiveOrder(userId);*/
+            var ActiveOrder = _orderService.GetActiveOrder(userId);
             return View();
         }
 
