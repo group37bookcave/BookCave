@@ -28,6 +28,5 @@ namespace BookCave.Models.InputModels
 
 //        public Country ShippingCountryId { get; set; }
 
-
     }
 }
