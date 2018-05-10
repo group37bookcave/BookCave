@@ -10,8 +10,6 @@ namespace BookCave.Repositories
     public class AddressRepo
     {
         private readonly StoreContext _db = new StoreContext();
-        private readonly CountryRepo _countryRepo = new CountryRepo();
-        private readonly CustomerRepo _customerRepo = new CustomerRepo();
 
         public List<Address> GetAddressesByCustomerId(int id)
         {

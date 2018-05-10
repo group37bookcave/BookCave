@@ -1,10 +1,12 @@
 using System;
+using System.Linq;
+using System.Security.Claims;
 using BookCave.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using BookCave.Models.EntityModels;
 using BookCave.Models.InputModels;
-using System.Security.Claims;
+
 
 
 namespace BookCave.Controllers
@@ -27,9 +29,8 @@ namespace BookCave.Controllers
             {
                 return View("Error");
             }
-
-            var ActiveOrder = _orderService.GetActiveOrder(userId);
-            return View();
+            var activeOrder = _orderService.GetActiveOrder(userId);
+            return View(activeOrder);
         }
 
 
@@ -41,12 +42,8 @@ namespace BookCave.Controllers
                 return View("ShoppingCart");
             }
 
-            /*var productToRemove = _orderService;
-            var productToRemove = (from s in DataBase.Orders
-                                    where s.Id == id
-                                    select s).SingleOrDefault();
-            Database.Remove(productToRemove);
-            */
+           // Order updatedOrder = _orderService.RemoveFromOrder(productId);
+
 
             return RedirectToAction("ShoppingCart");
         }

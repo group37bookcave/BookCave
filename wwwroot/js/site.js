@@ -20,9 +20,6 @@ $(document).ready(function(e){
 		$('.input-group #search_param').val(param);
     });
     
-    $("#logout-a").click(function(){
-        $("#logout-f").submit();
-    });
 
 //    $(document).on('click', '.mega-dropdown', function(e) {
 //        e.stopPropagation()
