@@ -50,8 +50,8 @@ namespace BookCave.Services
                 PhoneNumber = model.PhoneNumber
             };
             var customerId = _customerRepo.AddCustomer(customer);
-            var address = _addressRepo.NewAddress(model.Street, model.Zipcode, model.City, model.CountryId);
-            _addressRepo.AddAddressToCustomer(customerId, address);
+            //var address = _addressRepo.NewAddress(model.Street, model.Zipcode, model.City, model.CountryId);
+            //_addressRepo.AddAddressToCustomer(customerId, address);
             return customerId;
         }
 

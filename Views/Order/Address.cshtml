@@ -17,32 +17,46 @@
 
     	    <form method="post" class="address-form">
 
-                <h3 class="book-cave-color">Billing Address</h3>
+                <legend class="book-cave-color">Billing Address</legend>
                 <div class="form-group">
+                    <span asp-validation-for="@Model.Street"></span>
                     <label asp-for="@Model.Street">Street</label>
                     <input asp-for="@Model.Street" type="text" class="form-control" id="inputAddress" placeholder="Street">
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-2">
+                         <span asp-validation-for="@Model.ZipCode"></span>
                         <label asp-for="@Model.ZipCode">Zip Code</label>
                         <input asp-for="@Model.ZipCode" type="text" class="form-control" id="inputZip" placeholder="ZipCode">
                     </div>
 
-                  
-    
+                    <div class="form-group col-md-6">
+                         <span asp-validation-for="@Model.City"></span>
+                        <label for="@Model.City">City</label>
+                        <input type="text" class="form-control" id="city" placeholder="City">
+                    </div>
+   
                     <div class="form-group col-md-4">
+                         <span asp-validation-for="@Model.Country"></span>
                         <label asp-for="@Model.Country">Country</label>
                         <select asp-for="@Model.Country" id="inputCountry" class="form-control">
                             <option selected>Select country</option>
-                            <option>LAND 1.......</option>
-                        </select>
-                    </div>
+                                @using (Html.BeginForm())
+                                {
+                                    var countries = BookCave.Services.Helper.GetLanguages();
+                                    foreach (var country in countries)
+                                    {
+                                         <option value=@country.Id>@country.Name</option>
+                                    }
+                                }
+                            </select>
                 </div>
-            </form>
+            </div>
+        </form>
            
-            <form class="address-form">
+        <form class="address-form">
 
-            <h3 class="book-cave-color">Shipping Address</h3>
+            <legend class="book-cave-color">Shipping Address</legend>
             </form>
 <!--
             <div class="form-group">
@@ -73,7 +87,7 @@
             </div></form>
             -->
              <div class="button-options grey-buttons">
-                 <a class="btn btn-default grey-buttons" type="button" asp-area="" asp-controller="Order" asp-action="ReviewPage">Review Order</a>
+                 <input class="btn btn-default grey-buttons" type="submit" value="Review Order">
                 <a class="btn btn-default grey-buttons" type="button" asp-area="" asp-controller="Order" asp-action="ShoppingCart">Edit Order</a>
             </div>
         </div>
