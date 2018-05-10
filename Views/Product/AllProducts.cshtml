@@ -1,4 +1,4 @@
-@model IEnumerable<BookCave.Models.EntityModels.Product>
+@model IEnumerable<BookCave.Models.ViewModels.BookViewModel>
 
 @{
     ViewData["Title"] = "All Products";
@@ -47,13 +47,13 @@
                             <div>
                                 <ul>
                                     <li><h4>@item.Name</h4></li>
-                                    <li>Author: </li>
+                                    <li>Author: @foreach(var author in @item.BookAuthors){@author.Author.FullName}</li>
                                     <li>
                                         Format: @item.GetType().Name
                                     </li>
-                                    <li>Pages: </li>
-                                    <li>Release Date: </li>
-                                    <li>Language: </li>
+                                    <li>Pages: @item.Length</li>
+                                    <li>Release Date: @item.ReleaseDate</li>
+                                    <li>Language: @foreach(var lan in @item.BookLanguages){@lan.Language.Name}</li>
                                     <li>
                                         <span class="fa fa-star grey"></span>
                                         <span class="fa fa-star grey"></span>
