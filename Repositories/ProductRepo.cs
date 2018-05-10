@@ -34,6 +34,23 @@ namespace BookCave.Repositories
             return li.ToList();
         }
 
+        public List<Book> GetTop10()
+        {
+            var bookRatings = from review in _db.Reviews
+                group review by review.Product.Id
+                into bookRating
+                select new
+                {
+                    ProductId = bookRating.Key,
+                    AvgRating = bookRating.Average(c => c.Rating)
+                };
+            var book = from rating in bookRatings
+                join b in _db.Books on rating.ProductId equals b.Id
+                orderby rating.AvgRating descending
+                select b;
+            return book.Take(10).ToList();
+        }
+
         public List<Book> GetBooksByAuthorId(int id)
         {
             var books = from bookAuthor in _db.BookAuthors

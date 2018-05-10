@@ -19,7 +19,7 @@ namespace BookCave.Repositories
             var reviews = from r in _db.Reviews where r.Customer.Id == id select r;
             return reviews.ToList();
         }
-
+        
         public List<Review> GetReviewsByProductId(int id)
         {
             var reviews = from r in _db.Reviews where r.Product.Id == id select r;

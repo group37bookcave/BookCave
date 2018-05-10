@@ -1,16 +1,114 @@
+@model List<BookCave.Models.ViewModels.BookViewModel>
+
 @{
     ViewData["Title"] = "Top Rated";
 }
 
-<!--<p id=no-wish-list> No items in your Wish List </p>-->
 <div class="container">
     <div class="row">
         <div class="col-sm-12 col-md-10 col-md-offset-1">
-             <div class="page-header">
-                <h1><span class="book-cave-color">TOP</span><span>RATED</span></h1>
-             </div>
-                
-               
+            <div class="page-header">
+                <div class="inline-block">
+                    <h1>
+                        <span class="book-cave-color">TOP</span><span>10</span>
+                    </h1>
+                </div>
+                <span class="filter-and-sort">
+                    <a class="inline-block">Filter</a>
+                    <form class="inline-block">
+                        <select class="form-control" id="sort-by">
+                            <option value="">Sort by:</option>
+                            <option value="name">Name</option>
+                            <option value="author">Author</option>
+                            <option value="price">Price</option>
+                            <option value="popularity">Popularity</option>
+                            <option value="pages">Number of pages</option>
+                            <option value="release-year">Release Year</option>
+                            <option value="lenght">Length</option>
+                            <option value="rating">Rating</option>
+                        </select>
+                    </form>
+                </span>
+            </div>
+            <table>
+                <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="col-sm-3 col-md-3" valign="top">
+                            <div>
+                                <img alt="Cover Art" class="bookDetailImg" src="@item.Image"/>
+                            </div>
+                        </td>
+                        <td class="col-sm-5 col-md-5" valign="top">
+                            <div>
+                                
+                                    <ul>
+                                        <li>
+                                            <h4>
+                                                <a href="/Product/BookDetail/@item.Id">@item.Name</a>
+                                            </h4>
+                                        </li>
+                                        <li>
+                                            Author: @foreach(var author in item.Authors){@author.FullName}
+                                        </li>
+                                        <li>
+                                            Format: @item.Format
+                                        </li>
+                                        <li>
+                                            Length: @item.Length
+                                        </li>
+                                        <li>
+                                            Release Date: @item.ReleaseDate.Day/@item.ReleaseDate.Month/@item.ReleaseDate.Year
+                                        </li>
+                                        <li>
+                                            Language: @foreach(var lan in item.Languages){@lan.Name}                                                 
+                                        </li>
+                                        <li>
+                                            <span class="fa fa-star grey"></span>
+                                            <span class="fa fa-star grey"></span>
+                                            <span class="fa fa-star grey"></span>
+                                            <span class="fa fa-star grey"></span>
+                                            <span class="fa fa-star grey"></span>
+                                            <span class="grey"> No rating(s) </span>
+                                        </li>
+                                    </ul>
+                                
+                            </div>
+                        </td>
+                        <td class="col-sm-2 col-md-2" valign="top">
+                            <div>
+                                <h5>Price: 
+                                    $@item.Price
+                                </h5>
+                            </div>
+                        </td>
+                        <td class="col-sm-2 col-md-2" valign="top">
+
+                            <div>
+                                <div class="button-options grey-buttons">
+                                    <a class="btn btn-default" type="button" asp-area="" asp-controller="" asp-action="">
+                                        Buy Now
+                                    </a>
+                                </div>
+                                <div class="button-options green-buttons">
+                                    <a class="btn btn-default" type="button" asp-area="" asp-controller="" asp-action="">
+                                        Add to Cart
+                                    </a>
+                                </div>
+                                <div class="button-options green-buttons">
+                                    <a class="btn btn-default" type="button" asp-area="" asp-controller="" asp-action="">
+                                        Add to WishList
+                                    </a>
+                                </div>
+                            </div>
+
+                        </td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        <hr/>        
         </div>
     </div>
 </div>

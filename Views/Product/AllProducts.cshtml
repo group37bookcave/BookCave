@@ -29,10 +29,7 @@
                         </select>
                     </form>
                 </span>
-
             </div>
-
-
             <table>
                 <tbody>
                 @foreach (var item in Model)
@@ -49,7 +46,7 @@
                                     <ul>
                                         <li>
                                             <h4>
-                                                @item.Name
+                                                <a href="/Product/BookDetail/@item.Id">@item.Name</a>
                                             </h4>
                                         </li>
                                         <li>
@@ -111,6 +108,7 @@
                 }
                 </tbody>
             </table>
-<hr/>        </div>
+        <hr/>        
+        </div>
     </div>
 </div>

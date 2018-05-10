@@ -76,7 +76,9 @@ tfoot > tr {
     background-color: rgb(105,202,202);
     border: none;
     margin-bottom: 10px;
-    width: 120px; 
+    width: 120px;
+ 
+    float: right;
 }
 
 .grey{
@@ -218,7 +220,7 @@ nav#navbar {
 .col img {
     flex: 20%;
     max-width: 283px;
-    padding: 0px 4px;
+    padding: 0 4px;
     float: left;
 }
 
