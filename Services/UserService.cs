@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using BookCave.Models.EntityModels;
 using BookCave.Models.InputModels;
 using BookCave.Models.ViewModels;
@@ -16,7 +15,7 @@ namespace BookCave.Services
         public CustomerViewModel GetCustomer(int id)
         {
             var customer = _customerRepo.GetCustomer(id);
-            var addresses = _customerRepo.GetAddresses(id);
+            var addresses = _addressRepo.GetAddressesByCustomerId(id);
 
             var model = new CustomerViewModel
             {
@@ -28,15 +27,27 @@ namespace BookCave.Services
                 model.Adresses.Add(new AddressViewModel
                 {
                     Street = address.Street,
-                    City = address.ZipCode.City,
-                    Country = address.Country.Name,
-                    Zipcode = address.ZipCode.Zip,
-                    CountryId = address.Country.Id,
+                    City = address.City,
+                    Country = address.Country,
+                    Zipcode = address.ZipCode,
                     AddressId = address.Id
                 });
             }
 
             return model;
+        }
+
+        public void AddAddressToCustomer(int customerId, AddressInputModel model)
+        {
+             var address = new Address
+             {
+                 City = model.City,
+                 Street = model.Street,
+                 CountryId = model.CountryId,
+                 ZipCode = model.Zipcode
+             };
+            _addressRepo.AddAddress(address);
+            _addressRepo.AddAddressToCustomer(customerId, address.Id);
         }
 
         public int CreateCustomer(RegisterInputModel model)
@@ -49,10 +60,19 @@ namespace BookCave.Services
                 FavoriteBook = model.FavoriteBook,
                 PhoneNumber = model.PhoneNumber
             };
-            var customerId = _customerRepo.AddCustomer(customer);
-            //var address = _addressRepo.NewAddress(model.Street, model.Zipcode, model.City, model.CountryId);
-            //_addressRepo.AddAddressToCustomer(customerId, address);
-            return customerId;
+
+            var address = new Address
+            {
+                City = model.City,
+                CountryId = model.CountryId,
+                ZipCode = model.Zipcode,
+                Street = model.Street
+            };
+
+            _customerRepo.AddCustomer(customer);
+            _addressRepo.AddAddress(address);
+            _addressRepo.AddAddressToCustomer(customer.Id, address.Id);
+            return customer.Id;
         }
 
 
