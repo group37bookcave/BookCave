@@ -12,7 +12,7 @@ namespace BookCave.Repositories
     {
         private readonly StoreContext _db = new StoreContext();
         private readonly CustomerRepo _cr = new CustomerRepo();
-        private ProductRepo _pr = new ProductRepo();
+        private readonly ProductRepo _pr = new ProductRepo();
 
 
         public List<Order> GetAllOrdersByCustomerId(int customerId)
@@ -43,6 +43,21 @@ namespace BookCave.Repositories
             order.PromoCode = model.PromoCode;
             _db.SaveChanges();
             return order;
+        }
+
+        public Order RemoveFromOrder(int productId, int orderId)
+        {
+            var order = GetOrderById(orderId);
+            RemoveItem(productId, order);
+            return order;
+        }
+
+        private void RemoveItem(int productId, Order order)
+        {
+            var item = (from i in order.ItemOrders where i.ProductId == productId select i).SingleOrDefault();
+            order.ItemOrders.Remove(item);
+            _db.Update(order);
+            _db.SaveChanges();
         }
 
         public Order AddToOrder(int productId, int orderId)
