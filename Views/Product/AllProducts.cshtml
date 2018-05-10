@@ -45,24 +45,26 @@
                         </td>
                         <td class="col-sm-5 col-md-5" valign="top">
                             <div>
-                                <ul>
-                                    <li><h4>@item.Name</h4></li>
-                                    <li>Author: @foreach(var author in @item.BookAuthors){@author.Author.FullName}</li>
-                                    <li>
-                                        Format: @item.GetType().Name
-                                    </li>
-                                    <li>Pages: @item.Length</li>
-                                    <li>Release Date: @item.ReleaseDate</li>
-                                    <li>Language: @foreach(var lan in @item.BookLanguages){@lan.Language.Name}</li>
-                                    <li>
-                                        <span class="fa fa-star grey"></span>
-                                        <span class="fa fa-star grey"></span>
-                                        <span class="fa fa-star grey"></span>
-                                        <span class="fa fa-star grey"></span>
-                                        <span class="fa fa-star grey"></span>
-                                        <span class="grey"> No rating(s) </span>
-                                    </li>
-                                </ul>
+                                
+                                    <ul>
+                                        <li><h4>@item.Name</h4></li>
+                                        <li>Author: @item.BookAuthors.FirstOrDefault()</li>
+                                        <li>
+                                            Format: @item.GetType().Name
+                                        </li>
+                                        <li>Pages: @item.Length</li>
+                                        <li>Release Date: @item.ReleaseDate</li>
+                                       
+                                        <li>
+                                            <span class="fa fa-star grey"></span>
+                                            <span class="fa fa-star grey"></span>
+                                            <span class="fa fa-star grey"></span>
+                                            <span class="fa fa-star grey"></span>
+                                            <span class="fa fa-star grey"></span>
+                                            <span class="grey"> No rating(s) </span>
+                                        </li>
+                                    </ul>
+                                
                             </div>
                         </td>
                         <td class="col-sm-2 col-md-2" valign="top">
