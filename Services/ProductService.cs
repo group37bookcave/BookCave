@@ -27,10 +27,10 @@ namespace BookCave.Services
                     ReleaseDate = book.ReleaseDate,
                     Publisher = book.Publisher,
                     Isbn = book.Isbn,
-                    BookLanguages = book.BookLanguages,
-                    BookAuthors = book.BookAuthors,
-                    BookGenres = book.BookGenres,
-                    BookAgeGroups = book.BookAgeGroups
+                    Authors = _productRepo.GetAuthorsByBookId(book.Id),
+                    Languages = _productRepo.GetBookLanguages(book.Id),
+                    Genres = _productRepo.GetBookGenres(book.Id),
+                    AgeGroups = _productRepo.GetBookAgeGroup(book.Id)
                 }
             );
             }
