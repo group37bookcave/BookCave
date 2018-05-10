@@ -2,6 +2,8 @@ using System;
 using BookCave.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
+using BookCave.Models.EntityModels;
+using BookCave.Models.InputModels;
 
 
 namespace BookCave.Controllers
@@ -30,15 +32,48 @@ namespace BookCave.Controllers
             return View();
         }
 
+        [HttpGet]
           public IActionResult Address()
+        {
+            return View();
+        }    
+
+        [HttpPost]
+        public IActionResult Address(Address address){
+            if(ModelState.IsValid){
+            var addr = new Address()
+            {
+                
+            };
+            
+            var newMovie = new Address()
+            {
+             
+            };
+
+            /*_orderService.AddToOrder.Address.Add(address); */
+            return RedirectToAction("ReviewPage");
+        }
+            return View();
+        }
+
+
+        [HttpGet] 
+        public IActionResult PaymentPage()
         {
             return View();
         }
 
-          public IActionResult PaymentGateway()
-        {
+        [HttpPost]
+        public IActionResult PaymentPage(PaymentInputModel Payment){
+            if(ModelState.IsValid){
+               // _orderService.CheckoutOrder();
+           
+                return RedirectToAction("Receipt");
+            }
             return View();
         }
+        
 
         public IActionResult RemoveProduct()
         {

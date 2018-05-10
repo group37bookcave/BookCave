@@ -7,11 +7,11 @@ namespace BookCave.Models.EntityModels
     {
         public int Id { get; set; }
        
-        public string Street { get; set; }
+        public string  Street { get; set; }
+        public string City { get; set; }
 
         public ZipCode ZipCode { get; set; }
         
-
         public Country Country { get; set; }
         
         public ICollection<Order> Orders { get; set; }

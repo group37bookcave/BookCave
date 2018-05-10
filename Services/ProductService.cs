@@ -13,7 +13,7 @@ namespace BookCave.Services
         private List<BookViewModel> ConvertToBookViewModel(IEnumerable<Book> books)
         {
             var viewModels = new List<BookViewModel>();
-            foreach(Book book in books)
+            foreach(var book in books)
             {
             viewModels.Add(new BookViewModel
                 {
@@ -21,11 +21,12 @@ namespace BookCave.Services
                     Price = book.Price,
                     Name = book.Name,
                     Image = book.Image,
-                    Reviews = book.Reviews,
+                    Reviews = _productRepo.GetBookReview(book.Id),
                     Description = book.Description,
+                    Format = book.GetType().Name,
                     Length = book.Length,
                     ReleaseDate = book.ReleaseDate,
-                    Publisher = book.Publisher,
+                    Publisher = _productRepo.GetPublisherByBookId(book.Id),
                     Isbn = book.Isbn,
                     Authors = _productRepo.GetAuthorsByBookId(book.Id),
                     Languages = _productRepo.GetBookLanguages(book.Id),
@@ -41,7 +42,30 @@ namespace BookCave.Services
             return _productRepo.GetAllProducts();
         }
 
-        public Product GetProduct(int id)
+        public BookViewModel GetBookById(int? id)
+        {
+            var book = (Book) GetProduct(id);
+            return new BookViewModel
+            {
+                Id = book.Id,
+                Price = book.Price,
+                Name = book.Name,
+                Image = book.Image,
+                Reviews = _productRepo.GetBookReview(book.Id),
+                Description = book.Description,
+                Format = book.GetType().Name,
+                Length = book.Length,
+                ReleaseDate = book.ReleaseDate,
+                Publisher = _productRepo.GetPublisherByBookId(book.Id),
+                Isbn = book.Isbn,
+                Authors = _productRepo.GetAuthorsByBookId(book.Id),
+                Languages = _productRepo.GetBookLanguages(book.Id),
+                Genres = _productRepo.GetBookGenres(book.Id),
+                AgeGroups = _productRepo.GetBookAgeGroup(book.Id)
+            };
+        }
+
+        public Product GetProduct(int? id)
         {
             var product = _productRepo.GetProduct(id);
             return product;

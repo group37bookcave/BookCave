@@ -15,15 +15,18 @@ namespace BookCave.Models.ViewModels
 
         public string Image { get; set; }
 
-        public ICollection<Review> Reviews { get; set; }
+        public List<ReviewViewModel> Reviews { get; set; }
+        
         public string Description { get; set; }
+        
+        public string Format { get; set; }
 
         // In minutes if Audiobook, pages if not.
         public int Length { get; set; }
 
         public DateTime ReleaseDate { get; set; }
         
-        public Publisher Publisher { get; set; }
+        public string Publisher { get; set; }
 
         public Isbn Isbn { get; set; }
         

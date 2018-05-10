@@ -47,14 +47,26 @@
                             <div>
                                 
                                     <ul>
-                                        <li><h4>@item.Name</h4></li>
-                                        <li>Author: @item.BookAuthors.FirstOrDefault()</li>
                                         <li>
-                                            Format: @item.GetType().Name
+                                            <h4>
+                                                @item.Name
+                                            </h4>
                                         </li>
-                                        <li>Pages: @item.Length</li>
-                                        <li>Release Date: @item.ReleaseDate</li>
-                                       
+                                        <li>
+                                            Author: @foreach(var author in item.Authors){@author.FullName}
+                                        </li>
+                                        <li>
+                                            Format: @item.Format
+                                        </li>
+                                        <li>
+                                            Length: @item.Length
+                                        </li>
+                                        <li>
+                                            Release Date: @item.ReleaseDate.Day/@item.ReleaseDate.Month/@item.ReleaseDate.Year
+                                        </li>
+                                        <li>
+                                            Language: @foreach(var lan in item.Languages){@lan.Name}                                                 
+                                        </li>
                                         <li>
                                             <span class="fa fa-star grey"></span>
                                             <span class="fa fa-star grey"></span>

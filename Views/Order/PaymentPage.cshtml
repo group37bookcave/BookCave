@@ -1,0 +1,89 @@
+@model BookCave.Models.InputModels.PaymentInputModel
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-md-10 col-md-offset-1">
+            <div class="page-header">
+                <h1>
+                    <span class="book-cave-color">PAYMENT</span><span>INFORMATION</span>
+                </h1>
+            </div>
+            
+            <form class="form-horizontal" method="post">
+                <fieldset>
+                    <div class="form-group">
+                        <label  asp-for="CardName" class="col-sm-3 control-label">Name on Card</label>
+                        <div class="col-sm-9">
+                            <input asp-for="CardName" type="text"  class="form-control" id="CardName" placeholder="Card Holder's Name">
+                             <span asp-validation-for="CardName"></span>
+                        </div> 
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="CardNumber" class="col-sm-3 control-label" >Card Number</label>
+                        <div class="col-sm-9">
+                            <input asp-for="CardNumber" type="text" class="form-control" id="CardNumber" placeholder="Debit/Credit Card Number">
+                            <span asp-validation-for="CardNumber"></span>
+                        </div>
+                    </div>
+            
+                    <div class="form-group">
+                        <label  asp-for="ExpirationMonth" class="col-sm-3 control-label">Expiration Date</label>
+                        <span asp-validation-for="ExpirationMonth"></span>
+                        <span asp-validation-for="ExpirationYear"></span>
+
+                        
+                        <div class="col-sm-9">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <select asp-for="ExpirationMonth" class="form-control col-sm-2" name=ExpirationMonth id="expiration-month">
+                                        <span asp-validation-for="ExpirationYear"></span>
+                                        <option selected>Month</option>
+                                        <option value="01">Jan (01)</option>
+                                        <option value="02">Feb (02)</option>
+                                        <option value="03">Mar (03)</option>
+                                        <option value="04">Apr (04)</option>
+                                        <option value="05">May (05)</option>
+                                        <option value="06">June (06)</option>
+                                        <option value="07">July (07)</option>
+                                        <option value="08">Aug (08)</option>
+                                        <option value="09">Sep (09)</option>
+                                        <option value="10">Oct (10)</option>
+                                        <option value="11">Nov (11)</option>
+                                        <option value="12">Dec (12)</option>
+                                    </select>
+                    </div>
+                    <div class="col-xs-3">
+                    <select asp-for="ExpirationYear" class="form-control" name="ExpirationYear">
+                        <option selected>Year</option>
+                        <option value="13">2018</option>
+                        <option value="14">2019</option>
+                        <option value="15">2020</option>
+                        <option value="16">2021</option>
+                        <option value="17">2022</option>
+                        <option value="18">2023</option>
+                        <option value="19">2024</option>
+                        <option value="20">2025</option>
+                        <option value="21">2026</option>
+                        <option value="22">2027</option>
+                        <option value="23">2028</option>
+                    </select>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="CVV" class="col-sm-3 control-label">Card CVV</label>
+                <span asp-validation-for="CVV"></span>
+                <div class="col-sm-3">
+                    <input asp-for="CVV" type="text" class="form-control" id="CVV" placeholder="Security Code">
+                </div>
+            </div>
+            <div class="form-group green-buttons">
+                    <input type="submit" class="btn" value="Pay" >
+            </div>
+            </fieldset>
+        </form>
+        </div>
+    </div>
+</div>
