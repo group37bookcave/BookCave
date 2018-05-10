@@ -33,7 +33,7 @@ namespace BookCave.Controllers
         }
 
         [HttpGet]
-          public IActionResult Address()
+        public IActionResult Address()
         {
             return View();
         }    
@@ -41,15 +41,7 @@ namespace BookCave.Controllers
         [HttpPost]
         public IActionResult Address(Address address){
             if(ModelState.IsValid){
-            var addr = new Address()
-            {
-                
-            };
-            
-            var newMovie = new Address()
-            {
-             
-            };
+        
 
             /*_orderService.AddToOrder.Address.Add(address); */
             return RedirectToAction("ReviewPage");

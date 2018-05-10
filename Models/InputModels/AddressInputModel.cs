@@ -1,7 +1,8 @@
-﻿using System.ComponentModel.DataAnnotations;
-using BookCave.Models.EntityModels;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
-namespace BookCave.Repositories
+namespace BookCave.Models.InputModels
 {
     public class AddressInputModel
     {
@@ -9,28 +10,24 @@ namespace BookCave.Repositories
         public string BillingStreet { get; set; }
 
         [Required(ErrorMessage="Please enter ZipCode.")]
-        public string BillingZipcode { get; set; }
+        public string BillingZipCode { get; set; }
         [Required(ErrorMessage="Please enter city.")]   
         public string BillingCity { get; set; }
-        [Required(ErrorMessage="Please select country.")]
+  //      [Required(ErrorMessage="Please select country.")]
 
-        public Country BillingCountryId { get; set; }
-
-
-        [Required(ErrorMessage="Please enter street.")]
-  
-        public string Street { get; set; }
+        //public Country BillingCountryId { get; set; }
 
         [Required(ErrorMessage="Please enter street.")]
         public string ShippingStreet { get; set; }
 
         [Required(ErrorMessage="Please enter ZipCode.")]
-        public string ShippingZipcode { get; set; }
+        public string ShippingZipCode { get; set; }
         [Required(ErrorMessage="Please enter city.")]   
         public string ShippingCity { get; set; }
-        [Required(ErrorMessage="Please select country.")]
+  //      [Required(ErrorMessage="Please select country.")]
 
-        public Country ShippingCountryId { get; set; }
-               
+//        public Country ShippingCountryId { get; set; }
+
+
     }
 }

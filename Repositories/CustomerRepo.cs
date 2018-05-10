@@ -35,7 +35,7 @@ namespace BookCave.Repositories
             var address = new Address
             {
                // Country = country,
-                Street = model.Street,
+               // Street = model.Street,
                 ZipCode = new ZipCode
                 {
                  //   City = model.City,

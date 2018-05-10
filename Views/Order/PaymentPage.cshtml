@@ -3,19 +3,22 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-12 col-md-10 col-md-offset-1">
+
+
+
             <div class="page-header">
                 <h1>
                     <span class="book-cave-color">PAYMENT</span><span>INFORMATION</span>
                 </h1>
             </div>
             
-            <form class="form-horizontal" method="post">
+            <form asp-action=/Order/PaymentPage class="form-horizontal" method="post">
                 <fieldset>
                     <div class="form-group">
                         <label  asp-for="CardName" class="col-sm-3 control-label">Name on Card</label>
                         <div class="col-sm-9">
                             <input asp-for="CardName" type="text"  class="form-control" id="CardName" placeholder="Card Holder's Name">
-                             <span asp-validation-for="CardName"></span>
+                            <span asp-validation-for="CardName"></span>
                         </div> 
                     </div>
 
@@ -82,8 +85,15 @@
             <div class="form-group green-buttons">
                     <input type="submit" class="btn" value="Pay" >
             </div>
-            </fieldset>
-        </form>
+            
+                </fieldset>
+            </form>
+
+
+
+
+
+
         </div>
     </div>
 </div>
