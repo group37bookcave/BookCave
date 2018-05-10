@@ -15,7 +15,7 @@
                 </span>
             </div>
 
-            <form action="/Order/Address" class="address-form" method="post">
+            <form action="Address" class="address-form" method="post">
                 <fieldset>
                     <legend class="book-cave-color">Billing Address</legend>       
                     <div class="form-group">
@@ -36,10 +36,11 @@
                         <input asp-for="BillingCity" type="text" class="form-control" id="BillingCity" placeholder="City">
                     </div>  
                 
-                   <!-- <div class="form-group col-md-4">
-                        <span asp-validation-for="BillingCountry"></span>
-                        <label asp-for="BillingCountry">Country</label>
-                        <select asp-for="BillingCountry" id="BillingCountry" class="form-control">
+                    <div class="form-group col-md-4">
+                       <!-- <span asp-validation-for="BillingCountry"></span>
+                        <label asp-for="BillingCountry">Country</label>-->
+                         <label>bla</label>
+                        <select  id="BillingCountry" class="form-control">
                             <option selected>Select country</option>
 
                             @using (Html.BeginForm()) 
@@ -52,7 +53,7 @@
                             }
                             </select>
                     </div>
-                    -->
+                    
                     <legend class="book-cave-color">Shipping Address</legend>
                                 
                     <div class="form-group">
@@ -72,11 +73,12 @@
                         <label asp-for="ShippingCity">City</label>
                         <input asp-for="ShippingCity" type="text" class="form-control" id="ShippingCity" placeholder="City">
                     </div>  
-                   <!--     
+                       
                     <div class="form-group col-md-4">
-                        <span asp-validation-for="ShippingCountry"></span>
-                            <label asp-for="ShippingCountry">Country</label>
-                            <select asp-for="ShippingCountry" id="ShippingdotnCountry" class="form-control">
+                        <!--<span asp-validation-for="ShippingCountry"></span>
+                            <label asp-for="ShippingCountry">Country</label>-->
+                            <label>bla</label>
+                            <select  id="ShippingCountry" class="form-control">
                             <option selected>Select country</option>
                             @using (Html.BeginForm()) 
                             {
@@ -88,7 +90,7 @@
                             }
                         </select>
                     </div>
-                    -->
+                    
                     <div class="button-options grey-buttons">
                         <input class="btn" type="submit" value="Review Order">
                         <a class="btn btn-default grey-buttons" type="button" asp-area="" asp-controller="Order" asp-action="ShoppingCart">Edit Order</a>
