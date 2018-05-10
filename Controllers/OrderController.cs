@@ -1,4 +1,6 @@
 using System;
+using System.Linq;
+using System.Security.Claims;
 using BookCave.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
@@ -12,7 +14,6 @@ namespace BookCave.Controllers
     public class OrderController : Controller
     {
         private readonly OrderService _orderService;
-        
 
         public OrderController()
         {
@@ -20,16 +21,15 @@ namespace BookCave.Controllers
         }
 
         public IActionResult ShoppingCart()
-        {/*
-            int userId = int.Parse(User.FindFirst("customerId").Value);
-            if(userId==0)
+        {
+            var userId = int.Parse(User.FindFirst("customerId").Value);
+            
+            if(userId == 0)
             {
                 return View();
             }
-
-            var ActiveOrder = _orderService.GetActiveOrder(userId);
-            return View(ActiveOrder);*/
-            return View();
+            var activeOrder = _orderService.GetActiveOrder(userId);
+            return View(activeOrder);
         }
 
         [HttpGet]

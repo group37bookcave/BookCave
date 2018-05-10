@@ -48,15 +48,30 @@ namespace BookCave.Repositories
         public Order AddToOrder(int productId, int orderId)
         {
             var order = GetOrderById(orderId);
-            var itemorder = new ItemOrder
+            var itemorder = GetItemOrder(productId, order.ItemOrders);
+            if (itemorder != null)
             {
-                OrderId = orderId,
-                ProductId = productId
-            };
-            order.ItemOrders.Add(itemorder);
-            _db.Update(order);
+                itemorder.Quantity++;
+                _db.Update(itemorder);
+            }
+            else
+            {
+                itemorder = new ItemOrder
+                {
+                    OrderId = orderId,
+                    ProductId = productId,
+                    Quantity = 1
+                };              
+                order.ItemOrders.Add(itemorder);
+                _db.Update(order);
+            }
             _db.SaveChanges();
             return order;
+        }
+
+        private ItemOrder GetItemOrder(int productId, IEnumerable<ItemOrder> items)
+        {
+            return items.FirstOrDefault(item => item.ProductId == productId);
         }
 
         private List<ItemOrder> ConvertToItemOrder(IEnumerable<ItemOrderViewModel> items)
