@@ -10,84 +10,79 @@
 
 @if (SignInManager.IsSignedIn(User))
 {
-    if (User.HasClaim("Role", "Employee"))
-    {
-        /* Employee */
-        <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hi @claim <span class="caret"></span></a>
-            <ul class="dropdown-menu" style="padding: 15px; min-width: 250px;">
-                <li>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <a asp-controller="Employee" asp-action="Orders">All Orders</a>
-                            <a asp-controller="Product" asp-action="Register">Add a Book</a>
-                            <a asp-controller="" asp-action="">Add Sheet Music</a>
-                            <form method="post">
-                                <button type="submit" class="btn btn-link" asp-controller="Account" asp-action="Logout">Sign Out</button>
-                            </form>
-                        </div>
+if (User.HasClaim("Role", "Employee"))
+{
+    /* Employee */
+    <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hi @claim <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+            <li>
+                <div class="row">
+                    <div class="col-md-12">
+                        <a asp-controller="Employee" asp-action="Orders">All Orders</a>
+                        <a asp-controller="Product" asp-action="Register">Add a Book</a>
+                        <a asp-controller="" asp-action="">Add Sheet Music</a>
+                        <form method="POST">
+                            <button type="submit" class="btn btn-link" asp-controller="Account" asp-action="Logout">Sign Out</button>
+                        </form>
+                        //<a asp-controller="Account" asp-action="Logout">Sign Out</a>
                     </div>
-                </li>
-            </ul>
-        </li>
-    }
-    else if (User.HasClaim("Role", "Customer"))
-    {
-        /* Customer */
-        <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hi @claim <span class="caret"></span></a>
-            <ul class="dropdown-menu" style="padding: 15px; min-width: 250px;">
-                <li>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <a asp-controller="Account" asp-action="Details">Account Details</a>
-                            <a asp-controller="Customer" asp-action="WishList">WishList</a>
-                            <a asp-controller="Customer" asp-action="Orders">My Orders</a>
-                            <form method="post">
-                                <button type="submit" class="btn btn-link btn-primary" asp-controller="Account" asp-action="Logout">Sign Out</button>
-                            </form>
-                        </div>
+                </div>
+            </li>
+        </ul>
+    </li>
+}
+else if (User.HasClaim("Role", "Customer"))
+{
+    /* Customer */
+    <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hi @claim <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+            <li>
+                <div class="row">
+                    <div class="col-md-12">
+                        <a asp-controller="Account" asp-action="Details">Account Details</a>
+                        <a asp-controller="Customer" asp-action="WishList">WishList</a>
+                        <a asp-controller="Customer" asp-action="Orders">My Orders</a>
+                        <form method="post">
+                            <button type="submit" class="btn btn-link btn-primary" asp-controller="Account" asp-action="Logout"></button>
+                        </form>
+                        //<a asp-controller="Account" asp-action="Logout">Sign Out</a>
                     </div>
-                </li>
-            </ul>
-        </li>
-        <li>
-            <a asp-controller="Order" asp-action="ShoppingCart" role="button" aria-expanded="false">
-                <span class="glyphicon glyphicon-shopping-cart"></span><span id="nr-of-items"> 0 Items</span>
-            </a>
-        </li>
-    }
-
-
-/*
-    <form asp-controller="Account" asp-action="LogOut" method="post">
-        
-    </form>
-*/
+                </div>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <a asp-controller="Order" asp-action="ShoppingCart" role="button" aria-expanded="false">
+            <span class="glyphicon glyphicon-shopping-cart"></span><span id="nr-of-items"><span>0</span> Items</span>
+        </a>
+    </li>
+}
 }
 else
 {
     <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">New User / Sign In</a>
-        <ul class="dropdown-menu" style="padding: 15px; min-width: 250px;">
+        <ul class="dropdown-menu">
             <li>
                 <div class="row">
                     <div class="col-md-12">
                         <form class="form" role="form" method="post" accept-charset="UTF-8" id="login-nav">
-                            <div class="form-group">
+                            <div class="form-group sign-in-group">
                                 <label class="sr-only" for="exampleInputEmail2">Email address</label>
                                 <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Email address" required>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group sign-in-group">
                                 <label class="sr-only" for="exampleInputPassword2">Password</label>
                                 <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password" required>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group sign-in-group">
                                 <span>
-                                    <a asp-controller="Account" asp-action="Register" role="button" class="btn btn-default">New User</a>
+                                    <a asp-controller="Account" asp-action="Register" role="button" class="btn btn-default user-buttons">New User</a>
                                 </span>
                                 <span>
-                                    <button asp-controller="Account" asp-action="Login" role="button" class="btn btn-default" type="submit">Sign In</button>
+                                    <button asp-controller="Account" asp-action="Login" role="button" class="btn btn-default user-buttons" type="submit">Sign In</button>
                                 </span>
                             </div>
                         </form>

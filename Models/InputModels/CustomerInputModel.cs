@@ -4,10 +4,14 @@ namespace BookCave.Models.InputModels
 {
     public class CustomerInputModel
     {
-        [Required] public string FirstName { get; set; }
-        [Required] public string LastName { get; set; }
+        [Required(ErrorMessage="Please enter first name.")] 
+        public string FirstName { get; set; }
+        
+        [Required(ErrorMessage="Please enter last name.")]
+         public string LastName { get; set; }
 
         [Required] [EmailAddress] public string Email { get; set; }
+        
         
         public string FavoriteBook { get; set; }
 

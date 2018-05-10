@@ -29,27 +29,16 @@ namespace BookCave.Repositories
             _db.SaveChanges();
         }
 
-        public void AddAddressToCustomer(int customerId, Address model)
+        public void AddAddressToCustomer(int customerId, int addressId)
         {
-            var customer = _customerRepo.GetCustomer(customerId);
-            customer.CustomerAddresses.Add(new CustomerAddress {Address = model, Customer = customer});
-            _db.Update(customer);
+            _db.CustomerAddresses.Add(new CustomerAddress {AddressId = addressId, CustomerId = customerId});
             _db.SaveChanges();
         }
 
-        public Address NewAddress(string street, string zipcode, string city, int countryId)
+        public void AddAddress(Address address)
         {
-            var country = _db.Countries.Find(countryId);
-            var address = new Address
-            {
-                Street = street,
-                ZipCode = zipcode,
-                City = city,
-                CountryId = country.Id
-            };
             _db.Addresses.Add(address);
             _db.SaveChanges();
-            return address;
         }
     }
 }

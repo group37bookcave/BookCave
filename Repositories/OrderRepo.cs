@@ -82,7 +82,7 @@ namespace BookCave.Repositories
             return true;
         }
 
-        private Order GetActiveOrder(int customerId)
+        public Order GetActiveOrder(int customerId)
         {
             if (!HasActiveOrder(customerId))
             {

@@ -5,7 +5,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using BookCave.Models.ViewModels;
+using BookCave.Services;
 using Microsoft.AspNetCore.Authorization;
+
 
 namespace BookCave.Controllers
 {
@@ -14,16 +16,20 @@ namespace BookCave.Controllers
     public class CustomerController : Controller
     
     {
-        public IActionResult Receipt()
-        {
-            return View();
-        }
-
+        private readonly ProductService productService = new ProductService();
+      
+        [HttpGet]
         public IActionResult AccountDetails()
         {
             return View();
         }
 
+        [HttpPost]
+       /* public IActionResult AccountDetails()
+        {
+            return View();
+        }
+*/
           public IActionResult OrderHistory()
         {
             return View();
@@ -41,7 +47,8 @@ namespace BookCave.Controllers
 
         public IActionResult WishList()
         {
-            throw new NotImplementedException();
+            return View();
         }
+        
     }
 }

@@ -10,15 +10,73 @@ namespace BookCave.Services
     {
         private readonly ProductRepo _productRepo = new ProductRepo();
 
+        private List<BookViewModel> ConvertToBookViewModel(IEnumerable<Book> books)
+        {
+            var viewModels = new List<BookViewModel>();
+            foreach(var book in books)
+            {
+            viewModels.Add(new BookViewModel
+                {
+                    Id = book.Id,
+                    Price = book.Price,
+                    Name = book.Name,
+                    Image = book.Image,
+                    Reviews = _productRepo.GetBookReview(book.Id),
+                    Description = book.Description,
+                    Format = book.GetType().Name,
+                    Length = book.Length,
+                    ReleaseDate = book.ReleaseDate,
+                    Publisher = _productRepo.GetPublisherByBookId(book.Id),
+                    Isbn = book.Isbn,
+                    Authors = _productRepo.GetAuthorsByBookId(book.Id),
+                    Languages = _productRepo.GetBookLanguages(book.Id),
+                    Genres = _productRepo.GetBookGenres(book.Id),
+                    AgeGroups = _productRepo.GetBookAgeGroup(book.Id)
+                }
+            );
+            }
+            return viewModels;
+        }
         public IEnumerable<Product> GetAllProducts()
         {
             return _productRepo.GetAllProducts();
         }
 
-        public Product GetProduct(int id)
+        public BookViewModel GetBookById(int? id)
+        {
+            var book = (Book) GetProduct(id);
+            return new BookViewModel
+            {
+                Id = book.Id,
+                Price = book.Price,
+                Name = book.Name,
+                Image = book.Image,
+                Reviews = _productRepo.GetBookReview(book.Id),
+                Description = book.Description,
+                Format = book.GetType().Name,
+                Length = book.Length,
+                ReleaseDate = book.ReleaseDate,
+                Publisher = _productRepo.GetPublisherByBookId(book.Id),
+                Isbn = book.Isbn,
+                Authors = _productRepo.GetAuthorsByBookId(book.Id),
+                Languages = _productRepo.GetBookLanguages(book.Id),
+                Genres = _productRepo.GetBookGenres(book.Id),
+                AgeGroups = _productRepo.GetBookAgeGroup(book.Id)
+            };
+        }
+
+        public Product GetProduct(int? id)
         {
             var product = _productRepo.GetProduct(id);
             return product;
+        }
+
+
+        public Product RemoveProduct(int id)
+        {
+            var productToRemove = _productRepo.GetProduct(id);
+          /*  productToRemove.Remove(productToRemove);*/
+            return productToRemove;
         }
 
         private ProductViewModel ConvertToProductViewModel()
@@ -26,9 +84,33 @@ namespace BookCave.Services
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Book> GetAllBooks()
+        public List<BookViewModel> GetAllBooks()
         {
-            return _productRepo.GetAllBooks();
+            return ConvertToBookViewModel(_productRepo.GetAllBooks());
+        }
+        public List<Book> GetBooksByAuthorId(int id)
+        {
+            return _productRepo.GetBooksByAuthorId(id);
+        }
+        public List<Author> GetAuthorsByBookId(int id)
+        {
+            return _productRepo.GetAuthorsByBookId(id);
+        }
+        public List<BookViewModel> SearchByName(string name)
+        {
+            return ConvertToBookViewModel(_productRepo.GetBooksByName(name));
+        }
+        public List<BookViewModel> SearchByAuthor(string name)
+        {
+            return ConvertToBookViewModel(_productRepo.GetBooksByAuthorName(name));
+        }
+        public List<BookViewModel> SearchByIsbn(Isbn isbn)
+        {
+            return ConvertToBookViewModel(_productRepo.GetBookByIsbn(isbn));
+        }
+        public List<BookViewModel> FilterByGenre(Genre genre)
+        {
+            return ConvertToBookViewModel(_productRepo.GetBooksByGenreId(genre.Id));
         }
     }
 }

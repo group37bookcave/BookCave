@@ -37,6 +37,19 @@ namespace BookCave.Services
             return model;
         }
 
+        public void AddAddressToCustomer(int customerId, AddressInputModel model)
+        {
+             var address = new Address
+             {
+                 City = model.City,
+                 Street = model.Street,
+                 CountryId = model.CountryId,
+                 ZipCode = model.Zipcode
+             };
+            _addressRepo.AddAddress(address);
+            _addressRepo.AddAddressToCustomer(customerId, address.Id);
+        }
+
         public int CreateCustomer(RegisterInputModel model)
         {
             var customer = new Customer
@@ -47,13 +60,19 @@ namespace BookCave.Services
                 FavoriteBook = model.FavoriteBook,
                 PhoneNumber = model.PhoneNumber
             };
-            var address = _addressRepo.NewAddress(model.Street, model.Zipcode, model.City, model.CountryId);
-            customer.CustomerAddresses = new List<CustomerAddress>
+
+            var address = new Address
             {
-                new CustomerAddress{ AddressId = address.Id, CustomerId = customer.Id}
+                City = model.City,
+                CountryId = model.CountryId,
+                ZipCode = model.Zipcode,
+                Street = model.Street
             };
-            var customerId = _customerRepo.AddCustomer(customer);
-            return customerId;
+
+            _customerRepo.AddCustomer(customer);
+            _addressRepo.AddAddress(address);
+            _addressRepo.AddAddressToCustomer(customer.Id, address.Id);
+            return customer.Id;
         }
 
 
