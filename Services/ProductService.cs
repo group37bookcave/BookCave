@@ -10,7 +10,7 @@ namespace BookCave.Services
     {
         private readonly ProductRepo _productRepo = new ProductRepo();
 
-        private static List<BookViewModel> ConvertToBookViewModel(IEnumerable<Book> books)
+        private List<BookViewModel> ConvertToBookViewModel(IEnumerable<Book> books)
         {
             var viewModels = new List<BookViewModel>();
             foreach(Book book in books)
