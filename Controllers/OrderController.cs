@@ -27,7 +27,7 @@ namespace BookCave.Controllers
             int userId = int.Parse(User.FindFirst("CustomerId").Value);
             if(userId==0)
             {
-                return View("Error");
+                return View();
             }
             var activeOrder = _orderService.GetActiveOrder(userId);
             return View(activeOrder);
