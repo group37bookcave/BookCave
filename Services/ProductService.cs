@@ -60,9 +60,9 @@ namespace BookCave.Services
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Book> GetAllBooks()
+        public List<BookViewModel> GetAllBooks()
         {
-            return _productRepo.GetAllBooks();
+            return ConvertToBookViewModel(_productRepo.GetAllBooks());
         }
         public List<Book> GetBooksByAuthorId(int id)
         {
