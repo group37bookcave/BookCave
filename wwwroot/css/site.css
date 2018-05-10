@@ -132,7 +132,7 @@ tfoot > tr {
     margin-left: 20px;
 }
 
-.form-group {
+.form-group, {
     padding: 5px;
 }
 
@@ -148,7 +148,7 @@ tfoot > tr {
     color: rgb(252, 202, 68);
 }
 
-#sort-by{
+#sort-by , select-genre {
     width: 150px;
     margin-left: 20px;
 }
@@ -164,7 +164,7 @@ tfoot > tr {
 
 /* BRYNJA DAGMAR JAKOBSD */
 .sign-in-group {
-    margin-bottom: 0px;
+    margin-bottom: 5px;
 }
 
 .user-buttons {
@@ -276,4 +276,22 @@ nav#navbar {
 .nav-product-list .open > a, .nav-product-list .open > a:hover, .nav-product-list .open > a:focus,
  ul.nav-product-list > li > a:hover {
     background-color: rgb(105,202,202);
+}
+
+.form-check-inline {
+    margin: 5px 30px;
+}
+
+.form-check-label {
+    padding-right: 10px;
+}
+
+#filter {
+    display: none;
+    margin-top: 10px;
+}
+
+#filter-by-text {
+    margin-left: 15px;
+    margin-bottom: 11px;
 }
