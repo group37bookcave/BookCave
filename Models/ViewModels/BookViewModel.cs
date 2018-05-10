@@ -17,6 +17,8 @@ namespace BookCave.Models.ViewModels
 
         public ICollection<Review> Reviews { get; set; }
         public string Description { get; set; }
+        
+        public string Format { get; set; }
 
         // In minutes if Audiobook, pages if not.
         public int Length { get; set; }

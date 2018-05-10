@@ -27,13 +27,13 @@
                         <div>
                             <ul>
                                 <li><h4>@book.Name</h4></li>
-                                <li>Author: @book.BookAuthors</li>
+                                <li>Author: @book.Authors</li>
                                 <li>
                                     Format: @book.GetType().Name
                                 </li>
                                 <li>Pages: @book.Length</li>
                                 <li>Release Date: @book.ReleaseDate</li>
-                                <li>Language: @book.BookLanguages</li>
+                                <li>Language: @book.Languages</li>
                                 <li>Publisher: @book.Publisher</li>
                                 <li>
                                     <span class="fa fa-star grey"></span>
@@ -95,7 +95,7 @@
         <div class="row">
             <div class="col-sm-12 col-md-10 col-md-offset-1">
                 <div>
-                    @foreach(var review in @book.Reviews){
+                    @foreach(var review in book.Reviews){
                     <h3>Review</h3>
 
                     <hr/>
