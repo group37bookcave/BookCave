@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using BookCave.Models.EntityModels;
+﻿using BookCave.Models.EntityModels;
 using BookCave.Models.InputModels;
 using BookCave.Models.ViewModels;
 using BookCave.Repositories;
@@ -35,19 +34,6 @@ namespace BookCave.Services
             }
 
             return model;
-        }
-
-        public void AddAddressToCustomer(int customerId, AddressInputModel model)
-        {
-             var address = new Address
-             {
-                 City = model.City,
-                 Street = model.Street,
-                 CountryId = model.CountryId,
-                 ZipCode = model.Zipcode
-             };
-            _addressRepo.AddAddress(address);
-            _addressRepo.AddAddressToCustomer(customerId, address.Id);
         }
 
         public int CreateCustomer(RegisterInputModel model)

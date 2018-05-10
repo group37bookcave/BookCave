@@ -50,8 +50,8 @@ namespace BookCave.Repositories
             var order = GetOrderById(orderId);
             var itemorder = new ItemOrder
             {
-                Order = order,
-                Product = _pr.GetProduct(productId)
+                OrderId = orderId,
+                ProductId = productId
             };
             order.ItemOrders.Add(itemorder);
             _db.Update(order);

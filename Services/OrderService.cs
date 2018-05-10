@@ -42,7 +42,7 @@ namespace BookCave.Services
             var order = _orderRepo.GetActiveOrder(customerId);
             if(order == null)
             {
-                throw new NotImplementedException();
+                
             }
             return ConvertToOrderViewModel(order);
         }
