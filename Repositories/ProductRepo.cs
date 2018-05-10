@@ -5,6 +5,7 @@ using BookCave.Models;
 using BookCave.Models.EntityModels;
 using BookCave.Models.InputModels;
 using BookCave.Models.ViewModels;
+using Remotion.Linq.Clauses;
 
 namespace BookCave.Repositories
 {
@@ -541,10 +542,13 @@ namespace BookCave.Repositories
             }
         }
 
-        public string GetPublisherByBookId(string name)
+        public string GetPublisherByBookId(int id)
         {
-
-            throw new System.NotImplementedException();
+            var publisher = (from p in _db.Publishers
+                join b in _db.Books on p.Id equals b.Publisher.Id
+                where b.Id == id
+                select p).SingleOrDefault();
+            return (publisher != null) ? publisher.Name : "No publisher registered";
         }
     }
 }
