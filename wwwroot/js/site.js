@@ -21,6 +21,11 @@ $(document).ready(function(e){
     });
     
 
+    $("a#filter-products").click(function() {
+        $("#filter").toggle();
+    })
+    
+
 //    $(document).on('click', '.mega-dropdown', function(e) {
 //        e.stopPropagation()
 //    });
