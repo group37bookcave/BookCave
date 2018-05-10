@@ -46,7 +46,7 @@
                                     <ul>
                                         <li>
                                             <h4>
-                                                <a href="/Product/BookDetail/@item.Id">@item.Name</a>
+                                                <a asp-controller="Product" asp-action="BookDetail" asp-route-id=@item.Id>@item.Name</a>
                                             </h4>
                                         </li>
                                         <li>
@@ -92,9 +92,7 @@
                                     </a>
                                 </div>
                                 <div class="button-options green-buttons">
-                                    <a class="btn btn-default" type="button" asp-area="" asp-controller="" asp-action="">
-                                        Add to Cart
-                                    </a>
+                                    <a class="btn btn-default" type="submit" value="Add to Cart" asp-area="" asp-controller="Order" asp-action="AddProduct" asp-route-id=@item.Id/>
                                 </div>
                                 <div class="button-options green-buttons">
                                     <a class="btn btn-default" type="button" asp-area="" asp-controller="" asp-action="">
