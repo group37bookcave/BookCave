@@ -1,4 +1,4 @@
-
+@model BookCave.Models.ViewModels.OrderViewModel
 
 @{
     ViewData["Title"] = "Shopping Cart";
@@ -40,7 +40,7 @@
                         </td>
 
                         <td class="col-sm-1 col-md-1">
-
+                            <a asp-controller="Order" asp-action="ShoppingCart" asp-route-id="" >Remove</a>   
                         </td>
                     </tr>
                 </tbody>
