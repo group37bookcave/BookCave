@@ -8,11 +8,8 @@ using Microsoft.AspNetCore.Identity;
 using BookCave.Models.EntityModels;
 using BookCave.Models.InputModels;
 
+//using System.Threading.Tasks;
 
-using System.Security.Claims;
-using System.Threading.Tasks;
-
-using Microsoft.AspNetCore.Identity;
 
 
 namespace BookCave.Controllers
@@ -21,8 +18,6 @@ namespace BookCave.Controllers
     public class OrderController : Controller
     {
         private readonly OrderService _orderService;
-
-        private readonly UserManager<ApplicationUser> _userManager;
         
         public OrderController()
         {
@@ -114,13 +109,6 @@ namespace BookCave.Controllers
         }
         public IActionResult AddToCart(int id)
         {
-            var user = _userManager.FindById(User.Identity.GetUserId());
-            var customerId = int.Parse( User.FindFirst("CustomerID").Value );
-            var customer = _userManager.GetUserId();
-            var temp = User.Identity.GetUserId();
-
-            var order = _orderService.GetActiveOrder(customer);
-            var add = _orderService.AddToOrder(id, order.OrderId);
             return View();
         }
     }
