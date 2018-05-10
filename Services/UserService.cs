@@ -39,6 +39,7 @@ namespace BookCave.Services
 
         public void AddAddressToCustomer(int customerId, AddressInputModel model)
         {
+            /* 
              var address = new Address
              {
                  City = model.City,
@@ -48,6 +49,7 @@ namespace BookCave.Services
              };
             _addressRepo.AddAddress(address);
             _addressRepo.AddAddressToCustomer(customerId, address.Id);
+            */
         }
 
         public int CreateCustomer(RegisterInputModel model)
