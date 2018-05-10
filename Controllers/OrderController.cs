@@ -87,11 +87,32 @@ namespace BookCave.Controllers
             }
             return View();
         }
-        
 
-        public IActionResult RemoveProduct()
+        [HttpPost]
+        public IActionResult AddProduct(int? id)
         {
-            throw new NotImplementedException();
+            if (id == null)
+            {
+                return View("Error");
+            }
+            var userId = int.Parse(User.FindFirst("customerId").Value);
+            var order = _orderService.GetActiveOrder(userId);
+            _orderService.AddToOrder((int) id, order);
+            return View("ShoppingCart");
+        }
+        
+        [HttpPost]
+        public IActionResult RemoveProduct(int? id)
+        {
+            if (id == null)
+            {
+                return View("Error");
+            }
+            var userId = int.Parse(User.FindFirst("customerId").Value);
+            var order = _orderService.GetActiveOrder(userId);
+            _orderService.RemoveItem((int) id, order);
+            return RedirectToAction("ShoppingCart", order);
+
         }
 
         public IActionResult ReviewPage()
