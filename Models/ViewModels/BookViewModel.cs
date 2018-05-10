@@ -27,12 +27,12 @@ namespace BookCave.Models.ViewModels
 
         public Isbn Isbn { get; set; }
         
-        public ICollection<BookLanguage> BookLanguages { get; set; }
+        public List<Language> Languages { get; set; }
 
-        public ICollection<BookAuthor> BookAuthors { get; set; }
+        public List<Author> Authors { get; set; }
 
-        public ICollection<BookGenre> BookGenres { get; set; }
+        public List<Genre> Genres { get; set; }
 
-        public ICollection<BookAgeGroup> BookAgeGroups { get; set; }
+        public List<AgeGroup> AgeGroups { get; set; }
     }
 }
