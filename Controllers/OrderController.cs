@@ -128,5 +128,16 @@ namespace BookCave.Controllers
         {
             return View();
         }
+
+        public IActionResult OrderHistory()
+        {
+            int userId = int.Parse(User.FindFirst("CustomerId").Value);
+            if(userId == 0)
+            {
+                return View();
+            }
+            var orderHistory = _orderService.OrderHistory(userId);
+            return View(orderHistory);
+        }
     }
 }
