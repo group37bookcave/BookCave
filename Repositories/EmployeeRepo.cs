@@ -3,7 +3,9 @@ using System.Linq;
 using BookCave.Data;
 using BookCave.Models.EntityModels;
 using BookCave.Models.InputModels;
+using BookCave.Models.ViewModels;
 using BookCave.Services;
+using Remotion.Linq.Clauses;
 
 namespace BookCave.Repositories
 {
@@ -32,6 +34,15 @@ namespace BookCave.Repositories
             _db.Add(employee);
             _db.SaveChanges();
             return employee.Id;
+        }
+
+        public IEnumerable<EmployeeViewModel> GetEmployees()
+        {
+            var emp = from e in _db.Employees select new EmployeeViewModel
+            {
+                Email = e.Email
+            };
+            return emp;
         }
     }
 }

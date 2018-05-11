@@ -1,4 +1,5 @@
-﻿using BookCave.Models.EntityModels;
+﻿using System.Collections.Generic;
+using BookCave.Models.EntityModels;
 using BookCave.Models.InputModels;
 using BookCave.Models.ViewModels;
 using BookCave.Repositories;
@@ -86,6 +87,11 @@ namespace BookCave.Services
                 LastName = model.LastName
             };
             return _employeeRepo.AddEmployee(employee);
+        }
+
+        public IEnumerable<EmployeeViewModel> GetEmployees()
+        {
+            return _employeeRepo.GetEmployees();
         }
     }
 }
