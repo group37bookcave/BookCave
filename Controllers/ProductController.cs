@@ -31,6 +31,9 @@ namespace BookCave.Controllers
         [HttpPost]
         public IActionResult AllProducts(string SearchString , string FilterBy)
         {
+            ViewBag.First = "ALL";
+            ViewBag.Second = "PRODUCTS";
+
             if(SearchString == null)
             {
                 return View();
@@ -51,6 +54,33 @@ namespace BookCave.Controllers
             }
         }
 
+        public IActionResult Rowling()
+        {
+            ViewBag.First = "ALL";
+            ViewBag.Second = "PRODUCTS";
+
+            List<BookViewModel> books = _productService.SearchByAuthor("Rowling");
+            return View("AllProducts", books);
+        }
+
+        public IActionResult Yrsa()
+        {
+            ViewBag.First = "ALL";
+            ViewBag.Second = "PRODUCTS";
+            
+            List<BookViewModel> books = _productService.SearchByAuthor("Yrsa");
+            return View("AllProducts", books);
+        }
+
+        public IActionResult James()
+        {
+            ViewBag.First = "ALL";
+            ViewBag.Second = "PRODUCTS";
+            
+            List<BookViewModel> books = _productService.SearchByAuthor("James");
+            return View("AllProducts", books);
+        }
+
         [HttpPost]
         public IActionResult FilterByGenre(string FilterBy)
         {
@@ -64,6 +94,50 @@ namespace BookCave.Controllers
             
             Genre genre = new Genre();
             genre.Name = FilterBy;
+            List<BookViewModel> books = _productService.FilterByGenre(genre);
+            return View("AllProducts", books);
+        }
+
+        public IActionResult Biographies()
+        {
+            ViewBag.First = "BIOGRAPHIES";
+            ViewBag.Second = "&MEMOIRS";
+
+            Genre genre = new Genre();
+            genre.Name = "Biographies & Memoirs";
+            List<BookViewModel> books = _productService.FilterByGenre(genre);
+            return View("AllProducts", books);
+        }
+
+        public IActionResult Children()
+        {
+            ViewBag.First = "CHIL";
+            ViewBag.Second = "DREN";
+
+            Genre genre = new Genre();
+            genre.Name = "Children";
+            List<BookViewModel> books = _productService.FilterByGenre(genre);
+            return View("AllProducts", books);
+        }
+
+        public IActionResult Fantasy()
+        {
+            ViewBag.First = "FANT";
+            ViewBag.Second = "ASY";
+
+            Genre genre = new Genre();
+            genre.Name = "Fantasy";
+            List<BookViewModel> books = _productService.FilterByGenre(genre);
+            return View("AllProducts", books);
+        }
+
+        public IActionResult Fiction()
+        {
+            ViewBag.First = "FIC";
+            ViewBag.Second = "TION";
+
+            Genre genre = new Genre();
+            genre.Name = "Fiction";
             List<BookViewModel> books = _productService.FilterByGenre(genre);
             return View("AllProducts", books);
         }

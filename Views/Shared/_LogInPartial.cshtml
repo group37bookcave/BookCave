@@ -41,9 +41,12 @@
                 <li>
                     <div class="row">
                         <div class="col-md-12">
-                            <a asp-controller="Account" asp-action="Details">Account Details</a>
-                            <a asp-controller="Customer" asp-action="WishList">WishList</a>
-                            <a asp-controller="Customer" asp-action="OrderHistory">My Orders</a>
+                            <a class="btn btn-link btn-primary" asp-controller="Account" asp-action="Details">Account Details</a>
+                            <br>
+                            <a class="btn btn-link btn-primary" asp-controller="Customer" asp-action="WishList">WishList</a>
+                            <br>
+                            <a class="btn btn-link btn-primary" asp-controller="Customer" asp-action="OrderHistory">My Orders</a>
+
                             <form method="post">
                                 <button type="submit" class="btn btn-link btn-primary" asp-controller="Account" asp-action="Logout">Logout</button>
                             </form>
