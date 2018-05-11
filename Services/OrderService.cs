@@ -62,5 +62,16 @@ namespace BookCave.Services
                     Quantity = itemOrder.Quantity
                 }).ToList();
         }
+
+        public List<OrderViewModel> OrderHistory(int customerId)
+        {
+            var customerOrders =  _orderRepo.GetAllOrdersByCustomerId(customerId);
+            var customerOrderList = new List<OrderViewModel>();
+            foreach(var order in customerOrders)
+            {
+                customerOrderList.Add(ConvertToOrderViewModel(order));
+            }
+            return customerOrderList;
+        }
     }
 }
