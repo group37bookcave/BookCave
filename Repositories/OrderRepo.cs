@@ -28,7 +28,7 @@ namespace BookCave.Repositories
             return codes.ToList();
         }
 
-        public Order GetOrderById(int orderId)
+        private Order GetOrderById(int orderId)
         {
             var order = from o in _db.Orders where o.Id == orderId select o;
             return order.SingleOrDefault();
@@ -45,11 +45,10 @@ namespace BookCave.Repositories
             return order;
         }
 
-        public Order RemoveFromOrder(int productId, int orderId)
+        public void RemoveFromOrder(int productId, int orderId)
         {
             var order = GetOrderById(orderId);
             RemoveItem(productId, order);
-            return order;
         }
 
         private void RemoveItem(int productId, Order order)
@@ -60,7 +59,7 @@ namespace BookCave.Repositories
             _db.SaveChanges();
         }
 
-        public Order AddToOrder(int productId, int orderId)
+        public void AddToOrder(int productId, int orderId)
         {
             var order = GetOrderById(orderId);
             var itemorder = GetItemOrder(productId, order.ItemOrders);
@@ -81,7 +80,6 @@ namespace BookCave.Repositories
                 _db.Update(order);
             }
             _db.SaveChanges();
-            return order;
         }
 
         private ItemOrder GetItemOrder(int productId, IEnumerable<ItemOrder> items)

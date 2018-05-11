@@ -46,7 +46,7 @@ namespace BookCave.Controllers
 
         public IActionResult TopRated()
         {
-            var books = _productService.Top10();
+            var books = _productService.GetTop10();
             return View(books);
         }
 
@@ -67,6 +67,11 @@ namespace BookCave.Controllers
         public IActionResult Register(HardCoverViewModel model)
         {
             throw new NotImplementedException();
+        }
+        public IActionResult SearchByTitle(string name)
+        {
+            var books = _productService.SearchByName(name);
+            return View(books);
         }
     }
 }
