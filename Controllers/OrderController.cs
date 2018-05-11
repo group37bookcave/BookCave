@@ -4,9 +4,14 @@ using System.Security.Claims;
 using BookCave.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using BookCave.Models.EntityModels;
 using BookCave.Models.InputModels;
 using Microsoft.AspNetCore.Identity;
+
+//using System.Threading.Tasks;
+
+
 
 
 namespace BookCave.Controllers
@@ -53,14 +58,9 @@ namespace BookCave.Controllers
         }
 
         [HttpPost]
-        public IActionResult Address(Address address)
-        {
-            if (ModelState.IsValid)
-            {
-                /*_orderService.AddToOrder.Address.Add(address); */
-                return RedirectToAction("ReviewPage");
-            }
-
+        public IActionResult Address(AddressInputModel address){
+            if(ModelState.IsValid){
+       
             return View();
         }
 

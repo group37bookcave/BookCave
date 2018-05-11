@@ -17,9 +17,25 @@ namespace BookCave.Controllers
             _productService = new ProductService();
         }
 
+        [HttpGet]
         public IActionResult AllProducts()
         {
             var books = _productService.GetAllBooks();
+            return View(books);
+        }
+
+        [HttpPost]
+        public IActionResult AllProducts(string SearchString)
+        {
+            if(SearchString == null)
+            {
+                return View();
+            }
+            
+            List<BookViewModel> books = _productService.SearchByAuthor(SearchString);
+            //List<BookViewModel> books = _productService.SearchByIsbn(SearchString);
+            //List<BookViewModel> books = _productService.SearchByTitle(SearchString);
+           
             return View(books);
         }
 
@@ -67,6 +83,11 @@ namespace BookCave.Controllers
         public IActionResult Register(HardCoverViewModel model)
         {
             throw new NotImplementedException();
+        }
+        public IActionResult SearchByTitle(string name)
+        {
+            var books = _productService.SearchByName(name);
+            return View(books);
         }
     }
 }
