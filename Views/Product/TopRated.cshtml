@@ -93,7 +93,6 @@
                             </div>
                         </td>
                         <td class="col-sm-2 col-md-2" valign="top">
-
                             <div>
                                 <div class="button-options grey-buttons">
                                     <a class="btn btn-default" type="button" asp-area="" asp-controller="" asp-action="">
@@ -102,19 +101,15 @@
                                 </div>
                                 <div class="button-options green-buttons">
                                     <form method="post" asp-area="" asp-controller="Order" asp-action="Add" asp-route-id=@item.Id>
-                                        <button
-                                            class="btn btn-default addToCart" type="submit" value="Add to Cart">
-                                        </button>
+                                        <input class="btn btn-default" type="submit" value="Add to Cart"/>
                                     </form>
-
                                 </div>
                                 <div class="button-options green-buttons">
-                                    <a class="btn btn-default" type="button" asp-area="" asp-controller="" asp-action="">
-                                        Add to WishList
-                                    </a>
+                                    <form method="post" asp-area="" asp-controller="Customer" asp-action="AddToWishList" asp-route-id=@item.Id>
+                                        <input class="btn btn-default"  type="submit" name="productId" value="Add to Wishlist"/>
+                                    </form>
                                 </div>
                             </div>
-
                         </td>
                     </tr>
                 }
