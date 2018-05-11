@@ -11,30 +11,21 @@
             <div class="page-header">
                 <h1><span class="book-cave-color">ORDER</span><span>HISTORY</span></h1>
             </div>
-            @foreach(var order in Model){
             <table class="table table-condensed">
-                <thead>
-                <tr>
-                    <th>Order Number</th>
-                    <th>Order Date</th>
-                    <th>Order Status</th>
-                </tr>
-                </thead>
-                @foreach(var prod in order.Items){
                 <tbody>
-                @foreach(var order in @Model.items)
+                @foreach(var order in @Model.Items)
                 {
                     <tr>
                         <td>order.Id</td>
                         <td>order.Date</td>
-                        <td>In transit</td>
+                        <td>order.Status</td>
                     </tr>
+
+                    @foreach (var item in order)
+                    {
+                        
+                    }
                 }
-                <tr>
-                    <td>312</td>
-                    <td>30.04.18</td>
-                    <td>Delivered</td>
-                </tr>
                 </tbody>
             </table>
             }

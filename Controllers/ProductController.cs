@@ -23,6 +23,8 @@ namespace BookCave.Controllers
         public IActionResult AllProducts()
         {
             var books = _productService.GetAllBooks();
+            ViewBag.First = "ALL";
+            ViewBag.Second = "PRODUCTS";
             return View(books);
         }
 
@@ -52,6 +54,9 @@ namespace BookCave.Controllers
         [HttpPost]
         public IActionResult FilterByGenre(string FilterBy)
         {
+            ViewBag.First = "ALL";
+            ViewBag.Second = "PRODUCTS";
+
             if(FilterBy== null)
             {
                 return View("AllProducts");
@@ -66,6 +71,9 @@ namespace BookCave.Controllers
         [HttpPost]
         public IActionResult SortBy(string SortBy)
         {
+            ViewBag.First = "ALL";
+            ViewBag.Second = "PRODUCTS";
+
             if(SortBy == null)
             {
                 return View("AllProducts");
@@ -92,6 +100,9 @@ namespace BookCave.Controllers
         [HttpPost]
         public IActionResult FilterByFormat(string FilterBy)
         {
+            ViewBag.First = "ALL";
+            ViewBag.Second = "PRODUCTS";
+
             if(FilterBy== null)
             {
                 return View("AllProducts");
@@ -170,5 +181,36 @@ namespace BookCave.Controllers
             throw new NotImplementedException();
         }
 
+        public IActionResult Paberbacks()
+        {
+            var paberbacks = _productService.GetAllPaberbacks();
+            ViewBag.First = "PAPER";
+            ViewBag.Second = "BACKS";
+            return View("AllProducts", paberbacks);
+        }
+
+        public IActionResult AudioBooks()
+        {
+            var audiobooks = _productService.GetAllAudioBooks();
+            ViewBag.First = "AUDIO";
+            ViewBag.Second = "BOOKS";
+            return View("AllProducts", audiobooks);
+        }
+
+        public IActionResult EBooks()
+        {
+            var ebooks = _productService.GetAllEBooks();
+            ViewBag.First = "E";
+            ViewBag.Second = "BOOKS";
+            return View("AllProducts", ebooks);
+        }
+
+        public IActionResult Hardcover()
+        {
+            var hardcover = _productService.GetAllHardcovers();
+            ViewBag.First = "HARD";
+            ViewBag.Second = "COVER";
+            return View("AllProducts", hardcover);
+        }
     }
 }
