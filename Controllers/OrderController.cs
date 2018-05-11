@@ -7,10 +7,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using BookCave.Models.EntityModels;
 using BookCave.Models.InputModels;
-<<<<<<< HEAD
-=======
-
->>>>>>> 7e219dd70e2d442a231b4c36813cad7dfa7f68b5
 
 //using System.Threading.Tasks;
 

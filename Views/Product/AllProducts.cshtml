@@ -8,34 +8,17 @@
     <div class="row">
         <div class="col-sm-12 col-md-10 col-md-offset-1">
             <div class="page-header">
+                
                 <div class="inline-block">
                     <h1>
                         <span class="book-cave-color">ALL</span><span>PRODUCTS</span>
                     </h1>
                 </div>
-                <span class="filter-and-sort">
-                    <a id="filter-products" class="inline-block">Filter</a>
-
-                    <form asp-controller="Product" asp-action="SortBy" method="post" class="inline-block filter-form">
-                        <select name="SortBy" value="all" class="form-control" id="sort-by">
-                            <option class="select-filter" data-filter="all">Sort By</option>
-                            <option class="select-filter" data-filter="name">Name</option>                  
-                            <option class="select-filter" data-filter="price">Price</option>
-
-                        </select>
-                         <input type="submit" name="SortBy" id="SortBy" value="Sort">
-                    </form>
-                </span>
-                
-                <form asp-controller="Product" asp-action="FilterByGenre" method="post" class="inline-block filter-form">
-                    <div class="row" id="filter">
-                        <h5 id="filter-by-text">Filter by:</h5>
-                        <div class="col-xs-3 form-group">
-
-                         <input type="submit" name="SortBy" id="SortBy" value="Sort">
-                    
-                            <select name="FilterBy" value="all" class="form-control" id="select-genre">
-                                <option value="Genre">Genre</option>
+                <!--<span class="filter-and-sort">-->
+                <div class="filter-sort-form">
+                    <form asp-controller="Product" asp-action="FilterByGenre" method="post" class="form-inline">
+                        <select name="FilterBy" value="all" class="form-control" id="select-genre">
+                                <option value="Genre">Filter By</option>
                                 <option value="Biographies">Biographies & Memoirs</option>
                                 <option value="Children">Children</option>
                                 <option value="Fantasy">Fantasy</option>
@@ -47,11 +30,21 @@
                                 <option value="Ebook">Ebooks</option>
                                 <option value="HardCover">HardCover</option>
                                 <option value="PaperBack">PaperBack</option>
-                            </select>
-                        </div>
-                    </div>
-                    <input type="submit" name="FilterBy" id="FilterBy" value="Filter">
-                </form>
+                        </select>
+                        <input type="submit" name="FilterBy" value="Filter" class="form-control filter-sort-buttons">
+                    </form>
+                </div>
+
+                <div class="filter-sort-form">
+                    <form asp-controller="Product" asp-action="SortBy" method="post" class="form-inline">
+                        <select name="SortBy" value="all" class="form-control" id="sort-by">
+                            <option class="select-filter" data-filter="all">Sort By</option>
+                            <option class="select-filter" data-filter="name">Name</option>
+                            <option class="select-filter" data-filter="price">Price</option>
+                        </select>
+                        <input type="submit" name="SortBy" value="Sort" class="form-control filter-sort-buttons">
+                    </form>
+                </div>
             </div>
             <table>
                 <tbody>
@@ -131,7 +124,7 @@
                 }
                 </tbody>
             </table>
-        <hr/>        
+            <hr/>
         </div>
     </div>
 </div>
