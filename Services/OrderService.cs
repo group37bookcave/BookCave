@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-
 using BookCave.Models.EntityModels;
 using BookCave.Models.InputModels;
 using BookCave.Models.ViewModels;
@@ -21,9 +20,20 @@ namespace BookCave.Services
             {
                 OrderId = order.Id,
                 CustomerId = order.Customer.Id,
-                Items = ConvertToViewModel(order.ItemOrders)
+                Items = ConvertToItemOrderViewModels(order.ItemOrders)
             };
             return viewModel;
+        }
+        
+        private static List<ItemOrderViewModel> ConvertToItemOrderViewModels(IEnumerable<ItemOrder> model)
+        {
+            var itemOrder = model?.Select(item => new ItemOrderViewModel
+                {
+                    ProductId = item.ProductId,
+                    Quantity = item.Quantity
+                })
+                .ToList();
+            return itemOrder;
         }
 
         public bool CheckoutOrder(OrderInputModel model)
@@ -38,31 +48,15 @@ namespace BookCave.Services
 
         public OrderViewModel GetActiveOrder(int customerId)
         {
-            var order = _orderRepo.GetActiveOrder(customerId);
-            return ConvertToOrderViewModel(order);
+            return _orderRepo.GetActiveOrder(customerId);
         }
 
-        private static OrderViewModel ConvertToOrderViewModel(Order order)
+        public List<OrderViewModel> OrderHistory(int customerId)
         {
-            var viewModel = new OrderViewModel
-            {
-                CustomerId = order.Customer.Id,
-                Items = ConvertToViewModel(order.ItemOrders),
-                OrderId = order.Id
-            };
-            return viewModel;
+            return _orderRepo.GetAllOrdersByCustomerId(customerId);
+            
         }
-
-        private static List<ItemOrderViewModel> ConvertToViewModel(IEnumerable<ItemOrder> model)
-        {
-            return model.Select(itemOrder =>
-                new ItemOrderViewModel
-                {
-                    ProductId = itemOrder.Product.Id,
-                    Quantity = itemOrder.Quantity
-                }).ToList();
-        }
-
+        
         public void RemoveItem(int id, OrderViewModel order)
         {
             _orderRepo.RemoveFromOrder(id, order.OrderId);

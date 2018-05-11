@@ -11,29 +11,18 @@ namespace BookCave.Repositories
     public class OrderRepo
     {
         private readonly StoreContext _db = new StoreContext();
-        private readonly CustomerRepo _cr = new CustomerRepo();
         private readonly ProductRepo _pr = new ProductRepo();
 
-
-        public IEnumerable<ItemOrderViewModel> GetItemOrderViewModels(int itemorderId)
+        public List<OrderViewModel> GetAllOrdersByCustomerId(int customerId)
         {
-            var items = from item in _db.ItemOrders
-                join product in _db.Products on item.ProductId equals product.Id
-                where item.Id == itemorderId
-                select new ItemOrderViewModel
-                {
-                    Image = product.Image,
-                    Name = product.Name,
-                    Price = product.Price,
-                    ProductId = product.Id,
-                    Quantity = item.Quantity
-                };
-            return items;
-        }
-
-        public List<Order> GetAllOrdersByCustomerId(int customerId)
-        {
-            var orders = from o in _db.Orders where o.Customer.Id == customerId select o;
+            var orders = from order in _db.Orders where order.CustomerId == customerId select new OrderViewModel
+            {
+                CustomerId = customerId,
+                OrderId = order.Id,
+                OrderDate = order.Date,
+                Status = order.Status,
+                Items = GetItemOrdersByOrderId(order.Id)
+            };
             return orders.ToList();
         }
 
@@ -60,25 +49,33 @@ namespace BookCave.Repositories
             _db.SaveChanges();
             return order;
         }
+        
+        private List<ItemOrder> ConvertToItemOrder(IEnumerable<ItemOrderViewModel> items)
+        {
+            return items.Select(item =>
+                new ItemOrder
+                {
+                    Product = _pr.GetProduct(item.ProductId),
+                    Quantity = item.Quantity
+                }).ToList();
+        }
 
         public void RemoveFromOrder(int productId, int orderId)
         {
-            var order = GetOrderById(orderId);
-            RemoveItem(productId, order);
-        }
+            var orderItem = (from i in _db.ItemOrders where i.OrderId == orderId && i.ProductId == productId select i)
+                .SingleOrDefault();
+            if (orderItem == null)
+            {
+                return;
+            }
 
-        private void RemoveItem(int productId, Order order)
-        {
-            var item = (from i in order.ItemOrders where i.ProductId == productId select i).SingleOrDefault();
-            order.ItemOrders.Remove(item);
-            _db.Update(order);
+            _db.Remove(orderItem);
             _db.SaveChanges();
         }
 
         public void AddToOrder(int productId, int orderId)
         {
-            var order = GetOrderById(orderId);
-            var itemorder = GetItemOrder(productId, order.ItemOrders);
+            var itemorder = GetItemOrder(productId, orderId);
             if (itemorder != null)
             {
                 itemorder.Quantity++;
@@ -92,25 +89,31 @@ namespace BookCave.Repositories
                     ProductId = productId,
                     Quantity = 1
                 };
-                order.ItemOrders.Add(itemorder);
-                _db.Update(order);
+                _db.ItemOrders.Add(itemorder);
             }
 
             _db.SaveChanges();
         }
 
-        private ItemOrder GetItemOrder(int productId, IEnumerable<ItemOrder> items)
+        private ItemOrder GetItemOrder(int productId, int orderId)
         {
-            return items.FirstOrDefault(item => item.ProductId == productId);
+            var item = (from i in _db.ItemOrders where i.OrderId == orderId && i.ProductId == productId select i)
+                .SingleOrDefault();
+            return item;
         }
 
-        private List<ItemOrder> ConvertToItemOrder(IEnumerable<ItemOrderViewModel> items)
+        private List<ItemOrderViewModel> GetItemOrdersByOrderId(int orderId)
         {
-            return items.Select(item =>
-                new ItemOrder
+            return (from i in _db.ItemOrders
+                join p in _db.Products on i.ProductId equals p.Id
+                where i.OrderId == orderId
+                select new ItemOrderViewModel
                 {
-                    Product = _pr.GetProduct(item.ProductId),
-                    Quantity = item.Quantity
+                    ProductId = p.Id,
+                    Quantity = i.Quantity,
+                    ProductName = p.Name,
+                    Image = p.Image,
+                    Price = p.Price
                 }).ToList();
         }
 
@@ -123,37 +126,52 @@ namespace BookCave.Repositories
             }
 
             order.IsCheckedOut = true;
+            order.Date = DateTime.Today;
+            _db.Update(order);
             _db.SaveChanges();
             return true;
         }
 
-        public Order GetActiveOrder(int customerId)
+        public OrderViewModel GetActiveOrder(int customerId)
         {
             if (!HasActiveOrder(customerId))
             {
                 return CreateNewOrder(customerId);
             }
 
-            var order = from o in _db.Orders where o.Customer.Id == customerId && o.IsCheckedOut select o;
-            return order.SingleOrDefault();
+            var order = (from o in _db.Orders
+                where o.Customer.Id == customerId && !o.IsCheckedOut
+                select new OrderViewModel
+                {
+                    CustomerId = o.CustomerId,
+                    OrderId = o.Id,
+                    Items = GetItemOrdersByOrderId(o.Id)
+                }).SingleOrDefault();
+            return order;
         }
 
-        private Order CreateNewOrder(int customerId)
+        private OrderViewModel CreateNewOrder(int customerId)
         {
             var order = new Order
             {
-                Customer = _cr.GetCustomer(customerId),
+                CustomerId = customerId,
                 IsCheckedOut = false,
+                ItemOrders = new List<ItemOrder>(),
             };
             _db.Orders.Add(order);
             _db.SaveChanges();
-            return order;
+            return new OrderViewModel
+            {
+                CustomerId = order.CustomerId,
+                OrderId = order.Id,
+                Items = new List<ItemOrderViewModel>()
+            };
         }
 
         private bool HasActiveOrder(int customerId)
         {
             var order = from o in _db.Orders
-                where o.Customer.Id == customerId && o.IsCheckedOut == false
+                where o.Customer.Id == customerId && !o.IsCheckedOut
                 select o;
             return order.Any();
         }

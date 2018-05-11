@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 using BookCave.Models.ViewModels;
 using BookCave.Services;
 using Microsoft.AspNetCore.Authorization;
+using BookCave.Models.InputModels;
+using System.Security.Claims;
 
 namespace BookCave.Controllers
 {
@@ -25,19 +27,82 @@ namespace BookCave.Controllers
         }
 
         [HttpPost]
-        public IActionResult AllProducts(string SearchString)
+        public IActionResult AllProducts(string SearchString , string FilterBy)
         {
             if(SearchString == null)
             {
                 return View();
             }
-            
-            List<BookViewModel> books = _productService.SearchByAuthor(SearchString);
-            //List<BookViewModel> books = _productService.SearchByIsbn(SearchString);
-            //List<BookViewModel> books = _productService.SearchByTitle(SearchString);
-           
-            return View(books);
+            if(FilterBy == "Author")
+            {
+                List<BookViewModel> books = _productService.SearchByAuthor(SearchString);
+                return View(books);
+            }
+            else if(FilterBy == "ISBN")
+            {
+                List<BookViewModel> books = _productService.SearchByIsbn(SearchString);
+                return View(books);
+            }
+            else{
+                List<BookViewModel> books = _productService.SearchByName(SearchString);
+                return View(books);
+            }
         }
+
+        [HttpPost]
+        public IActionResult FilterByGenre(string FilterBy)
+        {
+            if(FilterBy== null)
+            {
+                return View("AllProducts");
+            }
+            
+            Genre genre = new Genre();
+            genre.Name = FilterBy;
+            List<BookViewModel> books = _productService.FilterByGenre(genre);
+            return View("AllProducts", books);
+        }
+
+        [HttpPost]
+        public IActionResult SortBy(string SortBy)
+        {
+            if(SortBy == null)
+            {
+                return View("AllProducts");
+            }
+            
+            if(SortBy == "Name"){
+                 List<BookViewModel> books = _productService.SortByName();
+                return View("AllProducts", books);
+                
+            }
+            else if(SortBy == "Price")
+            {
+                List<BookViewModel> books = _productService.SortByPrice();
+                return View("AllProducts", books);
+            }
+            else{
+                return View("AllProducts");
+            }
+            
+            
+        }
+
+        /*
+        [HttpPost]
+        public IActionResult FilterByFormat(string FilterBy)
+        {
+            if(FilterBy== null)
+            {
+                return View("AllProducts");
+            }
+            
+            Format genre = new Format();
+            genre.Name = FilterBy;
+            List<BookViewModel> books = _productService.FilterByGenre(genre);
+            return View("AllProducts", books);
+        }
+        */
 
         public IActionResult BookDetail(int? id)
         {
@@ -49,6 +114,26 @@ namespace BookCave.Controllers
             var book = _productService.GetBookById(id);
             return View(book);
         }
+
+        public IActionResult Review(){
+               return View("BookDetails");
+        }
+        
+        
+        [Authorize(Policy="Customer")]
+        [HttpPost]
+        public IActionResult Review(string review, int rating, int productId){
+            if(review == null)
+            {
+                return View("BookDetail");
+            }
+            
+            int userId = int.Parse(User.FindFirst("CustomerId").Value);
+            _productService.AddReview(review, rating, productId, userId);
+            return RedirectToAction("BookDetail");
+    
+        }
+
         
         public IActionResult AuthorDetail()
         {
@@ -84,10 +169,6 @@ namespace BookCave.Controllers
         {
             throw new NotImplementedException();
         }
-        public IActionResult SearchByTitle(string name)
-        {
-            var books = _productService.SearchByName(name);
-            return View(books);
-        }
+
     }
 }

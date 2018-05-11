@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace BookCave.Models.EntityModels
 {
@@ -8,6 +9,8 @@ namespace BookCave.Models.EntityModels
         
         public Customer Customer { get; set; }
 
+        public int CustomerId { get; set; }
+
         public Address Address { get; set; }
 
         public PromoCode PromoCode { get; set; }
@@ -15,5 +18,9 @@ namespace BookCave.Models.EntityModels
         public ICollection<ItemOrder> ItemOrders { get; set; }
 
         public bool IsCheckedOut { get; set; }
+
+        public string Status { get; set; }
+
+        public DateTime Date { get; set; }
     }
 }

@@ -4,13 +4,14 @@ using System.Collections.Generic;
 using BookCave.Models.EntityModels;
 using BookCave.Models.ViewModels;
 using BookCave.Repositories;
-
+using BookCave.Models.InputModels;
 
 namespace BookCave.Services
 {
     public class ProductService
     {
         private readonly ProductRepo _productRepo = new ProductRepo();
+        private readonly ReviewRepo _reviewRepo = new ReviewRepo();
 
         public List<BookViewModel> GetTop10()
         {
@@ -80,24 +81,42 @@ namespace BookCave.Services
         {
             return ConvertToBookViewModel(_productRepo.GetBooksByAuthorName(name));
         }
-        public List<BookViewModel> SearchByIsbn(Isbn isbn)
+        public List<BookViewModel> SearchByIsbn(string SearchString)
         {
+                Isbn isbn = new Isbn(); 
+                isbn.Isbn10 = SearchString;
+                isbn.Isbn13 = SearchString;
+                isbn.Asin = SearchString;
+        
             return ConvertToBookViewModel(_productRepo.GetBookByIsbn(isbn));
         }
         public List<BookViewModel> FilterByGenre(Genre genre)
         {
-            return ConvertToBookViewModel(_productRepo.GetBooksByGenreId(genre.Id));
+            return ConvertToBookViewModel(_productRepo.GetBooksByGenre(genre.Name));
         }
 
-        public List<BookViewModel> SortByName(List<BookViewModel> model)
+        public List<BookViewModel> SortByName()
         {
-            var sorted = model.OrderBy(item => item.Name).ToList();
-            return sorted;
+            var books = _productRepo.GetAllBooks();
+            var sorted =  books.OrderBy(item => item.Name).ToList();
+            var sortedView = ConvertToBookViewModel(sorted);
+            return sortedView;
         }
-        public List<BookViewModel> SortByPrice(List<BookViewModel> model)
+        public List<BookViewModel> SortByPrice()
         {
-            var sorted = model.OrderBy(item => item.Price).ToList();
-            return sorted;
+            var books = _productRepo.GetAllBooks();
+            var sorted =  books.OrderBy(item => item.Price).ToList();
+            var sortedView = ConvertToBookViewModel(sorted);
+            return sortedView;
+        }
+        public void AddReview(string review, int rating, int productId, int userId)
+        {
+            ReviewInputModel newReview = new ReviewInputModel();
+            newReview.Review = review;
+            newReview.Rating = rating;
+            newReview.ProductId = productId;
+            newReview.CustomerId = userId;
+            _reviewRepo.AddReviewToProduct(newReview);
         }
     }
 }

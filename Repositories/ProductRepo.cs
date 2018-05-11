@@ -190,11 +190,11 @@ namespace BookCave.Repositories
             return music.ToList();
         }
 
-        public List<Book> GetBooksByGenreId(int id)
+        public List<Book> GetBooksByGenre(string name)
         {
             var books = from BookGenre in _db.BookGenres
                 join book in _db.Books on BookGenre.BookId equals book.Id
-                where BookGenre.GenreId == id
+                where BookGenre.Genre.Name == name
                 select book;
             return books.ToList();
         }

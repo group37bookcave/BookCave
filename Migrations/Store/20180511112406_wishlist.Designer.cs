@@ -12,9 +12,10 @@ using System;
 namespace BookCave.Migrations.Store
 {
     [DbContext(typeof(StoreContext))]
-    partial class StoreContextModelSnapshot : ModelSnapshot
+    [Migration("20180511112406_wishlist")]
+    partial class wishlist
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -28,7 +29,7 @@ namespace BookCave.Migrations.Store
 
                     b.Property<string>("City");
 
-                    b.Property<int?>("CountryId");
+                    b.Property<int>("CountryId");
 
                     b.Property<string>("Street");
 
@@ -292,13 +293,9 @@ namespace BookCave.Migrations.Store
 
                     b.Property<int>("CustomerId");
 
-                    b.Property<DateTime>("Date");
-
                     b.Property<bool>("IsCheckedOut");
 
                     b.Property<int?>("PromoCodeId");
-
-                    b.Property<string>("Status");
 
                     b.HasKey("Id");
 
@@ -325,7 +322,11 @@ namespace BookCave.Migrations.Store
 
                     b.Property<double>("Price");
 
+                    b.Property<int?>("WishListId");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("WishListId");
 
                     b.ToTable("Products");
 
@@ -412,19 +413,6 @@ namespace BookCave.Migrations.Store
                         .IsUnique();
 
                     b.ToTable("WishLists");
-                });
-
-            modelBuilder.Entity("BookCave.Models.EntityModels.WishListProduct", b =>
-                {
-                    b.Property<int>("ProductId");
-
-                    b.Property<int>("WishListId");
-
-                    b.HasKey("ProductId", "WishListId");
-
-                    b.HasIndex("WishListId");
-
-                    b.ToTable("WishListProducts");
                 });
 
             modelBuilder.Entity("BookCave.Models.EntityModels.Book", b =>
@@ -547,7 +535,8 @@ namespace BookCave.Migrations.Store
                 {
                     b.HasOne("BookCave.Models.EntityModels.Country", "Country")
                         .WithMany("Addresses")
-                        .HasForeignKey("CountryId");
+                        .HasForeignKey("CountryId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("BookCave.Models.EntityModels.AudiobookNarrator", b =>
@@ -657,6 +646,13 @@ namespace BookCave.Migrations.Store
                         .HasForeignKey("PromoCodeId");
                 });
 
+            modelBuilder.Entity("BookCave.Models.EntityModels.Product", b =>
+                {
+                    b.HasOne("BookCave.Models.EntityModels.WishList")
+                        .WithMany("Products")
+                        .HasForeignKey("WishListId");
+                });
+
             modelBuilder.Entity("BookCave.Models.EntityModels.Review", b =>
                 {
                     b.HasOne("BookCave.Models.EntityModels.Customer", "Customer")
@@ -686,19 +682,6 @@ namespace BookCave.Migrations.Store
                     b.HasOne("BookCave.Models.EntityModels.Customer", "Customer")
                         .WithOne("WishList")
                         .HasForeignKey("BookCave.Models.EntityModels.WishList", "CustomerId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("BookCave.Models.EntityModels.WishListProduct", b =>
-                {
-                    b.HasOne("BookCave.Models.EntityModels.Product", "Product")
-                        .WithMany("WishLists")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("BookCave.Models.EntityModels.WishList", "WishList")
-                        .WithMany("Products")
-                        .HasForeignKey("WishListId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

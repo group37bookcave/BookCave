@@ -18,6 +18,8 @@ namespace BookCave.Models.EntityModels
 
         public string FullName => FirstName + " " + LastName;
 
+        public WishList WishList { get; set; }
+
         public ICollection<CustomerAddress> CustomerAddresses { get; set; }
 
         public ICollection<Order> Orders { get; set; }
