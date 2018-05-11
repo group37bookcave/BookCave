@@ -4,13 +4,14 @@ using System.Collections.Generic;
 using BookCave.Models.EntityModels;
 using BookCave.Models.ViewModels;
 using BookCave.Repositories;
-
+using BookCave.Models.InputModels;
 
 namespace BookCave.Services
 {
     public class ProductService
     {
         private readonly ProductRepo _productRepo = new ProductRepo();
+        private readonly ReviewRepo _reviewRepo = new ReviewRepo();
 
         public List<BookViewModel> GetTop10()
         {
@@ -107,6 +108,15 @@ namespace BookCave.Services
             var sorted =  books.OrderBy(item => item.Price).ToList();
             var sortedView = ConvertToBookViewModel(sorted);
             return sortedView;
+        }
+        public void AddReview(string review, int rating, int productId, int userId)
+        {
+            ReviewInputModel newReview = new ReviewInputModel();
+            newReview.Review = review;
+            newReview.Rating = rating;
+            newReview.ProductId = productId;
+            newReview.CustomerId = userId;
+            _reviewRepo.AddReviewToProduct(newReview);
         }
     }
 }
