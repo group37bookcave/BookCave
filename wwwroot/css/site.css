@@ -153,9 +153,6 @@ tfoot > tr {
     color: rgb(252, 202, 68);
 }
 
-<<<<<<< HEAD
-#sort-by , select-genre {
-=======
 #sort-by {
     width: 75px;
     margin-left: 20px;
@@ -163,14 +160,12 @@ tfoot > tr {
 
 #select-genre {
     width: 150px;
->>>>>>> 2f89aeed43af9cb87fb6ead138b69116637565ef
     margin-left: 20px;
     width: 150px;
 }
 
 .filter-and-sort{
     margin-left: 450px;
-
 }
 
 .all-products-header {
