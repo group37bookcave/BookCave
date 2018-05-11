@@ -4,8 +4,12 @@ using System.Security.Claims;
 using BookCave.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using BookCave.Models.EntityModels;
 using BookCave.Models.InputModels;
+
+//using System.Threading.Tasks;
+
 
 
 
@@ -116,7 +120,11 @@ namespace BookCave.Controllers
             return View();
         }
 
-          public IActionResult Receipt()
+        public IActionResult Receipt()
+        {
+            return View();
+        }
+        public IActionResult AddToCart(int id)
         {
             return View();
         }
