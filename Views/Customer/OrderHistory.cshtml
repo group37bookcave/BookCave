@@ -6,13 +6,12 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-12 col-md-10 col-md-offset-1">
-
             <div class="page-header">
                 <h1><span class="book-cave-color">ORDER</span><span>HISTORY</span></h1>
             </div>
-            
             <table class="table table-condensed">
-            @foreach(var order in Model){
+            @foreach(var order in Model)
+            {
                 <thead>
                 <tr>
                     <th>Order Number: @order.OrderId</th>
@@ -30,9 +29,10 @@
                         <td>@prod.Quantity</td>
                         <td>@prod.Price</td>
                     </tr>
-                    </tbody>}}
+                    </tbody>                 
+                }
+            }
             </table>
-            
             <div class="button-options grey-buttons"> 
                 <a class="btn btn-default grey-buttons" type="button" asp-area="" asp-controller="Product" asp-action="AllProducts">Continue Shopping</a>
                 <a class="btn btn-default grey-buttons" type="button" asp-area="" asp-controller="" asp-action="">Send to Email</a>

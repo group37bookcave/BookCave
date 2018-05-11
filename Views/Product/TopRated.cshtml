@@ -72,14 +72,6 @@
                                             @lan.Name
                                         }
                                     </li>
-                                    <li>
-                                        <span class="fa fa-star grey"></span>
-                                        <span class="fa fa-star grey"></span>
-                                        <span class="fa fa-star grey"></span>
-                                        <span class="fa fa-star grey"></span>
-                                        <span class="fa fa-star grey"></span>
-                                        <span class="grey"> No rating(s) </span>
-                                    </li>
                                 </ul>
 
                             </div>
@@ -94,11 +86,6 @@
                         </td>
                         <td class="col-sm-2 col-md-2" valign="top">
                             <div>
-                                <div class="button-options grey-buttons">
-                                    <a class="btn btn-default" type="button" asp-area="" asp-controller="" asp-action="">
-                                        Buy Now
-                                    </a>
-                                </div>
                                 <div class="button-options green-buttons">
                                     <form method="post" asp-area="" asp-controller="Order" asp-action="Add" asp-route-id=@item.Id>
                                         <input class="btn btn-default" type="submit" value="Add to Cart"/>
@@ -106,7 +93,7 @@
                                 </div>
                                 <div class="button-options green-buttons">
                                     <form method="post" asp-area="" asp-controller="Customer" asp-action="AddToWishList" asp-route-id=@item.Id>
-                                        <input class="btn btn-default"  type="submit" name="productId" value="Add to Wishlist"/>
+                                        <input class="btn btn-default" type="submit" name="productId" value="Add to Wishlist"/>
                                     </form>
                                 </div>
                             </div>

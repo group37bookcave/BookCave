@@ -7,67 +7,65 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-12 col-md-10 col-md-offset-1">
-            <div class=page-header>  
-                <h1><span class="book-cave-color">ALL</span><span>PRODUCTS</span></h1>
+            <div class=page-header>
+                <h1>
+                    <span class="book-cave-color">ALL</span><span>PRODUCTS</span>
+                </h1>
             </div>
-                <a asp-area="" asp-controller="" asp-action="">Filter</a>
-                    <form class="all-products-header input-form">
-                        <select class="form-control" id="sort-by">
-                        <option value="">Sort by:</option>
-                        <option value="name">Name</option>
-                        <option value="author">Author</option>
-                        <option value="price">Price</option>
-                        <option value="popularity">Popularity</option>
-                        <option value="pages">Number of pages</option>
-                        <option value="release-year">Release Year</option>
-                        <option value="lenght">Length</option>
-                        <option value="rating">Rating</option>
-                        </select>
-                    </form>
-                <hr>
-                
-                <table>
-                    <tbody>
-                        <tr class="list-item">
-                            <td class="col-sm-8 col-md-6">
-                                <div class="media">
-                                <a class="pull-left" href="#"> <div class="col-sm-2 hidden-xs"><img src="http://placehold.it/180x200/456" class="media-object" alt="ItemImage" style="width: 180px; height: 200px;"></div> </a>
-                                <div class="media-body">
-                                    <h4>Item name</h4>
-                                    <ul>
-                                        <li>Author:</li>
-                                        <li>Format:</li>
-                                        <li>Length:</li>
-                                        <li>Release date:</li>
-                                        <li>Language:</li>  
-                                    </ul>
-                                   
-                                    <span class="stars fa fa-star"></span>
-                                    <span class="stars fa fa-star"></span>
-                                    <span class="stars fa fa-star"></span>
-                                    <span class="stars fa fa-star"></span>
-                                    <span class="stars fa fa-star"></span>
+            <a asp-area="" asp-controller="" asp-action="">Filter</a>
+            <form class="all-products-header input-form">
+                <select class="form-control" id="sort-by">
+                    <option value="">Sort by:</option>
+                    <option value="name">Name</option>
+                    <option value="author">Author</option>
+                    <option value="price">Price</option>
+                    <option value="popularity">Popularity</option>
+                    <option value="pages">Number of pages</option>
+                    <option value="release-year">Release Year</option>
+                    <option value="lenght">Length</option>
+                    <option value="rating">Rating</option>
+                </select>
+            </form>
+            <hr>
+            <table>
+                <tbody>
+                <tr class="list-item">
+                    <td class="col-sm-8 col-md-6">
+                        <div class="media">
+                            <a class="pull-left" href="#">
+                                <div class="col-sm-2 hidden-xs">
+                                    <img src="http://placehold.it/180x200/456" class="media-object" alt="ItemImage" style="width: 180px; height: 200px;">
                                 </div>
+                            </a>
+                            <div class="media-body">
+                                <h4>Item name</h4>
+                                <ul>
+                                    <li>Author:</li>
+                                    <li>Format:</li>
+                                    <li>Length:</li>
+                                    <li>Release date:</li>
+                                    <li>Language:</li>
+                                </ul>
                             </div>
-                            </td>
-                    
-                            <td class="col-sm-1 col-md-1">
-                                <p><strong>Price: $0.00</strong></p>
-                            </td>
-                        
-                            <td class="col-sm-1 col-md-1">
-                                <div class="button-options grey-button"> 
-                                    <a class="btn btn-default" type="button" asp-area="" asp-controller="" asp-action="">View Details</a>
-                                </div>
-                                <div id="green-buttons">
-                                    <a class="btn btn-default" type="button" asp-area="" asp-controller="" asp-action="">Edit Details</a>
-                                    <a class="btn btn-default" type="button" asp-area="" asp-controller="" asp-action="">Publish</a>
-                                </div>	
-                            </td>
-                        </tr>
+                        </div>
+                    </td>
+                    <td class="col-sm-1 col-md-1">
+                        <p>
+                            <strong>Price: $0.00</strong>
+                        </p>
+                    </td>
+                    <td class="col-sm-1 col-md-1">
+                        <div class="button-options grey-button">
+                            <a class="btn btn-default" type="button" asp-area="" asp-controller="" asp-action="">View Details</a>
+                        </div>
+                        <div id="green-buttons">
+                            <a class="btn btn-default" type="button" asp-area="" asp-controller="" asp-action="">Edit Details</a>
+                            <a class="btn btn-default" type="button" asp-area="" asp-controller="" asp-action="">Publish</a>
+                        </div>
+                    </td>
+                </tr>
                 </tbody>
             </table>
         </div>
     </div>
 </div>
-
