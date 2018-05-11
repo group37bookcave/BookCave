@@ -15,8 +15,8 @@
                 </div>
                 <span class="filter-and-sort">
                     <a id="filter-products" class="inline-block">Filter</a>
-                    <form asp-controller="Product" asp-action="Filter" method="post" class="inline-block filter-form">
-                        <select name="FilterBy" value="all" class="form-control" id="sort-by">
+                    <form asp-controller="Product" asp-action="SortBy" method="post" class="inline-block filter-form">
+                        <select name="SortBy" value="all" class="form-control" id="sort-by">
                             <option class="select-filter" data-filter="all">Sort By</option>
                             <option class=-"select-filter" data-filter="rating">Rating</option>
                             <option class="select-filter" data-filter="name">Name</option>
@@ -26,11 +26,11 @@
                             <option class="select-filter" data-filter="year">Release Year</option>
                             <option class="select-filter" data-filter="All">Length</option>
                         </select>
-                         <input type="submit" name="FilterBy" id="FilterBy" value="Sort">
+                         <input type="submit" name="SortBy" id="SortBy" value="SortTHIS">
                     </form>
                 </span>
                 
-                <form asp-controller="Product" asp-action="Filter" method="post" class="inline-block filter-form">
+                <form asp-controller="Product" asp-action="FilterByGenre" method="post" class="inline-block filter-form">
                     <div class="row" id="filter">
                         <h5 id="filter-by-text">Filter by:</h5>
                         <div class="col-xs-3 form-group">

@@ -48,7 +48,7 @@ namespace BookCave.Controllers
         }
 
         [HttpPost]
-        public IActionResult Filter(string FilterBy)
+        public IActionResult FilterByGenre(string FilterBy)
         {
             if(FilterBy== null)
             {
@@ -60,7 +60,34 @@ namespace BookCave.Controllers
             List<BookViewModel> books = _productService.FilterByGenre(genre);
             return View("AllProducts", books);
         }
-        
+
+        [HttpPost]
+        public IActionResult SortBy(string SortBy)
+        {
+            if(SortBy == null)
+            {
+                return View("AllProducts");
+            }
+            
+            List<BookViewModel> books;
+            return View("AllProducts"); //, books);
+        }
+
+        /*
+        [HttpPost]
+        public IActionResult FilterByFormat(string FilterBy)
+        {
+            if(FilterBy== null)
+            {
+                return View("AllProducts");
+            }
+            
+            Format genre = new Format();
+            genre.Name = FilterBy;
+            List<BookViewModel> books = _productService.FilterByGenre(genre);
+            return View("AllProducts", books);
+        }
+        */
 
         public IActionResult BookDetail(int? id)
         {
