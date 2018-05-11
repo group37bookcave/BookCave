@@ -34,6 +34,13 @@ namespace BookCave
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<AuthenticationDbContext>()
                 .AddDefaultTokenProviders();
+            
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("Employee", policy => policy.RequireClaim("EmployeeId"));
+                options.AddPolicy("Admin", policy => policy.RequireClaim("Admin"));
+                options.AddPolicy("Customer", policy => policy.RequireClaim("CustomerId"));
+            });
 
             services.Configure<IdentityOptions>(options =>
             {
