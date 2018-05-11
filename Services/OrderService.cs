@@ -51,6 +51,17 @@ namespace BookCave.Services
             return itemOrder;
         }
 
+        public List<OrderViewModel> OrderHistory(int customerId)
+        {
+            var customerOrders =  _orderRepo.GetAllOrdersByCustomerId(customerId);
+            var customerOrderList = new List<OrderViewModel>();
+            foreach(var order in customerOrders)
+            {
+                customerOrderList.Add(ConvertToOrderViewModel(order));
+            }
+            return customerOrderList;
+        }
+        
         public void RemoveItem(int id, OrderViewModel order)
         {
             _orderRepo.RemoveFromOrder(id, order.OrderId);
