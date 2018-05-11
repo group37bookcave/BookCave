@@ -8,13 +8,11 @@
     <div class="row">
         <div class="col-sm-12 col-md-10 col-md-offset-1">
             <div class="page-header">
-                
                 <div class="inline-block">
                     <h1>
                         <span class="book-cave-color">@ViewBag.First</span><span>@ViewBag.Second</span>
                     </h1>
                 </div>
-                <!--<span class="filter-and-sort">-->
                 <div class="filter-sort-form">
                     <form asp-controller="Product" asp-action="FilterByGenre" method="post" class="form-inline">
                         <select name="FilterBy" value="all" class="form-control" id="select-genre">
@@ -26,105 +24,93 @@
                                 <option value="Mystery">Mystery, Thriller & Suspence</option>
                                 <option value="Non-Fiction">Non - Fiction</option>
                                 <option value="Self-Help">Self - Help</option>
-                                <option value="Audio">AudioBooks</option>
-                                <option value="Ebook">Ebooks</option>
-                                <option value="HardCover">HardCover</option>
-                                <option value="PaperBack">PaperBack</option>
-                        </select>
-                        <input type="submit" name="FilterBy" value="Filter" class="form-control filter-sort-buttons">
-                    </form>
-                </div>
-
-                <div class="filter-sort-form">
-                    <form asp-controller="Product" asp-action="SortBy" method="post" class="form-inline">
-                        <select name="SortBy" value="all" class="form-control" id="sort-by">
-                            <option class="select-filter" data-filter="all">Sort By</option>
-                            <option class="select-filter" data-filter="name">Name</option>
-                            <option class="select-filter" data-filter="price">Price</option>
-                        </select>
-                        <input type="submit" name="SortBy" value="Sort" class="form-control filter-sort-buttons">
-                    </form>
-                </div>
+                            </select>
+                            <input type="submit" name="FilterBy" value="Filter" class="form-control filter-sort-buttons">
+                        </div>
+                    </div>
+                </form>
             </div>
-            <table>
-                <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td class="col-sm-3 col-md-3" valign="top">
-                            <div>
-                                <img alt="Cover Art" class="bookDetailImg" src="@item.Image"/>
-                            </div>
-                        </td>
-                        <td class="col-sm-5 col-md-5" valign="top">
-                            <div>
-                                
-                                    <ul>
-                                        <li>
-                                            <h4>
-                                                <a asp-controller="Product" asp-action="BookDetail" asp-route-id=@item.Id>@item.Name</a>
-                                            </h4>
-                                        </li>
-                                        <li>
-                                            Author: @foreach(var author in item.Authors){@author.FullName}
-                                        </li>
-                                        <li>
-                                            Format: @item.Format
-                                        </li>
-                                        <li>
-                                            Length: @item.Length
-                                        </li>
-                                        <li>
-                                            Release Date: @item.ReleaseDate.Day/@item.ReleaseDate.Month/@item.ReleaseDate.Year
-                                        </li>
-                                        <li>
-                                            Language: @foreach(var lan in item.Languages){@lan.Name}                                                 
-                                        </li>
-                                        <li>
-                                            <span class="fa fa-star grey"></span>
-                                            <span class="fa fa-star grey"></span>
-                                            <span class="fa fa-star grey"></span>
-                                            <span class="fa fa-star grey"></span>
-                                            <span class="fa fa-star grey"></span>
-                                            <span class="grey"> No rating(s) </span>
-                                        </li>
-                                    </ul>
-                                
-                            </div>
-                        </td>
-                        <td class="col-sm-2 col-md-2" valign="top">
-                            <div>
-                                <h5>Price: 
-                                    $@item.Price
-                                </h5>
-                            </div>
-                        </td>
-                        <td class="col-sm-2 col-md-2" valign="top">
-
-                            <div>
-                                <div class="button-options grey-buttons">
-                                    <a class="btn btn-default" type="button" asp-area="" asp-controller="" asp-action="">
-                                        Buy Now
-                                    </a>
-                                </div>
-                                <div class="button-options green-buttons">
-                                    <form method="post" asp-area="" asp-controller="Order" asp-action="Add" asp-route-id=@item.Id>
-                                        <button class="btn btn-default" type="submit" value="Add to Cart"> </button>
-                                    </form>
-                                </div>
-                                <div class="button-options green-buttons">
-                                    <a class="btn btn-default" type="button" asp-area="" asp-controller="" asp-action="">
-                                        Add to WishList
-                                    </a>
-                                </div>
-                            </div>
-
-                        </td>
-                    </tr>
-                }
-                </tbody>
-            </table>
-            <hr/>
+            <div class="filter-sort-form">
+                <form asp-controller="Product" asp-action="SortBy" method="post" class="form-inline">
+                    <select name="SortBy" value="all" class="form-control" id="sort-by">
+                        <option class="select-filter" data-filter="all">Sort By</option>
+                        <option class="select-filter" data-filter="name">Name</option>
+                        <option class="select-filter" data-filter="price">Price</option>
+                    </select>
+                    <input type="submit" name="SortBy" value="Sort" class="form-control filter-sort-buttons">
+                </form>
+            </div>
         </div>
+        <table>
+            <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="col-sm-3 col-md-3" valign="top">
+                        <div>
+                            <img alt="Cover Art" class="bookDetailImg" src="@item.Image"/>
+                        </div>
+                    </td>
+                    <td class="col-sm-5 col-md-5" valign="top">
+                        <div>
+                            <ul>
+                                <li>
+                                    <h4>
+                                        <a asp-controller="Product" asp-action="BookDetail" asp-route-id=@item.Id>@item.Name</a>
+                                    </h4>
+                                </li>
+                                <li>
+                                    Author:
+                                    @foreach (var author in item.Authors)
+                                    {
+                                        @author.FullName
+                                    }
+                                </li>
+                                <li>
+                                    Format: @item.Format
+                                </li>
+                                <li>
+                                    Length: @item.Length
+                                </li>
+                                <li>
+                                    Release Date: @item.ReleaseDate.Day/@item.ReleaseDate.Month/@item.ReleaseDate.Year
+                                </li>
+                                <li>
+                                    Language:
+                                    @foreach (var lan in item.Languages)
+                                    {
+                                        @lan.Name
+                                    }
+                                </li>
+                            </ul>
+                        </div>
+                    </td>
+                    <td class="col-sm-2 col-md-2" valign="top">
+                        <div>
+                            <h5>
+                                Price:
+                                $@item.Price
+                            </h5>
+                        </div>
+                    </td>
+                    <td class="col-sm-2 col-md-2" valign="top">
+                        <div>
+                            <div class="button-options green-buttons">
+                                <form method="post" asp-area="" asp-controller="Order" asp-action="Add" asp-route-id=@item.Id>
+                                    <button class="btn btn-default" type="submit" value="Add to Cart"> </button>
+                                </form>
+                            </div>
+                            <div class="button-options green-buttons">
+                                <a class="btn btn-default" type="button" asp-area="" asp-controller="" asp-action="">
+                                    Add to WishList
+                                </a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+        <hr/>
     </div>
 </div>

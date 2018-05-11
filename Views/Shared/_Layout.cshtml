@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>@ViewData["Title"] - BookCave</title>
     <environment include="Development">
-        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css"/>
         <link rel="stylesheet" href="~/css/site.css"/>
     </environment>
     <environment exclude="Development">
@@ -14,22 +14,21 @@
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute"/>
         <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" asp-append-version="true"/>
-        <link rel="stylesheet" href="~/css/site.css" />
+        <link rel="stylesheet" href="~/css/site.css"/>
     </environment>
 </head>
-
 <body>
-    <nav id="navbar" class="navbar navbar-fixed-top">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-3">
-                    <a asp-area="" asp-controller="Home" asp-action="Index">
-                        <img src="~/images/xSmallLogo.svg" alt="Logo">
-                    </a>
-                </div>
-                <div class="col-xs-6">
-                    <form asp-controller="Product" asp-action="AllProducts" method="post" class="input-group">
-                        <div class="input-group-btn search-panel">
+<nav id="navbar" class="navbar navbar-fixed-top">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-3">
+                <a asp-area="" asp-controller="Home" asp-action="Index">
+                    <img src="~/images/xSmallLogo.svg" alt="Logo">
+                </a>
+            </div>
+            <div class="col-xs-6">
+                <form asp-controller="Product" asp-action="AllProducts" method="post" class="input-group">
+                    <div class="input-group-btn search-panel">
                         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                             <span id="search_concept">All</span> <span class="caret"></span>
                         </button>
@@ -164,11 +163,10 @@
             </ul>
         </div>
     </nav>
-
 <div class="container body-content">
     @RenderBody()
     <h2>BEST SELLERS</h2>
-    <div class="container"> 
+    <div class="container">
         <!--Product View-->
         <div class="row">
             <div class="col">
@@ -194,14 +192,12 @@
         </div>
     </div>
 </div>
-
 <!--Footer-->
 <footer id="myFooter">
     <!--Footer Links-->
     <div class="text-left text-md-left">
         <!-- Footer links -->
         <div class="container row text-left text-md-left mt-3 pb-3">
-
             <!--First column-->
             <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
                 <p>
@@ -249,48 +245,20 @@
                     <a asp-area="" asp-controller="Product" asp-action="NewReleases">
                         New Releases
                     </a>
-
                 </p>
             </div>
 
             <!--Third column-->
             <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
-
-                    
                 <p>
                     <a asp-area="" asp-controller="Product" asp-action="TopRated">
                         Top Rated
-                    </a>
-                </p>
-                <p>
-                    <a href="#!">
-                        Shipping
-                    </a>
-                </p>
-                <p>
-                    <a href="#!">
-                        Returns
                     </a>
                 </p>
             </div>
 
             <!--Fourth column-->
             <div class="col col-lg-2 col-xl-2 mx-auto mt-3">
-                <p>
-                    <a href="#!">
-                        About Us
-                    </a>
-                </p>
-                <p>
-                    <a asp-area="" asp-controller="Product" asp-action="BookDetail">
-                        Q&As
-                    </a>
-                </p>
-                <p>
-                    <a href="#!">
-                        Help
-                    </a>
-                </p>
             </div>
 
             <!--Fifth column-->
@@ -309,69 +277,68 @@
                 </p>
             </div>
         </div>
-              
+
         <!-- Footer links -->
         <div class="row py-3 d-flex align-items-center">
             <!--Grid column-->
             <hr>
-                <div class="container text-left text-md-left">
-     
-                    <div class="footer-copyright py-3 text-left list-unstyled list-inline">
+            <div class="container text-left text-md-left">
+                <div class="footer-copyright py-3 text-left list-unstyled list-inline">
                     <!--Copyright-->
-                        <ul class="list-unstyled list-inline">
-                            <li>
-                                © The Book Cave
-                            </li>
-                            <li>
-                                <a href="#!">Privacy Policy</a>
-                            </li>
-                            <li>
-                                <a asp-controller="Home" asp-action="TermsAndCond">Terms and Conditions</a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="http://www.facebook.com" class="btn-floating btn-sm rgba-white-slight mx-1">
-                                    <i class="fa fa-facebook-square"></i>
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="http://www.twitter.com" class="btn-floating btn-sm rgba-white-slight mx-1">
-                                    <i class="fa fa-twitter-square"></i>
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="http://www.instagram.com" class="btn-floating btn-sm rgba-white-slight mx-1">
-                                    <i class="fa fa-instagram"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    <!--/.Copyright--> 
-                    </div>
-                </div>     
+                    <ul class="list-unstyled list-inline">
+                        <li>
+                            © The Book Cave
+                        </li>
+                        <li>
+                            <a href="#!">Privacy Policy</a>
+                        </li>
+                        <li>
+                            <a asp-controller="Home" asp-action="TermsAndCond">Terms and Conditions</a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="http://www.facebook.com" class="btn-floating btn-sm rgba-white-slight mx-1">
+                                <i class="fa fa-facebook-square"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="http://www.twitter.com" class="btn-floating btn-sm rgba-white-slight mx-1">
+                                <i class="fa fa-twitter-square"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="http://www.instagram.com" class="btn-floating btn-sm rgba-white-slight mx-1">
+                                <i class="fa fa-instagram"></i>
+                            </a>
+                        </li>
+                    </ul>
+                    <!--/.Copyright-->
+                </div>
+            </div>
         </div>
     </div>
-</footer>                 
-   
-    <environment include="Development">
-        <script src="~/lib/jquery/dist/jquery.js"></script>
-        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-        <script src="~/js/site.js" asp-append-version="true"></script>
-    </environment>
-    <environment exclude="Development">
-        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
-                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
-                asp-fallback-test="window.jQuery"
-                crossorigin="anonymous"
-                integrity="sha384-K+ctZQ+LL8q6tP7I94W+qzQsfRV2a+AfHIi9k8z8l9ggpc8X+Ytst4yBo/hH+8Fk">
-        </script>
-        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
-                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
-                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
-                crossorigin="anonymous"
-                integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
-        </script>
-        <script src="~/js/site.min.js" asp-append-version="true"></script>
-    </environment>
+</footer>
 
-    @RenderSection("Scripts", required: false)
+<environment include="Development">
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+</environment>
+<environment exclude="Development">
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
+            asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+            asp-fallback-test="window.jQuery"
+            crossorigin="anonymous"
+            integrity="sha384-K+ctZQ+LL8q6tP7I94W+qzQsfRV2a+AfHIi9k8z8l9ggpc8X+Ytst4yBo/hH+8Fk">
+    </script>
+    <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
+            asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+            asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+            crossorigin="anonymous"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
+    </script>
+    <script src="~/js/site.min.js" asp-append-version="true"></script>
+</environment>
+
+@RenderSection("Scripts", required: false)
 </body>
 </html>

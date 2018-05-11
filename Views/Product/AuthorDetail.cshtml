@@ -7,71 +7,77 @@
 <div class="container-fluid">
     <div class="row center">
         <div class="col-sm-12 col-md-10 col-md-offset-1">
-            @foreach(var bookAuthor in Model){
+            @foreach (var bookAuthor in Model)
+            {
                 <div class="page-header">
                     <div>
-                        <h1><span class="book-cave-color"> @bookAuthor.FirstName </span> <span> @bookAuthor.LastName </span></h1>
+                        <h1>
+                            <span class="book-cave-color"> @bookAuthor.FirstName </span> <span> @bookAuthor.LastName </span>
+                        </h1>
                     </div>
                 </div>
                 <table>
                     <tbody>
-                    @foreach( var book in @bookAuthor.Books){
-                    <tr>
-                        <td class="col-sm-3 col-md-3" valign="top">
-                            <div>
-                                <img alt="Cover Art" class="bookDetailImg" src="@book.Image"/>
-                            </div>
-                        </td>
-                        <td class="col-sm-5 col-md-5" valign="top">
-                            <div>
-                                <ul>
-                                    <li><h4></h4></li>
-                                    <li>Author: @book.BookAuthors</li>
-                                    <li>
-                                        Format:@book.GetType().Name
-                                    </li>
-                                    <li>Pages: @book.Length</li>
-                                    <li>Release Date: @book.ReleaseDate</li>
-                                    <li>Language: @book.BookLanguages</li>
-                                    <li>
-                                        <span class="fa fa-star grey"></span>
-                                        <span class="fa fa-star grey"></span>
-                                        <span class="fa fa-star grey"></span>
-                                        <span class="fa fa-star grey"></span>
-                                        <span class="fa fa-star grey"></span>
-                                        <span class="grey"> No rating(s) </span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </td>
-                        <td class="col-sm-2 col-md-2" valign="top">
-                            <div>
-                                <h5>Price:@book.Price</h5>
-                            </div>
-                        </td>
-                        <td class="col-sm-2 col-md-2" valign="top">
+                    @foreach (var book in @bookAuthor.Books)
+                    {
+                        <tr>
+                            <td class="col-sm-3 col-md-3" valign="top">
+                                <div>
+                                    <img alt="Cover Art" class="bookDetailImg" src="@book.Image"/>
+                                </div>
+                            </td>
+                            <td class="col-sm-5 col-md-5" valign="top">
+                                <div>
+                                    <ul>
+                                        <li>
+                                            <h4></h4>
+                                        </li>
+                                        <li>Author: @book.BookAuthors</li>
+                                        <li>
+                                            Format:@book.GetType().Name
+                                        </li>
+                                        <li>Pages: @book.Length</li>
+                                        <li>Release Date: @book.ReleaseDate</li>
+                                        <li>Language: @book.BookLanguages</li>
+                                        <li>
+                                            <span class="fa fa-star grey"></span>
+                                            <span class="fa fa-star grey"></span>
+                                            <span class="fa fa-star grey"></span>
+                                            <span class="fa fa-star grey"></span>
+                                            <span class="fa fa-star grey"></span>
+                                            <span class="grey"> No rating(s) </span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </td>
+                            <td class="col-sm-2 col-md-2" valign="top">
+                                <div>
+                                    <h5>Price:@book.Price</h5>
+                                </div>
+                            </td>
+                            <td class="col-sm-2 col-md-2" valign="top">
 
-                            <div>
-                                <div class="button-options grey-buttons">
-                                    <a class="btn btn-default" type="button" asp-area="" asp-controller="" asp-action="">
-                                        Buy Now
-                                    </a>
+                                <div>
+                                    <div class="button-options grey-buttons">
+                                        <a class="btn btn-default" type="button" asp-area="" asp-controller="" asp-action="">
+                                            Buy Now
+                                        </a>
+                                    </div>
+                                    <div class="button-options green-buttons">
+                                        <a class="btn btn-default" type="button" asp-area="" asp-controller="" asp-action="">
+                                            Add to Cart
+                                        </a>
+                                    </div>
+                                    <div class="button-options green-buttons">
+                                        <a class="btn btn-default" type="button" asp-area="" asp-controller="" asp-action="">
+                                            Add to WishList
+                                        </a>
+                                    </div>
                                 </div>
-                                <div class="button-options green-buttons">
-                                    <a class="btn btn-default" type="button" asp-area="" asp-controller="" asp-action="">
-                                        Add to Cart
-                                    </a>
-                                </div>
-                                <div class="button-options green-buttons">
-                                    <a class="btn btn-default" type="button" asp-area="" asp-controller="" asp-action="">
-                                        Add to WishList
-                                    </a>
-                                </div>
-                            </div>
-                           
-                        </td>
-                    </tr>
-                        }
+
+                            </td>
+                        </tr>
+                    }
                     </tbody>
                 </table>
             }
