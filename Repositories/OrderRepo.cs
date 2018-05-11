@@ -15,6 +15,22 @@ namespace BookCave.Repositories
         private readonly ProductRepo _pr = new ProductRepo();
 
 
+        public IEnumerable<ItemOrderViewModel> GetItemOrderViewModels(int itemorderId)
+        {
+            var items = from item in _db.ItemOrders
+                join product in _db.Products on item.ProductId equals product.Id
+                where item.Id == itemorderId
+                select new ItemOrderViewModel
+                {
+                    Image = product.Image,
+                    Name = product.Name,
+                    Price = product.Price,
+                    ProductId = product.Id,
+                    Quantity = item.Quantity
+                };
+            return items;
+        }
+
         public List<Order> GetAllOrdersByCustomerId(int customerId)
         {
             var orders = from o in _db.Orders where o.Customer.Id == customerId select o;
@@ -75,10 +91,11 @@ namespace BookCave.Repositories
                     OrderId = orderId,
                     ProductId = productId,
                     Quantity = 1
-                };              
+                };
                 order.ItemOrders.Add(itemorder);
                 _db.Update(order);
             }
+
             _db.SaveChanges();
         }
 
