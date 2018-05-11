@@ -8,6 +8,8 @@ namespace BookCave.Models.EntityModels
         
         public Customer Customer { get; set; }
 
+        public int CustomerId { get; set; }
+
         public Address Address { get; set; }
 
         public PromoCode PromoCode { get; set; }

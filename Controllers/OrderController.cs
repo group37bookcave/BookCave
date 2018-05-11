@@ -6,29 +6,26 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using BookCave.Models.EntityModels;
 using BookCave.Models.InputModels;
+using Microsoft.AspNetCore.Identity;
 
 
 namespace BookCave.Controllers
 {
-    //[Authorize(Policy = "Customer")]
     public class OrderController : Controller
     {
         private readonly OrderService _orderService;
-        
-        public OrderController()
+        private readonly SignInManager<ApplicationUser> _signInManager;
+
+
+        public OrderController(SignInManager<ApplicationUser> signInManager)
         {
+            _signInManager = signInManager;
             _orderService = new OrderService();
         }
 
-
         public IActionResult ShoppingCart()
         {
-            var userId = int.Parse(User.FindFirst("customerId").Value);
-            
-            if(userId == 0)
-            {
-                return View();
-            }
+            var userId = _signInManager.IsSignedIn(User) ? int.Parse(User.FindFirst("CustomerId").Value) : 10;
             var activeOrder = _orderService.GetActiveOrder(userId);
             return View(activeOrder);
         }
@@ -37,7 +34,7 @@ namespace BookCave.Controllers
         [HttpPost]
         public IActionResult Remove(int? id)
         {
-            if(id == null)
+            if (id == null)
             {
                 return View("ShoppingCart");
             }
@@ -53,38 +50,41 @@ namespace BookCave.Controllers
         }
 
 
-
         [HttpGet]
         public IActionResult Address()
         {
             return View();
-        }    
+        }
 
         [HttpPost]
-        public IActionResult Address(Address address){
-            if(ModelState.IsValid){
-        
+        public IActionResult Address(Address address)
+        {
+            if (ModelState.IsValid)
+            {
+                /*_orderService.AddToOrder.Address.Add(address); */
+                return RedirectToAction("ReviewPage");
+            }
 
-            /*_orderService.AddToOrder.Address.Add(address); */
-            return RedirectToAction("ReviewPage");
-        }
             return View();
         }
 
 
-        [HttpGet] 
+        [HttpGet]
         public IActionResult PaymentPage()
         {
             return View();
         }
 
         [HttpPost]
-        public IActionResult PaymentPage(PaymentInputModel Payment){
-            if(ModelState.IsValid){
-               // _orderService.CheckoutOrder();
-           
+        public IActionResult PaymentPage(PaymentInputModel Payment)
+        {
+            if (ModelState.IsValid)
+            {
+                // _orderService.CheckoutOrder();
+
                 return RedirectToAction("Receipt");
             }
+
             return View();
         }
 
@@ -95,12 +95,13 @@ namespace BookCave.Controllers
             {
                 return View("Error");
             }
-            var userId = int.Parse(User.FindFirst("customerId").Value);
+
+            var userId = int.Parse(User.FindFirst("CustomerId").Value);
             var order = _orderService.GetActiveOrder(userId);
             _orderService.AddToOrder((int) id, order);
-            return View("ShoppingCart");
+            return View("ShoppingCart", order);
         }
-        
+
         [HttpPost]
         public IActionResult RemoveProduct(int? id)
         {
@@ -108,11 +109,11 @@ namespace BookCave.Controllers
             {
                 return View("Error");
             }
-            var userId = int.Parse(User.FindFirst("customerId").Value);
+
+            var userId = int.Parse(User.FindFirst("CustomerId").Value);
             var order = _orderService.GetActiveOrder(userId);
             _orderService.RemoveItem((int) id, order);
             return RedirectToAction("ShoppingCart", order);
-
         }
 
         public IActionResult ReviewPage()
@@ -120,7 +121,7 @@ namespace BookCave.Controllers
             return View();
         }
 
-          public IActionResult Receipt()
+        public IActionResult Receipt()
         {
             return View();
         }

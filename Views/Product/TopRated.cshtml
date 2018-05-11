@@ -42,43 +42,52 @@
                         </td>
                         <td class="col-sm-5 col-md-5" valign="top">
                             <div>
-                                
-                                    <ul>
-                                        <li>
-                                            <h4>
-                                                <a href="/Product/BookDetail/@item.Id">@item.Name</a>
-                                            </h4>
-                                        </li>
-                                        <li>
-                                            Author: @foreach(var author in item.Authors){@author.FullName}
-                                        </li>
-                                        <li>
-                                            Format: @item.Format
-                                        </li>
-                                        <li>
-                                            Length: @item.Length
-                                        </li>
-                                        <li>
-                                            Release Date: @item.ReleaseDate.Day/@item.ReleaseDate.Month/@item.ReleaseDate.Year
-                                        </li>
-                                        <li>
-                                            Language: @foreach(var lan in item.Languages){@lan.Name}                                                 
-                                        </li>
-                                        <li>
-                                            <span class="fa fa-star grey"></span>
-                                            <span class="fa fa-star grey"></span>
-                                            <span class="fa fa-star grey"></span>
-                                            <span class="fa fa-star grey"></span>
-                                            <span class="fa fa-star grey"></span>
-                                            <span class="grey"> No rating(s) </span>
-                                        </li>
-                                    </ul>
-                                
+
+                                <ul>
+                                    <li>
+                                        <h4>
+                                            <a asp-action="BookDetail" asp-controller="Product" asp-route-id=@item.Id>@item.Name</a>
+                                        </h4>
+                                    </li>
+                                    <li>
+                                        Author:
+                                        @foreach (var author in item.Authors)
+                                        {
+                                            @author.FullName
+                                        }
+                                    </li>
+                                    <li>
+                                        Format: @item.Format
+                                    </li>
+                                    <li>
+                                        Length: @item.Length
+                                    </li>
+                                    <li>
+                                        Release Date: @item.ReleaseDate.Day/@item.ReleaseDate.Month/@item.ReleaseDate.Year
+                                    </li>
+                                    <li>
+                                        Language:
+                                        @foreach (var lan in item.Languages)
+                                        {
+                                            @lan.Name
+                                        }
+                                    </li>
+                                    <li>
+                                        <span class="fa fa-star grey"></span>
+                                        <span class="fa fa-star grey"></span>
+                                        <span class="fa fa-star grey"></span>
+                                        <span class="fa fa-star grey"></span>
+                                        <span class="fa fa-star grey"></span>
+                                        <span class="grey"> No rating(s) </span>
+                                    </li>
+                                </ul>
+
                             </div>
                         </td>
                         <td class="col-sm-2 col-md-2" valign="top">
                             <div>
-                                <h5>Price: 
+                                <h5>
+                                    Price:
                                     $@item.Price
                                 </h5>
                             </div>
@@ -92,9 +101,9 @@
                                     </a>
                                 </div>
                                 <div class="button-options green-buttons">
-                                    <a class="btn btn-default" type="button" asp-area="" asp-controller="" asp-action="">
-                                        Add to Cart
-                                    </a>
+                                    <button 
+                                        class="btn btn-default addToCart" type="submit" value="Add to Cart" asp-area="" asp-controller="Order" asp-action="AddProduct" asp-route-id=@item.Id>
+                                    </button>
                                 </div>
                                 <div class="button-options green-buttons">
                                     <a class="btn btn-default" type="button" asp-area="" asp-controller="" asp-action="">
@@ -108,8 +117,7 @@
                 }
                 </tbody>
             </table>
-        <hr/>        
+            <hr/>
         </div>
     </div>
 </div>
-

@@ -75,16 +75,22 @@ namespace BookCave.Repositories
                     OrderId = orderId,
                     ProductId = productId,
                     Quantity = 1
-                };              
+                };
                 order.ItemOrders.Add(itemorder);
                 _db.Update(order);
             }
+
             _db.SaveChanges();
         }
 
         private ItemOrder GetItemOrder(int productId, IEnumerable<ItemOrder> items)
         {
             return items.FirstOrDefault(item => item.ProductId == productId);
+        }
+
+        private ICollection<ItemOrder> GetItemOrdersByOrderId(int orderId)
+        {
+            return (from i in _db.ItemOrders where i.OrderId == orderId select i).ToList();
         }
 
         private List<ItemOrder> ConvertToItemOrder(IEnumerable<ItemOrderViewModel> items)
@@ -106,6 +112,7 @@ namespace BookCave.Repositories
             }
 
             order.IsCheckedOut = true;
+            _db.Update(order);
             _db.SaveChanges();
             return true;
         }
@@ -117,16 +124,19 @@ namespace BookCave.Repositories
                 return CreateNewOrder(customerId);
             }
 
-            var order = from o in _db.Orders where o.Customer.Id == customerId && o.IsCheckedOut select o;
-            return order.SingleOrDefault();
+            var order = (from o in _db.Orders where o.Customer.Id == customerId && !o.IsCheckedOut select o)
+                .SingleOrDefault();
+            if (order != null) order.ItemOrders = GetItemOrdersByOrderId(order.Id);
+            return order;
         }
 
         private Order CreateNewOrder(int customerId)
         {
             var order = new Order
             {
-                Customer = _cr.GetCustomer(customerId),
+                CustomerId = customerId,
                 IsCheckedOut = false,
+                ItemOrders = new List<ItemOrder>(),
             };
             _db.Orders.Add(order);
             _db.SaveChanges();
@@ -136,7 +146,7 @@ namespace BookCave.Repositories
         private bool HasActiveOrder(int customerId)
         {
             var order = from o in _db.Orders
-                where o.Customer.Id == customerId && o.IsCheckedOut == false
+                where o.Customer.Id == customerId && !o.IsCheckedOut
                 select o;
             return order.Any();
         }

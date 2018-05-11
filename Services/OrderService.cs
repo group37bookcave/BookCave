@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-
 using BookCave.Models.EntityModels;
 using BookCave.Models.InputModels;
 using BookCave.Models.ViewModels;
@@ -21,7 +20,7 @@ namespace BookCave.Services
             {
                 OrderId = order.Id,
                 CustomerId = order.Customer.Id,
-                Items = ConvertToViewModel(order.ItemOrders)
+                Items = ConvertToItemOrderViewModels(order.ItemOrders)
             };
             return viewModel;
         }
@@ -46,21 +45,22 @@ namespace BookCave.Services
         {
             var viewModel = new OrderViewModel
             {
-                CustomerId = order.Customer.Id,
-                Items = ConvertToViewModel(order.ItemOrders),
-                OrderId = order.Id
+                CustomerId = order.CustomerId,
+                OrderId = order.Id,
+                Items = ConvertToItemOrderViewModels(order.ItemOrders)
             };
             return viewModel;
         }
 
-        private static List<ItemOrderViewModel> ConvertToViewModel(IEnumerable<ItemOrder> model)
+        private static List<ItemOrderViewModel> ConvertToItemOrderViewModels(IEnumerable<ItemOrder> model)
         {
-            return model.Select(itemOrder =>
-                new ItemOrderViewModel
+            var itemOrder = model?.Select(item => new ItemOrderViewModel
                 {
-                    ProductId = itemOrder.Product.Id,
-                    Quantity = itemOrder.Quantity
-                }).ToList();
+                    ProductId = item.ProductId,
+                    Quantity = item.Quantity
+                })
+                .ToList();
+            return itemOrder;
         }
 
         public void RemoveItem(int id, OrderViewModel order)
