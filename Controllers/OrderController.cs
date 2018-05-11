@@ -12,6 +12,7 @@ using BookCave.Models.InputModels;
 
 
 
+
 namespace BookCave.Controllers
 {
     //[Authorize(Policy = "Customer")]
@@ -24,12 +25,11 @@ namespace BookCave.Controllers
             _orderService = new OrderService();
         }
 
-
+        
         public IActionResult ShoppingCart()
         {
-            var userId = int.Parse(User.FindFirst("customerId").Value);
-            
-            if(userId == 0)
+            int userId = int.Parse(User.FindFirst("CustomerId").Value);
+            if(userId==0)
             {
                 return View();
             }
@@ -46,12 +46,8 @@ namespace BookCave.Controllers
                 return View("ShoppingCart");
             }
 
-            /*var productToRemove = _orderService;
-            var productToRemove = (from s in DataBase.Orders
-                                    where s.Id == id
-                                    select s).SingleOrDefault();
-            Database.Remove(productToRemove);
-            */
+           // Order updatedOrder = _orderService.RemoveFromOrder(productId);
+
 
             return RedirectToAction("ShoppingCart");
         }
@@ -65,7 +61,7 @@ namespace BookCave.Controllers
         }    
 
         [HttpPost]
-        public IActionResult Address(Address address){
+        public IActionResult Address(AddressInputModel address){
             if(ModelState.IsValid){
         
 

@@ -28,30 +28,38 @@
                     </a>
                 </div>
                 <div class="col-xs-6">
-                    <form action="#" method="get" class="input-group">
+                    <form controller="Product" action="Product/AllProducts/" method="post" class="input-group">
                         <div class="input-group-btn search-panel">
                         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                             <span id="search_concept">All</span> <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu" role="menu">
+<!--
                             <li>
                                 <a href="#author" asp-action="">All</a>
                             </li>
                             <li>
                                 <a href="#author">Author</a>
+-->
+                            <!--<li>
+                              
+                                <a asp-controller="Product" asp-action="AllProducts" asp-for="ID" value="Author">Author</a>
                             </li>
                             <li>
-                                <a href="#its_equal">ISBN</a>
+                                
+                                <a asp-controller="Product" asp-action="AllProducts" asp-for="ID" value="ISBN">ISBN</a>
                             </li>
-                            <li>
-                                <a href="#greather_than">Title</a>
+                            <li>  
+                               <a asp-controller="Product" asp-action="AllProducts" asp-for="ID" value="Title">Title</a>
                             </li>
+                            -->
                         </ul>
                         </div>
-                        <input type="hidden" name="search_param" value="all" id="search_param">
-                        <input type="text" class="form-control" name="SearchString" placeholder="Search by title, author or ISBN">
+
+                       <!-- <input type="hidden" name="ID" value="all" id="ID">-->
+                        <input type="text" class="form-control" name="SearchString" placeholder="Search by keyword, title, author or ISBN">
                         <span class="input-group-btn">
-                            <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
+                            <input class="btn btn-default" type="submit" value="Search"><span class="glyphicon glyphicon-search"></span></input>
                         </span>
                     </form>
                 </div>

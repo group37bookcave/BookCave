@@ -1,7 +1,6 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-using System.Linq;
 using BookCave.Models.EntityModels;
 using BookCave.Models.ViewModels;
 using BookCave.Repositories;
@@ -89,22 +88,16 @@ namespace BookCave.Services
         {
             return ConvertToBookViewModel(_productRepo.GetBooksByGenreId(genre.Id));
         }
-/*
-        //IEnumerable<Pet> query = pets.OrderBy(pet => pet.Age);
-        public List<BookViewModel> SortByName(BookViewModel model)
-        {
-            List<BookViewModel> sortedList = model.OrderBy(item => item.Name).ToList();
-            return sortedList;
-        }
 
-        public List<BookViewModel> SortByPrice(BookViewModel model)
+        public List<BookViewModel> SortByName(List<BookViewModel> model)
         {
-            return List<BookViewModel> sortedList = model.OrderBy(model => model.Price);
+            var sorted = model.OrderBy(item => item.Name).ToList();
+            return sorted;
         }
-        public List<BookViewModel> SortByAuthor(BookViewModel model)
+        public List<BookViewModel> SortByPrice(List<BookViewModel> model)
         {
-            return List<BookViewModel> sortedList = model.OrderBy(model => model.Author.Name);
+            var sorted = model.OrderBy(item => item.Price).ToList();
+            return sorted;
         }
-        */
     }
 }
