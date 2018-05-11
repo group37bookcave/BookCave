@@ -28,27 +28,27 @@
                     </a>
                 </div>
                 <div class="col-xs-6">
-                    <form controller="Product" action="Product/AllProducts/" method="post" class="input-group">
+                    <form asp-controller="Product" asp-action="AllProducts" method="post" class="input-group">
                         <div class="input-group-btn search-panel">
                         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                             <span id="search_concept">All</span> <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu" role="menu">
-                            <!--<li>
-                              
-                                <a asp-controller="Product" asp-action="AllProducts" asp-for="ID" value="Author">Author</a>
+                            <li>
+                                <a class="search-filter" data-filter="All" href="#">All</a>
                             </li>
                             <li>
-                                
-                                <a asp-controller="Product" asp-action="AllProducts" asp-for="ID" value="ISBN">ISBN</a>
+                                <a class="search-filter" data-filter="Author" href="#">Author</a>
                             </li>
-                            <li>  
-                               <a asp-controller="Product" asp-action="AllProducts" asp-for="ID" value="Title">Title</a>
+                            <li>
+                                <a class="search-filter" data-filter="ISBN" href="#">ISBN</a>
                             </li>
-                            -->
+                            <li>
+                                <a class="search-filter" data-filter="Title" href="#">Title</a>
+                            </li>
                         </ul>
                         </div>
-                       <!-- <input type="hidden" name="ID" value="all" id="ID">-->
+                        <input type="hidden" name="FilterBy" id="FilterBy" value="All">
                         <input type="text" class="form-control" name="SearchString" placeholder="Search by keyword, title, author or ISBN">
                         <span class="input-group-btn">
                             <input class="btn btn-default" type="submit" value="Search"><span class="glyphicon glyphicon-search"></span></input>

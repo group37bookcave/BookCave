@@ -79,8 +79,13 @@ namespace BookCave.Services
         {
             return ConvertToBookViewModel(_productRepo.GetBooksByAuthorName(name));
         }
-        public List<BookViewModel> SearchByIsbn(Isbn isbn)
+        public List<BookViewModel> SearchByIsbn(string SearchString)
         {
+                Isbn isbn = new Isbn(); 
+                isbn.Isbn10 = SearchString;
+                isbn.Isbn13 = SearchString;
+                isbn.Asin = SearchString;
+        
             return ConvertToBookViewModel(_productRepo.GetBookByIsbn(isbn));
         }
         public List<BookViewModel> FilterByGenre(Genre genre)

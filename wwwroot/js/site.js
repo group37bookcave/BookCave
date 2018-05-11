@@ -5,6 +5,15 @@ $(document).ready(function(e){
     $("input[type='image']").click(function() {
         $("input[id='user-image']").click();
     });
+
+    $('.search-filter').on('click', function() {
+        $('#FilterBy').val($(this).data('filter'));
+    });
+
+    $('.select-filter').on('click', function(){
+        $('#FilterBy').val($(this).data('filter'));
+        $('.filter-form').submit();
+    });
     
     /*Submit forms*/ 
     $("input[type='submit']").click(function()
@@ -21,7 +30,7 @@ $(document).ready(function(e){
     });
     
 
-    $("a#filter-products").click(function() {
+    $("#filter-products").click(function() {
         $("#filter").toggle();
     })
     
