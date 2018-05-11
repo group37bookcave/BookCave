@@ -43,7 +43,6 @@
                                 <a class="search-filter" data-filter="Title" href="#">Title</a>
                             </li>
                         </ul>
-<<<<<<< HEAD
                     </div>
                     <input type="hidden" name="FilterBy" id="FilterBy" value="All">
                     <input type="text" class="form-control" name="SearchString" placeholder="Search by keyword, title, author or ISBN">
@@ -91,9 +90,6 @@
                             <li>
                                 <a asp-controller="Home" asp-action="Contact">Paperback</a>
                             </li>
-                            <li>
-                                <a asp-controller="Home" asp-action="Contact">Sheet Music</a>
-                            </li>
                         </ul>
                     </li>
                     <li class="col-sm-3">
@@ -127,7 +123,7 @@
                     <li class="col-sm-2">
                         <ul>
                             <li>
-                                <h5>Top Authors</h5>
+                                <h5>Authors</h5>
                             </li>
                             <li>
                                 <a asp-area="" asp-controller="Product" asp-action="BestSellers">J.K. Rowling</a>
@@ -246,24 +242,14 @@
                     </a>
                 </p>
                 <p>
-                    <a asp-area="" asp-controller="Product" asp-action="BestSellers">
-                        Best Sellers
-                    </a>
-                </p>
-                <p>
-                    <a asp-area="" asp-controller="Product" asp-action="NewReleases">
-                        New Releases
+                    <a asp-area="" asp-controller="Product" asp-action="TopRated">
+                        Top Rated
                     </a>
                 </p>
             </div>
 
             <!--Third column-->
             <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
-                <p>
-                    <a asp-area="" asp-controller="Product" asp-action="TopRated">
-                        Top Rated
-                    </a>
-                </p>
             </div>
 
             <!--Fourth column-->
