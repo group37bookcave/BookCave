@@ -57,7 +57,7 @@ namespace BookCave.Controllers
         }    
 
         [HttpPost]
-        public IActionResult Address(Address address){
+        public IActionResult Address(AddressInputModel address){
             if(ModelState.IsValid){
         
 
