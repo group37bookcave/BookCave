@@ -19,21 +19,21 @@
                     <form asp-controller="Product" asp-action="SortBy" method="post" class="inline-block filter-form">
                         <select name="SortBy" value="all" class="form-control" id="sort-by">
                             <option class="select-filter" data-filter="all">Sort By</option>
-                            <option class="select-filter" data-filter="name">Name</option>                  
+                            <option class="select-filter" data-filter="name">Name</option>
                             <option class="select-filter" data-filter="price">Price</option>
 
                         </select>
-                         <input type="submit" name="SortBy" id="SortBy" value="Sort">
+                        <input type="submit" name="SortBy" id="SortBy" value="Sort">
                     </form>
                 </span>
-                
+
                 <form asp-controller="Product" asp-action="FilterByGenre" method="post" class="inline-block filter-form">
                     <div class="row" id="filter">
                         <h5 id="filter-by-text">Filter by:</h5>
                         <div class="col-xs-3 form-group">
 
-                         <input type="submit" name="SortBy" id="SortBy" value="Sort">
-                    
+                            <input type="submit" name="SortBy" id="SortBy" value="Sort">
+
                             <select name="FilterBy" value="all" class="form-control" id="select-genre">
                                 <option value="Genre">Genre</option>
                                 <option value="Biographies">Biographies & Memoirs</option>
@@ -65,43 +65,43 @@
                         </td>
                         <td class="col-sm-5 col-md-5" valign="top">
                             <div>
-                                
-                                    <ul>
-                                        <li>
-                                            <h4>
-                                                <a asp-controller="Product" asp-action="BookDetail" asp-route-id=@item.Id>@item.Name</a>
-                                            </h4>
-                                        </li>
-                                        <li>
-                                            Author: @foreach(var author in item.Authors){@author.FullName}
-                                        </li>
-                                        <li>
-                                            Format: @item.Format
-                                        </li>
-                                        <li>
-                                            Length: @item.Length
-                                        </li>
-                                        <li>
-                                            Release Date: @item.ReleaseDate.Day/@item.ReleaseDate.Month/@item.ReleaseDate.Year
-                                        </li>
-                                        <li>
-                                            Language: @foreach(var lan in item.Languages){@lan.Name}                                                 
-                                        </li>
-                                        <li>
-                                            <span class="fa fa-star grey"></span>
-                                            <span class="fa fa-star grey"></span>
-                                            <span class="fa fa-star grey"></span>
-                                            <span class="fa fa-star grey"></span>
-                                            <span class="fa fa-star grey"></span>
-                                            <span class="grey"> No rating(s) </span>
-                                        </li>
-                                    </ul>
-                                
+
+                                <ul>
+                                    <li>
+                                        <h4>
+                                            <a asp-controller="Product" asp-action="BookDetail" asp-route-id=@item.Id>@item.Name</a>
+                                        </h4>
+                                    </li>
+                                    <li>
+                                        Author:
+                                        @foreach (var author in item.Authors)
+                                        {
+                                            @author.FullName
+                                        }
+                                    </li>
+                                    <li>
+                                        Format: @item.Format
+                                    </li>
+                                    <li>
+                                        Length: @item.Length
+                                    </li>
+                                    <li>
+                                        Release Date: @item.ReleaseDate.Day/@item.ReleaseDate.Month/@item.ReleaseDate.Year
+                                    </li>
+                                    <li>
+                                        Language:
+                                        @foreach (var lan in item.Languages)
+                                        {
+                                            @lan.Name
+                                        }
+                                    </li>
+                                </ul>
                             </div>
                         </td>
                         <td class="col-sm-2 col-md-2" valign="top">
                             <div>
-                                <h5>Price: 
+                                <h5>
+                                    Price:
                                     $@item.Price
                                 </h5>
                             </div>
@@ -109,11 +109,6 @@
                         <td class="col-sm-2 col-md-2" valign="top">
 
                             <div>
-                                <div class="button-options grey-buttons">
-                                    <a class="btn btn-default" type="button" asp-area="" asp-controller="" asp-action="">
-                                        Buy Now
-                                    </a>
-                                </div>
                                 <div class="button-options green-buttons">
                                     <form method="post" asp-area="" asp-controller="Order" asp-action="Add" asp-route-id=@item.Id>
                                         <input class="btn btn-default" type="submit" value="Add to Cart"/>
@@ -131,7 +126,7 @@
                 }
                 </tbody>
             </table>
-        <hr/>        
+            <hr/>
         </div>
     </div>
 </div>

@@ -30,9 +30,9 @@ namespace BookCave.Repositories
         {
             var review = new Review
             {
-                Customer = _customerRepo.GetCustomer(model.CustomerId),
+                CustomerId = model.CustomerId,
                 DateReviewed = DateTime.Today,
-                Product = _productRepo.GetProduct(model.ProductId),
+                ProductId = model.ProductId,
                 Rating = model.Rating,
                 ReviewString = model.Review
             };

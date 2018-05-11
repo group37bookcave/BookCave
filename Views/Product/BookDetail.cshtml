@@ -48,14 +48,6 @@
                                     }
                                 </li>
                                 <li>Publisher: @Model.Publisher</li>
-                                <li>
-                                    <span class="fa fa-star grey"></span>
-                                    <span class="fa fa-star grey"></span>
-                                    <span class="fa fa-star grey"></span>
-                                    <span class="fa fa-star grey"></span>
-                                    <span class="fa fa-star grey"></span>
-                                    <span class="grey"> No rating(s) </span>
-                                </li>
                             </ul>
                         </div>
                     </td>
@@ -67,11 +59,6 @@
                     <td class="col-sm-2 col-md-2" valign="top">
 
                         <div>
-                            <div class="button-options grey-buttons">
-                                <a class="btn btn-default" type="button" asp-area="" asp-controller="" asp-action="">
-                                    Buy Now
-                                </a>
-                            </div>
                             <div class="button-options green-buttons">
                                 <a class="btn btn-default" type="button" asp-area="" asp-controller="" asp-action="">
                                     Add to Cart
@@ -108,7 +95,6 @@
         <div class="row">
             <div class="col-sm-12 col-md-10 col-md-offset-1">
                 <div>
-
                     <h3>Review</h3>
                     @foreach (var review in Model.Reviews)
                     {
@@ -117,21 +103,14 @@
                             <div class="col-sm-2">
                                 <div>@review.ReviewedBy </div>
                                 <div class="grey">
-                                    @review.Rating stars out of 5 <br/>
-                                    <span class="fa fa-star grey"></span>
-                                    <span class="fa fa-star grey"></span>
-                                    <span class="fa fa-star grey"></span>
-                                    <span class="fa fa-star grey"></span>
-                                    <span class="fa fa-star grey"></span>
+                                    @review.Rating stars out of 5
                                 </div>
                             </div>
                             <div class="col-sm-10">
                                 <div>
                                     @review.Review
-
                                 </div>
                             </div>
-
                         </div>
                     }
                 </div>

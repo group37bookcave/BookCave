@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 using BookCave.Models.ViewModels;
 using BookCave.Services;
 using Microsoft.AspNetCore.Authorization;
+using BookCave.Models.InputModels;
+using System.Security.Claims;
 
 namespace BookCave.Controllers
 {
@@ -112,6 +114,28 @@ namespace BookCave.Controllers
             var book = _productService.GetBookById(id);
             return View(book);
         }
+
+        public IActionResult Review(){
+               return View("BookDetail");
+        }
+        
+        
+        [Authorize(Policy="Customer")]
+        [HttpPost]
+        public IActionResult Review(string review, int? rating, int? productId)
+        {
+            if(review == null || rating == null || productId == null)
+            {
+                return View("BookDetail");
+            }
+            
+            var userId = int.Parse(User.FindFirst("CustomerId").Value);
+            _productService.AddReview(review, (int) rating, (int) productId, userId);
+            var id = (int) productId;
+            return RedirectToAction("BookDetail", id);
+    
+        }
+
         
         public IActionResult AuthorDetail()
         {
