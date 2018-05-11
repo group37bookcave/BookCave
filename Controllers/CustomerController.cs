@@ -31,11 +31,6 @@ namespace BookCave.Controllers
 
         }
 
-        public IActionResult OrderHistory()
-        {
-            return View();
-        }
-
         [HttpGet]
         public IActionResult AccountDetails()
         {
