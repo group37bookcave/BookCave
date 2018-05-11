@@ -1,6 +1,7 @@
 ﻿using System.Data.Common;
 using BookCave.Models;
 using BookCave.Models.EntityModels;
+using BookCave.Models.InputModels;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -36,6 +37,7 @@ namespace BookCave.Data
         public DbSet<Product> Products { get; set; }
         public DbSet<Review> Reviews { get; set; }
         public DbSet<SheetMusic> SheetMusics { get; set; }
+        public DbSet<WishList> WishLists { get; set; }
 
         
         // The many to many tables.
@@ -46,6 +48,7 @@ namespace BookCave.Data
         public DbSet<BookLanguage> BookLanguages { get; set; }
         public DbSet<AudiobookNarrator> AudioBookNarrators { get; set; }
         public DbSet<CustomerAddress> CustomerAddresses { get; set; }
+        public DbSet<WishListProduct> WishListProducts { get; set; }
         
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -139,6 +142,19 @@ namespace BookCave.Data
                 .HasOne(sma => sma.Composer)
                 .WithMany(s => s.SheetMusicComposers)
                 .HasForeignKey(sma => sma.ComposerId);
+            
+            // Configure many to many between Product and Wishlist.
+            modelBuilder.Entity<WishListProduct>().HasKey(wlp => new {wlp.ProductId, wlp.WishListId});
+
+            modelBuilder.Entity<WishListProduct>()
+                .HasOne(wlp => wlp.Product)
+                .WithMany(w => w.WishLists)
+                .HasForeignKey(wlp => wlp.ProductId);
+
+            modelBuilder.Entity<WishListProduct>()
+                .HasOne(wlp => wlp.WishList)
+                .WithMany(w => w.Products)
+                .HasForeignKey(wlp => wlp.WishListId);
         }
 
 
