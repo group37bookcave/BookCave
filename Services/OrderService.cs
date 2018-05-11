@@ -31,9 +31,9 @@ namespace BookCave.Services
             return _orderRepo.CheckoutOrder(model.OrderId);
         }
 
-        public void AddToOrder(int productId, int orderId)
+        public void AddToOrder(int productId, OrderViewModel order)
         {
-            _orderRepo.AddToOrder(productId, orderId);
+            _orderRepo.AddToOrder(productId, order.OrderId);
         }
 
         public OrderViewModel GetActiveOrder(int customerId)
@@ -72,6 +72,11 @@ namespace BookCave.Services
                 customerOrderList.Add(ConvertToOrderViewModel(order));
             }
             return customerOrderList;
+        }
+        
+        public void RemoveItem(int id, OrderViewModel order)
+        {
+            _orderRepo.RemoveFromOrder(id, order.OrderId);
         }
     }
 }

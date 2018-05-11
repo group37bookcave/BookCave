@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using BookCave.Models.EntityModels;
 using BookCave.Models.ViewModels;
 using BookCave.Repositories;
@@ -10,7 +11,7 @@ namespace BookCave.Services
     {
         private readonly ProductRepo _productRepo = new ProductRepo();
 
-        public List<BookViewModel> Top10()
+        public List<BookViewModel> GetTop10()
         {
             var books = _productRepo.GetTop10();
             return ConvertToBookViewModel(books);
@@ -18,21 +19,12 @@ namespace BookCave.Services
         
         private List<BookViewModel> ConvertToBookViewModel(IEnumerable<Book> books)
         {
-            var viewModels = new List<BookViewModel>();
-            foreach(var book in books)
-            {
-                var model = GetBookById(book.Id);
-                viewModels.Add(model);
-            }
-            return viewModels;
-        }
-        public IEnumerable<Product> GetAllProducts()
-        {
-            return _productRepo.GetAllProducts();
+            return books.Select(book => GetBookById(book.Id)).ToList();
         }
 
         public BookViewModel GetBookById(int? id)
         {
+            // Nothing else in the database
             var book = (Book) GetProduct(id);
             return new BookViewModel
             {
@@ -54,7 +46,7 @@ namespace BookCave.Services
             };
         }
 
-        public Product GetProduct(int? id)
+        private Product GetProduct(int? id)
         {
             var product = _productRepo.GetProduct(id);
             return product;
@@ -65,11 +57,6 @@ namespace BookCave.Services
             var productToRemove = _productRepo.GetProduct(id);
           /*  productToRemove.Remove(productToRemove);*/
             return productToRemove;
-        }
-
-        private ProductViewModel ConvertToProductViewModel()
-        {
-            throw new NotImplementedException();
         }
 
         public List<BookViewModel> GetAllBooks()
