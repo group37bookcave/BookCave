@@ -15,11 +15,13 @@
                 </div>
                 <span class="filter-and-sort">
                     <a id="filter-products" class="inline-block">Filter</a>
+
                     <form asp-controller="Product" asp-action="SortBy" method="post" class="inline-block filter-form">
                         <select name="SortBy" value="all" class="form-control" id="sort-by">
                             <option class="select-filter" data-filter="all">Sort By</option>
                             <option class="select-filter" data-filter="name">Name</option>                  
                             <option class="select-filter" data-filter="price">Price</option>
+
                         </select>
                          <input type="submit" name="SortBy" id="SortBy" value="Sort">
                     </form>
