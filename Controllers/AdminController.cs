@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BookCave.Controllers
 {
-    //[Authorize(Policy = "Admin")]
+    [Authorize(Policy = "Admin")]
     public class AdminController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;
@@ -70,9 +70,11 @@ namespace BookCave.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        public IActionResult Index()
+        [HttpGet]
+        public IActionResult Delete()
         {
+            _userService.GetEmployees();
             return View();
-        }
+        }       
     }
 }
