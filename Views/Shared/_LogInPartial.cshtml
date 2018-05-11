@@ -54,7 +54,7 @@
         </li>
         <li>
             <a asp-controller="Order" asp-action="ShoppingCart" role="button" aria-expanded="false">
-                <span class="glyphicon glyphicon-shopping-cart"></span><span id="nr-of-items"><span>0</span> Items</span>
+                <span class="glyphicon glyphicon-shopping-cart"></span>
             </a>
         </li>
     } else if (User.HasClaim("Role", "Admin"))
@@ -111,7 +111,7 @@ else
     </li>
     <li>
         <a asp-controller="Order" asp-action="ShoppingCart" role="button" aria-expanded="false">
-            <span class="glyphicon glyphicon-shopping-cart"></span><span id="nr-of-items">Cart</span>
+            <span class="glyphicon glyphicon-shopping-cart"></span>
         </a>
     </li>
 }

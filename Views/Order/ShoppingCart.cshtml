@@ -1,4 +1,4 @@
-@model BookCave.Models.ViewModels.OrderViewModel  
+@model BookCave.Models.ViewModels.OrderViewModel
 
 @{
     ViewData["Title"] = "Shopping Cart";
@@ -34,27 +34,27 @@
                                     <div class="media-body">
                                         <ul>
                                             <li>
-                                                <h4>@item.ProductName</h4>
+                                                <h5>@item.ProductName</h5>
                                             </li>
                                         </ul>
                                     </div>
                                 </div>
                             </td>
 
-                            <td class="col-sm-1 col-md-1">
+                            <td class="col-sm-1 col-md-2" valign="top">
                                 <p>
-                                    <h4>Quantity:@item.Quantity </h4>
+                                    <h5>Quantity: @item.Quantity</h5>
                                 </p>
                             </td>
-                            <td class="col-sm-1 col-md-1">
+                            <td class="col-sm-1 col-md-2" valign="top">
                                 <p>
-                                    <h4>Price: @item.Price</h4>
+                                    <h5>Price: $@item.Price</h5>
                                 </p>
                             </td>
 
-                            <td class="col-sm-1 col-md-1">
+                            <td class="col-sm-1 col-md-2" valign="top">
                                 <form method="post" asp-controller="Order" asp-action="Remove" asp-route-id=@item.ProductId>
-                                    <button class="btn btn-link" type="submit" >Remove</button>
+                                    <button class="btn btn-link" type="submit">Remove</button>
                                 </form>
                             </td>
                         </tr>

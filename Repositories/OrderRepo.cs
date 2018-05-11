@@ -15,14 +15,18 @@ namespace BookCave.Repositories
 
         public List<OrderViewModel> GetAllOrdersByCustomerId(int customerId)
         {
-            var orders = from order in _db.Orders where order.CustomerId == customerId select new OrderViewModel
+            var orders = (from order in _db.Orders where order.CustomerId == customerId select new OrderViewModel
             {
                 CustomerId = customerId,
                 OrderId = order.Id,
                 OrderDate = order.Date,
                 Status = order.Status,
-                Items = GetItemOrdersByOrderId(order.Id)
-            };
+            }).ToList();
+            foreach (var item in orders)
+            {
+                item.Items = GetItemOrdersByOrderId(item.OrderId);
+
+            }
             return orders.ToList();
         }
 
@@ -104,7 +108,7 @@ namespace BookCave.Repositories
 
         private List<ItemOrderViewModel> GetItemOrdersByOrderId(int orderId)
         {
-            return (from i in _db.ItemOrders
+            var items = from i in _db.ItemOrders
                 join p in _db.Products on i.ProductId equals p.Id
                 where i.OrderId == orderId
                 select new ItemOrderViewModel
@@ -114,7 +118,8 @@ namespace BookCave.Repositories
                     ProductName = p.Name,
                     Image = p.Image,
                     Price = p.Price
-                }).ToList();
+                };
+            return items.ToList();
         }
 
         public bool CheckoutOrder(int orderId)

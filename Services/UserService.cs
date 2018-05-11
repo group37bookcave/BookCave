@@ -29,9 +29,8 @@ namespace BookCave.Services
                 {
                     Street = address.Street,
                     City = address.City,
-                    Country = address.Country,
+                    Country = address.Country.Name,
                     Zipcode = address.ZipCode,
-                    AddressId = address.Id
                 });
             }
 

@@ -12,6 +12,7 @@ namespace BookCave.Services
     public class OrderService
     {
         private readonly OrderRepo _orderRepo = new OrderRepo();
+        private readonly CountryRepo _countryRepo = new CountryRepo();
 
         public OrderViewModel UpdateOrder(OrderInputModel model)
         {
@@ -24,7 +25,34 @@ namespace BookCave.Services
             };
             return viewModel;
         }
-        
+
+        public OrderViewModel AddAddressesToOrder(AddressInputModel address, OrderViewModel order)
+        {
+            if (address.CountryId != null)
+            {
+                order.ShippingAdress = new AddressViewModel
+                {
+                    City = address.City,
+                    Street = address.Street,
+                    Zipcode = address.Zipcode,
+                    Country = _countryRepo.GetCountryById((int) address.CountryId).Name
+                };
+            }
+
+            if (address.BillingCountryId != null)
+            {
+                order.BillingAddress = new AddressViewModel
+                {
+                    City = address.BillingCity,
+                    Street = address.BillingStreet,
+                    Zipcode = address.Zipcode,
+                    Country = _countryRepo.GetCountryById((int) address.BillingCountryId).Name
+                };
+            }
+
+            return order;
+        }
+
         private static List<ItemOrderViewModel> ConvertToItemOrderViewModels(IEnumerable<ItemOrder> model)
         {
             var itemOrder = model?.Select(item => new ItemOrderViewModel
@@ -36,9 +64,9 @@ namespace BookCave.Services
             return itemOrder;
         }
 
-        public bool CheckoutOrder(OrderInputModel model)
+        public bool CheckoutOrder(int id)
         {
-            return _orderRepo.CheckoutOrder(model.OrderId);
+            return _orderRepo.CheckoutOrder(id);
         }
 
         public void AddToOrder(int productId, OrderViewModel order)
@@ -54,9 +82,8 @@ namespace BookCave.Services
         public List<OrderViewModel> OrderHistory(int customerId)
         {
             return _orderRepo.GetAllOrdersByCustomerId(customerId);
-            
         }
-        
+
         public void RemoveItem(int id, OrderViewModel order)
         {
             _orderRepo.RemoveFromOrder(id, order.OrderId);
