@@ -133,15 +133,17 @@ namespace BookCave.Controllers
         
         [Authorize(Policy="Customer")]
         [HttpPost]
-        public IActionResult Review(string review, int rating, int productId){
-            if(review == null)
+        public IActionResult Review(string review, int? rating, int? productId)
+        {
+            if(review == null || rating == null || productId == null)
             {
                 return View("BookDetail");
             }
             
-            int userId = int.Parse(User.FindFirst("CustomerId").Value);
-            _productService.AddReview(review, rating, productId, userId);
-            return RedirectToAction("BookDetail");
+            var userId = int.Parse(User.FindFirst("CustomerId").Value);
+            _productService.AddReview(review, (int) rating, (int) productId, userId);
+            var id = (int) productId;
+            return RedirectToAction("BookDetail", id);
     
         }
 
