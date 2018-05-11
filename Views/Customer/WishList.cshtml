@@ -1,3 +1,5 @@
+@model List<BookCave.Models.ViewModels.BookViewModel>
+
 @{
     ViewData["Title"] = "Wish List";
 }
@@ -5,54 +7,71 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-12 col-md-10 col-md-offset-1">
-            <div class=page-header>  
-            <h1><span class="book-cave-color">WISH</span><span>LIST</span></h1>
+            <div class=page-header>
+                <h1>
+                    <span class="book-cave-color">WISH</span><span>LIST</span>
+                </h1>
             </div>
-            <table>             
+            <table>
                 <tbody>
-                    <tr class="list-item">
-                        <td class="col-sm-8 col-md-6">
-                            <div class="media">
-                                <a class="pull-left" href="#"> <div class="col-sm-2 hidden-xs"><img src="http://placehold.it/180x200/456" class="media-object" alt="ItemImage" style="width: 180px; height: 200px;"></div> </a>
-                                <div class="media-body">
-                                    <h4>Item name</h4>
-                                    <ul>
-                                        <li>Author:</li>
-                                        <li>
-                                            <select>
-                                                <option>HardCover</option>
-                                                <option>Physical</option>
-                                                <option>AudioBook</option>
-                                                <option>E-Book</option>
-                                            </select>
-                                        </li>
-                                        <li>Length:</li>
-                                        <li>Release date:</li>
-                                        <li>Language:</li>  
-                                    </ul>
-                                   
-                                    <span class="stars fa fa-star"></span>
-                                    <span class="stars fa fa-star"></span>
-                                    <span class="stars fa fa-star"></span>
-                                    <span class="stars fa fa-star"></span>
-                                    <span class="stars fa fa-star"></span>
-                                </div>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="col-sm-3 col-md-3" valign="top">
+                            <div>
+                                <img alt="Cover Art" class="bookDetailImg" src="@item.Image"/>
                             </div>
                         </td>
-                    
-                        <td class="col-sm-1 col-md-1">
-                            <p><strong>Price: $0.00</strong></p>
+                        <td class="col-sm-5 col-md-5" valign="top">
+                            <div>
+
+                                <ul>
+                                    <li>
+                                        <h4>
+                                            <a asp-action="BookDetail" asp-controller="Product" asp-route-id=@item.Id>@item.Name</a>
+                                        </h4>
+                                    </li>
+                                    <li>
+                                        Format: @item.Format
+                                    </li>
+                                </ul>
+
+                            </div>
                         </td>
-                        
-                        <td class="col-sm-1 col-md-1">
-                            <div class="button-options grey-buttons">
-                                <a type="button" class="btn">Move to cart</a>
-                                <form method="post">
-                                    <input asp-action="Customer" asp-route-id="" type="submit" value="Remove" class="btn">
-                                </form>  
-                            </div>	
+                        <td class="col-sm-2 col-md-2" valign="top">
+                            <div>
+                                <h5>
+                                    Price:
+                                    $@item.Price
+                                </h5>
+                            </div>
+                        </td>
+                        <td class="col-sm-2 col-md-2" valign="top">
+
+                            <div>
+                                <div class="button-options grey-buttons">
+                                    <a class="btn btn-default" type="button" asp-area="" asp-controller="" asp-action="">
+                                        Buy Now
+                                    </a>
+                                </div>
+                                <div class="button-options green-buttons">
+                                    <form method="post" asp-area="" asp-controller="Order" asp-action="Add" asp-route-id=@item.Id>
+                                        <button
+                                            class="btn btn-default addToCart" type="submit" value="Add to Cart">
+                                        </button>
+                                    </form>
+
+                                </div>
+                                <div class="button-options green-buttons">
+                                    <a class="btn btn-default" type="button" asp-area="" asp-controller="" asp-action="">
+                                        Add to WishList
+                                    </a>
+                                </div>
+                            </div>
+
                         </td>
                     </tr>
+                }
                 </tbody>
             </table>
             <hr>
@@ -66,6 +85,3 @@
         </div>
     </div>
 </div>
-
-           
-
