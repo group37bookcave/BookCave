@@ -147,10 +147,6 @@ namespace BookCave.Controllers
         {
             throw new NotImplementedException();
         }
-        public IActionResult SearchByTitle(string name)
-        {
-            var books = _productService.SearchByName(name);
-            return View(books);
-        }
+     
     }
 }
