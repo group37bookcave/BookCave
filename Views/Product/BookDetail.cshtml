@@ -57,7 +57,6 @@
                         </div>
                     </td>
                     <td class="col-sm-2 col-md-2" valign="top">
-
                         <div>
                             <div class="button-options green-buttons">
                                 <a class="btn btn-default" type="button" asp-area="" asp-controller="" asp-action="">
@@ -69,13 +68,28 @@
                                     Add to WishList
                                 </a>
                             </div>
-                            <div class="button-options green-buttons">
-                                <a class="btn btn-default" type="button" asp-area="" asp-controller="" asp-action="">
-                                    Add a Review
-                                </a>
-                            </div>
-                        </div>
 
+                            @if (SignInManager.IsSignedIn(User))
+                            {
+                                <div class="button-options green-buttons">
+                                    <form asp-controller="Product" asp-action="Review" method="post" class="inline-block filter-form">
+
+                                        <textarea name="review" id="review" cols="20" rows="10" placeholder="Write Review Here"></textarea>
+
+                                        <select name="rating" id="rating" value="">
+                                            <option name="rating" value="1">1 STAR</option>
+                                            <option name="rating" value="2">2 STARS</option>
+                                            <option name="rating" value="3">3 STARS</option>
+                                            <option name="rating" value="4">4 STARS</option>
+                                            <option name="rating" value="5">5 STARS</option>
+                                        </select>
+                                        <input type="hidden" value="@Model.Id" name="productId">
+                                        <input type="submit" class="btn" value="Review"/>
+                                    </form>
+
+                                </div>
+                            }
+                        </div>
                     </td>
                 </tr>
                 </tbody>

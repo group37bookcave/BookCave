@@ -61,8 +61,7 @@ namespace BookCave.Controllers
             var wishlist = _userService.GetWishList(userId);
             return View(wishlist);
 
-        }
-        
+        }        
         public IActionResult OrderHistory()
         {
             var userId = int.Parse(User.FindFirst("CustomerId").Value);

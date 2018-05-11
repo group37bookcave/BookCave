@@ -23,12 +23,17 @@ namespace BookCave.Controllers
         public IActionResult AllProducts()
         {
             var books = _productService.GetAllBooks();
+            ViewBag.First = "ALL";
+            ViewBag.Second = "PRODUCTS";
             return View(books);
         }
 
         [HttpPost]
         public IActionResult AllProducts(string SearchString , string FilterBy)
         {
+            ViewBag.First = "ALL";
+            ViewBag.Second = "PRODUCTS";
+
             if(SearchString == null)
             {
                 return View();
@@ -49,9 +54,39 @@ namespace BookCave.Controllers
             }
         }
 
+        public IActionResult Rowling()
+        {
+            ViewBag.First = "ALL";
+            ViewBag.Second = "PRODUCTS";
+
+            List<BookViewModel> books = _productService.SearchByAuthor("Rowling");
+            return View("AllProducts", books);
+        }
+
+        public IActionResult Yrsa()
+        {
+            ViewBag.First = "ALL";
+            ViewBag.Second = "PRODUCTS";
+            
+            List<BookViewModel> books = _productService.SearchByAuthor("Yrsa");
+            return View("AllProducts", books);
+        }
+
+        public IActionResult James()
+        {
+            ViewBag.First = "ALL";
+            ViewBag.Second = "PRODUCTS";
+            
+            List<BookViewModel> books = _productService.SearchByAuthor("James");
+            return View("AllProducts", books);
+        }
+
         [HttpPost]
         public IActionResult FilterByGenre(string FilterBy)
         {
+            ViewBag.First = "ALL";
+            ViewBag.Second = "PRODUCTS";
+
             if(FilterBy== null)
             {
                 return View("AllProducts");
@@ -63,9 +98,56 @@ namespace BookCave.Controllers
             return View("AllProducts", books);
         }
 
+        public IActionResult Biographies()
+        {
+            ViewBag.First = "BIOGRAPHIES";
+            ViewBag.Second = "&MEMOIRS";
+
+            Genre genre = new Genre();
+            genre.Name = "Biographies & Memoirs";
+            List<BookViewModel> books = _productService.FilterByGenre(genre);
+            return View("AllProducts", books);
+        }
+
+        public IActionResult Children()
+        {
+            ViewBag.First = "CHIL";
+            ViewBag.Second = "DREN";
+
+            Genre genre = new Genre();
+            genre.Name = "Children";
+            List<BookViewModel> books = _productService.FilterByGenre(genre);
+            return View("AllProducts", books);
+        }
+
+        public IActionResult Fantasy()
+        {
+            ViewBag.First = "FANT";
+            ViewBag.Second = "ASY";
+
+            Genre genre = new Genre();
+            genre.Name = "Fantasy";
+            List<BookViewModel> books = _productService.FilterByGenre(genre);
+            return View("AllProducts", books);
+        }
+
+        public IActionResult Fiction()
+        {
+            ViewBag.First = "FIC";
+            ViewBag.Second = "TION";
+
+            Genre genre = new Genre();
+            genre.Name = "Fiction";
+            List<BookViewModel> books = _productService.FilterByGenre(genre);
+            return View("AllProducts", books);
+        }
+
         [HttpPost]
         public IActionResult SortBy(string SortBy)
         {
+            ViewBag.First = "ALL";
+            ViewBag.Second = "PRODUCTS";
+
             if(SortBy == null)
             {
                 return View("AllProducts");
@@ -92,6 +174,9 @@ namespace BookCave.Controllers
         [HttpPost]
         public IActionResult FilterByFormat(string FilterBy)
         {
+            ViewBag.First = "ALL";
+            ViewBag.Second = "PRODUCTS";
+
             if(FilterBy== null)
             {
                 return View("AllProducts");
@@ -172,5 +257,36 @@ namespace BookCave.Controllers
             throw new NotImplementedException();
         }
 
+        public IActionResult Paberbacks()
+        {
+            var paberbacks = _productService.GetAllPaberbacks();
+            ViewBag.First = "PAPER";
+            ViewBag.Second = "BACKS";
+            return View("AllProducts", paberbacks);
+        }
+
+        public IActionResult AudioBooks()
+        {
+            var audiobooks = _productService.GetAllAudioBooks();
+            ViewBag.First = "AUDIO";
+            ViewBag.Second = "BOOKS";
+            return View("AllProducts", audiobooks);
+        }
+
+        public IActionResult EBooks()
+        {
+            var ebooks = _productService.GetAllEBooks();
+            ViewBag.First = "E";
+            ViewBag.Second = "BOOKS";
+            return View("AllProducts", ebooks);
+        }
+
+        public IActionResult Hardcover()
+        {
+            var hardcover = _productService.GetAllHardcovers();
+            ViewBag.First = "HARD";
+            ViewBag.Second = "COVER";
+            return View("AllProducts", hardcover);
+        }
     }
 }

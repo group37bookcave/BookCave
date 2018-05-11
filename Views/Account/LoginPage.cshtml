@@ -15,34 +15,25 @@
                 </h1>
             </div>
             <div class="login-form">
-
                 <form class="input-form address-form" method="post">
                     <fieldset>
                         <div class="form-inputs">
-
                             <div class="form-group">
-
                                 <label asp-for="@Model.Email">Email address</label><br>
                                 <span asp-validation-for="@Model.Email"></span>
                                 <input class="form-control" id="user-email" asp-for="@Model.Email" placeholder="Enter email">
                             </div>
-
                             <div class="form-group">
                                 <label asp-for="@Model.Password">Password</label><br>
                                 <span asp-validation-for="@Model.Password"></span>
                                 <input type="password" class="form-control" id="user-password" asp-for="@Model.Password" placeholder="Password">
                             </div>
-                   
-
-
                             <div class="grey-buttons">
                                 <input type="submit" value="LogIn">
                                 <!--<a class="btn btn-default grey-buttons" type="submit" value="LogIn">Log In</a>-->
                             </div>
                         </div>
-
                     </fieldset>
-
                 </form>
             </div>
         </div>

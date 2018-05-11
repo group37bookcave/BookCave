@@ -10,7 +10,7 @@
             <div class="page-header">
                 <div class="inline-block">
                     <h1>
-                        <span class="book-cave-color">ALL</span><span>PRODUCTS</span>
+                        <span class="book-cave-color">@ViewBag.First</span><span>@ViewBag.Second</span>
                     </h1>
                 </div>
                 <span class="filter-and-sort">
@@ -43,14 +43,10 @@
                                 <option value="Mystery">Mystery, Thriller & Suspence</option>
                                 <option value="Non-Fiction">Non - Fiction</option>
                                 <option value="Self-Help">Self - Help</option>
-                                <option value="Audio">AudioBooks</option>
-                                <option value="Ebook">Ebooks</option>
-                                <option value="HardCover">HardCover</option>
-                                <option value="PaperBack">PaperBack</option>
                             </select>
+                            <input type="submit" name="FilterBy" value="Filter" class="form-control filter-sort-buttons">
                         </div>
                     </div>
-                    <input type="submit" name="FilterBy" id="FilterBy" value="Filter">
                 </form>
             </div>
             <table>

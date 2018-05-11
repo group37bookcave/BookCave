@@ -13,7 +13,6 @@
                     <span class="book-cave-color">REVIEW</span><span>ORDER</span>
                 </h1>
             </div>
-
             <table>
                 <tbody>
                     @foreach (var item in Model.Items)
@@ -66,7 +65,6 @@
                 <br/>
                 <h4>Billing Address: @Model.BillingAddress.Street @Model.BillingAddress.Zipcode @Model.BillingAddress.City @Model.BillingAddress.Country </h4>
             </div>
-
             <div class="button-options grey-buttons">
                 <form method="post" asp-controller="Order" asp-action="Checkout">
                     <input class="btn btn-default grey-buttons" type="submit" value="Confirm & Pay"/>
