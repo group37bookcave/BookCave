@@ -64,7 +64,7 @@ namespace BookCave.Controllers
                 return View();
             }
 
-            return RedirectToAction("AllProducts", "Product");
+            return RedirectToAction("ReviewPage");
         }
 
         [HttpGet]
