@@ -119,5 +119,25 @@ namespace BookCave.Services
             newReview.CustomerId = userId;
             _reviewRepo.AddReviewToProduct(newReview);
         }
+
+        public List<BookViewModel> GetAllPaberbacks()
+        {
+            return ConvertToBookViewModel(_productRepo.GetAllPaperbacks());
+        }
+
+        public List<BookViewModel> GetAllHardcovers()
+        {
+            return ConvertToBookViewModel(_productRepo.GetAllHardcovers());
+        }
+
+        public List<BookViewModel> GetAllEBooks()
+        {
+            return ConvertToBookViewModel(_productRepo.GetAllEbooks());
+        }
+
+        public List<BookViewModel> GetAllAudioBooks()
+        {
+            return ConvertToBookViewModel(_productRepo.GetAllAudioBooks());
+        }
     }
 }

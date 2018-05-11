@@ -107,7 +107,7 @@ tfoot > tr {
     float: right;
 }
 
-.page-header > h1 {
+.page-header > h1, {
     display: inline;
 }
 
@@ -153,7 +153,17 @@ tfoot > tr {
     color: rgb(252, 202, 68);
 }
 
+<<<<<<< HEAD
 #sort-by , select-genre {
+=======
+#sort-by {
+    width: 75px;
+    margin-left: 20px;
+}
+
+#select-genre {
+    width: 150px;
+>>>>>>> 2f89aeed43af9cb87fb6ead138b69116637565ef
     margin-left: 20px;
     width: 150px;
 }
@@ -205,7 +215,7 @@ nav#navbar {
 }
 
 .input-group {
-    top: 50px;
+    top: 55px;
 }
 
 /* Hide/rearrange for smaller screens */
@@ -300,4 +310,17 @@ nav#navbar {
 #filter-by-text {
     margin-left: 15px;
     margin-bottom: 11px;
+}
+
+.filter-sort-form {
+    float: right;
+    margin-top: 24px;
+}
+
+.filter-sort-buttons {
+    background-color: rgb(240,240,240);
+}
+
+input#search-button {
+    border-radius: 0px 4px 4px 0px;
 }

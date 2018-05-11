@@ -87,9 +87,13 @@ namespace BookCave.Repositories
             return books.ToList();
         }
 
-        public List<Paperback> GetAllPaperbacks()
+        public List<Book> GetAllPaperbacks()
         {
-            return (from p in _db.Paperbacks select p).ToList();
+            var books = (from b in _db.Books
+                join p in _db.Paperbacks on b.Id equals p.Id
+                select b).ToList();
+            return books;
+            //return (from p in _db.Paperbacks select p).ToList();
         }
 
         public List<Hardcover> GetHardcoversByAuthor(int id)
@@ -101,9 +105,13 @@ namespace BookCave.Repositories
             return books.ToList();
         }
 
-        public List<Hardcover> GetAllHardCovers()
+        public List<Book> GetAllHardcovers()
         {
-            return (from h in _db.Hardcovers select h).ToList();
+            //return (from h in _db.Hardcovers select h).ToList();
+            var books = (from b in _db.Books
+                join h in _db.Hardcovers on b.Id equals h.Id
+                select b).ToList();
+            return books;
         }
 
         public List<Language> GetBookLanguages(int id)
@@ -153,9 +161,13 @@ namespace BookCave.Repositories
             return books.ToList();
         }
 
-        public List<Audiobook> GetAllAudioBooks()
+        public List<Book> GetAllAudioBooks()
         {
-            return (from a in _db.AudioBooks select a).ToList();
+            //return (from a in _db.AudioBooks select a).ToList();
+            var books = (from b in _db.Books
+                join a in _db.AudioBooks on b.Id equals a.Id
+                select b).ToList();
+            return books;
         }
 
         public List<Ebook> GetEbooksByAuthor(int id)
@@ -167,9 +179,13 @@ namespace BookCave.Repositories
             return books.ToList();
         }
 
-        public List<Ebook> GetAllEbooks()
+        public List<Book> GetAllEbooks()
         {
-            return (from e in _db.Ebooks select e).ToList();
+            //return (from e in _db.Ebooks select e).ToList();
+            var books = (from b in _db.Books
+                join e in _db.Ebooks on b.Id equals e.Id
+                select b).ToList();
+            return books;
         }
 
         public List<DigitalSheetMusic> GetDigitalSheetMusicByComposer(int id)
