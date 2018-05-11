@@ -14,64 +14,64 @@
             </div>
             <table>
                 <tbody>
-                @foreach (var item in Model)
+                @if (Model == null)
                 {
                     <tr>
-                        <td class="col-sm-3 col-md-3" valign="top">
-                            <div>
-                                <img alt="Cover Art" class="bookDetailImg" src="@item.Image"/>
-                            </div>
-                        </td>
-                        <td class="col-sm-5 col-md-5" valign="top">
-                            <div>
-
-                                <ul>
-                                    <li>
-                                        <h4>
-                                            <a asp-action="BookDetail" asp-controller="Product" asp-route-id=@item.Id>@item.Name</a>
-                                        </h4>
-                                    </li>
-                                    <li>
-                                        Format: @item.Format
-                                    </li>
-                                </ul>
-
-                            </div>
-                        </td>
-                        <td class="col-sm-2 col-md-2" valign="top">
-                            <div>
-                                <h5>
-                                    Price:
-                                    $@item.Price
-                                </h5>
-                            </div>
-                        </td>
-                        <td class="col-sm-2 col-md-2" valign="top">
-
-                            <div>
-                                <div class="button-options grey-buttons">
-                                    <a class="btn btn-default" type="button" asp-area="" asp-controller="" asp-action="">
-                                        Buy Now
-                                    </a>
-                                </div>
-                                <div class="button-options green-buttons">
-                                    <form method="post" asp-area="" asp-controller="Order" asp-action="Add" asp-route-id=@item.Id>
-                                        <button
-                                            class="btn btn-default addToCart" type="submit" value="Add to Cart">
-                                        </button>
-                                    </form>
-
-                                </div>
-                                <div class="button-options green-buttons">
-                                    <a class="btn btn-default" type="button" asp-area="" asp-controller="" asp-action="">
-                                        Add to WishList
-                                    </a>
-                                </div>
-                            </div>
-
-                        </td>
+                        <h4>No items in your wishlist</h4>
                     </tr>
                 }
+                else
+                {
+                    foreach (var item in Model)
+                    {
+                        <tr>
+                            <td class="col-sm-3 col-md-3" valign="top">
+                                <div>
+                                    <img alt="Cover Art" class="bookDetailImg" src="@item.Image"/>
+                                </div>
+                            </td>
+                            <td class="col-sm-5 col-md-5" valign="top">
+                                <div>
+
+                                    <ul>
+                                        <li>
+                                            <h4>
+                                                <a asp-action="BookDetail" asp-controller="Product" asp-route-id=@item.Id>@item.Name</a>
+                                            </h4>
+                                        </li>
+                                        <li>
+                                            Format: @item.Format
+                                        </li>
+                                    </ul>
+
+                                </div>
+                            </td>
+                            <td class="col-sm-2 col-md-2" valign="top">
+                                <div>
+                                    <h5>
+                                        Price:
+                                        $@item.Price
+                                    </h5>
+                                </div>
+                            </td>
+                            <td class="col-sm-2 col-md-2" valign="top">
+
+                                <div>
+                                    <div class="button-options green-buttons">
+                                        <form method="post" asp-area="" asp-controller="Order" asp-action="Add" asp-route-id=@item.Id>
+                                            <button
+                                                class="btn btn-default" type="submit" value="Add to Cart">
+                                            </button>
+                                        </form>
+
+                                    </div>
+                                </div>
+
+                            </td>
+                        </tr>
+                    }
+                }
+
                 </tbody>
             </table>
             <hr>
