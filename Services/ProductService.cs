@@ -1,9 +1,14 @@
 using System;
 using System.Linq;
+using System.Security.Claims;
 using System.Collections.Generic;
 using BookCave.Models.EntityModels;
 using BookCave.Models.ViewModels;
+using BookCave.Models.InputModels;
 using BookCave.Repositories;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 
 namespace BookCave.Services
@@ -11,6 +16,7 @@ namespace BookCave.Services
     public class ProductService
     {
         private readonly ProductRepo _productRepo = new ProductRepo();
+        private readonly ReviewRepo _reviewRepo = new ReviewRepo();
 
         public List<BookViewModel> GetTop10()
         {
@@ -98,6 +104,16 @@ namespace BookCave.Services
         {
             var sorted = model.OrderBy(item => item.Price).ToList();
             return sorted;
+        }
+        public void AddReview(ReviewViewModel model)
+        {
+            var input = new ReviewInputModel
+            {
+                ProductId = model.Id,
+                CustomerId = model.CustomerId,
+                Review = model.Review,
+                Rating = model.Rating
+            };
         }
     }
 }
