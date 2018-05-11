@@ -118,7 +118,9 @@
                                     </a>
                                 </div>
                                 <div class="button-options green-buttons">
-                                    <a class="btn btn-default" type="submit" value="Add to Cart" asp-area="" asp-controller="Order" asp-action="AddProduct" asp-route-id=@item.Id/>
+                                    <form method="post" asp-area="" asp-controller="Order" asp-action="Add" asp-route-id=@item.Id>
+                                        <button class="btn btn-default" type="submit" value="Add to Cart"> </button>
+                                    </form>
                                 </div>
                                 <div class="button-options green-buttons">
                                     <a class="btn btn-default" type="button" asp-area="" asp-controller="" asp-action="">

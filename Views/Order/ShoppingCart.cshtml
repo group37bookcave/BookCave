@@ -28,13 +28,13 @@
                                 <div class="media">
                                     <a class="pull-left" asp-controller="Product" asp-action="BookDetail">
                                         <div class="col-sm-2 hidden-xs">
-                                            <img class="bookDetailImg" src="" class="media-object" alt="ItemImage">
+                                            <img class="bookDetailImg" src=@item.Image class="media-object" alt="ItemImage">
                                         </div>
                                     </a>
                                     <div class="media-body">
                                         <ul>
                                             <li>
-                                                <h4>@item.ProductId</h4>
+                                                <h4>@item.ProductName</h4>
                                             </li>
                                         </ul>
                                     </div>
@@ -48,12 +48,14 @@
                             </td>
                             <td class="col-sm-1 col-md-1">
                                 <p>
-                                    <h4>Price: </h4>
+                                    <h4>Price: @item.Price</h4>
                                 </p>
                             </td>
 
                             <td class="col-sm-1 col-md-1">
-                                <a asp-controller="Order" asp-action="RemoveProduct" asp-route-id="@item.ProductId">Remove</a>
+                                <form method="post" asp-controller="Order" asp-action="Remove" asp-route-id=@item.ProductId>
+                                    <button class="btn btn-link" type="submit" >Remove</button>
+                                </form>
                             </td>
                         </tr>
                     }

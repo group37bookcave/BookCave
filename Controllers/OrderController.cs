@@ -38,15 +38,11 @@ namespace BookCave.Controllers
             {
                 return View("ShoppingCart");
             }
-
-            /*var productToRemove = _orderService;
-            var productToRemove = (from s in DataBase.Orders
-                                    where s.Id == id
-                                    select s).SingleOrDefault();
-            Database.Remove(productToRemove);
-            */
-
-            return RedirectToAction("ShoppingCart");
+            var userId = _signInManager.IsSignedIn(User) ? int.Parse(User.FindFirst("CustomerId").Value) : 10;
+            var order = _orderService.GetActiveOrder(userId);
+            _orderService.RemoveItem((int) id, order);
+            order = _orderService.GetActiveOrder(userId);
+            return RedirectToAction("ShoppingCart", order);
         }
 
 
@@ -89,31 +85,18 @@ namespace BookCave.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddProduct(int? id)
+        public IActionResult Add(int? id)
         {
             if (id == null)
             {
                 return View("Error");
             }
 
-            var userId = int.Parse(User.FindFirst("CustomerId").Value);
+            var userId = _signInManager.IsSignedIn(User) ? int.Parse(User.FindFirst("CustomerId").Value) : 10;
             var order = _orderService.GetActiveOrder(userId);
             _orderService.AddToOrder((int) id, order);
+            order = _orderService.GetActiveOrder(userId);
             return View("ShoppingCart", order);
-        }
-
-        [HttpPost]
-        public IActionResult RemoveProduct(int? id)
-        {
-            if (id == null)
-            {
-                return View("Error");
-            }
-
-            var userId = int.Parse(User.FindFirst("CustomerId").Value);
-            var order = _orderService.GetActiveOrder(userId);
-            _orderService.RemoveItem((int) id, order);
-            return RedirectToAction("ShoppingCart", order);
         }
 
         public IActionResult ReviewPage()
