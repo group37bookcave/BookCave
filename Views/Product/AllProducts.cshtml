@@ -87,14 +87,6 @@
                                         <li>
                                             Language: @foreach(var lan in item.Languages){@lan.Name}                                                 
                                         </li>
-                                        <li>
-                                            <span class="fa fa-star grey"></span>
-                                            <span class="fa fa-star grey"></span>
-                                            <span class="fa fa-star grey"></span>
-                                            <span class="fa fa-star grey"></span>
-                                            <span class="fa fa-star grey"></span>
-                                            <span class="grey"> No rating(s) </span>
-                                        </li>
                                     </ul>
                                 
                             </div>
@@ -109,11 +101,6 @@
                         <td class="col-sm-2 col-md-2" valign="top">
 
                             <div>
-                                <div class="button-options grey-buttons">
-                                    <a class="btn btn-default" type="button" asp-area="" asp-controller="" asp-action="">
-                                        Buy Now
-                                    </a>
-                                </div>
                                 <div class="button-options green-buttons">
                                     <form method="post" asp-area="" asp-controller="Order" asp-action="Add" asp-route-id=@item.Id>
                                         <button class="btn btn-default" type="submit" value="Add to Cart"> </button>
