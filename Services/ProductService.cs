@@ -94,15 +94,19 @@ namespace BookCave.Services
             return ConvertToBookViewModel(_productRepo.GetBooksByGenreId(genre.Id));
         }
 
-        public List<BookViewModel> SortByName(List<BookViewModel> model)
+        public List<BookViewModel> SortByName()
         {
-            var sorted = model.OrderBy(item => item.Name).ToList();
-            return sorted;
+            var books = _productRepo.GetAllBooks();
+            var sorted =  books.OrderBy(item => item.Name).ToList();
+            var sortedView = ConvertToBookViewModel(sorted);
+            return sortedView;
         }
-        public List<BookViewModel> SortByPrice(List<BookViewModel> model)
+        public List<BookViewModel> SortByPrice()
         {
-            var sorted = model.OrderBy(item => item.Price).ToList();
-            return sorted;
+            var books = _productRepo.GetAllBooks();
+            var sorted =  books.OrderBy(item => item.Price).ToList();
+            var sortedView = ConvertToBookViewModel(sorted);
+            return sortedView;
         }
     }
 }

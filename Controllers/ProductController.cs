@@ -69,8 +69,21 @@ namespace BookCave.Controllers
                 return View("AllProducts");
             }
             
-            List<BookViewModel> books;
-            return View("AllProducts"); //, books);
+            if(SortBy == "Name"){
+                 List<BookViewModel> books = _productService.SortByName();
+                return View("AllProducts", books);
+                
+            }
+            else if(SortBy == "Price")
+            {
+                List<BookViewModel> books = _productService.SortByPrice();
+                return View("AllProducts", books);
+            }
+            else{
+                return View("AllProducts");
+            }
+            
+            
         }
 
         /*

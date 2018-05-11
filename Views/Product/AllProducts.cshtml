@@ -18,13 +18,8 @@
                     <form asp-controller="Product" asp-action="SortBy" method="post" class="inline-block filter-form">
                         <select name="SortBy" value="all" class="form-control" id="sort-by">
                             <option class="select-filter" data-filter="all">Sort By</option>
-                            <option class=-"select-filter" data-filter="rating">Rating</option>
-                            <option class="select-filter" data-filter="name">Name</option>
-                            <option class="select-filter" data-filter="author">Author</option>
+                            <option class="select-filter" data-filter="name">Name</option>                  
                             <option class="select-filter" data-filter="price">Price</option>
-                            <option class="select-filter" data-filter="pages">Number of pages</option>
-                            <option class="select-filter" data-filter="year">Release Year</option>
-                            <option class="select-filter" data-filter="All">Length</option>
                         </select>
                          <input type="submit" name="SortBy" id="SortBy" value="SortTHIS">
                     </form>
