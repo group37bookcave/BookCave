@@ -5,7 +5,9 @@
         <div class="col-sm-12 col-md-10 col-md-offset-1">
             <div class="page-header">
                 <div>
-                    <h1><span class="book-cave-color">BOOK</span><span>DETAILS</span></h1>
+                    <h1>
+                        <span class="book-cave-color">BOOK</span><span>DETAILS</span>
+                    </h1>
                 </div>
             </div>
             <table>
@@ -19,25 +21,31 @@
                     <td class="col-sm-5 col-md-5" valign="top">
                         <div>
                             <ul>
-                                <li><h4>@Model.Name</h4></li>
-                                <li>Author: @foreach (var author in Model.Authors)
-                                            {
-                                                <ul>
-                                                    <li>
-                                                        @author.FullName
-                                                    </li>
-                                                </ul>
-                                            }
-                                    </li>
+                                <li>
+                                    <h4>@Model.Name</h4>
+                                </li>
+                                <li>
+                                    Author:
+                                    @foreach (var author in Model.Authors)
+                                    {
+                                        <ul>
+                                            <li>
+                                                @author.FullName
+                                            </li>
+                                        </ul>
+                                    }
+                                </li>
                                 <li>
                                     Format: @Model.Format
                                 </li>
                                 <li>Pages: @Model.Length</li>
                                 <li>Release Date: @Model.ReleaseDate.Day/@Model.ReleaseDate.Month/@Model.ReleaseDate.Year</li>
-                                <li>Language: @foreach(var lan in Model.Languages)
-                                              { 
-                                                  @lan.Name
-                                              }
+                                <li>
+                                    Language:
+                                    @foreach (var lan in Model.Languages)
+                                    {
+                                        @lan.Name
+                                    }
                                 </li>
                                 <li>Publisher: @Model.Publisher</li>
                                 <li>
@@ -101,14 +109,15 @@
             <div class="col-sm-12 col-md-10 col-md-offset-1">
                 <div>
 
-                        <h3>Review</h3>
+                    <h3>Review</h3>
                     @foreach (var review in Model.Reviews)
                     {
                         <hr/>
                         <div class="row">
                             <div class="col-sm-2">
                                 <div>@review.ReviewedBy </div>
-                                <div class="grey"> @review.Rating stars out of 5 <br/>
+                                <div class="grey">
+                                    @review.Rating stars out of 5 <br/>
                                     <span class="fa fa-star grey"></span>
                                     <span class="fa fa-star grey"></span>
                                     <span class="fa fa-star grey"></span>
@@ -119,10 +128,10 @@
                             <div class="col-sm-10">
                                 <div>
                                     @review.Review
-                                    
+
                                 </div>
                             </div>
-                            
+
                         </div>
                     }
                 </div>

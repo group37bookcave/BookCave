@@ -15,7 +15,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace BookCave.Controllers
 {
-    
+    [Authorize(Policy = "Customer")]
     public class CustomerController : Controller
     {
         private readonly SignInManager<ApplicationUser> _signInManager;
@@ -30,28 +30,21 @@ namespace BookCave.Controllers
         }
 
         [HttpGet]
-        [Authorize(Policy = "Customer")]
         public IActionResult AccountDetails()
         {
             return View();
         }
-        [Authorize(Policy = "Customer")]
-        public IActionResult Orders()
-        {
-            throw new NotImplementedException();
-        }
 
         [HttpPost]
-        public IActionResult AddToWishList(int? productId)
+        public IActionResult AddToWishList(int? id)
         {
-            if (productId == null)
+            if (id == null)
             {
                 return View("WishList");
             }
             var userId = int.Parse(User.FindFirst("CustomerId").Value);
-            _userService.AddToWishList((int) productId, userId);
-            var wishlist = _userService.GetWishList(userId);
-            return RedirectToAction("WishList", wishlist);
+            _userService.AddToWishList((int) id, userId);
+            return RedirectToAction("WishList");
         }
 
         [HttpGet]
@@ -59,7 +52,8 @@ namespace BookCave.Controllers
         {
             var userId = int.Parse(User.FindFirst("CustomerId").Value);
             var wishlist = _userService.GetWishList(userId);
-            return wishlist == null ? View() : View(wishlist);
+            return View(wishlist);
+
         }
         
         [Authorize(Policy = "Customer")]

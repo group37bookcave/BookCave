@@ -14,7 +14,7 @@
             </div>
             <table>
                 <tbody>
-                @if (Model == null)
+                @if (!Model.Any())
                 {
                     <tr>
                         <h4>No items in your wishlist</h4>
@@ -59,11 +59,8 @@
                                 <div>
                                     <div class="button-options green-buttons">
                                         <form method="post" asp-area="" asp-controller="Order" asp-action="Add" asp-route-id=@item.Id>
-                                            <button
-                                                class="btn btn-default" type="submit" value="Add to Cart">
-                                            </button>
+                                            <input class="btn btn-default" type="submit" value="Add to Cart"/>
                                         </form>
-
                                     </div>
                                 </div>
 
@@ -71,7 +68,6 @@
                         </tr>
                     }
                 }
-
                 </tbody>
             </table>
             <hr>
