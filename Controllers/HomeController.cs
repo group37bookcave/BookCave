@@ -4,7 +4,6 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using BookCave.Models;
 using BookCave.Models.ViewModels;
 
 namespace BookCave.Controllers
@@ -16,26 +15,29 @@ namespace BookCave.Controllers
             return View();
         }
 
+        public IActionResult TermsAndCond()
+        {
+            return View();
+        }
+
         public IActionResult About()
         {
-            ViewData["Message"] = "Your application description page.";
+            throw new NotImplementedException();
+        }
 
-            return View();
+        public IActionResult TopRated()
+        {
+            throw new NotImplementedException();
         }
 
         public IActionResult Contact()
         {
-            ViewData["Message"] = "Your contact page.";
-
-            return View();
+        ViewData["Message"] = "Your contact page.";
+        
+        return null;
         }
 
-         public IActionResult WishList()
-        {
-            ViewData["WishList"] = "Your Wish List.";
-
-            return View();
-        }
+      
 
         public IActionResult Error()
         {

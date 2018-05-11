@@ -1,0 +1,89 @@
+@model BookCave.Models.InputModels.AddressInputModel
+@{
+    ViewData["Title"] = "Address Page";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-md-10 col-md-offset-1">
+            <div class="page-header">
+                <span id="page-name">
+                    <h1>
+                        <span class="book-cave-color">YOUR</span><span id="list">ADDRESS</span>
+                    </h1>
+                </span>
+            </div>
+            <form asp-controller="Order" asp-action="Address" class="address-form" method="post">
+                <fieldset>
+                    <legend class="book-cave-color">Billing Address</legend>
+                    <div class="form-group">
+                        <span asp-validation-for="BillingStreet"></span>
+                        <label asp-for="BillingStreet">Street</label>
+                        <input asp-for="BillingStreet" type="text" class="form-control" id="BillingStreet" placeholder="Street">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <span asp-validation-for="BillingZipcode"></span>
+                        <label asp-for="BillingZipcode">ZipCode</label>
+                        <input asp-for="BillingZipcode" type="text" class="form-control" id="BillingZipcode" placeholder="ZipCode">
+                    </div>
+                    <div class="form-group col-md-5">
+                        <span asp-validation-for="BillingCity"></span>
+                        <label asp-for="BillingCity">City</label>
+                        <input asp-for="BillingCity" type="text" class="form-control" id="BillingCity" placeholder="City">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <span asp-validation-for="BillingCountryId"></span>
+                        <label asp-for="BillingCountryId">Country</label>
+                        <select asp-for="BillingCountryId" id="BillingCountryId" class="form-control">
+                            <option selected>Select country</option>
+                            @using (Html.BeginForm())
+                            {
+                                var countries = BookCave.Services.Helper.GetLanguages();
+                                foreach (var country in countries)
+                                {
+                                    <option name="BillingCountryId" value=@country.Id>@country.Name</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                    <legend class="book-cave-color">Shipping Address</legend>
+                    <div class="form-group">
+                        <span asp-validation-for="Street"></span>
+                        <label asp-for="Street">Street</label>
+                        <input asp-for="Street" type="text" class="form-control" id="Street" placeholder="Street">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <span asp-validation-for="Zipcode"></span>
+                        <label asp-for="Zipcode">ZipCode</label>
+                        <input asp-for="Zipcode" type="text" class="form-control" id="Zipcode" placeholder="Zipcode">
+                    </div>
+                    <div class="form-group col-md-5">
+                        <span asp-validation-for="City"></span>
+                        <label asp-for="City">City</label>
+                        <input asp-for="City" type="text" class="form-control" id="City" placeholder="City">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <span asp-validation-for="CountryId"></span>
+                        <label asp-for="CountryId">Country</label>
+
+                        <select asp-for="CountryId" name="CountryId" id="Country" class="form-control">
+                            <option selected>Select country</option>
+                            @using (Html.BeginForm())
+                            {
+                                var countries = BookCave.Services.Helper.GetLanguages();
+                                foreach (var country in countries)
+                                {
+                                    <option value=@country.Id>@country.Name</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                    <div class="button-options grey-buttons">
+                        <input class="btn" type="submit" value="Review Order">
+                        <a class="btn btn-default grey-buttons" type="button" asp-area="" asp-controller="Order" asp-action="ShoppingCart">Edit Order</a>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>

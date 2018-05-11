@@ -1,0 +1,139 @@
+@model BookCave.Models.ViewModels.BookViewModel
+@using Microsoft.AspNetCore.Identity
+@using System.Security.Claims
+@using BookCave.Models.EntityModels
+
+@inject SignInManager<ApplicationUser> SignInManager
+
+<div class="container-fluid">
+    <div class="row center">
+        <div class="col-sm-12 col-md-10 col-md-offset-1">
+            <div class="page-header">
+                <div>
+                    <h1>
+                        <span class="book-cave-color">BOOK</span><span>DETAILS</span>
+                    </h1>
+                </div>
+            </div>
+            <table>
+                <tbody>
+                <tr>
+                    <td class="col-sm-3 col-md-3" valign="top">
+                        <div>
+                            <img alt="Cover Art" class="bookDetailImg" src="@Model.Image"/>
+                        </div>
+                    </td>
+                    <td class="col-sm-5 col-md-5" valign="top">
+                        <div>
+                            <ul>
+                                <li>
+                                    <h4>@Model.Name</h4>
+                                </li>
+                                <li>
+                                    Author:
+                                    @foreach (var author in Model.Authors)
+                                    {
+                                        <ul>
+                                            <li>
+                                                @author.FullName
+                                            </li>
+                                        </ul>
+                                    }
+                                </li>
+                                <li>
+                                    Format: @Model.Format
+                                </li>
+                                <li>Pages: @Model.Length</li>
+                                <li>Release Date: @Model.ReleaseDate.Day/@Model.ReleaseDate.Month/@Model.ReleaseDate.Year</li>
+                                <li>
+                                    Language:
+                                    @foreach (var lan in Model.Languages)
+                                    {
+                                        @lan.Name
+                                    }
+                                </li>
+                                <li>Publisher: @Model.Publisher</li>
+                            </ul>
+                        </div>
+                    </td>
+                    <td class="col-sm-2 col-md-2" valign="top">
+                        <div>
+                            <h5>Price: @Model.Price</h5>
+                        </div>
+                    </td>
+                    <td class="col-sm-2 col-md-2" valign="top">
+                        <div>
+                            <div class="button-options green-buttons">
+                                <a class="btn btn-default" type="button" asp-area="" asp-controller="" asp-action="">
+                                    Add to Cart
+                                </a>
+                            </div>
+                            <div class="button-options green-buttons">
+                                <a class="btn btn-default" type="button" asp-area="" asp-controller="" asp-action="">
+                                    Add to WishList
+                                </a>
+                            </div>
+
+                            @if (SignInManager.IsSignedIn(User))
+                            {
+                                <div class="button-options green-buttons">
+                                    <form asp-controller="Product" asp-action="Review" method="post" class="inline-block filter-form">
+
+                                        <textarea name="review" id="review" cols="20" rows="10" placeholder="Write Review Here"></textarea>
+
+                                        <select name="rating" id="rating" value="">
+                                            <option name="rating" value="1">1 STAR</option>
+                                            <option name="rating" value="2">2 STARS</option>
+                                            <option name="rating" value="3">3 STARS</option>
+                                            <option name="rating" value="4">4 STARS</option>
+                                            <option name="rating" value="5">5 STARS</option>
+                                        </select>
+                                        <input type="hidden" value="@Model.Id" name="productId">
+                                        <input type="submit" class="btn" value="Review"/>
+                                    </form>
+
+                                </div>
+                            }
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-10 col-md-offset-1">
+                <div>
+                    <h3>Synopsis</h3>
+                    <hr/>
+                    <div>
+                        @Model.Description
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-10 col-md-offset-1">
+                <div>
+                    <h3>Reviews</h3>
+                    @foreach (var review in Model.Reviews)
+                    {
+                        <hr/>
+                        <div class="row">
+                            <div class="col-sm-2">
+                                <div>@review.ReviewedBy </div>
+                                <div class="grey">
+                                    @review.Rating stars out of 5 <br/>
+                                </div>
+                            </div>
+                            <div class="col-sm-10">
+                                <div>
+                                    @review.Review
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

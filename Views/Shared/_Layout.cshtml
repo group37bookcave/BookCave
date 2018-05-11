@@ -2,10 +2,9 @@
 <html>
 <head>
     <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>@ViewData["Title"] - BookCave</title>
-
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css"/>
         <link rel="stylesheet" href="~/css/site.css"/>
@@ -14,226 +13,295 @@
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute"/>
-        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true"/>
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" asp-append-version="true"/>
+        <link rel="stylesheet" href="~/css/site.css"/>
     </environment>
 </head>
 <body>
-<nav class="navbar navbar-inverse navbar-fixed-top">
+<nav id="navbar" class="navbar navbar-fixed-top">
     <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">BookCave</a>
+        <div class="row">
+            <div class="col-xs-3">
+                <a asp-area="" asp-controller="Home" asp-action="Index">
+                    <img src="~/images/xSmallLogo.svg" alt="Logo">
+                </a>
+            </div>
+            <div class="col-xs-6">
+                <form asp-controller="Product" asp-action="AllProducts" method="post" class="input-group">
+                    <div class="input-group-btn search-panel">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                            <span id="search_concept">All</span> <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>
+                                <a class="search-filter" data-filter="All" href="#">All</a>
+                            </li>
+                            <li>
+                                <a class="search-filter" data-filter="Author" href="#">Author</a>
+                            </li>
+                            <li>
+                                <a class="search-filter" data-filter="ISBN" href="#">ISBN</a>
+                            </li>
+                            <li>
+                                <a class="search-filter" data-filter="Title" href="#">Title</a>
+                            </li>
+                        </ul>
+                        </div>
+                        <input type="hidden" name="FilterBy" id="FilterBy" value="All">
+                        <input type="text" class="form-control" name="SearchString" placeholder="Search by keyword, title, author or ISBN">
+                        <span class="input-group-btn">
+                            <input class="btn btn-default" type="submit" value="Search"><span class="glyphicon glyphicon-search"></span></input>
+                        </span>
+                    </form>
+                </div>
+                <div class="col-xs-3">
+                    <ul id="corner-up-right" class="nav navbar-nav navbar-right">
+                        @await Html.PartialAsync("_LogInPartial", new BookCave.Models.InputModels.LoginInputModel())
+                    </ul>
+                </div>
+            </div>
         </div>
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
+        <div id="nav" class="navbar-collapse collapse">
+            <ul class="nav-product-list nav navbar-nav">
                 <li>
-                    <a asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                    <a asp-controller="Home" asp-action="Index">Home</a>
+                </li>
+                <li class="dropdown mega-dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <span>All Products </span><span class="fa fa-chevron-down"></span>
+                    </a>
+                    <ul class="dropdown-menu mega-dropdown-menu row">
+                        <li class="col-sm-2">
+                            <ul>
+                                <li>
+                                    <h5>Categories</h5>
+                                </li>
+                                <li>
+                                    <a asp-controller="Product" asp-action="AllProducts">All Products</a>
+                                </li>
+                                <li>
+                                    <a asp-controller="Product" asp-action="AudioBooks">Audio Books</a>
+                                </li>
+                                <li>
+                                    <a asp-controller="Product" asp-action="EBooks">E - Books</a>
+                                </li>
+                                <li>
+                                    <a asp-controller="Product" asp-action="Hardcover">Hardcover</a>
+                                </li>
+                                <li>
+                                    <a asp-controller="Product" asp-action="Paberbacks">Paperback</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="col-sm-3">
+                            <ul>
+                                <li>
+                                    <h5>Genres</h5>
+                                </li>
+                                <li>
+                                    <a asp-controller="Product" asp-action="Biographies">Biographies & Memoirs</a>
+                                </li>
+                                <li>
+                                    <a asp-controller="Product" asp-action="Children">Children</a>
+                                </li>
+                                <li>
+                                    <a asp-controller="Product" asp-action="Fantasy">Fantasy</a>
+                                </li>
+                                <li>
+                                    <a asp-controller="Product" asp-action="Fiction">Fiction</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="col-sm-3">
+                            <ul>
+                                <li>
+                                    <h5>Top Authors</h5>
+                                </li>
+                                <li>
+                                    <a asp-area="" asp-controller="Product" asp-action="Rowling">J.K. Rowling</a>
+                                </li>
+                                <li>
+                                    <a asp-controller="Product" asp-action="Yrsa">Yrsa Sigurðardóttir</a>
+                                </li>
+                                <li>
+                                    <a asp-controller="Product" asp-action="James">James Comey</a>
+                                </li>
+                                
+                                <li>
+                                    <a asp-controller="Product" asp-action="AllProducts">See all</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown mega-dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <span>Best Sellers </span><span class="fa fa-chevron-down"></span>
+                    </a>
+                    <ul class="dropdown-menu mega-dropdown-menu row">
+                        <li>
+                            <ul>
+                                <li>
+                                    <h5>Best Sellers</h5>
+                                </li>
+                                <li>
+                                    <a asp-controller="Product" asp-action="BestSellers">Our Best Sellers</a>
+                                </li>
+                                <li>
+                                    <a href="https://www.nytimes.com/books/best-sellers/2018/04/01/">New York Times Best Sellers</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
                 </li>
                 <li>
-                    <a asp-area="" asp-controller="Home" asp-action="About">About</a>
+                    <a asp-controller="Product" asp-action="NewReleases">New Releases</a>
                 </li>
                 <li>
-                    <a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a>
-                </li>
-                <li>
-                    <a asp-area="" asp-controller="Home" asp-action="WishList">WishList</a>
+                    <a asp-controller="Product" asp-action="TopRated">Top Rated</a>
                 </li>
             </ul>
         </div>
-    </div>
-</nav>
-
+    </nav>
 <div class="container body-content">
     @RenderBody()
-
-
-    <!--Footer-->
-    <footer class="footer">
-        <hr>
-        <div class="container text-left text-md-left">
-
-            <div class="row text-left text-md-left mt-3 pb-3">
-
-                <!--First column-->
-                <div class="col-md-5 col-lg-3 mx-auto">
-                    <p>
-                        <a href="#!">About Us</a>
-                    </p>
-                    <p>
-                        <a href="#!">Contact Us</a>
-                    </p>
-                    <p>
-                        <a href="#!">Q&As</a>
-                    </p>
-                    <p><a href="#!">Help</a>
-                </div>
-
-                <!--Second column-->
-                <div class="col-md-5 col-lg-2 mx-auto">
-                    <p>
-                        <a href="#!">Home</a>
-                    </p>
-                    <p>
-                        <a href="#!">Browse</a>
-                    </p>
-                    <p>
-                        <a href="#!">Best Sellers</a>
-                    </p>
-                    <p>
-                        <a href="#!">New Releases</a>
-                    </p>
-                </div>
-
-                <!--Third column-->
-                <div class="col-md-5 col-lg-2 mx-auto">
-                    <p>
-                        <a href="#!">Top Rated</a>
-                    </p>
-                    <p>
-                        <a href="#!">Shipping</a>
-                    </p>
-                    <p>
-                        <a href="#!">Information</a>
-                    </p>
-                    <p>
-                        <a href="#!">Returns</a>
-                    </p>
-                </div>
-
-                <!--Fourth column-->
-                <div class="col-md-5 col-lg-2 mx-auto">
-                    <p>
-                        <a href="#!">Account Details</a>
-                    </p>
-                    <p>
-                        <a href="#!">Order History</a>
-                    </p>
-                    <p>
-                        <a href="#!">Wish List</a>
-                    </p>
-                    <p>
-                        <a href="#!">Sign Out</a>
-                    </p>
-                </div>
-
-                <!--Fifth column-->
-                <div class="col-md-5 col-lg-3 mx-auto">
-                    <p>Contact Us</p>
-                    <p><i class="fa fa-home mr-3"></i> Menntavegur 1, 105 Reykjavik, Iceland</p>
-                    <p><i class="fa fa-envelope mr-3"></i> bookcave@bookcave.com</p>
-                    <p><i class="fa fa-phone mr-3"></i> + 354 866 1234</p>
-                </div>
+    <h2>BEST SELLERS</h2>
+    <div class="container">
+        <!--Product View-->
+        <div class="row">
+            <div class="col">
+                <a asp-controller="Product" asp-action="BookDetail" asp-route-id="41">
+                    <img alt="Cover Art" src="https://hpmedia.bloomsbury.com/rep/s/978%201408855928_309033.jpeg"/>
+                </a>
             </div>
-            <div class="row py-3 d-flex align-items-center">
-                <div class="container text-left text-md-left">
-                    <div class="footer-copyright py-3 text-center list-unstyled list-inline">
-                        <hr>
-                        <ul class="list-unstyled list-inline">
+            <div class="col">
+                <a asp-controller="Product" asp-action="BookDetail" asp-route-id="31">
+                    <img alt="Cover Art" src="https://hpmedia.bloomsbury.com/rep/s/9781408855935_309037.jpeg"/>
+                </a>
+            </div>
+            <div class="col">
+                <a asp-controller="Product" asp-action="BookDetail" asp-route-id="36">
+                    <img alt="Cover Art" src="https://hpmedia.bloomsbury.com/rep/s/9781408855942_309034.jpeg"/>
+                </a>
+            </div>
+            <div class="col">
+                <a asp-controller="Product" asp-action="BookDetail" asp-route-id="37">
+                    <img alt="Cover Art" src="https://hpmedia.bloomsbury.com/rep/s/9781408855959_309031.jpeg"/>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Footer-->
+<footer id="myFooter">
+    <!--Footer Links-->
+    <div class="text-left text-md-left">
+        <!-- Footer links -->
+        <div class="container row text-left text-md-left mt-3 pb-3">
+            <!--First column-->
+            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+                <p>
 
-                            <li>© The Book Cave </li>
-                            <li>
-                                <a href="#!">Privacy Policy</a>
-                            </li>
-                            <li>
-                                <a href="#!">Terms and Conditions</a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a class="btn-floating btn-sm rgba-white-slight mx-1">
-                                    <i class="fa fa-facebook-square"></i>
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a class="btn-floating btn-sm rgba-white-slight mx-1">
-                                    <i class="fa fa-twitter-square"></i>
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a class="btn-floating btn-sm rgba-white-slight mx-1">
-                                    <i class="fa fa-instagram"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
+                    <a asp-area="" asp-controller="Customer" asp-action="AccountDetails">
+                        Account Details
+                    </a>
+                </p>
+                <p>
+                    <a asp-area="" asp-controller="Customer" asp-action="OrderHistory">
+                        Order History
+                    </a>
+                </p>
+                <p>
+                    <a asp-area="" asp-controller="Customer" asp-action="WishList">
+                        WishList
+                    </a>
+                </p>
+            </div>
+
+            <!--Second column-->
+            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+                <p>
+
+                    <a asp-area="" asp-controller="Home" asp-action="Index">
+                        Home
+                    </a>
+                </p>
+                <p>
+                    <a asp-area="" asp-controller="Product" asp-action="AllProducts">
+                        All Products
+                    </a>
+                </p>
+                <p>
+                    <a asp-area="" asp-controller="Product" asp-action="TopRated">
+                        Top Rated
+                    </a>
+                </p>
+            </div>
+
+            <!--Third column-->
+            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+            </div>
+
+            <!--Fourth column-->
+            <div class="col col-lg-2 col-xl-2 mx-auto mt-3">
+            </div>
+
+            <!--Fifth column-->
+            <div class="col-md-2 col-lg-4 col-xl-2 mx-auto mt-3">
+                <p>
+                    Contact Us
+                </p>
+                <p>
+                    <i class="fa fa-home mr-3"></i> Menntavegur 1, 105 Reykjavik, Iceland
+                </p>
+                <p>
+                    <i class="fa fa-envelope mr-3"></i> <a href="mailto:bookcave@bookcave.com">bookcave@bookcave.com</a>
+                </p>
+                <p>
+                    <i class="fa fa-phone mr-3"></i> + 354 866 1234
+                </p>
+            </div>
+        </div>
+
+        <!-- Footer links -->
+        <div class="row py-3 d-flex align-items-center">
+            <!--Grid column-->
+            <hr>
+            <div class="container text-left text-md-left">
+                <div class="footer-copyright py-3 text-left list-unstyled list-inline">
+                    <!--Copyright-->
+                    <ul class="list-unstyled list-inline">
+                        <li>
+                            © The Book Cave
+                        </li>
+                        <li>
+                            <a href="#!">Privacy Policy</a>
+                        </li>
+                        <li>
+                            <a asp-controller="Home" asp-action="TermsAndCond">Terms and Conditions</a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="http://www.facebook.com" class="btn-floating btn-sm rgba-white-slight mx-1">
+                                <i class="fa fa-facebook-square"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="http://www.twitter.com" class="btn-floating btn-sm rgba-white-slight mx-1">
+                                <i class="fa fa-twitter-square"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="http://www.instagram.com" class="btn-floating btn-sm rgba-white-slight mx-1">
+                                <i class="fa fa-instagram"></i>
+                            </a>
+                        </li>
+                    </ul>
+                    <!--/.Copyright-->
                 </div>
             </div>
         </div>
-    </nav>
-    
-    <div class="container body-content">
-        @RenderBody()
-    
-    
-      
-           <!--Footer-->
-<footer class="footer">
-    <hr>
-    <div class="container text-left text-md-left">
-          
-    <div class="row text-left text-md-left mt-3 pb-3">
-      <!--First column-->
-      <div class="col-md-5 col-lg-3 mx-auto">
-      <p><a href="#!">About Us</a></p>
-      <p><a href="#!">Contact Us</a></p>
-      <p><a href="#!">Q&As</a></p>
-      <p><a href="#!">Help</a></p>
-      </div>
-                      
-      <!--Second column-->
-      <div class="col-md-5 col-lg-2 mx-auto">
-      <p><a href="#!">Home</a></p>
-      <p><a href="#!">Browse</a></p>
-      <p><a href="#!">Best Sellers</a></p>
-      <p><a href="#!">New Releases</a></p>
-      </div>
-                  
-      <!--Third column-->
-      <div class="col-md-5 col-lg-2 mx-auto">
-      <p><a href="#!">Top Rated</a></p>
-      <p><a href="#!">Shipping</a></p>
-      <p><a href="#!">Information</a></p>
-      <p><a href="#!">Returns</a></p>
-      </div>
-                  
-      <!--Fourth column-->
-      <div class="col-md-5 col-lg-2 mx-auto">
-      <p><a href="#!">Account Details</a></p>
-      <p><a href="#!">Order History</a></p>
-      <p><a href="#!">Wish List</a></p>
-      <p><a href="#!">Sign Out</a></p>
-      </div>
-      
-      <!--Fifth column-->
-      <div class="col-md-5 col-lg-3 mx-auto">
-      <p>Contact Us</p>
-      <p><i class="fa fa-home mr-3"></i> Menntavegur 1, 105 Reykjavik, Iceland</p>
-      <p><i class="fa fa-envelope mr-3"></i> bookcave@bookcave.com</p>
-      <p><i class="fa fa-phone mr-3"></i> + 354 866 1234</p>
-      </div>          
-  </div> 
-  <div class="row py-3 d-flex align-items-center">
-  <div class="container text-left text-md-left">
-     <div class="footer-copyright py-3 text-center list-unstyled list-inline">
-         <hr>             
-         <ul class="list-unstyled list-inline">
-      
-            <li>© The Book Cave </li>
-            <li><a href="#!">Privacy Policy</a></li>
-            <li><a href="#!">Terms and Conditions</a></li>
-            <li class="list-inline-item"><a class="btn-floating btn-sm rgba-white-slight mx-1"><i class="fa fa-facebook-square"></i></a></li>
-            <li class="list-inline-item"><a class="btn-floating btn-sm rgba-white-slight mx-1"><i class="fa fa-twitter-square"></i></a></li>
-            <li class="list-inline-item"><a class="btn-floating btn-sm rgba-white-slight mx-1"><i class="fa fa-instagram"></i></a></li>
-        </ul>
-      </div>
-  </div>
-</div>
-</div>             
+    </div>
 </footer>
-</div>                       
 
 <environment include="Development">
     <script src="~/lib/jquery/dist/jquery.js"></script>

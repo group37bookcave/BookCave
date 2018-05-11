@@ -1,0 +1,42 @@
+@model List<BookCave.Models.ViewModels.OrderViewModel>
+
+@{
+    ViewData["Title"] = "Order History";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-md-10 col-md-offset-1">
+            <div class="page-header">
+                <h1><span class="book-cave-color">ORDER</span><span>HISTORY</span></h1>
+            </div>
+            <table class="table table-condensed">
+            @foreach(var order in Model)
+            {
+                <thead>
+                <tr>
+                    <th>Order Number: @order.OrderId</th>
+                    <th>Order Date: @order.OrderDate</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                </thead>
+                foreach (var prod in order.Items)
+                {
+                    <tbody>
+                    <tr>
+                        <td>@prod.Name</td>
+                        <td></td>
+                        <td>@prod.Quantity</td>
+                        <td>@prod.Price</td>
+                    </tr>
+                    </tbody>                 
+                }
+            }
+            </table>
+            <div class="button-options grey-buttons"> 
+                <a class="btn btn-default grey-buttons" type="button" asp-area="" asp-controller="Product" asp-action="AllProducts">Continue Shopping</a>
+            </div>
+        </div>
+    </div>
+</div>

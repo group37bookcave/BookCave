@@ -6,10 +6,10 @@ namespace BookCave.Models.EntityModels
     {
         public int Id { get; set; }
 
-        public string CountryCode { get; set; }
-
         public string Name { get; set; }
-
-        public ICollection<CountryZipCode> CountryZipCodes { get; set; }
+        
+        public double ShippingCost { get; set; }
+        
+        public ICollection<Address> Addresses { get; set; }
     }
 }

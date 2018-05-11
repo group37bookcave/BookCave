@@ -14,9 +14,8 @@
             <img src="~/images/banner5.svg" alt="Recommendations" class="img-responsive" />
             <div class="carousel-caption" role="option">
                 <p>
-                    <!-- Learn how to build ASP.NET apps that can run anywhere. -->
-                    <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkID=525028&clcid=0x409">
-                        Get more recommendations
+                    <a class="btn btn-default" asp-controller="Product" asp-action="AllProducts">
+                        See more titles
                     </a>
                 </p>
             </div>
@@ -25,19 +24,17 @@
             <img src="~/images/banner6.svg" alt="Best Sellers" class="img-responsive" />
             <div class="carousel-caption" role="option">
                 <p>
-                    <!-- There are powerful new features in Visual Studio for building modern web apps. -->
-                    <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkID=525030&clcid=0x409">
-                        Get more titles
+                    <a class="btn btn-default" asp-controller="Product" asp-action="BestSellers">
+                        See more titles
                     </a>
                 </p>
             </div>
         </div>
-        <div class="item active">
-            <img src="~/images/banner7.svg" alt="New Arrivals" class="img-responsive" />
+        <div class="item">
+            <img src="~/images/banner7.svg" alt="New Releases" class="img-responsive" />
             <div class="carousel-caption" role="option">
                 <p>
-                    <!-- Checkout J.K. Rowlings Harry Potter. -->
-                    <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkID=525028&clcid=0x409">
+                    <a class="btn btn-default" asp-controller="Product" asp-action="NewReleases">
                         See more titles
                     </a>
                 </p>
@@ -47,8 +44,7 @@
             <img src="~/images/banner8.svg" alt="Top Rated" class="img-responsive" />
             <div class="carousel-caption" role="option">
                 <p>
-                    <!--There are powerful new features in Visual Studio for building modern web apps.-->
-                    <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkID=525030&clcid=0x409">
+                    <a class="btn btn-default" asp-controller="Product" asp-action="TopRated">
                         See more titles
                     </a>
                 </p>
@@ -64,43 +60,28 @@
         <span class="sr-only">Next</span>
     </a>
 </div>
-
-<div class="row">
-    <div class="col-md-3">
-        <h2>Application uses</h2>
-        <ul>
-            <li>Sample pages using ASP.NET Core MVC</li>
-            <li>Theming using <a href="https://go.microsoft.com/fwlink/?LinkID=398939">Bootstrap</a></li>
-        </ul>
-    </div>
-    <div class="col-md-3">
-        <h2>How to</h2>
-        <ul>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkID=398600">Add a Controller and View</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=699315">Manage User Secrets using Secret Manager.</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=699316">Use logging to log a message.</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=699317">Add packages using NuGet.</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=699319">Target development, staging or production environment.</a></li>
-        </ul>
-    </div>
-    <div class="col-md-3">
-        <h2>Overview</h2>
-        <ul>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=518008">Conceptual overview of what is ASP.NET Core</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=699320">Fundamentals of ASP.NET Core such as Startup and middleware.</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=398602">Working with Data</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=398603">Security</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkID=699321">Client side development</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkID=699322">Develop on different platforms</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkID=699323">Read more on the documentation site</a></li>
-        </ul>
-    </div>
-    <div class="col-md-3">
-        <h2>Run &amp; Deploy</h2>
-        <ul>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkID=517851">Run your app</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkID=517853">Run tools such as EF migrations and more</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkID=398609">Publish to Microsoft Azure Web Apps</a></li>
-        </ul>
+<h2>NEW RELEASES</h2>
+<div class="container"> 
+    <div class="row">
+        <div class="col">
+            <a asp-controller="Product" asp-action="BookDetail" asp-route-id="51">
+                <img alt="Cover Art" src="https://kbimages1-a.akamaihd.net/a174025c-fc54-4013-97c2-232bf790faee/1200/1200/False/the-subtle-art-of-not-giving-a-f-ck.jpg"/>
+            </a>
+        </div>
+        <div class="col">
+            <a asp-controller="Product" asp-action="BookDetail" asp-route-id="52">
+                <img alt="Cover Art" src="https://images-na.ssl-images-amazon.com/images/I/7153PGFRSBL.jpg"/>
+            </a>
+        </div>
+        <div class="col">
+            <a asp-controller="Product" asp-action="BookDetail" asp-route-id="55">
+                <img alt="Cover Art" src="https://www.hodder.co.uk/assets/HodderStoughton/img/book/565/isbn9781473621565.jpg"/>
+            </a>
+        </div>
+        <div class="col">
+            <a asp-controller="Product" asp-action="BookDetail" asp-route-id="53">
+                <img alt="Cover Art" src="https://images-na.ssl-images-amazon.com/images/I/71%2BT4DhJiiL.jpg"/>
+            </a>
+        </div>
     </div>
 </div>

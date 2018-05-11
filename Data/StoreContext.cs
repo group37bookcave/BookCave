@@ -1,4 +1,8 @@
-﻿using BookCave.Models.EntityModels;
+﻿using System.Data.Common;
+using BookCave.Models;
+using BookCave.Models.EntityModels;
+using BookCave.Models.InputModels;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace BookCave.Data
@@ -6,20 +10,19 @@ namespace BookCave.Data
     public class StoreContext : DbContext
     {
         // The entity tables.
+
+     
         public DbSet<Address> Addresses { get; set; }
         public DbSet<AgeGroup> AgeGroups { get; set; }
         public DbSet<Author> Authors { get; set; }
-        public DbSet<Book> Books { get; set; }
         public DbSet<Hardcover> Hardcovers { get; set; }
         public DbSet<Paperback> Paperbacks { get; set; }
-        public DbSet<AudioBook> AudioBooks { get; set; }
+        public DbSet<Audiobook> AudioBooks { get; set; }
         public DbSet<Ebook> Ebooks { get; set; }                
-        // public DbSet<BookType> BookTypes { get; set; }
         public DbSet<Country> Countries { get; set; }
         public DbSet<Customer> Customers { get; set; }
+        public DbSet<Composer> Composers { get; set; }
         public DbSet<Employee> Employees { get; set; }
-        public DbSet<Admin> Admins { get; set; }
-        public DbSet<Format> Formats { get; set; }
         public DbSet<Genre> Genres { get; set; }
         public DbSet<Isbn> Isbns { get; set; }
         public DbSet<ItemOrder> ItemOrders { get; set; }
@@ -28,25 +31,28 @@ namespace BookCave.Data
         public DbSet<Order> Orders { get; set; }
         public DbSet<PromoCode> PromoCodes { get; set; }
         public DbSet<Publisher> Publishers { get; set; }
+        public DbSet<DigitalSheetMusic> DigitalSheetMusics { get; set; }
+        public DbSet<PhysicalSheetMusic> PhysicalSheetMusics { get; set; }
+        public DbSet<Book> Books { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<Review> Reviews { get; set; }
         public DbSet<SheetMusic> SheetMusics { get; set; }
-        public DbSet<ZipCode> ZipCodes { get; set; }
+        public DbSet<WishList> WishLists { get; set; }
 
+        
         // The many to many tables.
         public DbSet<BookAgeGroup> BookAgeGroups { get; set; }
         public DbSet<BookAuthor> BookAuthors { get; set; }
+        public DbSet<SheetMusicComposer> SheetMusicComposers { get; set; }
         public DbSet<BookGenre> BookGenres { get; set; }
         public DbSet<BookLanguage> BookLanguages { get; set; }
-        public DbSet<EbookNarrator> EbookNarrators { get; set; }
+        public DbSet<AudiobookNarrator> AudioBookNarrators { get; set; }
         public DbSet<CustomerAddress> CustomerAddresses { get; set; }
-        public DbSet<CustomerOrder> CustomerOrders { get; set; }
-        public DbSet<CountryZipCode> CountryZipCodes { get; set; }
+        public DbSet<WishListProduct> WishListProducts { get; set; }
+        
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<User>().ToTable("Users");
-            modelBuilder.Entity<Product>().ToTable("Products");
-            modelBuilder.Entity<Book>().ToTable("Books");
-            
             // Configure many to many between Customer and Address.
             modelBuilder.Entity<CustomerAddress>().HasKey(ca => new {ca.CustomerId, ca.AddressId});
             
@@ -59,9 +65,7 @@ namespace BookCave.Data
                 .HasOne(ca => ca.Address)
                 .WithMany(c => c.CustomerAddresses)
                 .HasForeignKey(ca => ca.AddressId);
-            
-            modelBuilder.Entity<CustomerOrder>().HasKey(co => new {co.CustomerId, co.OrderId});
-            
+                       
             // Configure many to many between Book and AgeGroup.
             modelBuilder.Entity<BookAgeGroup>().HasKey(bag => new {bag.BookId, bag.AgeGroupId});
             
@@ -114,31 +118,43 @@ namespace BookCave.Data
                 .WithMany(b => b.BookLanguages)
                 .HasForeignKey(bl => bl.BookId);
             
-            // Configure many to many between Book and Narrator.
-            modelBuilder.Entity<EbookNarrator>().HasKey(bn => new {bn.EbookId, bn.NarratorId});
+            // Configure many to many between AudioBook and Narrator.
+            modelBuilder.Entity<AudiobookNarrator>().HasKey(bn => new {bn.AudiobookId, bn.NarratorId});
             
-            modelBuilder.Entity<EbookNarrator>()
+            modelBuilder.Entity<AudiobookNarrator>()
                 .HasOne(bn => bn.Narrator)
-                .WithMany(b => b.BookNarrators)
+                .WithMany(b => b.AudiobookNarrators)
                 .HasForeignKey(bn => bn.NarratorId);
             
-            modelBuilder.Entity<EbookNarrator>()
+            modelBuilder.Entity<AudiobookNarrator>()
                 .HasOne(bn => bn.Book)
-                .WithMany(b => b.BookNarrators)
-                .HasForeignKey(bn => bn.EbookId);
+                .WithMany(b => b.AudiobookNarrators)
+                .HasForeignKey(bn => bn.AudiobookId);
             
-            // Configure many to many between Country and ZipCode
-            modelBuilder.Entity<CountryZipCode>().HasKey(cz => new {cz.CountryId, cz.ZipCodeId});
+            // Configure many to many between Sheetmusic and Composer.
+            modelBuilder.Entity<SheetMusicComposer>().HasKey(sma => new {sma.SheetMusicId, sma.ComposerId});
+
+            modelBuilder.Entity<SheetMusicComposer>()
+                .HasOne(sma => sma.SheetMusic)
+                .WithMany(s => s.SheetMusicComposers)
+                .HasForeignKey(sma => sma.SheetMusicId);
+            modelBuilder.Entity<SheetMusicComposer>()
+                .HasOne(sma => sma.Composer)
+                .WithMany(s => s.SheetMusicComposers)
+                .HasForeignKey(sma => sma.ComposerId);
             
-            modelBuilder.Entity<CountryZipCode>()
-                .HasOne(cz => cz.Country)
-                .WithMany(c => c.CountryZipCodes)
-                .HasForeignKey(cz => cz.CountryId);
-            
-            modelBuilder.Entity<CountryZipCode>()
-                .HasOne(cz => cz.ZipCode)
-                .WithMany(c => c.CountryZipCodes)
-                .HasForeignKey(cz => cz.ZipCodeId);
+            // Configure many to many between Product and Wishlist.
+            modelBuilder.Entity<WishListProduct>().HasKey(wlp => new {wlp.ProductId, wlp.WishListId});
+
+            modelBuilder.Entity<WishListProduct>()
+                .HasOne(wlp => wlp.Product)
+                .WithMany(w => w.WishLists)
+                .HasForeignKey(wlp => wlp.ProductId);
+
+            modelBuilder.Entity<WishListProduct>()
+                .HasOne(wlp => wlp.WishList)
+                .WithMany(w => w.Products)
+                .HasForeignKey(wlp => wlp.WishListId);
         }
 
 
@@ -148,5 +164,6 @@ namespace BookCave.Data
                 "Server=tcp:verklegt2.database.windows.net,1433;Initial Catalog=VLN2_2018_H37;Persist Security Info=False;User ID=VLN2_2018_H37_usr;Password=whi+ePig40;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
             );
         }
+       
     }
 }
