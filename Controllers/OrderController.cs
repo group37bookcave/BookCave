@@ -61,10 +61,11 @@ namespace BookCave.Controllers
         {
             if (ModelState.IsValid)
             {
-                return View();
+                 return RedirectToAction("ReviewPage");
+                
             }
-
-            return RedirectToAction("ReviewPage");
+            return View();
+           
         }
 
         [HttpGet]
