@@ -79,7 +79,7 @@ namespace BookCave.Controllers
                 return View("Error");
             }
 
-            var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password,false, false);
+            var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, false, false);
 
             if (!result.Succeeded)
             {

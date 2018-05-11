@@ -14,6 +14,10 @@ namespace BookCave.Repositories
         public List<BookViewModel> GetWishList(int customerId)
         {
             var wishlist = GetCustomerWishList(customerId);
+            if (wishlist == null)
+            {
+                return null;
+            }
             var book = from b in _db.Books
                 join w in wishlist.Products on b.Id equals w.ProductId
                 select new BookViewModel

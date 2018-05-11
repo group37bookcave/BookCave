@@ -15,11 +15,13 @@ namespace BookCave.Repositories
 
         public List<OrderViewModel> GetAllOrdersByCustomerId(int customerId)
         {
-            var orders = from o in _db.Orders where o.Customer.Id == customerId select new OrderViewModel
+            var orders = from order in _db.Orders where order.CustomerId == customerId select new OrderViewModel
             {
                 CustomerId = customerId,
-                OrderId = o.Id,
-                Items = GetItemOrdersByOrderId(o.Id)
+                OrderId = order.Id,
+                OrderDate = order.Date,
+                Status = order.Status,
+                Items = GetItemOrdersByOrderId(order.Id)
             };
             return orders.ToList();
         }
@@ -122,7 +124,9 @@ namespace BookCave.Repositories
             {
                 return false;
             }
+
             order.IsCheckedOut = true;
+            order.Date = DateTime.Today;
             _db.Update(order);
             _db.SaveChanges();
             return true;

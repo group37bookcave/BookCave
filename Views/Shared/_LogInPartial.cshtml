@@ -1,6 +1,7 @@
 @using Microsoft.AspNetCore.Identity
 @using System.Security.Claims
 @using BookCave.Models.EntityModels
+@model BookCave.Models.InputModels.LoginInputModel
 
 @inject SignInManager<ApplicationUser> SignInManager
 
@@ -87,12 +88,12 @@ else
                     <div class="col-md-12">
                         <form class="form" role="form" method="post" accept-charset="UTF-8" id="login-nav">
                             <div class="form-group sign-in-group">
-                                <label class="sr-only" >Email address</label>
-                                <input type="email" class="form-control"  placeholder="Email address">
+                                <label class="sr-only" asp-for="Email" >Email address</label>
+                                <input type="email" class="form-control" asp-for="Email"  placeholder="Email address">
                             </div>
                             <div class="form-group sign-in-group">
-                                <label class="sr-only" >Password</label>
-                                <input type="password" class="form-control"  placeholder="Password">
+                                <label class="sr-only" asp-for="Password" >Password</label>
+                                <input type="password" class="form-control" asp-for="Password"  placeholder="Password">
                             </div>
                             <div class="form-group sign-in-group">
                                 <span>

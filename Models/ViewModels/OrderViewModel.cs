@@ -1,4 +1,4 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 namespace BookCave.Models.ViewModels
 {
@@ -6,6 +6,8 @@ namespace BookCave.Models.ViewModels
     {
         public int OrderId { get; set; }
         public int CustomerId { get; set; }
+        public DateTime OrderDate { get; set; }
+        public string Status { get; set; }
         public List<ItemOrderViewModel> Items { get; set; }
     }
 }
