@@ -36,10 +36,12 @@ namespace BookCave.Controllers
         {
             return View();
         }
-        [Authorize(Policy = "Customer")]
-        public IActionResult Orders()
+        //[Authorize(Policy = "Customer")]
+        public IActionResult OrderHistory()
         {
-            throw new NotImplementedException();
+            int userId = int.Parse(User.FindFirst("CustomerId").Value);
+            var orderHistory = _orderService.OrderHistory(userId);
+            return View(orderHistory);
         }
 
         [HttpPost]
@@ -62,14 +64,5 @@ namespace BookCave.Controllers
             var wishlist = _userService.GetWishList(userId);
             return wishlist == null ? View() : View(wishlist);
         }
-        
-        [Authorize(Policy = "Customer")]
-        public IActionResult OrderHistory()
-        {
-            var userId = int.Parse(User.FindFirst("CustomerId").Value);
-            var orderHistory = _orderService.OrderHistory(userId);
-            return View(orderHistory);
-        }
-        
     }
 }

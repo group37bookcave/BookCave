@@ -22,8 +22,8 @@ namespace BookCave.Models.InputModels
         [Required(ErrorMessage = "Please enter city.")]
         public string City { get; set; }
 
-        [Required(ErrorMessage = "Please selet country.")]
-        public int CountryId { get; set; }
+        [Required(ErrorMessage = "Please select country.")]
+        public int? CountryId { get; set; }
 
         public byte[] Image { get; set; }
 
