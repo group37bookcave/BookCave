@@ -22,7 +22,7 @@ namespace BookCave.Repositories
                     Image = b.Image,
                     Name = b.Name,
                     Format = b.GetType().Name,
-                    Price = b.Price,
+                    Price = b.Price
                 };
             return book.ToList();
         }

@@ -24,6 +24,17 @@ namespace BookCave.Services
             };
             return viewModel;
         }
+        
+        private static List<ItemOrderViewModel> ConvertToItemOrderViewModels(IEnumerable<ItemOrder> model)
+        {
+            var itemOrder = model?.Select(item => new ItemOrderViewModel
+                {
+                    ProductId = item.ProductId,
+                    Quantity = item.Quantity
+                })
+                .ToList();
+            return itemOrder;
+        }
 
         public bool CheckoutOrder(OrderInputModel model)
         {
@@ -40,26 +51,10 @@ namespace BookCave.Services
             return _orderRepo.GetActiveOrder(customerId);
         }
 
-        private static List<ItemOrderViewModel> ConvertToItemOrderViewModels(IEnumerable<ItemOrder> model)
-        {
-            var itemOrder = model?.Select(item => new ItemOrderViewModel
-                {
-                    ProductId = item.ProductId,
-                    Quantity = item.Quantity
-                })
-                .ToList();
-            return itemOrder;
-        }
-
         public List<OrderViewModel> OrderHistory(int customerId)
         {
-            var customerOrders =  _orderRepo.GetAllOrdersByCustomerId(customerId);
-            var customerOrderList = new List<OrderViewModel>();
-            foreach(var order in customerOrders)
-            {
-                customerOrderList.Add(ConvertToOrderViewModel(order));
-            }
-            return customerOrderList;
+            return _orderRepo.GetAllOrdersByCustomerId(customerId);
+            
         }
         
         public void RemoveItem(int id, OrderViewModel order)

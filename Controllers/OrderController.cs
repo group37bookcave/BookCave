@@ -12,8 +12,6 @@ using Microsoft.AspNetCore.Identity;
 //using System.Threading.Tasks;
 
 
-
-
 namespace BookCave.Controllers
 {
     public class OrderController : Controller
@@ -43,6 +41,7 @@ namespace BookCave.Controllers
             {
                 return View("ShoppingCart");
             }
+
             var userId = _signInManager.IsSignedIn(User) ? int.Parse(User.FindFirst("CustomerId").Value) : 10;
             var order = _orderService.GetActiveOrder(userId);
             _orderService.RemoveItem((int) id, order);
@@ -58,12 +57,15 @@ namespace BookCave.Controllers
         }
 
         [HttpPost]
-        public IActionResult Address(AddressInputModel address){
-            if(ModelState.IsValid){
-       
-            return View();
-        }
+        public IActionResult Address(AddressInputModel address)
+        {
+            if (ModelState.IsValid)
+            {
+                return View();
+            }
 
+            return RedirectToAction("AllProducts", "Product");
+        }
 
         [HttpGet]
         public IActionResult PaymentPage()
@@ -71,7 +73,8 @@ namespace BookCave.Controllers
             return View();
         }
 
-        [HttpPost]
+        [
+            HttpPost]
         public IActionResult PaymentPage(PaymentInputModel Payment)
         {
             if (ModelState.IsValid)
@@ -107,21 +110,6 @@ namespace BookCave.Controllers
         public IActionResult Receipt()
         {
             return View();
-        }
-        public IActionResult AddToCart(int id)
-        {
-            return View();
-        }
-
-        public IActionResult OrderHistory()
-        {
-            int userId = int.Parse(User.FindFirst("CustomerId").Value);
-            if(userId == 0)
-            {
-                return View();
-            }
-            var orderHistory = _orderService.OrderHistory(userId);
-            return View(orderHistory);
         }
     }
 }

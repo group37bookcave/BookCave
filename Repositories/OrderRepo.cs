@@ -13,26 +13,14 @@ namespace BookCave.Repositories
         private readonly StoreContext _db = new StoreContext();
         private readonly ProductRepo _pr = new ProductRepo();
 
-
-        public IEnumerable<ItemOrderViewModel> GetItemOrderViewModels(int itemorderId)
+        public List<OrderViewModel> GetAllOrdersByCustomerId(int customerId)
         {
-            var items = from item in _db.ItemOrders
-                join product in _db.Products on item.ProductId equals product.Id
-                where item.Id == itemorderId
-                select new ItemOrderViewModel
-                {
-                    Image = product.Image,
-                    Name = product.Name,
-                    Price = product.Price,
-                    ProductId = product.Id,
-                    Quantity = item.Quantity
-                };
-            return items;
-        }
-
-        public List<Order> GetAllOrdersByCustomerId(int customerId)
-        {
-            var orders = from o in _db.Orders where o.Customer.Id == customerId select o;
+            var orders = from o in _db.Orders where o.Customer.Id == customerId select new OrderViewModel
+            {
+                CustomerId = customerId,
+                OrderId = o.Id,
+                Items = GetItemOrdersByOrderId(o.Id)
+            };
             return orders.ToList();
         }
 
@@ -58,6 +46,16 @@ namespace BookCave.Repositories
             order.PromoCode = model.PromoCode;
             _db.SaveChanges();
             return order;
+        }
+        
+        private List<ItemOrder> ConvertToItemOrder(IEnumerable<ItemOrderViewModel> items)
+        {
+            return items.Select(item =>
+                new ItemOrder
+                {
+                    Product = _pr.GetProduct(item.ProductId),
+                    Quantity = item.Quantity
+                }).ToList();
         }
 
         public void RemoveFromOrder(int productId, int orderId)
@@ -117,16 +115,6 @@ namespace BookCave.Repositories
                 }).ToList();
         }
 
-        private List<ItemOrder> ConvertToItemOrder(IEnumerable<ItemOrderViewModel> items)
-        {
-            return items.Select(item =>
-                new ItemOrder
-                {
-                    Product = _pr.GetProduct(item.ProductId),
-                    Quantity = item.Quantity
-                }).ToList();
-        }
-
         public bool CheckoutOrder(int orderId)
         {
             var order = (from o in _db.Orders where o.Id == orderId select o).SingleOrDefault();
@@ -134,7 +122,6 @@ namespace BookCave.Repositories
             {
                 return false;
             }
-
             order.IsCheckedOut = true;
             _db.Update(order);
             _db.SaveChanges();

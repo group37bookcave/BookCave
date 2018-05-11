@@ -21,26 +21,17 @@ namespace BookCave.Controllers
     {
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly UserService _userService;
+        private readonly OrderService _orderService;
 
         public CustomerController(SignInManager<ApplicationUser> signInManager)
         {
             _signInManager = signInManager;
             _userService = new UserService();
+            _orderService = new OrderService();
         }
 
         [HttpGet]
         public IActionResult AccountDetails()
-        {
-            return View();
-        }
-
-        [HttpPost]
-       /* public IActionResult AccountDetails()
-        {
-            return View();
-        }
-*/
-        public IActionResult OrderHistory()
         {
             return View();
         }
@@ -68,6 +59,13 @@ namespace BookCave.Controllers
             var userId = int.Parse(User.FindFirst("CustomerId").Value);
             var wishlist = _userService.GetWishList(userId);
             return View(wishlist);
+        }
+        
+        public IActionResult OrderHistory()
+        {
+            int userId = int.Parse(User.FindFirst("CustomerId").Value);
+            var orderHistory = _orderService.OrderHistory(userId);
+            return View(orderHistory);
         }
         
     }
