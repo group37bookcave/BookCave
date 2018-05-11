@@ -114,6 +114,7 @@ namespace BookCave.Services
                 Review = model.Review,
                 Rating = model.Rating
             };
+            _reviewRepo.AddReviewToProduct(input);
         }
     }
 }
