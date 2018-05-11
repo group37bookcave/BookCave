@@ -15,9 +15,9 @@
             </div>
             <table>
                 <tbody>
-                @if (Model.Items == null)
+                @if (Model.Items == null || !Model.Items.Any())
                 {
-                    <h4>NO ITEMS IN CART</h4>
+                    <h4>Your cart is empty</h4>
                 }
                 else
                 {

@@ -30,12 +30,6 @@ namespace BookCave.Controllers
 
         }
 
-        [HttpGet]
-        public IActionResult AccountDetails()
-        {
-            return View();
-        }
-
         [HttpPost]
         public IActionResult AddToWishList(int? productId)
         {
@@ -69,13 +63,19 @@ namespace BookCave.Controllers
 
         }
         
-        [Authorize(Policy = "Customer")]
         public IActionResult OrderHistory()
         {
             var userId = int.Parse(User.FindFirst("CustomerId").Value);
             var orderHistory = _orderService.OrderHistory(userId);
             return View(orderHistory);
         }
-        
+
+        [HttpGet]
+        public IActionResult AccountDetails()
+        {
+            var userId = int.Parse(User.FindFirst("CustomerId").Value);
+            var customer = _userService.GetCustomer(userId);
+            return View();
+        }
     }
 }
