@@ -11,6 +11,7 @@ namespace BookCave.Services
         private readonly CustomerRepo _customerRepo = new CustomerRepo();
         private readonly EmployeeRepo _employeeRepo = new EmployeeRepo();
         private readonly AddressRepo _addressRepo = new AddressRepo();
+        private readonly WishListRepo _wishListRepo = new WishListRepo();
 
         public CustomerViewModel GetCustomer(int id)
         {
@@ -92,6 +93,16 @@ namespace BookCave.Services
         public IEnumerable<EmployeeViewModel> GetEmployees()
         {
             return _employeeRepo.GetEmployees();
+        }
+
+        public void AddToWishList(int productId, int customerId)
+        {
+            _wishListRepo.AddToWishList(productId, customerId);
+        }
+
+        public List<BookViewModel> GetWishList(int customerId)
+        {
+            return _wishListRepo.GetWishList(customerId);
         }
     }
 }

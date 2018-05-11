@@ -12,9 +12,10 @@ using System;
 namespace BookCave.Migrations.Store
 {
     [DbContext(typeof(StoreContext))]
-    partial class StoreContextModelSnapshot : ModelSnapshot
+    [Migration("20180511115006_wishlist2.0")]
+    partial class wishlist20
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -28,7 +29,7 @@ namespace BookCave.Migrations.Store
 
                     b.Property<string>("City");
 
-                    b.Property<int?>("CountryId");
+                    b.Property<int>("CountryId");
 
                     b.Property<string>("Street");
 
@@ -292,13 +293,9 @@ namespace BookCave.Migrations.Store
 
                     b.Property<int>("CustomerId");
 
-                    b.Property<DateTime>("Date");
-
                     b.Property<bool>("IsCheckedOut");
 
                     b.Property<int?>("PromoCodeId");
-
-                    b.Property<string>("Status");
 
                     b.HasKey("Id");
 
@@ -547,7 +544,8 @@ namespace BookCave.Migrations.Store
                 {
                     b.HasOne("BookCave.Models.EntityModels.Country", "Country")
                         .WithMany("Addresses")
-                        .HasForeignKey("CountryId");
+                        .HasForeignKey("CountryId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("BookCave.Models.EntityModels.AudiobookNarrator", b =>
