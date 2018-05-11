@@ -21,7 +21,7 @@
                             <option class="select-filter" data-filter="name">Name</option>                  
                             <option class="select-filter" data-filter="price">Price</option>
                         </select>
-                         <input type="submit" name="SortBy" id="SortBy" value="SortTHIS">
+                         <input type="submit" name="SortBy" id="SortBy" value="Sort">
                     </form>
                 </span>
                 
@@ -29,7 +29,15 @@
                     <div class="row" id="filter">
                         <h5 id="filter-by-text">Filter by:</h5>
                         <div class="col-xs-3 form-group">
-                            <select class="form-control" name="FilterBy" id="select-genre">
+
+                       
+                            <option class="select-filter" data-filter="all">Sort By</option>
+                            <option class="select-filter" data-filter="name">Name</option>                  
+                            <option class="select-filter" data-filter="price">Price</option>
+                        </select>
+                         <input type="submit" name="SortBy" id="SortBy" value="Sort">
+                    
+                            <select name="FilterBy" value="all" class="form-control" id="select-genre">
                                 <option value="Genre">Genre</option>
                                 <option value="Biographies">Biographies & Memoirs</option>
                                 <option value="Children">Children</option>

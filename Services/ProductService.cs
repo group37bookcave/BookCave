@@ -91,7 +91,7 @@ namespace BookCave.Services
         }
         public List<BookViewModel> FilterByGenre(Genre genre)
         {
-            return ConvertToBookViewModel(_productRepo.GetBooksByGenreId(genre.Id));
+            return ConvertToBookViewModel(_productRepo.GetBooksByGenre(genre.Name));
         }
 
         public List<BookViewModel> SortByName()

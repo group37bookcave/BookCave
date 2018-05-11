@@ -10,11 +10,6 @@ $(document).ready(function(e){
         $('#FilterBy').val($(this).data('filter'));
     });
 
-    $('.select-filter').on('click', function(){
-        $('#FilterBy').val($(this).data('filter'));
-        $('.filter-form').submit();
-    });
-    
     /*Submit forms*/ 
     $("input[type='submit']").click(function()
     {
