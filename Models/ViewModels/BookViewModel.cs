@@ -15,7 +15,10 @@ namespace BookCave.Models.ViewModels
 
         public string Image { get; set; }
 
-        public ICollection<Review> Reviews { get; set; }
+        public List<ReviewViewModel> Reviews { get; set; }
+
+        public double Rating { get; set; }
+        
         public string Description { get; set; }
         
         public string Format { get; set; }
@@ -25,7 +28,7 @@ namespace BookCave.Models.ViewModels
 
         public DateTime ReleaseDate { get; set; }
         
-        public Publisher Publisher { get; set; }
+        public string Publisher { get; set; }
 
         public Isbn Isbn { get; set; }
         

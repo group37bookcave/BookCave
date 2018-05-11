@@ -31,19 +31,14 @@ namespace BookCave.Services
             return _orderRepo.CheckoutOrder(model.OrderId);
         }
 
-        public OrderViewModel AddToOrder(int productId, int orderId)
+        public void AddToOrder(int productId, int orderId)
         {
-            var order = _orderRepo.AddToOrder(productId, orderId);
-            return ConvertToOrderViewModel(order);
+            _orderRepo.AddToOrder(productId, orderId);
         }
 
-         public OrderViewModel GetActiveOrder(int customerId)
+        public OrderViewModel GetActiveOrder(int customerId)
         {
             var order = _orderRepo.GetActiveOrder(customerId);
-            if(order == null)
-            {
-                throw new NotImplementedException();
-            }
             return ConvertToOrderViewModel(order);
         }
 

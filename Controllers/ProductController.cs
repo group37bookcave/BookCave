@@ -23,10 +23,15 @@ namespace BookCave.Controllers
             return View(books);
         }
 
-        public IActionResult BookDetail(int id)
+        public IActionResult BookDetail(int? id)
         {
+            if (id == null)
+            {
+                return View("Error");
+            }
 
-            return View();
+            var book = _productService.GetBookById(id);
+            return View(book);
         }
         
         public IActionResult AuthorDetail()
@@ -41,7 +46,8 @@ namespace BookCave.Controllers
 
         public IActionResult TopRated()
         {
-            return View();
+            var books = _productService.Top10();
+            return View(books);
         }
 
          public IActionResult BestSellers()

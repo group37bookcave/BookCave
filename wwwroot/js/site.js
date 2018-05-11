@@ -20,9 +20,6 @@ $(document).ready(function(e){
 		$('.input-group #search_param').val(param);
     });
     
-    $("#logout-a").click(function(){
-        $("#logout-f").submit();
-    });
 
     $("a#filter-products").click(function() {
         $("#filter").toggle();
