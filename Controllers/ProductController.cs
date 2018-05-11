@@ -115,6 +115,11 @@ namespace BookCave.Controllers
             return View(book);
         }
 
+        public IActionResult Review(){
+               return View("BookDetails");
+        }
+        
+        
         [Authorize(Policy="Customer")]
         [HttpPost]
         public IActionResult Review(string review, int rating, int productId){
