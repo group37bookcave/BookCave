@@ -56,6 +56,21 @@ namespace BookCave.Repositories
             // The item is already in the wishlist, do nothing.
         }
 
+        public void RemoveFromWishList(int productId, int customerId)
+        {
+            var wishlist = GetCustomerWishList(customerId);
+            var item = (from w in _db.WishListProducts
+                    where w.ProductId == productId && w.WishListId == wishlist.Id
+                    select w)
+                .SingleOrDefault();
+            if (item == null)
+            {
+                return;
+            }
+            _db.WishListProducts.Remove(item);
+            _db.SaveChanges();
+        }
+
         private WishList CreateWishList(int customerId)
         {
             var wishlist = new WishList {CustomerId = customerId};

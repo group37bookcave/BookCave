@@ -23,8 +23,8 @@
                             <a asp-controller="Employee" asp-action="Orders">All Orders</a>
                             <a asp-controller="Product" asp-action="Register">Add a Book</a>
                             <a asp-controller="" asp-action="">Add Sheet Music</a>
-                            <form method="POST">
-                                <button type="submit" class="btn btn-link" asp-controller="Account" asp-action="Logout">Sign Out</button>
+                            <form method="POST" asp-controller="Account" asp-action="Logout">
+                                <button type="submit" class="btn btn-link" >Sign Out</button>
                             </form>
                         </div>
                     </div>
@@ -86,7 +86,7 @@ else
             <li>
                 <div class="row">
                     <div class="col-md-12">
-                        <form class="form" role="form" method="post" accept-charset="UTF-8" id="login-nav">
+                        <form class="form" role="form"  asp-controller="Account" asp-action="Login" method="post" accept-charset="UTF-8" id="login-nav">
                             <div class="form-group sign-in-group">
                                 <label class="sr-only" asp-for="Email" >Email address</label>
                                 <input type="email" class="form-control" asp-for="Email"  placeholder="Email address">
@@ -100,7 +100,7 @@ else
                                     <a asp-controller="Account" asp-action="Register" role="button" class="btn btn-default user-buttons">New User</a>
                                 </span>
                                 <span>
-                                    <button asp-controller="Account" asp-action="Login" role="button" class="btn btn-default user-buttons" type="submit">Sign In</button>
+                                    <input class="btn btn-default user-buttons" type="submit" value="Sign In"/>
                                 </span>
                             </div>
                         </form>

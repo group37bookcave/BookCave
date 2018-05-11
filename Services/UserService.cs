@@ -104,5 +104,10 @@ namespace BookCave.Services
         {
             return _wishListRepo.GetWishList(customerId);
         }
+
+        public void RemoveFromWishList(int productId, int userId)
+        {
+            _wishListRepo.RemoveFromWishList(productId, userId);
+        }
     }
 }

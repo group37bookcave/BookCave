@@ -37,14 +37,26 @@ namespace BookCave.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddToWishList(int? id)
+        public IActionResult AddToWishList(int? productId)
         {
-            if (id == null)
+            if (productId == null)
             {
                 return View("WishList");
             }
             var userId = int.Parse(User.FindFirst("CustomerId").Value);
-            _userService.AddToWishList((int) id, userId);
+            _userService.AddToWishList((int) productId, userId);
+            return RedirectToAction("WishList");
+        }
+
+        [HttpPost]
+        public IActionResult RemoveFromWishList(int? productId)
+        {
+            if (productId == null)
+            {
+                return View("WishList");
+            }
+            var userId = int.Parse(User.FindFirst("CustomerId").Value);
+            _userService.RemoveFromWishList((int) productId, userId);
             return RedirectToAction("WishList");
         }
 
