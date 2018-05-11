@@ -1,4 +1,9 @@
 @model BookCave.Models.ViewModels.BookViewModel
+@using Microsoft.AspNetCore.Identity
+@using System.Security.Claims
+@using BookCave.Models.EntityModels
+
+@inject SignInManager<ApplicationUser> SignInManager
 
 <div class="container-fluid">
     <div class="row center">
@@ -74,6 +79,9 @@
                                     Add to WishList
                                 </a>
                             </div>
+                            
+                        @if (SignInManager.IsSignedIn(User))
+                        {  
                             <div class="button-options green-buttons">
                                 <form asp-controller="Product" asp-action="Review" method="post" class="inline-block filter-form">
                                 
@@ -91,6 +99,7 @@
                                 </form>
 
                             </div>
+                        }
                         </div>
 
                     </td>
