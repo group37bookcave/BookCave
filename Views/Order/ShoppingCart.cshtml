@@ -1,4 +1,4 @@
-@model BookCave.Models.ViewModels.OrderViewModel
+@model IEnumerable<BookCave.Models.ViewModels.OrderViewModel>  
 
 @{
     ViewData["Title"] = "Shopping Cart";
@@ -15,34 +15,36 @@
             </div>
             <table>
                 <tbody>
-               
-                 
-                    <tr class="list-item">
-                        <td class="col-sm-8 col-md-6">
-                            <div class="media">
-                                <a class="pull-left" asp-controller="Product" asp-action="BookDetail">
-                                    <div class="col-sm-2 hidden-xs">
-                                        <img class="bookDetailImg" src=Image class="media-object" alt="ItemImage">
+                    @foreach(var item in Model){
+                        foreach(var prod in item.Items){
+                        <tr class="list-item">
+                            <td class="col-sm-8 col-md-6">
+                                <div class="media">
+                                   
+                                    <a class="pull-left" asp-controller="Product" asp-action="BookDetail">
+                                        <div class="col-sm-2 hidden-xs">
+                                            <img class="bookDetailImg" src="@prod.Image" class="media-object" alt="ItemImage">
+                                        </div>
+                                    </a>
+                                    <div class="media-body">
+                                        <ul>
+                                            <h4>@prod.Name</h4>
+                                        </ul>
                                     </div>
-                                </a>
-                                <div class="media-body">
-                                    <ul>
-                                        <h4>Name</h4>
-                                    </ul>
                                 </div>
-                            </div>
-                        </td>
+                            </td>
 
-                        <td class="col-sm-1 col-md-1">
-                            <p>
-                                <strong>Price: </strong>
-                            </p>
-                        </td>
+                            <td class="col-sm-1 col-md-1">
+                                <p>
+                                    <h4>Price: $@prod.Price </h4>
+                                </p>
+                            </td>
 
-                        <td class="col-sm-1 col-md-1">
-                            <a asp-controller="Order" asp-action="ShoppingCart" asp-route-id="" >Remove</a>   
-                        </td>
-                    </tr>
+                            <td class="col-sm-1 col-md-1">
+                                <a asp-controller="Order" asp-action="ShoppingCart" asp-route-id="" >Remove</a>   
+                            </td>
+                        </tr>
+                                    } }
                 </tbody>
             </table>
             <div class="button-options grey-buttons">
