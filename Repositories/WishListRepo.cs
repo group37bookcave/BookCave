@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 using BookCave.Data;
 using BookCave.Migrations.Store;
@@ -18,15 +19,17 @@ namespace BookCave.Repositories
             {
                 return null;
             }
+
             var book = from b in _db.Books
-                join w in wishlist.Products on b.Id equals w.ProductId
+                join w in _db.WishListProducts on b.Id equals w.ProductId
+                where w.WishListId == wishlist.Id
                 select new BookViewModel
                 {
-                    Id = b.Id,
-                    Image = b.Image,
                     Name = b.Name,
-                    Format = b.GetType().Name,
-                    Price = b.Price
+                    Image = b.Image,
+                    Id = b.Id,
+                    Price = b.Price,
+                    Format = b.GetType().Name
                 };
             return book.ToList();
         }
@@ -34,10 +37,46 @@ namespace BookCave.Repositories
         public void AddToWishList(int productId, int customerId)
         {
             var wishlist = GetCustomerWishList(customerId);
-            if (!Contains(productId, wishlist))
+
+            // No wishlist for this customer.
+            if (wishlist == null)
             {
-                _db.WishListProducts.Add(new WishListProduct { ProductId = productId, WishListId = wishlist.Id});
+                wishlist = CreateWishList(customerId);
+                _db.WishListProducts.Add(new WishListProduct {ProductId = productId, WishListId = wishlist.Id});
+                _db.SaveChanges();
             }
+
+            // The wishlist does not contain the item.
+            else if (!Contains(productId, wishlist.Id))
+            {
+                _db.WishListProducts.Add(new WishListProduct {ProductId = productId, WishListId = wishlist.Id});
+                _db.SaveChanges();
+            }
+
+            // The item is already in the wishlist, do nothing.
+        }
+
+        public void RemoveFromWishList(int productId, int customerId)
+        {
+            var wishlist = GetCustomerWishList(customerId);
+            var item = (from w in _db.WishListProducts
+                    where w.ProductId == productId && w.WishListId == wishlist.Id
+                    select w)
+                .SingleOrDefault();
+            if (item == null)
+            {
+                return;
+            }
+            _db.WishListProducts.Remove(item);
+            _db.SaveChanges();
+        }
+
+        private WishList CreateWishList(int customerId)
+        {
+            var wishlist = new WishList {CustomerId = customerId};
+            _db.WishLists.Add(wishlist);
+            _db.SaveChanges();
+            return wishlist;
         }
 
         private WishList GetCustomerWishList(int customerId)
@@ -45,9 +84,11 @@ namespace BookCave.Repositories
             return (from w in _db.WishLists where w.CustomerId == customerId select w).SingleOrDefault();
         }
 
-        private bool Contains(int productId, WishList wishList)
+        private bool Contains(int productId, int wishListId)
         {
-            return wishList.Products.Any(item => item.ProductId == productId);
+            return (from w in _db.WishListProducts
+                where productId == w.ProductId && wishListId == w.WishListId
+                select w).Any();
         }
     }
 }

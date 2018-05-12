@@ -12,7 +12,7 @@ namespace BookCave.Services
         private readonly EmployeeRepo _employeeRepo = new EmployeeRepo();
         private readonly AddressRepo _addressRepo = new AddressRepo();
         private readonly WishListRepo _wishListRepo = new WishListRepo();
-
+        
         public CustomerViewModel GetCustomer(int id)
         {
             var customer = _customerRepo.GetCustomer(id);
@@ -29,9 +29,8 @@ namespace BookCave.Services
                 {
                     Street = address.Street,
                     City = address.City,
-                    Country = address.Country,
+                    Country = address.Country.Name,
                     Zipcode = address.ZipCode,
-                    AddressId = address.Id
                 });
             }
 
@@ -103,6 +102,11 @@ namespace BookCave.Services
         public List<BookViewModel> GetWishList(int customerId)
         {
             return _wishListRepo.GetWishList(customerId);
+        }
+
+        public void RemoveFromWishList(int productId, int userId)
+        {
+            _wishListRepo.RemoveFromWishList(productId, userId);
         }
     }
 }

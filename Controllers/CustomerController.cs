@@ -15,7 +15,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace BookCave.Controllers
 {
-    
+    [Authorize(Policy = "Customer")]
     public class CustomerController : Controller
     {
         private readonly SignInManager<ApplicationUser> _signInManager;
@@ -30,20 +30,6 @@ namespace BookCave.Controllers
 
         }
 
-        [HttpGet]
-        [Authorize(Policy = "Customer")]
-        public IActionResult AccountDetails()
-        {
-            return View();
-        }
-        //[Authorize(Policy = "Customer")]
-        public IActionResult OrderHistory()
-        {
-            int userId = int.Parse(User.FindFirst("CustomerId").Value);
-            var orderHistory = _orderService.OrderHistory(userId);
-            return View(orderHistory);
-        }
-
         [HttpPost]
         public IActionResult AddToWishList(int? productId)
         {
@@ -53,8 +39,19 @@ namespace BookCave.Controllers
             }
             var userId = int.Parse(User.FindFirst("CustomerId").Value);
             _userService.AddToWishList((int) productId, userId);
-            var wishlist = _userService.GetWishList(userId);
-            return RedirectToAction("WishList", wishlist);
+            return RedirectToAction("WishList");
+        }
+
+        [HttpPost]
+        public IActionResult RemoveFromWishList(int? productId)
+        {
+            if (productId == null)
+            {
+                return View("WishList");
+            }
+            var userId = int.Parse(User.FindFirst("CustomerId").Value);
+            _userService.RemoveFromWishList((int) productId, userId);
+            return RedirectToAction("WishList");
         }
 
         [HttpGet]
@@ -62,7 +59,22 @@ namespace BookCave.Controllers
         {
             var userId = int.Parse(User.FindFirst("CustomerId").Value);
             var wishlist = _userService.GetWishList(userId);
-            return wishlist == null ? View() : View(wishlist);
+            return View(wishlist);
+
+        }        
+        public IActionResult OrderHistory()
+        {
+            var userId = int.Parse(User.FindFirst("CustomerId").Value);
+            var orderHistory = _orderService.OrderHistory(userId);
+            return View(orderHistory);
+        }
+
+        [HttpGet]
+        public IActionResult AccountDetails()
+        {
+            var userId = int.Parse(User.FindFirst("CustomerId").Value);
+            var customer = _userService.GetCustomer(userId);
+            return View();
         }
     }
 }

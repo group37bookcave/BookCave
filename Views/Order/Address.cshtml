@@ -38,7 +38,7 @@
                             <option selected>Select country</option>
                             @using (Html.BeginForm())
                             {
-                                var countries = BookCave.Services.Helper.GetLanguages();
+                                var countries = BookCave.Services.Helper.GetCountries();
                                 foreach (var country in countries)
                                 {
                                     <option name="BillingCountryId" value=@country.Id>@country.Name</option>
@@ -70,7 +70,7 @@
                             <option selected>Select country</option>
                             @using (Html.BeginForm())
                             {
-                                var countries = BookCave.Services.Helper.GetLanguages();
+                                var countries = BookCave.Services.Helper.GetCountries();
                                 foreach (var country in countries)
                                 {
                                     <option value=@country.Id>@country.Name</option>

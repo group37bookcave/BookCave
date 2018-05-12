@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using BookCave.Models.EntityModels;
 using BookCave.Models.InputModels;
+using BookCave.Models.ViewModels;
+using Newtonsoft.Json;
 
 //using System.Threading.Tasks;
 
@@ -58,33 +60,30 @@ namespace BookCave.Controllers
         [HttpPost]
         public IActionResult Address(AddressInputModel address)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                 return RedirectToAction("ReviewPage");
-                
+                 return View();   
             }
-            return View();
-           
+            var userId = _signInManager.IsSignedIn(User) ? int.Parse(User.FindFirst("CustomerId").Value) : 10;
+            var order = _orderService.GetActiveOrder(userId);
+            order = _orderService.AddAddressesToOrder(address, order);
+            TempData["order"] = JsonConvert.SerializeObject(order);
+            return RedirectToAction("ReviewPage");
         }
-
-        [HttpGet]
-        public IActionResult PaymentPage()
+               
+        public IActionResult ReviewPage()
         {
-            return View();
-        }
-
-        [
-            HttpPost]
-        public IActionResult PaymentPage(PaymentInputModel Payment)
-        {
-            if (ModelState.IsValid)
+            if (TempData["order"] == null)
             {
-                // _orderService.CheckoutOrder();
-
-                return RedirectToAction("Receipt");
+                return View("ShoppingCart");
             }
-
-            return View();
+            
+            var order = JsonConvert.DeserializeObject<OrderViewModel>(TempData["order"].ToString());
+            if (order?.Items == null || !order.Items.Any())
+            {
+                return View("ShoppingCart");
+            }
+            return View(order);
         }
 
         [HttpPost]
@@ -102,14 +101,27 @@ namespace BookCave.Controllers
             return View("ShoppingCart", order);
         }
 
-        public IActionResult ReviewPage()
-        {
-            return View();
-        }
+
 
         public IActionResult Receipt()
         {
-            return View();
+            var userId = _signInManager.IsSignedIn(User) ? int.Parse(User.FindFirst("CustomerId").Value) : 10;
+            var order = _orderService.GetActiveOrder(userId);
+            _orderService.CheckoutOrder(order.OrderId);
+            return View(order);
+        }
+
+        [HttpPost]
+        public IActionResult Checkout()
+        {   
+            var userId = _signInManager.IsSignedIn(User) ? int.Parse(User.FindFirst("CustomerId").Value) : 10;
+            var order = _orderService.GetActiveOrder(userId);
+            if (order?.Items == null || !order.Items.Any())
+            {
+                return RedirectToAction("ShoppingCart");
+            }
+            _orderService.CheckoutOrder(order.OrderId);
+            return RedirectToAction("Receipt", order.OrderId);
         }
     }
 }

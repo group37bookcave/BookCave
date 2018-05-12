@@ -15,7 +15,7 @@
                     </h1>
                 </span>
             </div>
-            <form class="input-form" method="post">
+            <form class="input-form" method="post" asp-controller="Account" asp-action="Register">
                 <fieldset class="inline-block upload-image">
                     <input asp-for="@Model.Image"type="image" src="https://getstamped.co.uk/wp-content/uploads/Placeholder.jpg" style="width: 300px"/>
                     <input asp-for="@Model.Image" type="file" id="user-image" style="display: none;"/>
@@ -68,7 +68,7 @@
                                     <option selected>Select country</option>
                                     @using (Html.BeginForm())
                                     {
-                                        var countries = BookCave.Services.Helper.GetLanguages();
+                                        var countries = BookCave.Services.Helper.GetCountries();
                                         foreach (var country in countries)
                                         {
                                             <option value=@country.Id>@country.Name</option>
@@ -88,10 +88,10 @@
                                 <span asp-validation-for="@Model.ConfirmPassword"></span>
                             </div>
                             <div class="grey-buttons">
-                                <a class="btn btn-default grey-buttons" type="submit">Register</a>
+                                <input class="btn btn-default grey-buttons" type="submit" value="Register"/>
                             </div>
                         </div>
-                    </div> 
+                    </div>
                 </fieldset>
             </form>
         </div>

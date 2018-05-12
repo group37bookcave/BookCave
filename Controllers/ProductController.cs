@@ -201,7 +201,7 @@ namespace BookCave.Controllers
         }
 
         public IActionResult Review(){
-               return View("BookDetails");
+               return View("BookDetail");
         }
         
         

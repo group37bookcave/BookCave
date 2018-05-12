@@ -1,3 +1,5 @@
+@using BookCave.Services
+@model BookCave.Models.ViewModels.OrderViewModel
 @{
     ViewData["Title"] = "Your Receipt";
 }
@@ -5,62 +7,37 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-12 col-md-10 col-md-offset-1">
+
             <div class="page-header">
-                <h1 clas="inline-block">
+                <h1>
                     <span class="book-cave-color">YOUR</span><span>RECEIPT</span>
                 </h1>
-                <p id="order-num" class="inline-block">Order no. 123</p>
             </div>
-            <table>
+            <table class="table table-condensed">
                 <tbody>
-                <tfoot>
+                @foreach (var prod in Model.Items)
+                {
+                    <tr>
+                        <td>@prod.ProductName</td>
+                        <td></td>
+                        <td>@prod.Quantity</td>
+                        <td>@prod.Price</td>
+                    </tr>
+                }
                 <tr>
-                    <td colspan="2"></td>
-                    <td>
-                        <h5>Total</h5>
-                    </td>
-                    <td>
-                        <h5>100$</h5>
-                    </td>
-                </tr>
-                </tfoot>
-                <tr class="list-item">
-                    <td class="col-sm-8 col-md-6">
-                        <div class="media">
-                            <a class="pull-left" href="#">
-                                <div class="col-sm-2 hidden-xs">
-                                    <img src="http://placehold.it/180x200/456" class="media-object" alt="ItemImage" style="width: 180px; height: 200px;">
-                                </div>
-                            </a>
-                            <div class="media-body">
-                                <h4>Item name</h4>
-                                <ul>
-                                    <li>Author:</li>
-                                    <li>Format:</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </td>
-                    <td class="col-sm-2 col-md-2">
-                        <p>2</p>
-                    </td>
-                    <td class="col-sm-2 col-md-2">
-                        <p>
-                            <h5>Price: $50.00</h5>
-                        </p>
-                    </td>
-                    <td class="col-sm-2 col-md-2">
-                        <p>
-                            <h5>Total Price: 100$</h5>
-                        </p>
-                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    @using (Html.BeginForm())
+                    {
+                        var total = Helper.GetTotalPrice(Model);
+                        <td>Total: $ @total</td>
+                    }
                 </tr>
                 </tbody>
             </table>
             <div class="button-options grey-buttons">
                 <a class="btn btn-default grey-buttons" type="button" asp-area="" asp-controller="Product" asp-action="AllProducts">Continue Shopping</a>
-                <a class="btn btn-default grey-buttons" type="button" asp-area="" asp-controller="" asp-action="">Print Receipt</a>
-                <a class="btn btn-default grey-buttons" type="button" asp-area="" asp-controller="" asp-action="">Send to Email</a>
             </div>
         </div>
     </div>

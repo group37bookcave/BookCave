@@ -14,7 +14,7 @@
             </div>
             <table>
                 <tbody>
-                @if (Model == null)
+                @if (Model == null || !Model.Any())
                 {
                     <tr>
                         <h4>
@@ -58,9 +58,12 @@
                                 <div>
                                     <div class="button-options green-buttons">
                                         <form method="post" asp-area="" asp-controller="Order" asp-action="Add" asp-route-id=@item.Id>
-                                            <button
-                                                class="btn btn-default" type="submit" value="Add to Cart">
-                                            </button>
+                                            <input class="btn btn-default" type="submit" value="Add to Cart"/>
+                                        </form>
+                                    </div>    
+                                    <div class="button-options green-buttons">
+                                        <form method="post" asp-area="" asp-controller="Customer" asp-action="RemoveFromWishList" asp-route-productId=@item.Id>
+                                            <input class="btn btn-default" type="submit" value="Remove"/>
                                         </form>
                                     </div>
                                 </div>
@@ -71,12 +74,6 @@
                 </tbody>
             </table>
             <hr>
-            <div class="check-options">
-                <input type="checkbox" value="price-drop" id="price-drop">
-                <label for="price-drop">Email notification when price drops</label><br>
-                <input type="checkbox" value="remove-purchased" id="remove-when-purchased">
-                <label for="remove-when-purchased">Remove purchased items</label>
-            </div>
         </div>
     </div>
 </div>
