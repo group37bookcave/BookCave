@@ -4,6 +4,7 @@ using System.Collections.Specialized;
 using System.Linq;
 using BookCave.Data;
 using BookCave.Models.EntityModels;
+using BookCave.Models.ViewModels;
 
 namespace BookCave.Repositories
 {
@@ -11,12 +12,19 @@ namespace BookCave.Repositories
     {
         private readonly StoreContext _db = new StoreContext();
 
-        public List<Address> GetAddressesByCustomerId(int id)
+        public List<AddressViewModel> GetAddressesByCustomerId(int id)
         {
             var adresses = (from ca in _db.CustomerAddresses
                 join a in _db.Addresses on ca.AddressId equals a.Id
                 where ca.CustomerId == id
-                select a).ToList();
+                select new AddressViewModel 
+                {
+                    City = a.City,
+                    Country = a.Country.Name,
+                    CountryId = a.Country.Id,
+                    Street = a.Street,
+                    Zipcode = a.ZipCode
+                }).ToList();
             return adresses;
         }
 

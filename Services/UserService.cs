@@ -20,20 +20,11 @@ namespace BookCave.Services
 
             var model = new CustomerViewModel
             {
+				Id = customer.Id,
                 Email = customer.Email,
-                Name = customer.FullName
+                Name = customer.FullName,
+                Adresses = new List<AddressViewModel>(addresses)
             };
-            foreach (var address in addresses)
-            {
-                model.Adresses.Add(new AddressViewModel
-                {
-                    Street = address.Street,
-                    City = address.City,
-                    Country = address.Country.Name,
-                    Zipcode = address.ZipCode,
-                });
-            }
-
             return model;
         }
 

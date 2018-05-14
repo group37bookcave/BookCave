@@ -15,7 +15,7 @@ namespace BookCave.Repositories
 
         public List<OrderViewModel> GetAllOrdersByCustomerId(int customerId)
         {
-            var orders = (from order in _db.Orders where order.CustomerId == customerId select new OrderViewModel
+			var orders = (from order in _db.Orders where order.CustomerId == customerId && order.IsCheckedOut select new OrderViewModel
             {
                 CustomerId = customerId,
                 OrderId = order.Id,

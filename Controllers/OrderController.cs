@@ -102,12 +102,15 @@ namespace BookCave.Controllers
         }
 
 
-
+        
         public IActionResult Receipt()
         {
-            var userId = _signInManager.IsSignedIn(User) ? int.Parse(User.FindFirst("CustomerId").Value) : 10;
-            var order = _orderService.GetActiveOrder(userId);
-            _orderService.CheckoutOrder(order.OrderId);
+			if (TempData["order"] == null)
+            {
+                return View("ShoppingCart");
+            }
+
+            var order = JsonConvert.DeserializeObject<OrderViewModel>(TempData["order"].ToString());
             return View(order);
         }
 
@@ -120,8 +123,9 @@ namespace BookCave.Controllers
             {
                 return RedirectToAction("ShoppingCart");
             }
+			TempData["order"] = JsonConvert.SerializeObject(order);
             _orderService.CheckoutOrder(order.OrderId);
-            return RedirectToAction("Receipt", order.OrderId);
+            return RedirectToAction("Receipt");
         }
     }
 }

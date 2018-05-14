@@ -21,21 +21,18 @@
 <nav id="navbar" class="navbar navbar-fixed-top">
     <div class="container">
         <div class="row">
-            <div class="col-xs-3">
-                <a asp-area="" asp-controller="Home" asp-action="Index">
-                    <img src="~/images/xSmallLogo.svg" alt="Logo">
-                </a>
-            </div>
-            <div class="col-xs-6">
-                <form asp-controller="Product" asp-action="AllProducts" method="post" class="input-group">
-                    <div class="input-group-btn search-panel">
+                <div class="col-xs-3">
+                    <a asp-area="" asp-controller="Home" asp-action="Index">
+                        <img src="~/images/xSmallLogo.svg" alt="Logo">
+                    </a>
+                </div>
+                <div class="col-xs-6">
+                    <form asp-controller="Product" asp-action="AllProducts" method="post" class="input-group">
+                        <div class="input-group-btn search-panel">
                         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                            <span id="search_concept">All</span> <span class="caret"></span>
+                            <span id="search_concept">Title</span> <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu" role="menu">
-                            <li>
-                                <a class="search-filter" data-filter="All" href="#">All</a>
-                            </li>
                             <li>
                                 <a class="search-filter" data-filter="Author" href="#">Author</a>
                             </li>
@@ -47,10 +44,10 @@
                             </li>
                         </ul>
                         </div>
-                        <input type="hidden" name="FilterBy" id="FilterBy" value="All">
-                        <input type="text" class="form-control" name="SearchString" placeholder="Search by keyword, title, author or ISBN">
+                        <input type="hidden" name="FilterBy" id="FilterBy" value="Title">
+                        <input type="text" class="form-control" name="SearchString" placeholder="Search by title, author or ISBN">
                         <span class="input-group-btn">
-                            <input class="btn btn-default" type="submit" value="Search"><span class="glyphicon glyphicon-search"></span></input>
+                            <input id="search-button" class="btn btn-default" type="submit" value="Search"></input>
                         </span>
                     </form>
                 </div>

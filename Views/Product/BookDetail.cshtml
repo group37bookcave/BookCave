@@ -1,4 +1,10 @@
+@using Microsoft.AspNetCore.Identity
+@using System.Security.Claims
+@using BookCave.Models.EntityModels
 @model BookCave.Models.ViewModels.BookViewModel
+
+@inject SignInManager<ApplicationUser> SignInManager
+
 
 <div class="container-fluid">
     <div class="row center">
@@ -59,14 +65,14 @@
                     <td class="col-sm-2 col-md-2" valign="top">
                         <div>
                             <div class="button-options green-buttons">
-                                <a class="btn btn-default" type="button" asp-area="" asp-controller="" asp-action="">
-                                    Add to Cart
-                                </a>
+                                <form method="post" asp-controller="Order" asp-action="Add" asp-route-id=@Model.Id>
+                                    <input class="btn btn-default" type="submit" value="Add to Cart"/>
+                                </form>
                             </div>
                             <div class="button-options green-buttons">
-                                <a class="btn btn-default" type="button" asp-area="" asp-controller="" asp-action="">
-                                    Add to WishList
-                                </a>
+                                <form method="post" asp-controller="Customer" asp-action="AddToWishList" asp-route-id=@Model.Id>
+                                    <input class="btn btn-default" type="submit" value="Add to Wishlist"/>
+                                </form>
                             </div>
 
                             @if (SignInManager.IsSignedIn(User))
@@ -86,7 +92,6 @@
                                         <input type="hidden" value="@Model.Id" name="productId">
                                         <input type="submit" class="btn" value="Review"/>
                                     </form>
-
                                 </div>
                             }
                         </div>

@@ -216,7 +216,7 @@ namespace BookCave.Controllers
             
             var userId = int.Parse(User.FindFirst("CustomerId").Value);
             _productService.AddReview(review, (int) rating, (int) productId, userId);
-            var id = (int) productId;
+            int? id = (int) productId;
             return RedirectToAction("BookDetail", id);
     
         }

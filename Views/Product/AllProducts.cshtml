@@ -13,41 +13,31 @@
                         <span class="book-cave-color">@ViewBag.First</span><span>@ViewBag.Second</span>
                     </h1>
                 </div>
-                <span class="filter-and-sort">
-                    <a id="filter-products" class="inline-block">Filter</a>
-
-                    <form asp-controller="Product" asp-action="SortBy" method="post" class="inline-block filter-form">
+                <div class="filter-sort-form">
+                    <form asp-controller="Product" asp-action="FilterByGenre" method="post" class="form-inline">
+                        <select name="FilterBy" value="all" class="form-control" id="select-genre">
+                            <option value="Genre">Filter By</option>
+                            <option value="Biographies & Memoirs">Biographies & Memoirs</option>
+                            <option value="Children">Children</option>
+                            <option value="Fantasy">Fantasy</option>
+                            <option value="Fiction">Fiction</option>
+                            <option value="Mystery">Mystery, Thriller & Suspence</option>
+                            <option value="Non-Fiction">Non - Fiction</option>
+                            <option value="Self-Help">Self - Help</option>
+                        </select>
+                        <input type="submit" name="FilterBy" value="Filter" class="form-control filter-sort-buttons">
+                    </form>
+                </div>
+                <div class="filter-sort-form">
+                    <form asp-controller="Product" asp-action="SortBy" method="post" class="form-inline">
                         <select name="SortBy" value="all" class="form-control" id="sort-by">
                             <option class="select-filter" data-filter="all">Sort By</option>
                             <option class="select-filter" data-filter="name">Name</option>
                             <option class="select-filter" data-filter="price">Price</option>
-
                         </select>
-                        <input type="submit" name="SortBy" id="SortBy" value="Sort">
+                        <input type="submit" name="SortBy" value="Sort" class="form-control filter-sort-buttons">
                     </form>
-                </span>
-
-                <form asp-controller="Product" asp-action="FilterByGenre" method="post" class="inline-block filter-form">
-                    <div class="row" id="filter">
-                        <h5 id="filter-by-text">Filter by:</h5>
-                        <div class="col-xs-3 form-group">
-
-                            <input type="submit" name="SortBy" id="SortBy" value="Sort">
-
-                            <select name="FilterBy" value="all" class="form-control" id="select-genre">
-                                <option value="Genre">Genre</option>
-                                <option value="Biographies">Biographies & Memoirs</option>
-                                <option value="Children">Children</option>
-                                <option value="Fantasy">Fantasy</option>
-                                <option value="Fiction">Fiction</option>
-                                <option value="Mystery">Mystery, Thriller & Suspence</option>
-                                <option value="Non-Fiction">Non - Fiction</option>
-                                <option value="Self-Help">Self - Help</option>
-                            </select>
-                            <input type="submit" name="FilterBy" value="Filter" class="form-control filter-sort-buttons">
-                        </div>
-                    </div>
-                </form>
+                </div>
             </div>
             <table>
                 <tbody>
@@ -56,7 +46,9 @@
                     <tr>
                         <td class="col-sm-3 col-md-3" valign="top">
                             <div>
-                                <img alt="Cover Art" class="bookDetailImg" src="@item.Image"/>
+                                <a asp-controller="Product" asp-action="BookDetail" asp-route-id=@item.Id>
+                                    <img alt="Cover Art" class="bookDetailImg" src="@item.Image" />
+                                </a>
                             </div>
                         </td>
                         <td class="col-sm-5 col-md-5" valign="top">
@@ -111,7 +103,7 @@
                                     </form>
                                 </div>
                                 <div class="button-options green-buttons">
-                                    <form method="post" asp-area="" asp-controller="Customer" asp-action="AddToWishList" asp-route-productId=@item.Id>
+                                    <form method="post" asp-area="" asp-controller="Customer" asp-action="AddToWishList" asp-route-id=@item.Id>
                                         <input class="btn btn-default" type="submit" value="Add to WishList"/>
                                     </form>
                                 </div>

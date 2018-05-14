@@ -20,7 +20,7 @@ namespace BookCave.Services
             double sum = 0;
             foreach (var item in order.Items)
             {
-                sum += item.Price;
+                sum += (item.Price * item.Quantity);
             }
 
             return sum;

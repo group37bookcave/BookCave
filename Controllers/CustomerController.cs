@@ -1,17 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 using BookCave.Models.EntityModels;
 using Microsoft.AspNetCore.Mvc;
-using BookCave.Models.ViewModels;
 using BookCave.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.Azure.KeyVault.Models;
-using Microsoft.EntityFrameworkCore.Metadata;
-
 
 namespace BookCave.Controllers
 {
@@ -31,26 +22,26 @@ namespace BookCave.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddToWishList(int? productId)
+        public IActionResult AddToWishList(int? id)
         {
-            if (productId == null)
+            if (id == null)
             {
                 return View("WishList");
             }
             var userId = int.Parse(User.FindFirst("CustomerId").Value);
-            _userService.AddToWishList((int) productId, userId);
+            _userService.AddToWishList((int) id, userId);
             return RedirectToAction("WishList");
         }
 
         [HttpPost]
-        public IActionResult RemoveFromWishList(int? productId)
+        public IActionResult RemoveFromWishList(int? id)
         {
-            if (productId == null)
+            if (id == null)
             {
                 return View("WishList");
             }
             var userId = int.Parse(User.FindFirst("CustomerId").Value);
-            _userService.RemoveFromWishList((int) productId, userId);
+            _userService.RemoveFromWishList((int) id, userId);
             return RedirectToAction("WishList");
         }
 
@@ -72,8 +63,6 @@ namespace BookCave.Controllers
         [HttpGet]
         public IActionResult AccountDetails()
         {
-            var userId = int.Parse(User.FindFirst("CustomerId").Value);
-            var customer = _userService.GetCustomer(userId);
             return View();
         }
     }
